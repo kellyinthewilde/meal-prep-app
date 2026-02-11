@@ -10,131 +10,135 @@ const BLOCKS = [
 
 // ── SHOPPING LISTS ──
 const SHOPPING = {
-  costco: [{ item: "Chest freezer (14 cu ft)", note: "Buy soon" }],
   equipment: [
     "Souper Cubes 2-cup x4 (~$80)",
     "Souper Cubes 1-cup x2 (~$34)",
     "Souper Cubes 1/2-cup x1 (~$15)",
     "Souper Cubes 2-TB x1 (~$15)",
-    "Gallon freezer bags 4+ boxes (doubled for sharing)",
+    "Parchment paper for wrapping cubes",
     "Quart freezer bags 4+ boxes",
+    "Gallon freezer bags 2+ boxes",
     "Pink Sharpie or tape (Kelly bags)",
     "Blue Sharpie or tape (Jonny bags)",
-    "Green Sharpie or tape (Shared bags)",
-    "Parchment paper for wrapping cubes",
   ],
-  asianMarket: [
+  groceries: [
     {
-      category: "Proteins",
-      items: ["Chicken feet 3 lbs", "Silkie chicken 1 small"],
-    },
-    {
-      category: "Produce",
-      items: ["Fresh turmeric 4 oz", "Fresh ginger 1 large hand", "Green onions 2 bunches"],
-    },
-    {
-      category: "Dried Goods",
+      store: "Butcher / Meat",
       items: [
-        "Dried miyeok (wakame) 2 oz",
-        "Goji berries 8 oz",
-        "Red dates (jujubes) 12 oz",
-        "Dried shiitake 8 oz",
-        "Kombu 4 oz",
-        "Dried longan 8 oz",
-        "Black sesame seeds 8 oz",
+        "Beef marrow bones 17-22 lbs total — 8 beef broth batches across 6 weeks [B1+B2+B3]",
+        "Oxtail 14-19 lbs total — 8 beef broth batches, KEEP THE MEAT [B1+B2+B3]",
+        "Whole chickens x3 pasture-raised — chicken broth [B1]",
+        "Chicken feet 3 lbs — broth collagen [B1]",
+        "Beef brisket 1 lb sliced thin — miyeokguk [B1]",
+        "Silkie chicken (black) 1 small — Wu Ji Tang tonic [B1]",
+        "Chicken thighs bone-in 6 lbs — butter chicken, Japanese curry, chicken noodle, pot pie [B2]",
+        "Italian sausage 1 lb — frittatas [B3]",
+        "Ground beef 6 lbs — bolognese, chili, meatballs, burrito bowls [B3]",
+        "Chicken livers 8 oz — hidden liver (puree into bolognese, chili, meatballs) [B3]",
+        "Beef chuck 8 lbs — 4 stews (sweet potato, Moroccan, rendang, barley) [B3]",
+        "Bacon 1 lb — quiche Lorraine [B3]",
+        "Salmon fillets 1 lb or canned salmon x3 — salmon patties [B3]",
       ],
     },
     {
-      category: "Pantry",
-      items: ["Toasted sesame oil", "White pepper", "Miso paste", "Fish sauce (Red Boat)", "Coconut aminos"],
-    },
-    {
-      category: "TCM Herbs",
-      items: ["Astragalus root powder", "Angelica root powder"],
-    },
-    {
-      category: "Curry",
-      items: ["Japanese curry roux blocks (S&B Golden Curry mild)"],
-    },
-  ],
-  butcher: [
-    {
-      category: "Block 1",
-      items: ["Whole chickens x3", "Beef marrow bones 3-4 lbs", "Oxtail 2-3 lbs", "Beef brisket 1 lb (for miyeokguk)"],
-    },
-    {
-      category: "Block 2",
-      items: ["Chicken thighs bone-in 6 lbs (butter chicken + pot pie + chicken noodle)", "Italian sausage 1 lb (frittatas)"],
-    },
-    {
-      category: "Block 3",
+      store: "Asian Market / Weee!",
       items: [
-        "Ground beef 6 lbs (bolognese + chili + meatballs + beef stews)",
-        "Chicken livers 8 oz (hidden liver)",
-        "Beef chuck 4 lbs (stews)",
-        "Bacon 1 lb (quiche)",
-        "Short ribs or stew beef 2 lbs",
-        "Salmon fillets or canned salmon",
-      ],
-    },
-  ],
-  tradersJoes: [
-    {
-      category: "Block 1 Critical",
-      items: ["Jasmine/basmati rice big bag", "Red lentils 1 lb", "Kabocha squash 2"],
-    },
-    {
-      category: "Lactation Essentials",
-      items: [
-        "Brewer's yeast",
-        "Ground flaxseed",
-        "Fennel seeds",
-        "Raw almonds",
-        "Rolled oats large",
-        "Nut butter",
-        "Dark chocolate chips",
-        "Honey",
-        "Chia seeds",
-        "Walnuts raw",
-        "Pumpkin seeds raw",
-        "Fenugreek ground",
+        "Dried miyeok (wakame seaweed) 2 oz — miyeokguk [B1]",
+        "Red dates (jujubes) 12 oz — congee, tea, rice pudding, silkie tonic [B1]",
+        "Goji berries 8 oz — congee, tea, rice pudding, silkie tonic [B1]",
+        "Black sesame seeds 8 oz — sweet congee, rice pudding [B1]",
+        "Dried longan 8 oz — silkie tonic [B1]",
+        "Dried shiitake 8 oz — silkie tonic [B1]",
+        "Fresh turmeric ~12 oz total — 3 golden broth batches [B1+B2+B3]",
+        "Fresh ginger 3 large hands — broths, soups, congee, teas, curries [B1+B2+B3]",
+        "Green onions 2 bunches — ginger-scallion oil, congee topping [B1]",
+        "Toasted sesame oil [B1]",
+        "White pepper (ground) [B1]",
+        "Coconut aminos [B1]",
+        "Fish sauce (Red Boat) [B1]",
+        "Astragalus root powder (huang qi) — silkie tonic [B1]",
+        "Angelica root powder (dang gui) — silkie tonic [B1]",
+        "Japanese curry roux blocks (S&B Golden Curry, mild) [B2]",
+        "Garam masala, cumin seeds, mustard seeds, curry leaves [B2]",
+        "Fenugreek ground [B2]",
+        "Lemongrass, kaffir lime leaves — rendang (or lime zest) [B3]",
+        "Tamarind paste — rendang [B3]",
       ],
     },
     {
-      category: "Iron & Omega-3 Pantry",
-      items: ["Nettle tea bags", "Dried apricots unsulfured", "Medjool dates", "Canned sardines x4"],
-    },
-    {
-      category: "Soups & Curries",
+      store: "Grocery / Trader Joe's",
       items: [
-        "Crushed tomatoes (San Marzano) x6",
-        "Tomato paste x3",
-        "Coconut milk x8",
-        "Dried black beans",
-        "Dried chickpeas",
-        "Yellow lentils 1 lb",
-        "Chicken stock backup",
-        "Peanut butter (rendang)",
+        "Jasmine or basmati rice — big bag (20 lbs) [B1+B2+B3]",
+        "Eggs 5+ dozen — egg bites, frittatas, quiche, meatballs, cooking [B1+B2+B3]",
+        "Onions 6+ lbs — everything [B1+B2+B3]",
+        "Carrots 6+ lbs — soups, broths, stews, extra carrot ginger batches [B1+B2+B3]",
+        "Celery 3 bunches — broth + stews [B1+B2+B3]",
+        "Garlic 5+ heads — everything [B1+B2+B3]",
+        "Potatoes 2 lbs — Japanese curry [B2]",
+        "Sweet potatoes 2 large — stew + mashed [B3]",
+        "Kabocha squash x3 — kabocha soup (extra batch for later weeks) [B1]",
+        "Red lentils 2 lbs — kabocha soup (extra batch) [B1]",
+        "Coconut milk x13 cans — soups, congee, curries, dals, rendang, rice pudding [B1+B2+B3]",
+        "Crushed tomatoes (San Marzano) x7 — bolognese, chili, stews, butter chicken, lasagna [B2+B3]",
+        "Tomato paste x4 — broths, stews, sauces [B1+B2+B3]",
+        "Ghee 1 large jar — golden broth, cooking, dals [B1+B2]",
+        "Cream 1 quart total — butter chicken, dals, quiche [B2+B3]",
+        "Whole milk 1/2 gal — rice pudding + oatmeal [B1+B2]",
+        "Buttermilk — muffins [B2]",
+        "Yogurt (plain) — butter chicken marinade [B2]",
+        "Sour cream — white chicken chili [B2]",
+        "Cottage cheese — egg bites [B3]",
+        "Ricotta 2 lbs — lasagna [B2]",
+        "Mozzarella 2 cups — lasagna [B2]",
+        "Parmesan — lasagna [B2]",
+        "Gruyere 1 lb — quiche Lorraine [B3]",
+        "Sharp cheddar 2 blocks — frittatas, muffins [B2+B3]",
+        "Honey — sweet congee, rice pudding, jujube tea, oatmeal cups [B1]",
+        "Maple syrup — oatmeal cups, baked oatmeal bars [B1+B3]",
+        "Cinnamon, cardamom, cumin, curry powder, turmeric (ground) [B1+B2]",
+        "Apple cider vinegar — broth [B1]",
+        "Peppercorns, thyme, bay leaves — broth [B1]",
+        "Neutral oil (avocado or grapeseed) — ginger-scallion oil [B1]",
+        "Olive oil — cooking [B2+B3]",
+        "Rolled oats large container — lactation bites, oatmeal cups, baked bars [B1+B3]",
+        "Steel cut oats large container — oatmeal bowls [B2]",
+        "Brewer's yeast — lactation [B1+B2]",
+        "Ground flaxseed — lactation [B1+B2]",
+        "Chia seeds — lactation bites [B1]",
+        "Walnuts raw — oatmeal cups [B1]",
+        "Raw almonds — oatmeal cups [B1]",
+        "Nut butter (almond or peanut) — oatmeal cups, bites [B1]",
+        "Dark chocolate chips — lactation bites [B1]",
+        "Peanut butter — rendang [B3]",
+        "Dried black beans 1 lb — black bean soup [B2]",
+        "Yellow lentils 1 lb — tadka dal [B2]",
+        "Yellow mung dal or red lentils — kitchari [B2]",
+        "Dried chickpeas 1 lb or 2 cans — chickpea curry [B2]",
+        "Chickpeas 1 can — Moroccan stew [B3]",
+        "White beans 2 cans — white chicken chili [B2]",
+        "Black beans 2 cans — burrito bowls [B3]",
+        "Diced green chiles 2 cans — white chicken chili [B2]",
+        "Lasagna noodles 1 box [B2]",
+        "Pearl barley 1 cup — beef barley stew [B3]",
+        "Spinach 2 bags — chickpea curry, minestrone [B2]",
+        "Zucchini 2 — savory muffins [B2]",
+        "Red bell peppers 2 — frittatas [B3]",
+        "Broccoli 2 heads — frittatas [B3]",
+        "Fennel seeds — muffins (lactation) [B2]",
+        "Flour — muffins [B2]",
+        "Breadcrumbs — meatballs, salmon patties [B3]",
+        "Pie crusts x3 (store-bought) — quiche [B3]",
+        "Puff pastry 1 box — chicken pot pie [B3]",
+        "Red wine 1 bottle — bolognese [B3]",
+        "Cocoa powder — beef chili (flavor depth) [B3]",
+        "Salsa 1 jar — burrito bowls [B3]",
+        "Chicken stock backup x2 — pantry safety [B2]",
+        "Nettle tea bags — daily iron tonic [B1]",
+        "Dried apricots unsulfured — iron snack [B1]",
+        "Medjool dates — energy snack [B1]",
+        "Pumpkin seeds raw — iron + zinc snack [B1]",
+        "Canned sardines x4 — omega-3 pantry snack [B3]",
       ],
-    },
-    {
-      category: "Breakfast & Comfort",
-      items: [
-        "Steel cut oats",
-        "Eggs 5+ dozen",
-        "Cottage cheese",
-        "Gruyere",
-        "Sharp cheddar",
-        "Cream",
-        "Puff pastry (pot pie)",
-        "Lasagna noodles",
-        "Breadcrumbs",
-        "Dijon mustard",
-      ],
-    },
-    {
-      category: "Baking",
-      items: ["Baking soda + powder", "Buttermilk", "Flour"],
     },
   ],
 };
@@ -1541,143 +1545,6 @@ const RECIPES = [
   },
 ];
 
-// ── DAILY GUIDE ──
-const DAILY_GUIDE = [
-  {
-    day: 1,
-    meals: [
-      { time: "Morning", meal: "Congee + Egg (reheat congee, top with soft-boiled egg + ginger-scallion oil + black sesame)" },
-      { time: "Mid-AM", meal: "Beef Broth 2-cup (saucepan, gentle heat)" },
-      { time: "Lunch", meal: "Miyeokguk (saucepan, the beef is IN there)" },
-      { time: "Afternoon", meal: "Lactation Bites x2 + Jujube Goji Ginger Tea 1-cup" },
-      { time: "Dinner", meal: "Carrot Ginger Soup" },
-      { time: "Evening", meal: "Golden Broth 1-cup" },
-    ],
-  },
-  {
-    day: 2,
-    meals: [
-      { time: "Morning", meal: "Egg Bites x3 (toaster oven 8 min)" },
-      { time: "Mid-AM", meal: "Chicken Broth 2-cup" },
-      { time: "Lunch", meal: "Kabocha & Red Lentil Soup" },
-      { time: "Afternoon", meal: "Oatmeal Cup (snack) + Silkie Tonic 1-cup (eat the meat!)" },
-      { time: "Dinner", meal: "Congee (savory) with shredded chicken" },
-      { time: "Evening", meal: "Beef Broth 1-cup" },
-    ],
-  },
-  {
-    day: 3,
-    meals: [
-      { time: "Morning", meal: "Sweet Congee (jujubes + goji + black sesame already in it)" },
-      { time: "Mid-AM", meal: "Golden Broth 2-cup" },
-      { time: "Lunch", meal: "Carrot Ginger Soup" },
-      { time: "Afternoon", meal: "Lactation Bites x2 + Beef Broth 1-cup" },
-      { time: "Dinner", meal: "Miyeokguk" },
-      { time: "Evening", meal: "Chicken Broth 1-cup" },
-    ],
-  },
-  {
-    day: 4,
-    meals: [
-      { time: "Morning", meal: "Warm Rice Pudding" },
-      { time: "Mid-AM", meal: "Beef Broth 2-cup" },
-      { time: "Lunch", meal: "Kabocha & Red Lentil Soup" },
-      { time: "Afternoon", meal: "Baked Oatmeal bar + Jujube Tea 1-cup" },
-      { time: "Dinner", meal: "Congee + Egg" },
-      { time: "Evening", meal: "Golden Broth 1-cup" },
-    ],
-  },
-  {
-    day: 5,
-    meals: [
-      { time: "Morning", meal: "Egg Bites x3" },
-      { time: "Mid-AM", meal: "Chicken Broth 2-cup" },
-      { time: "Lunch", meal: "Congee (savory) with shredded chicken" },
-      { time: "Afternoon", meal: "Lactation Bites x2 + Silkie Tonic 1-cup" },
-      { time: "Dinner", meal: "Carrot Ginger Soup" },
-      { time: "Evening", meal: "Beef Broth 1-cup" },
-    ],
-  },
-  {
-    day: 6,
-    meals: [
-      { time: "Morning", meal: "Congee + Egg" },
-      { time: "Mid-AM", meal: "Beef Broth 2-cup" },
-      { time: "Lunch", meal: "Sweet Congee" },
-      { time: "Afternoon", meal: "Oatmeal Cup + Golden Broth 1-cup" },
-      { time: "Dinner", meal: "Kabocha & Red Lentil Soup" },
-      { time: "Evening", meal: "Chicken Broth 1-cup" },
-    ],
-  },
-  {
-    day: 7,
-    meals: [
-      { time: "Morning", meal: "Congee + Egg" },
-      { time: "Mid-AM", meal: "Golden Broth 2-cup" },
-      { time: "Lunch", meal: "Miyeokguk" },
-      { time: "Afternoon", meal: "Lactation Bites x2 + Jujube Tea 1-cup" },
-      { time: "Dinner", meal: "Congee (savory) with shredded chicken" },
-      { time: "Evening", meal: "Beef Broth 1-cup" },
-    ],
-  },
-  {
-    day: 8,
-    meals: [
-      { time: "Morning", meal: "Congee + Egg" },
-      { time: "Lunch", meal: "Butter Chicken + Rice (both eat)" },
-      { time: "Dinner", meal: "Bolognese (both eat)" },
-    ],
-  },
-  {
-    day: 9,
-    meals: [
-      { time: "Morning", meal: "Egg Bites x3" },
-      { time: "Lunch", meal: "Coconut Lentil Dal + Rice (both)" },
-      { time: "Dinner", meal: "Lasagna (both)" },
-    ],
-  },
-  {
-    day: 10,
-    meals: [
-      { time: "Morning", meal: "Warm Rice Pudding" },
-      { time: "Lunch", meal: "Miyeokguk (Kelly comfort)" },
-      { time: "Dinner", meal: "Kitchari (both)" },
-    ],
-  },
-  {
-    day: 11,
-    meals: [
-      { time: "Morning", meal: "Frittata (broccoli) x2" },
-      { time: "Lunch", meal: "Black Bean Soup (both)" },
-      { time: "Dinner", meal: "Beef Rendang + Rice (both)" },
-    ],
-  },
-  {
-    day: 12,
-    meals: [
-      { time: "Morning", meal: "Congee + Egg" },
-      { time: "Lunch", meal: "Chicken Noodle Soup (both)" },
-      { time: "Dinner", meal: "Moroccan Beef & Chickpea (both)" },
-    ],
-  },
-  {
-    day: 13,
-    meals: [
-      { time: "Morning", meal: "Sweet Congee" },
-      { time: "Lunch", meal: "Minestrone + Meatballs (both)" },
-      { time: "Dinner", meal: "White Chicken Chili (both)" },
-    ],
-  },
-  {
-    day: 14,
-    meals: [
-      { time: "Morning", meal: "Egg Bites x3" },
-      { time: "Lunch", meal: "Kabocha Soup (Kelly) / Japanese Curry (Jonny)" },
-      { time: "Dinner", meal: "Beef & Barley Stew (both)" },
-    ],
-  },
-];
-
 // ── MAIN COMPONENT ──
 export default function MealPrep() {
   const [currentTab, setCurrentTab] = useState("Daily Guide");
@@ -1685,6 +1552,8 @@ export default function MealPrep() {
   const [recipeStatus, setRecipeStatus] = useState({});
   const [globalNotes, setGlobalNotes] = useState("");
   const [freezerInventory, setFreezerInventory] = useState({});
+  const [shopChecked, setShopChecked] = useState({});
+  const [shopTab, setShopTab] = useState("All Groceries");
 
   const TABS = ["Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
 
@@ -1696,6 +1565,7 @@ export default function MealPrep() {
       setRecipeStatus(data.status || {});
       setGlobalNotes(data.globalNotes || "");
       setFreezerInventory(data.freezer || {});
+      setShopChecked(data.shopChecked || {});
     }
   }, []);
 
@@ -1705,9 +1575,10 @@ export default function MealPrep() {
       status: recipeStatus,
       globalNotes,
       freezer: freezerInventory,
+      shopChecked,
     };
     localStorage.setItem("mealprep-v3", JSON.stringify(toSave));
-  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory]);
+  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked]);
 
   const cycleStatus = (id) => {
     setRecipeStatus((prev) => {
@@ -1715,6 +1586,10 @@ export default function MealPrep() {
       const next = current === "todo" ? "progress" : current === "progress" ? "done" : "todo";
       return { ...prev, [id]: next };
     });
+  };
+
+  const toggleShop = (key) => {
+    setShopChecked((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const StatusBtn = ({ id }) => {
@@ -1835,26 +1710,134 @@ export default function MealPrep() {
       {/* DAILY GUIDE TAB */}
       {currentTab === "Daily Guide" && (
         <div className="space-y-6">
+          {/* Helper Banner */}
+          <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
+            <h2 className="text-lg font-bold text-pink-800 mb-1">Kelly&apos;s Daily Rhythm</h2>
+            <p className="text-sm text-gray-700">Not a rigid schedule. A rhythm to follow. Pick what sounds good from each phase&apos;s options.</p>
+          </div>
+
+          {/* Week 1 */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-bold mb-4">Daily Meal Guide (14 Days)</h2>
-            <p className="text-gray-600 mb-4">
-              Week 1: Kelly Phase 1 recovery (broths, congee, simple soups, silkie tonic). Jujube tea throughout.
-              Broth schedule: AM 2-cup + PM 1-cup + Eve 1-cup = 4 cups/day.
-            </p>
-            <p className="text-gray-600 mb-4">
-              Week 2: Kelly transitions to Phase 2 lunches/dinners. Most lunches and dinners are aligned — heat the same thing for both.
-              Broth schedule: 1-cup AM + 1-cup Eve = 2 cups/day.
-            </p>
-            {DAILY_GUIDE.map((dayGuide) => (
-              <div key={dayGuide.day} className="mb-4 border-b pb-4">
-                <h3 className="font-bold text-lg mb-2">Day {dayGuide.day}</h3>
-                {dayGuide.meals.map((meal, i) => (
-                  <p key={i} className="text-gray-700">
-                    <strong>{meal.time}:</strong> {meal.meal}
-                  </p>
-                ))}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded">WEEK 1</span>
+              <span className="text-gray-700 font-semibold">Gentle Recovery (Phase 1)</span>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-amber-50 rounded-lg p-4">
+                <h4 className="font-bold text-gray-700 mb-2">Daily Broth Schedule (4 cups/day)</h4>
+                <div className="grid grid-cols-3 gap-3 text-sm">
+                  <div className="bg-white rounded p-2 border border-amber-200">
+                    <p className="font-semibold text-amber-800">Morning</p>
+                    <p className="text-gray-700">2-cup portion</p>
+                    <p className="text-gray-500 text-xs">Beef or chicken broth. Sip slowly.</p>
+                  </div>
+                  <div className="bg-white rounded p-2 border border-amber-200">
+                    <p className="font-semibold text-amber-800">Afternoon</p>
+                    <p className="text-gray-700">1-cup portion</p>
+                    <p className="text-gray-500 text-xs">Golden broth, silkie tonic, or jujube tea.</p>
+                  </div>
+                  <div className="bg-white rounded p-2 border border-amber-200">
+                    <p className="font-semibold text-amber-800">Evening</p>
+                    <p className="text-gray-700">1-cup portion</p>
+                    <p className="text-gray-500 text-xs">Beef or chicken broth. Wind down.</p>
+                  </div>
+                </div>
               </div>
-            ))}
+
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">Breakfast Options (pick one)</h4>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Congee + Egg</strong> — reheat congee, top with soft-boiled egg, ginger-scallion oil, black sesame, jujubes</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Egg Bites x3</strong> — toaster oven 8 min. Quick protein.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Sweet Congee</strong> — jujubes + goji + black sesame already in it. Warming comfort.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Warm Rice Pudding</strong> — jujubes + goji + cinnamon. Like a hug.</div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">Lunch &amp; Dinner Options (pick one each)</h4>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Miyeokguk</strong> — Korean seaweed + beef soup. Eat the beef.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Congee (savory)</strong> — top with shredded chicken from broth-making.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Carrot Ginger Soup</strong> — made with bone broth base.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Kabocha &amp; Red Lentil Soup</strong> — protein from lentils + bone broth.</div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">Snacks (throughout the day)</h4>
+                <p className="text-sm text-gray-700">Lactation Bites x2-3 • Oatmeal Cup (snack, not meal) • Nettle tea • Jujube goji ginger tea • Pumpkin seeds • Dried apricots • Dates • Walnuts</p>
+              </div>
+
+              <div className="bg-pink-50 rounded-lg p-3 text-sm text-gray-700">
+                <strong>Week 1 reminders:</strong> Everything warm. No cold food or drinks. Sip broth slowly. Eat the silkie meat with the tonic. Miyeokguk has beef in it. If Kelly doesn&apos;t want a meal, broth is always the fallback.
+              </div>
+            </div>
+          </div>
+
+          {/* Weeks 2-3 */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded">WEEKS 2-3</span>
+              <span className="text-gray-700 font-semibold">Rebuilding (Phase 2)</span>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-orange-50 rounded-lg p-4">
+                <h4 className="font-bold text-gray-700 mb-2">Broth Schedule (4 cups/day week 2, then 2 cups/day week 3)</h4>
+                <p className="text-sm text-gray-600">Week 2: same as Week 1 (AM 2-cup + PM 1-cup + Eve 1-cup). Week 3: AM 1-cup + Eve 1-cup.</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">Breakfast (Kelly picks from Phase 1 + egg options)</h4>
+                <p className="text-sm text-gray-700">Congee + Egg • Egg Bites • Sweet Congee • Warm Rice Pudding • Frittata slices • Quiche Lorraine slices</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">Lunch &amp; Dinner (aligned with Jonny where possible)</h4>
+                <p className="text-sm text-gray-600 mb-2">Heat the same thing for both of you. Green cells in the spreadsheet = aligned meals.</p>
+                <div className="grid grid-cols-3 gap-2 text-sm">
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Soups:</strong> Black Bean, Minestrone + Meatballs, Chicken Noodle</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Curries:</strong> Butter Chicken, Japanese Curry, Chickpea Coconut</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Dals:</strong> Coconut Lentil, Tadka Dal, Kitchari</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Comfort:</strong> Lasagna, White Chicken Chili, Chicken Pot Pie</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Phase 1 comfort:</strong> Miyeokguk, Kabocha Soup (Kelly anytime)</div>
+                </div>
+              </div>
+
+              <div className="bg-orange-50 rounded-lg p-3 text-sm text-gray-700">
+                <strong>Weeks 2-3 reminders:</strong> Still keep everything warm. Kelly can eat from the full Phase 2 menu. All curries and stews served over frozen rice. Jonny has been eating this since Day 1.
+              </div>
+            </div>
+          </div>
+
+          {/* Weeks 4-6 */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded">WEEKS 4-6</span>
+              <span className="text-gray-700 font-semibold">Full Variety (Phase 3)</span>
+            </div>
+            <div className="space-y-4">
+              <div className="bg-emerald-50 rounded-lg p-4">
+                <h4 className="font-bold text-gray-700 mb-2">Broth Schedule (2 cups/day)</h4>
+                <p className="text-sm text-gray-600">AM 1-cup + Eve 1-cup. Still nourishing, less intensive.</p>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">Everything from Phase 2 PLUS:</h4>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Iron-rich stews:</strong> Beef &amp; Sweet Potato, Moroccan Beef &amp; Chickpea, Beef Rendang, Beef &amp; Barley</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Hidden liver meals:</strong> Bolognese, Beef Chili, Meatballs (add to soups)</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Breakfast variety:</strong> Steel-Cut Oatmeal, Burrito Bowls, Frittatas, Quiche</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong>Cold foods OK:</strong> Chia pudding (make fresh weekly), raw greens, salads</div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-gray-700 mb-2">All lunches and dinners aligned</h4>
+                <p className="text-sm text-gray-600">You and Jonny eat the same thing at every meal. Just grab two portions of whatever sounds good.</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -1916,60 +1899,168 @@ export default function MealPrep() {
       {/* SHOPPING TAB */}
       {currentTab === "Shopping" && (
         <div className="space-y-6">
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-2xl font-bold mb-4">Shopping Lists</h2>
-
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Equipment (Freeze Setup)</h3>
-              <ul className="text-gray-600 text-sm space-y-1">
-                {SHOPPING.equipment.map((item, i) => (
-                  <li key={i}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Asian Market</h3>
-              {SHOPPING.asianMarket.map((section) => (
-                <div key={section.category} className="mb-4">
-                  <h4 className="font-semibold text-gray-700">{section.category}</h4>
-                  <ul className="text-gray-600 text-sm space-y-1 ml-4">
-                    {section.items.map((item, i) => (
-                      <li key={i}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Butcher</h3>
-              {SHOPPING.butcher.map((section) => (
-                <div key={section.category} className="mb-4">
-                  <h4 className="font-semibold text-gray-700">{section.category}</h4>
-                  <ul className="text-gray-600 text-sm space-y-1 ml-4">
-                    {section.items.map((item, i) => (
-                      <li key={i}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Trader Joe&apos;s / Grocery</h3>
-              {SHOPPING.tradersJoes.map((section) => (
-                <div key={section.category} className="mb-4">
-                  <h4 className="font-semibold text-gray-700">{section.category}</h4>
-                  <ul className="text-gray-600 text-sm space-y-1 ml-4">
-                    {section.items.map((item, i) => (
-                      <li key={i}>• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+          {/* Tab selector */}
+          <div className="flex gap-2">
+            {["All Groceries", "Equipment", "Broth Plan"].map((label) => (
+              <button
+                key={label}
+                onClick={() => setShopTab(label)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                  shopTab === label
+                    ? "bg-amber-600 text-white"
+                    : "bg-white border border-gray-300 text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
           </div>
+
+          {/* All Groceries */}
+          {shopTab === "All Groceries" && (
+            <div className="space-y-4">
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <p className="text-sm text-amber-800 font-medium">Complete shopping list for the full 6-week postpartum plan. Organized by store. Phase labels show which cooking block each ingredient is for: [B1] = Foundations, [B2] = Hearty Meals, [B3] = Iron, Protein &amp; Breakfast.</p>
+              </div>
+              {SHOPPING.groceries.map((storeSection) => {
+                const storeItems = storeSection.items;
+                const checkedCount = storeItems.filter((_, i) => shopChecked[`sh-${storeSection.store}-${i}`]).length;
+
+                return (
+                  <div key={storeSection.store} className="bg-white rounded-lg shadow p-6">
+                    <div className="flex justify-between items-center mb-3">
+                      <h3 className="text-lg font-bold">{storeSection.store}</h3>
+                      <span className="text-sm text-gray-500">{checkedCount}/{storeItems.length}</span>
+                    </div>
+                    <div className="space-y-2">
+                      {storeItems.map((item, i) => {
+                        const key = `sh-${storeSection.store}-${i}`;
+                        return (
+                          <label key={key} className="flex items-start gap-3 py-1 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={!!shopChecked[key]}
+                              onChange={() => toggleShop(key)}
+                              className="mt-1 w-4 h-4 rounded border-gray-300 flex-shrink-0"
+                            />
+                            <span className={`text-sm leading-relaxed ${shopChecked[key] ? "line-through text-gray-400" : "text-gray-700"}`}>{item}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Equipment */}
+          {shopTab === "Equipment" && (
+            <div className="bg-white rounded-lg shadow p-6">
+              <h3 className="text-lg font-bold mb-3">Freeze Setup Equipment</h3>
+              <div className="space-y-2">
+                {SHOPPING.equipment.map((item, i) => (
+                  <label key={i} className="flex items-start gap-3 py-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={!!shopChecked[`eq-${i}`]}
+                      onChange={() => toggleShop(`eq-${i}`)}
+                      className="mt-1 w-4 h-4 rounded border-gray-300 flex-shrink-0"
+                    />
+                    <span className={`text-sm ${shopChecked[`eq-${i}`] ? "line-through text-gray-400" : "text-gray-700"}`}>{item}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Broth Plan */}
+          {shopTab === "Broth Plan" && (
+            <div className="space-y-4">
+              <div className="bg-white rounded-lg shadow p-6">
+                <h3 className="text-lg font-bold mb-2">6-Week Broth Plan</h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Weeks 1-2: 4 cups/day (AM 2-cup + PM 1-cup + Eve 1-cup) = 56 cups.
+                  Weeks 3-6: 2 cups/day (AM 1-cup + Eve 1-cup) = 56 cups.
+                  Total needed: ~112 cups.
+                </p>
+
+                <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-4">
+                  <h4 className="font-bold text-emerald-800 mb-2">Already Frozen</h4>
+                  <p className="text-sm text-emerald-700">11 two-cup chicken broth portions (22 cups)</p>
+                  <p className="text-sm text-emerald-700">4 two-cup golden broth portions (8 cups)</p>
+                  <p className="text-sm text-emerald-700 font-medium mt-1">Total banked: 30 cups</p>
+                </div>
+
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+                  <h4 className="font-bold text-amber-800 mb-2">Still Need: ~82 cups</h4>
+                </div>
+
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="text-left p-2 border border-gray-200">Broth Type</th>
+                      <th className="text-center p-2 border border-gray-200">Batches</th>
+                      <th className="text-center p-2 border border-gray-200">When</th>
+                      <th className="text-left p-2 border border-gray-200">Freeze As</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="p-2 border border-gray-200 font-medium">Beef Broth (sipping)</td>
+                      <td className="p-2 border border-gray-200 text-center">8 batches total</td>
+                      <td className="p-2 border border-gray-200 text-center text-gray-600">B1: 1, B2: 3, B3: 4</td>
+                      <td className="p-2 border border-gray-200 text-gray-600">
+                        <strong>16 two-cup</strong> portions (AM sipping weeks 1-2)<br/>
+                        <strong>40 one-cup</strong> portions (PM/Eve + weeks 3-6)
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-2 border border-gray-200 font-medium">Chicken Broth</td>
+                      <td className="p-2 border border-gray-200 text-center">3 batches total</td>
+                      <td className="p-2 border border-gray-200 text-center text-gray-600">B1: 1 (done), B2: 1, B3: 1</td>
+                      <td className="p-2 border border-gray-200 text-gray-600">
+                        <strong>11 two-cup already frozen.</strong><br/>
+                        Remaining batches: use as golden broth base
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-gray-200 font-medium">Golden Broth</td>
+                      <td className="p-2 border border-gray-200 text-center">3 batches total</td>
+                      <td className="p-2 border border-gray-200 text-center text-gray-600">B1: 1 (done), B2: 1, B3: 1</td>
+                      <td className="p-2 border border-gray-200 text-gray-600">
+                        <strong>4 two-cup already frozen.</strong><br/>
+                        Remaining: <strong>8 two-cup</strong> + <strong>8 one-cup</strong> portions
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="p-2 border border-gray-200 font-medium">Silkie Tonic</td>
+                      <td className="p-2 border border-gray-200 text-center">1 batch</td>
+                      <td className="p-2 border border-gray-200 text-center text-gray-600">B1</td>
+                      <td className="p-2 border border-gray-200 text-gray-600">
+                        <strong>7 one-cup</strong> portions (Week 1 only). Eat the meat!
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-gray-200 font-medium">Jujube Goji Ginger Tea</td>
+                      <td className="p-2 border border-gray-200 text-center">2-3 batches</td>
+                      <td className="p-2 border border-gray-200 text-center text-gray-600">B1: 1, then as needed</td>
+                      <td className="p-2 border border-gray-200 text-gray-600">
+                        <strong>1-cup</strong> portions. Reheat on stove or pour boiling water over cube.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div className="mt-4 bg-gray-50 rounded-lg p-4">
+                  <h4 className="font-bold text-gray-700 mb-2">Freeze Size Guide</h4>
+                  <p className="text-sm text-gray-600 mb-1"><strong>2-cup portions:</strong> Morning sipping sessions (Weeks 1-2). You sit down with a big warm mug.</p>
+                  <p className="text-sm text-gray-600 mb-1"><strong>1-cup portions:</strong> Afternoon + evening sips, and all sipping in Weeks 3-6. Smaller, more frequent.</p>
+                  <p className="text-sm text-gray-600"><strong>Preference:</strong> Beef broth is your primary sipper. Chicken broth mostly becomes golden broth. Golden broth is the afternoon tonic.</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
