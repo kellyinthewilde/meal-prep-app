@@ -1782,39 +1782,39 @@ export default function MealPrep() {
                 <div className="grid grid-cols-3 gap-3 text-sm">
                   <div className="bg-white rounded p-2 border border-amber-200">
                     <p className="font-semibold text-amber-800">Morning</p>
-                    <p className="text-gray-700">2-cup portion</p>
-                    <p className="text-gray-500 text-xs">Beef or chicken broth. Sip slowly.</p>
+                    <p className="text-gray-800">2-cup portion</p>
+                    <p className="text-gray-600 text-xs">Beef or chicken broth. Sip slowly.</p>
                   </div>
                   <div className="bg-white rounded p-2 border border-amber-200">
                     <p className="font-semibold text-amber-800">Afternoon</p>
-                    <p className="text-gray-700">1-cup portion</p>
-                    <p className="text-gray-500 text-xs">Golden broth, silkie tonic, or jujube tea.</p>
+                    <p className="text-gray-800">1-cup portion</p>
+                    <p className="text-gray-600 text-xs">Golden broth, silkie tonic, or jujube tea.</p>
                   </div>
                   <div className="bg-white rounded p-2 border border-amber-200">
                     <p className="font-semibold text-amber-800">Evening</p>
-                    <p className="text-gray-700">1-cup portion</p>
-                    <p className="text-gray-500 text-xs">Beef or chicken broth. Wind down.</p>
+                    <p className="text-gray-800">1-cup portion</p>
+                    <p className="text-gray-600 text-xs">Beef or chicken broth. Wind down.</p>
                   </div>
                 </div>
               </div>
 
               <div>
                 <h4 className="font-bold text-gray-700 mb-2">Breakfast Options (pick one)</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Congee + Egg</strong> — reheat congee, top with soft-boiled egg, ginger-scallion oil, black sesame, jujubes</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Egg Bites x3</strong> — toaster oven 8 min. Quick protein.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Sweet Congee</strong> — jujubes + goji + black sesame already in it. Warming comfort.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Warm Rice Pudding</strong> — jujubes + goji + cinnamon. Like a hug.</div>
+                <div className="grid grid-cols-2 gap-2 text-sm text-gray-800">
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Congee + Egg</strong> — reheat congee, top with soft-boiled egg, ginger-scallion oil, black sesame, jujubes</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Egg Bites x3</strong> — toaster oven 8 min. Quick protein.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Sweet Congee</strong> — jujubes + goji + black sesame already in it. Warming comfort.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Warm Rice Pudding</strong> — jujubes + goji + cinnamon. Like a hug.</div>
                 </div>
               </div>
 
               <div>
                 <h4 className="font-bold text-gray-700 mb-2">Lunch &amp; Dinner Options (pick one each)</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Miyeokguk</strong> — Korean seaweed + beef soup. Eat the beef.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Congee (savory)</strong> — top with shredded chicken from broth-making.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Carrot Ginger Soup</strong> — made with bone broth base.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Kabocha &amp; Red Lentil Soup</strong> — protein from lentils + bone broth.</div>
+                <div className="grid grid-cols-2 gap-2 text-sm text-gray-800">
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Miyeokguk</strong> — Korean seaweed + beef soup. Eat the beef.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Congee (savory)</strong> — top with shredded chicken from broth-making.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Carrot Ginger Soup</strong> — made with bone broth base.</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Kabocha &amp; Red Lentil Soup</strong> — protein from lentils + bone broth.</div>
                 </div>
               </div>
 
@@ -1838,7 +1838,7 @@ export default function MealPrep() {
             <div className="space-y-4">
               <div className="bg-orange-50 rounded-lg p-4">
                 <h4 className="font-bold text-gray-700 mb-2">Broth Schedule (4 cups/day week 2, then 2 cups/day week 3)</h4>
-                <p className="text-sm text-gray-600">Week 2: same as Week 1 (AM 2-cup + PM 1-cup + Eve 1-cup). Week 3: AM 1-cup + Eve 1-cup.</p>
+                <p className="text-sm text-gray-700">Week 2: same as Week 1 (AM 2-cup + PM 1-cup + Eve 1-cup). Week 3: AM 1-cup + Eve 1-cup.</p>
               </div>
 
               <div>
@@ -1848,14 +1848,14 @@ export default function MealPrep() {
 
               <div>
                 <h4 className="font-bold text-gray-700 mb-2">Lunch &amp; Dinner (aligned with Jonny where possible)</h4>
-                <p className="text-sm text-gray-600 mb-2">Heat the same thing for both of you. Green cells in the spreadsheet = aligned meals.</p>
-                <div className="grid grid-cols-3 gap-2 text-sm">
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Soups:</strong> Black Bean, Minestrone + Meatballs, Chicken Noodle</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Curries:</strong> Butter Chicken, Japanese Curry, Chickpea Coconut</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Dals:</strong> Coconut Lentil, Tadka Dal, Kitchari</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Comfort:</strong> Lasagna, White Chicken Chili, Chicken Pot Pie</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Phase 1 comfort:</strong> Miyeokguk, Kabocha Soup (Kelly anytime)</div>
+                <p className="text-sm text-gray-700 mb-2">Heat the same thing for both of you. Green cells in the spreadsheet = aligned meals.</p>
+                <div className="grid grid-cols-3 gap-2 text-sm text-gray-800">
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Soups:</strong> Black Bean, Minestrone + Meatballs, Chicken Noodle</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Curries:</strong> Butter Chicken, Japanese Curry, Chickpea Coconut</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Dals:</strong> Coconut Lentil, Tadka Dal, Kitchari</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Comfort:</strong> Lasagna, White Chicken Chili, Chicken Pot Pie</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Phase 1 comfort:</strong> Miyeokguk, Kabocha Soup (Kelly anytime)</div>
                 </div>
               </div>
 
@@ -1874,22 +1874,22 @@ export default function MealPrep() {
             <div className="space-y-4">
               <div className="bg-emerald-50 rounded-lg p-4">
                 <h4 className="font-bold text-gray-700 mb-2">Broth Schedule (2 cups/day)</h4>
-                <p className="text-sm text-gray-600">AM 1-cup + Eve 1-cup. Still nourishing, less intensive.</p>
+                <p className="text-sm text-gray-700">AM 1-cup + Eve 1-cup. Still nourishing, less intensive.</p>
               </div>
 
               <div>
                 <h4 className="font-bold text-gray-700 mb-2">Everything from Phase 2 PLUS:</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Iron-rich stews:</strong> Beef &amp; Sweet Potato, Moroccan Beef &amp; Chickpea, Beef Rendang, Beef &amp; Barley</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Hidden liver meals:</strong> Bolognese, Beef Chili, Meatballs (add to soups)</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Breakfast variety:</strong> Steel-Cut Oatmeal, Burrito Bowls, Frittatas, Quiche</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong>Cold foods OK:</strong> Chia pudding (make fresh weekly), raw greens, salads</div>
+                <div className="grid grid-cols-2 gap-2 text-sm text-gray-800">
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Iron-rich stews:</strong> Beef &amp; Sweet Potato, Moroccan Beef &amp; Chickpea, Beef Rendang, Beef &amp; Barley</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Hidden liver meals:</strong> Bolognese, Beef Chili, Meatballs (add to soups)</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Breakfast variety:</strong> Steel-Cut Oatmeal, Burrito Bowls, Frittatas, Quiche</div>
+                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Cold foods OK:</strong> Chia pudding (make fresh weekly), raw greens, salads</div>
                 </div>
               </div>
 
               <div>
                 <h4 className="font-bold text-gray-700 mb-2">All lunches and dinners aligned</h4>
-                <p className="text-sm text-gray-600">You and Jonny eat the same thing at every meal. Just grab two portions of whatever sounds good.</p>
+                <p className="text-sm text-gray-700">You and Jonny eat the same thing at every meal. Just grab two portions of whatever sounds good.</p>
               </div>
             </div>
           </div>
