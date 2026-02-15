@@ -1742,18 +1742,23 @@ export default function MealPrep() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-bold mb-2 text-center">Meal Prep Tracker</h1>
-      <p className="text-center text-gray-600 mb-6">Phase 1 + 2 Recovery Foods for Kelly & Jonny</p>
+    <div className="max-w-6xl mx-auto p-4 sm:p-6 min-h-screen" style={{ background: 'linear-gradient(180deg, #FFF7ED 0%, #FFF1F2 15%, #F8FAFC 40%)' }}>
+      <div className="text-center mb-6 pt-2">
+        <p className="text-sm font-medium tracking-widest uppercase text-amber-600 mb-2">Postpartum Nourishment</p>
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">Kelly&apos;s Meal Prep</h1>
+        <p className="text-gray-500 text-sm">6-week recovery plan — warming foods, healing broths, aligned meals</p>
+      </div>
 
       {/* TABS */}
-      <div className="flex gap-2 mb-6 overflow-x-auto">
+      <div className="flex gap-1.5 mb-6 overflow-x-auto pb-1 px-1">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setCurrentTab(tab)}
-            className={`px-4 py-2 rounded whitespace-nowrap ${
-              currentTab === tab ? "bg-blue-500 text-white" : "bg-white text-gray-700 border border-gray-300"
+            className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-all ${
+              currentTab === tab
+                ? "bg-amber-700 text-white shadow-md"
+                : "bg-white/80 text-gray-600 hover:bg-white hover:text-gray-900 border border-gray-200"
             }`}
           >
             {tab}
@@ -1765,130 +1770,130 @@ export default function MealPrep() {
       {currentTab === "Daily Guide" && (
         <div className="space-y-6">
           {/* Helper Banner */}
-          <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
-            <h2 className="text-lg font-bold text-pink-800 mb-1">Kelly&apos;s Daily Rhythm</h2>
-            <p className="text-sm text-gray-700">Not a rigid schedule. A rhythm to follow. Pick what sounds good from each phase&apos;s options.</p>
+          <div className="bg-gradient-to-r from-rose-50 to-amber-50 border border-rose-200/60 rounded-xl p-5 shadow-sm">
+            <h2 className="text-lg font-bold text-rose-800 mb-1">Kelly&apos;s Daily Rhythm</h2>
+            <p className="text-sm text-gray-600">Not a rigid schedule. A rhythm to follow. Pick what sounds good from each phase&apos;s options.</p>
           </div>
 
           {/* Week 1 */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded">WEEK 1</span>
-              <span className="text-gray-700 font-semibold">Gentle Recovery (Phase 1)</span>
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">WEEK 1</span>
+              <span className="text-gray-800 font-semibold">Gentle Recovery (Phase 1)</span>
             </div>
             <div className="space-y-4">
-              <div className="bg-amber-50 rounded-lg p-4">
-                <h4 className="font-bold text-gray-700 mb-2">Daily Broth Schedule (4 cups/day)</h4>
+              <div className="bg-amber-50/70 rounded-xl p-4 border border-amber-100">
+                <h4 className="font-bold text-gray-800 mb-2">Daily Broth Schedule (4 cups/day)</h4>
                 <div className="grid grid-cols-3 gap-3 text-sm">
-                  <div className="bg-white rounded p-2 border border-amber-200">
-                    <p className="font-semibold text-amber-800">Morning</p>
-                    <p className="text-gray-800">2-cup portion</p>
-                    <p className="text-gray-600 text-xs">Beef or chicken broth. Sip slowly.</p>
+                  <div className="bg-white rounded-lg p-3 border border-amber-200/60 shadow-sm">
+                    <p className="font-semibold text-amber-700 text-xs uppercase tracking-wide mb-1">Morning</p>
+                    <p className="text-gray-900 font-medium">2-cup portion</p>
+                    <p className="text-gray-500 text-xs mt-1">Beef or chicken broth. Sip slowly.</p>
                   </div>
-                  <div className="bg-white rounded p-2 border border-amber-200">
-                    <p className="font-semibold text-amber-800">Afternoon</p>
-                    <p className="text-gray-800">1-cup portion</p>
-                    <p className="text-gray-600 text-xs">Golden broth, silkie tonic, or jujube tea.</p>
+                  <div className="bg-white rounded-lg p-3 border border-amber-200/60 shadow-sm">
+                    <p className="font-semibold text-amber-700 text-xs uppercase tracking-wide mb-1">Afternoon</p>
+                    <p className="text-gray-900 font-medium">1-cup portion</p>
+                    <p className="text-gray-500 text-xs mt-1">Golden broth, silkie tonic, or jujube tea.</p>
                   </div>
-                  <div className="bg-white rounded p-2 border border-amber-200">
-                    <p className="font-semibold text-amber-800">Evening</p>
-                    <p className="text-gray-800">1-cup portion</p>
-                    <p className="text-gray-600 text-xs">Beef or chicken broth. Wind down.</p>
+                  <div className="bg-white rounded-lg p-3 border border-amber-200/60 shadow-sm">
+                    <p className="font-semibold text-amber-700 text-xs uppercase tracking-wide mb-1">Evening</p>
+                    <p className="text-gray-900 font-medium">1-cup portion</p>
+                    <p className="text-gray-500 text-xs mt-1">Beef or chicken broth. Wind down.</p>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">Breakfast Options (pick one)</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm text-gray-800">
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Congee + Egg</strong> — reheat congee, top with soft-boiled egg, ginger-scallion oil, black sesame, jujubes</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Egg Bites x3</strong> — toaster oven 8 min. Quick protein.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Sweet Congee</strong> — jujubes + goji + black sesame already in it. Warming comfort.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Warm Rice Pudding</strong> — jujubes + goji + cinnamon. Like a hug.</div>
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Breakfast Options <span className="font-normal text-gray-500 normal-case tracking-normal">(pick one)</span></h4>
+                <div className="grid grid-cols-2 gap-2.5 text-sm text-gray-700">
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Congee + Egg</strong> — reheat congee, top with soft-boiled egg, ginger-scallion oil, black sesame, jujubes</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Egg Bites x3</strong> — toaster oven 8 min. Quick protein.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Sweet Congee</strong> — jujubes + goji + black sesame already in it. Warming comfort.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Warm Rice Pudding</strong> — jujubes + goji + cinnamon. Like a hug.</div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">Lunch &amp; Dinner Options (pick one each)</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm text-gray-800">
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Miyeokguk</strong> — Korean seaweed + beef soup. Eat the beef.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Congee (savory)</strong> — top with shredded chicken from broth-making.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Carrot Ginger Soup</strong> — made with bone broth base.</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Kabocha &amp; Red Lentil Soup</strong> — protein from lentils + bone broth.</div>
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Lunch &amp; Dinner Options <span className="font-normal text-gray-500 normal-case tracking-normal">(pick one each)</span></h4>
+                <div className="grid grid-cols-2 gap-2.5 text-sm text-gray-700">
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Miyeokguk</strong> — Korean seaweed + beef soup. Eat the beef.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Congee (savory)</strong> — top with shredded chicken from broth-making.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Carrot Ginger Soup</strong> — made with bone broth base.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Kabocha &amp; Red Lentil Soup</strong> — protein from lentils + bone broth.</div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">Snacks (throughout the day)</h4>
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Snacks <span className="font-normal text-gray-500 normal-case tracking-normal">(throughout the day)</span></h4>
                 <p className="text-sm text-gray-700">Lactation Bites x2-3 • Oatmeal Cup (snack, not meal) • Nettle tea • Jujube goji ginger tea • Pumpkin seeds • Dried apricots • Dates • Walnuts</p>
               </div>
 
-              <div className="bg-pink-50 rounded-lg p-3 text-sm text-gray-700">
-                <strong>Week 1 reminders:</strong> Everything warm. No cold food or drinks. Sip broth slowly. Eat the silkie meat with the tonic. Miyeokguk has beef in it. If Kelly doesn&apos;t want a meal, broth is always the fallback.
+              <div className="bg-rose-50/60 rounded-xl p-4 text-sm text-gray-700 border border-rose-100/60">
+                <strong className="text-rose-800">Week 1 reminders:</strong> Everything warm. No cold food or drinks. Sip broth slowly. Eat the silkie meat with the tonic. Miyeokguk has beef in it. If Kelly doesn&apos;t want a meal, broth is always the fallback.
               </div>
             </div>
           </div>
 
           {/* Weeks 2-3 */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded">WEEKS 2-3</span>
-              <span className="text-gray-700 font-semibold">Rebuilding (Phase 2)</span>
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">WEEKS 2-3</span>
+              <span className="text-gray-800 font-semibold">Rebuilding (Phase 2)</span>
             </div>
             <div className="space-y-4">
-              <div className="bg-orange-50 rounded-lg p-4">
-                <h4 className="font-bold text-gray-700 mb-2">Broth Schedule (4 cups/day week 2, then 2 cups/day week 3)</h4>
+              <div className="bg-orange-50/70 rounded-xl p-4 border border-orange-100">
+                <h4 className="font-bold text-gray-800 mb-2">Broth Schedule (4 cups/day week 2, then 2 cups/day week 3)</h4>
                 <p className="text-sm text-gray-700">Week 2: same as Week 1 (AM 2-cup + PM 1-cup + Eve 1-cup). Week 3: AM 1-cup + Eve 1-cup.</p>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">Breakfast (Kelly picks from Phase 1 + egg options)</h4>
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Breakfast <span className="font-normal text-gray-500 normal-case tracking-normal">(Kelly picks from Phase 1 + egg options)</span></h4>
                 <p className="text-sm text-gray-700">Congee + Egg • Egg Bites • Sweet Congee • Warm Rice Pudding • Frittata slices • Quiche Lorraine slices</p>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">Lunch &amp; Dinner (aligned with Jonny where possible)</h4>
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Lunch &amp; Dinner <span className="font-normal text-gray-500 normal-case tracking-normal">(aligned with Jonny where possible)</span></h4>
                 <p className="text-sm text-gray-700 mb-2">Heat the same thing for both of you. Green cells in the spreadsheet = aligned meals.</p>
-                <div className="grid grid-cols-3 gap-2 text-sm text-gray-800">
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Soups:</strong> Black Bean, Minestrone + Meatballs, Chicken Noodle</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Curries:</strong> Butter Chicken, Japanese Curry, Chickpea Coconut</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Dals:</strong> Coconut Lentil, Tadka Dal, Kitchari</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Comfort:</strong> Lasagna, White Chicken Chili, Chicken Pot Pie</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Phase 1 comfort:</strong> Miyeokguk, Kabocha Soup (Kelly anytime)</div>
+                <div className="grid grid-cols-3 gap-2.5 text-sm text-gray-700">
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Soups:</strong> Black Bean, Minestrone + Meatballs, Chicken Noodle</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Curries:</strong> Butter Chicken, Japanese Curry, Chickpea Coconut</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Dals:</strong> Coconut Lentil, Tadka Dal, Kitchari</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Comfort:</strong> Lasagna, White Chicken Chili, Chicken Pot Pie</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Phase 1 comfort:</strong> Miyeokguk, Kabocha Soup (Kelly anytime)</div>
                 </div>
               </div>
 
-              <div className="bg-orange-50 rounded-lg p-3 text-sm text-gray-700">
-                <strong>Weeks 2-3 reminders:</strong> Still keep everything warm. Kelly can eat from the full Phase 2 menu. All curries and stews served over frozen rice. Jonny has been eating this since Day 1.
+              <div className="bg-orange-50/60 rounded-xl p-4 text-sm text-gray-700 border border-orange-100/60">
+                <strong className="text-orange-800">Weeks 2-3 reminders:</strong> Still keep everything warm. Kelly can eat from the full Phase 2 menu. All curries and stews served over frozen rice. Jonny has been eating this since Day 1.
               </div>
             </div>
           </div>
 
           {/* Weeks 4-6 */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded">WEEKS 4-6</span>
-              <span className="text-gray-700 font-semibold">Full Variety (Phase 3)</span>
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-full tracking-wide">WEEKS 4-6</span>
+              <span className="text-gray-800 font-semibold">Full Variety (Phase 3)</span>
             </div>
             <div className="space-y-4">
-              <div className="bg-emerald-50 rounded-lg p-4">
-                <h4 className="font-bold text-gray-700 mb-2">Broth Schedule (2 cups/day)</h4>
+              <div className="bg-emerald-50/70 rounded-xl p-4 border border-emerald-100">
+                <h4 className="font-bold text-gray-800 mb-2">Broth Schedule (2 cups/day)</h4>
                 <p className="text-sm text-gray-700">AM 1-cup + Eve 1-cup. Still nourishing, less intensive.</p>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">Everything from Phase 2 PLUS:</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm text-gray-800">
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Iron-rich stews:</strong> Beef &amp; Sweet Potato, Moroccan Beef &amp; Chickpea, Beef Rendang, Beef &amp; Barley</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Hidden liver meals:</strong> Bolognese, Beef Chili, Meatballs (add to soups)</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Breakfast variety:</strong> Steel-Cut Oatmeal, Burrito Bowls, Frittatas, Quiche</div>
-                  <div className="bg-gray-50 rounded p-2 border"><strong className="text-gray-900">Cold foods OK:</strong> Chia pudding (make fresh weekly), raw greens, salads</div>
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Everything from Phase 2 PLUS:</h4>
+                <div className="grid grid-cols-2 gap-2.5 text-sm text-gray-700">
+                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Iron-rich stews:</strong> Beef &amp; Sweet Potato, Moroccan Beef &amp; Chickpea, Beef Rendang, Beef &amp; Barley</div>
+                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Hidden liver meals:</strong> Bolognese, Beef Chili, Meatballs (add to soups)</div>
+                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Breakfast variety:</strong> Steel-Cut Oatmeal, Burrito Bowls, Frittatas, Quiche</div>
+                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Cold foods OK:</strong> Chia pudding (make fresh weekly), raw greens, salads</div>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-bold text-gray-700 mb-2">All lunches and dinners aligned</h4>
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">All lunches and dinners aligned</h4>
                 <p className="text-sm text-gray-700">You and Jonny eat the same thing at every meal. Just grab two portions of whatever sounds good.</p>
               </div>
             </div>
