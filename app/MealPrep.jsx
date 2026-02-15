@@ -154,14 +154,15 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["collagen", "base"],
+    batchCount: 3,
     ingredients: [
       "2-3 chicken carcasses (from roasted chickens)",
-      "Remaining chicken feet",
+      "Remaining chicken feet // Blanch in boiling water 2-3 min first to remove impurities",
       "2 onions quartered",
       "4 carrots chopped",
       "4 celery stalks",
       "1 head garlic halved",
-      "2 tbsp ACV",
+      "2 tbsp apple cider vinegar // Helps extract minerals and collagen from bones",
       "1 tbsp peppercorns",
       "Thyme, parsley, bay leaves",
       "Cold water to max line",
@@ -187,15 +188,16 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["collagen", "iron"],
+    batchCount: 8,
     ingredients: [
-      "3-4 lbs beef marrow bones (cut crosswise)",
-      "2-3 lbs oxtail",
+      "3-4 lbs beef marrow bones (cut crosswise) // Ask butcher to cut crosswise to expose the marrow",
+      "2-3 lbs oxtail // Keep ALL the meat after cooking. Shred and add back to broth or save for congee topping",
       "2 onions",
       "4 carrots",
       "4 celery",
       "1 head garlic",
       "2 tbsp tomato paste",
-      "2 tbsp ACV",
+      "2 tbsp apple cider vinegar // Helps extract minerals and collagen from bones",
       "Peppercorns, thyme, bay",
     ],
     instructions: [
@@ -220,12 +222,13 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["warming", "tonic"],
+    batchCount: 3,
     ingredients: [
       "8 cups ROUND 1 chicken broth",
-      "3\" fresh turmeric (or 1 tbsp ground)",
+      "3\" fresh turmeric (or 1 tbsp ground) // Stains everything bright yellow. Use gloves or utensils. No need to peel.",
       "2\" fresh ginger",
       "2 tbsp ghee",
-      "1/2 tsp black pepper (activates curcumin)",
+      "1/2 tsp black pepper // Activates curcumin absorption by 2000%. Don't skip this.",
       "Salt",
     ],
     instructions: [
@@ -246,17 +249,17 @@ const RECIPES = [
     kellyWeek: 1,
     tags: ["TCM", "tonic", "blood-building"],
     ingredients: [
-      "1 small black silkie chicken, whole (cleaned)",
+      "1 small black silkie chicken, whole // Comes with head and feet — normal. Blanch 2-3 min first. Discard head after cooking. Meat will be dark purple-grey — totally normal.",
       "Remaining chicken feet (3-5 pieces)",
-      "8-10 red jujubes, rinsed",
+      "8-10 red jujubes // Slice in half and remove the small hard pit before adding",
       "2 tbsp goji berries",
       "2 tbsp dried longan",
       "3\" fresh ginger, sliced",
       "4-5 dried shiitake (optional)",
       "Cold water to cover",
       "Salt",
-      "1 tsp astragalus powder (added last 15 min)",
-      "1/2 tsp angelica root powder (added last 15 min)",
+      "1 tsp astragalus root powder // Add in the LAST 15 minutes only, not at the start",
+      "1/2 tsp angelica root powder // Add in the LAST 15 minutes only, not at the start",
     ],
     instructions: [
       "Blanch silkie chicken 2-3 min, rinse (removes impurities)",
@@ -281,8 +284,9 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["TCM", "beverage", "blood-building"],
+    batchCount: 2,
     ingredients: [
-      "10-12 red jujubes (sliced)",
+      "10-12 red jujubes // Slice in half and remove the small hard pit before adding",
       "2 tbsp goji berries",
       "3\" fresh ginger sliced",
       "8 cups water",
@@ -309,7 +313,7 @@ const RECIPES = [
     tags: ["Korean", "postpartum", "mineral-rich"],
     lactation: true,
     ingredients: [
-      "1 oz dried miyeok (wakame seaweed)",
+      "1 oz dried miyeok (wakame seaweed) // Expands to 5-8x its size when soaked — don't overdo it",
       "8 oz beef brisket sliced thin",
       "1 tbsp toasted sesame oil",
       "1 tbsp soy sauce/coconut aminos",
@@ -338,14 +342,15 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["gentle", "warming"],
+    batchCount: 2,
     ingredients: [
       "2 cups jasmine rice",
       "12 cups ROUND 2 chicken broth",
       "4 cups water",
       "3\" ginger sliced",
-      "8-10 jujubes (sliced)",
+      "8-10 jujubes // Slice in half and remove the small hard pit before adding",
       "1 tbsp goji berries",
-      "2-3 cups shredded chicken",
+      "2-3 cups shredded chicken // Use chicken pulled from broth-making",
       "2 tbsp sesame oil",
       "Salt",
     ],
@@ -371,9 +376,9 @@ const RECIPES = [
     ingredients: [
       "1 cup jasmine rice",
       "8 cups water",
-      "8-10 red jujubes (sliced)",
+      "8-10 red jujubes // Slice in half and remove the small hard pit before adding",
       "2 tbsp goji berries",
-      "1 tbsp black sesame seeds (toasted, ground)",
+      "1 tbsp black sesame seeds // Toast in dry pan until fragrant, then grind",
       "2\" fresh ginger sliced",
       "2 tbsp honey or brown sugar",
       "1 can coconut milk",
@@ -402,9 +407,9 @@ const RECIPES = [
       "1 cup jasmine rice",
       "4 cups whole milk",
       "1 can coconut milk",
-      "6-8 jujubes (sliced)",
+      "6-8 jujubes // Slice in half and remove the small hard pit before adding",
       "1 tbsp goji berries",
-      "1 tbsp black sesame seeds (toasted)",
+      "1 tbsp black sesame seeds // Toast in dry pan until fragrant",
       "3 tbsp honey or maple syrup",
       "1 tsp cinnamon",
       "1/2 tsp cardamom",
@@ -431,8 +436,9 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["gentle", "warming"],
+    batchCount: 2,
     ingredients: [
-      "2 lbs carrots",
+      "2 lbs carrots // No need to peel — just scrub well. Skin blends right in.",
       "1 onion",
       "4 cloves garlic",
       "3\" ginger",
@@ -448,7 +454,7 @@ const RECIPES = [
       "Simmer 25-30 min until carrots are very tender",
       "Blend smooth, stir in coconut milk",
     ],
-    yield: "~10 two-cup portions",
+    yield: "~10 two-cup portions per batch. Make 2 batches (20 portions for Weeks 1-4).",
     freezing: "KELLY bags. Freezes beautifully.",
   },
   {
@@ -459,8 +465,9 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["gentle", "warming"],
+    batchCount: 2,
     ingredients: [
-      "2 kabocha squash (~4 lbs)",
+      "2 kabocha squash (~4 lbs) // Cut carefully (very hard skin). Roast cut-side down. Scoop flesh out — leave skin behind.",
       "1 cup red lentils",
       "1 onion",
       "4 garlic",
@@ -478,7 +485,7 @@ const RECIPES = [
       "Simmer 20-25 min",
       "Blend, stir in coconut milk",
     ],
-    yield: "~10 two-cup portions",
+    yield: "~10 two-cup portions per batch. Make 2 batches (20 portions for Weeks 1-4).",
     freezing: "KELLY bags. May thicken — add broth when reheating.",
   },
   {
@@ -490,7 +497,7 @@ const RECIPES = [
     kellyWeek: 1,
     tags: ["garnish", "warming"],
     ingredients: [
-      "1 cup neutral oil (grapeseed or vegetable)",
+      "1 cup neutral oil (grapeseed or vegetable) // Oil should be warm, NOT smoking hot. Hot oil will burn the ginger.",
       "8 green onions (scallions), chopped",
       "4\" fresh ginger, minced",
       "1 tbsp white pepper",
@@ -577,6 +584,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 2,
     tags: ["curry", "warming"],
+    batchCount: 2,
     ingredients: [
       "2 lbs chicken thighs bone-in",
       "1 cup plain yogurt",
@@ -922,7 +930,7 @@ const RECIPES = [
     kellyWeek: 2,
     tags: ["comfort", "italian"],
     ingredients: [
-      "1 lb lasagna noodles",
+      "1 lb lasagna noodles // Cook 2 minutes LESS than package says — they finish cooking in the oven",
       "2 lbs ricotta",
       "2 cups mozzarella",
       "1 cup Parmesan",
@@ -951,6 +959,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 1,
     tags: ["base", "staple"],
+    batchCount: 3,
     ingredients: [
       "2 cups jasmine or basmati rice",
       "3.5 cups water",
@@ -1009,6 +1018,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 1,
     tags: ["breakfast", "protein"],
+    batchCount: 4,
     ingredients: [
       "12 eggs",
       "1/2 cup milk or cream",
@@ -1041,7 +1051,7 @@ const RECIPES = [
     tags: ["iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
-      "8 oz chicken livers",
+      "8 oz chicken livers // Puree in blender until completely smooth liquid. This is the hidden liver — 10% ratio, completely undetectable.",
       "2 tbsp olive oil",
       "1 large onion, finely diced",
       "4 garlic cloves, minced",
@@ -1078,7 +1088,7 @@ const RECIPES = [
     tags: ["chili", "iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
-      "8 oz chicken livers",
+      "8 oz chicken livers // Puree in blender until completely smooth liquid. Hidden liver — 10% ratio, undetectable.",
       "1 tbsp olive oil",
       "1 large onion, diced",
       "4 garlic cloves, minced",
@@ -1118,7 +1128,7 @@ const RECIPES = [
     tags: ["iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
-      "8 oz chicken livers",
+      "8 oz chicken livers // Puree in blender until completely smooth liquid. Hidden liver — 10% ratio, undetectable.",
       "1 onion, finely minced",
       "4 garlic cloves, minced",
       "1 cup breadcrumbs",
@@ -1222,8 +1232,8 @@ const RECIPES = [
     ingredients: [
       "2 lbs beef chuck (cubed)",
       "2 cans coconut milk",
-      "1 stalk lemongrass (bruised)",
-      "4 kaffir lime leaves (or lime zest)",
+      "1 stalk lemongrass // Smash with back of knife to release oils. Remove before freezing.",
+      "4 kaffir lime leaves // Remove before freezing. Or use 1 tbsp lime zest as substitute.",
       "1 onion",
       "6 garlic cloves",
       "2\" ginger",
@@ -1324,7 +1334,7 @@ const RECIPES = [
     tags: ["omega-3", "lactation"],
     lactation: true,
     ingredients: [
-      "14.75 oz canned salmon (or fresh fillets, cooked, flaked)",
+      "14.75 oz canned salmon (or fresh fillets, cooked, flaked) // Drain well. Soft bones in canned salmon are edible and calcium-rich — leave them in.",
       "1 cup breadcrumbs",
       "2 eggs",
       "1/4 cup milk",
@@ -1375,6 +1385,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 2,
     tags: ["breakfast", "warming"],
+    batchCount: 2,
     ingredients: [
       "4 cups steel-cut oats",
       "12 cups water or milk",
@@ -1401,6 +1412,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 2,
     tags: ["breakfast", "protein"],
+    batchCount: 2,
     ingredients: [
       "8 eggs",
       "1/2 cup milk/cream",
@@ -1430,6 +1442,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 2,
     tags: ["breakfast", "protein"],
+    batchCount: 2,
     ingredients: [
       "8 eggs",
       "1/2 cup milk/cream",
@@ -1456,8 +1469,9 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 2,
     tags: ["breakfast", "comfort"],
+    batchCount: 3,
     ingredients: [
-      "1 pie crust (store-bought)",
+      "1 pie crust (store-bought) // Blind-bake first (375F 10 min with pie weights) to prevent soggy bottom",
       "6 slices bacon (cooked, crumbled)",
       "1.5 cups gruyère (shredded)",
       "4 eggs",
@@ -1517,6 +1531,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 2,
     tags: ["snack", "lactation"],
+    batchCount: 2,
     lactation: true,
     ingredients: [
       "3 cups rolled oats",
@@ -1554,6 +1569,7 @@ export default function MealPrep() {
   const [freezerInventory, setFreezerInventory] = useState({});
   const [shopChecked, setShopChecked] = useState({});
   const [shopTab, setShopTab] = useState("All Groceries");
+  const [batchDone, setBatchDone] = useState({});
 
   const TABS = ["Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
 
@@ -1566,6 +1582,7 @@ export default function MealPrep() {
       setGlobalNotes(data.globalNotes || "");
       setFreezerInventory(data.freezer || {});
       setShopChecked(data.shopChecked || {});
+      setBatchDone(data.batchDone || {});
     }
   }, []);
 
@@ -1576,9 +1593,10 @@ export default function MealPrep() {
       globalNotes,
       freezer: freezerInventory,
       shopChecked,
+      batchDone,
     };
     localStorage.setItem("mealprep-v3", JSON.stringify(toSave));
-  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked]);
+  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked, batchDone]);
 
   const cycleStatus = (id) => {
     setRecipeStatus((prev) => {
@@ -1590,6 +1608,13 @@ export default function MealPrep() {
 
   const toggleShop = (key) => {
     setShopChecked((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const toggleBatch = (recipeId, batchNum) => {
+    setBatchDone((prev) => {
+      const key = `${recipeId}-${batchNum}`;
+      return { ...prev, [key]: !prev[key] };
+    });
   };
 
   const StatusBtn = ({ id }) => {
@@ -1649,9 +1674,15 @@ export default function MealPrep() {
           <div>
             <h5 className="font-semibold text-gray-700 mb-1">Ingredients</h5>
             <ul className="text-sm text-gray-600 list-disc list-inside">
-              {recipe.ingredients.map((ing, i) => (
-                <li key={i}>{ing}</li>
-              ))}
+              {recipe.ingredients.map((ing, i) => {
+                const parts = ing.split(" // ");
+                return (
+                  <li key={i}>
+                    {parts[0]}
+                    {parts[1] && <span className="block text-xs text-amber-700 ml-5 mt-0.5">{parts[1]}</span>}
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div>
@@ -1663,6 +1694,29 @@ export default function MealPrep() {
             </ol>
           </div>
         </div>
+
+        {recipe.batchCount && recipe.batchCount > 1 && (
+          <div className="mb-3">
+            <h5 className="font-semibold text-gray-700 text-sm mb-1">Batch Progress</h5>
+            <div className="flex flex-wrap gap-2">
+              {Array.from({ length: recipe.batchCount }, (_, i) => {
+                const key = `${recipe.id}-${i + 1}`;
+                const done = !!batchDone[key];
+                return (
+                  <label key={i} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm cursor-pointer ${done ? "bg-emerald-50 border-emerald-300 text-emerald-700" : "bg-gray-50 border-gray-300 text-gray-600"}`}>
+                    <input
+                      type="checkbox"
+                      checked={done}
+                      onChange={() => toggleBatch(recipe.id, i + 1)}
+                      className="w-3.5 h-3.5"
+                    />
+                    Batch {i + 1}
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {recipe.freezing && (
           <p className="text-gray-600 text-sm mb-2">
