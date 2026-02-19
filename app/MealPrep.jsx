@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 // ── COOKING BLOCKS (3 blocks only) ──
 const BLOCKS = [
   { id: 1, title: "Foundations", dates: "Feb 8-14", description: "Broths + Phase 1 Healing Foods", purpose: "Kelly Week 1", color: "amber" },
-  { id: 2, title: "Hearty Meals", dates: "Feb 15-19", description: "Phase 2 First Round: Soups, Curries, Dals", purpose: "Both Kelly + Jonny", color: "orange" },
-  { id: 3, title: "Iron, Protein & Breakfast", dates: "Feb 23-28", description: "Phase 2 Second Round: Beef, Breakfast, Snacks", purpose: "Both", color: "red" },
+  { id: 2, title: "Hearty Meals + Sweets", dates: "Feb 18-25", description: "Soups, Curries, Dals, Sweet Bowls, Snack Balls", purpose: "Both Kelly + Jonny", color: "orange" },
+  { id: 3, title: "Iron, Protein & Breakfast", dates: "Post-Birth", description: "Beef Stews, Hidden Liver, Breakfast Prep — Jonny handles when ready", purpose: "Jonny cooks", color: "red" },
 ];
 
 // ── SHOPPING LISTS ──
@@ -58,11 +58,8 @@ const SHOPPING = {
         "Fish sauce (Red Boat) [B1]",
         "Astragalus root powder (huang qi) — silkie tonic [B1]",
         "Angelica root powder (dang gui) — silkie tonic [B1]",
-        "Japanese curry roux blocks (S&B Golden Curry, mild) [B2]",
         "Garam masala, cumin seeds, mustard seeds, curry leaves [B2]",
         "Fenugreek ground [B2]",
-        "Lemongrass, kaffir lime leaves — rendang (or lime zest) [B3]",
-        "Tamarind paste — rendang [B3]",
       ],
     },
     {
@@ -74,12 +71,11 @@ const SHOPPING = {
         "Carrots 6+ lbs — soups, broths, stews, extra carrot ginger batches [B1+B2+B3]",
         "Celery 3 bunches — broth + stews [B1+B2+B3]",
         "Garlic 5+ heads — everything [B1+B2+B3]",
-        "Potatoes 2 lbs — Japanese curry [B2]",
-        "Sweet potatoes 2 large — stew + mashed [B3]",
+        "Sweet potatoes 8+ lbs total — sweet potato coconut soup (2 batches), stew, mashed [B2+B3]",
         "Kabocha squash x3 — kabocha soup (extra batch for later weeks) [B1]",
         "Red lentils 2 lbs — kabocha soup (extra batch) [B1]",
         "Coconut milk x13 cans — soups, congee, curries, dals, rendang, rice pudding [B1+B2+B3]",
-        "Crushed tomatoes (San Marzano) x7 — bolognese, chili, stews, butter chicken, lasagna [B2+B3]",
+        "Crushed tomatoes (San Marzano) x7 — bolognese, chili, stews, butter chicken [B2+B3]",
         "Tomato paste x4 — broths, stews, sauces [B1+B2+B3]",
         "Ghee 1 large jar — golden broth, cooking, dals [B1+B2]",
         "Cream 1 quart total — butter chicken, dals, quiche [B2+B3]",
@@ -88,9 +84,6 @@ const SHOPPING = {
         "Yogurt (plain) — butter chicken marinade [B2]",
         "Sour cream — white chicken chili [B2]",
         "Cottage cheese — egg bites [B3]",
-        "Ricotta 2 lbs — lasagna [B2]",
-        "Mozzarella 2 cups — lasagna [B2]",
-        "Parmesan — lasagna [B2]",
         "Gruyere 1 lb — quiche Lorraine [B3]",
         "Sharp cheddar 2 blocks — frittatas, muffins [B2+B3]",
         "Honey — sweet congee, rice pudding, jujube tea, oatmeal cups [B1]",
@@ -110,6 +103,14 @@ const SHOPPING = {
         "Nut butter (almond or peanut) — oatmeal cups, bites [B1]",
         "Dark chocolate chips — lactation bites [B1]",
         "Peanut butter — rendang [B3]",
+        "Medjool dates 2 lbs — date congee, tahini date balls, almond coconut balls [B2]",
+        "Walnuts 1 lb — date congee topping [B2]",
+        "Tahini 1 jar — tahini date balls [B2]",
+        "Cashew butter 1 jar — cashew butter choco oat balls [B2]",
+        "Almond butter 1 jar — almond coconut balls [B2]",
+        "Shredded coconut (unsweetened) 1 bag — almond coconut balls [B2]",
+        "Cacao nibs or extra dark chocolate chips — almond coconut balls [B2]",
+        "Coconut flakes (unsweetened) 1 bag — cashew butter choco oat balls [B2]",
         "Dried black beans 1 lb — black bean soup [B2]",
         "Yellow lentils 1 lb — tadka dal [B2]",
         "Yellow mung dal or red lentils — kitchari [B2]",
@@ -118,7 +119,6 @@ const SHOPPING = {
         "White beans 2 cans — white chicken chili [B2]",
         "Black beans 2 cans — burrito bowls [B3]",
         "Diced green chiles 2 cans — white chicken chili [B2]",
-        "Lasagna noodles 1 box [B2]",
         "Pearl barley 1 cup — beef barley stew [B3]",
         "Spinach 2 bags — chickpea curry, minestrone [B2]",
         "Zucchini 2 — savory muffins [B2]",
@@ -367,33 +367,39 @@ const RECIPES = [
   },
   {
     id: 61,
-    name: "Sweet Congee",
+    name: "Sweet Congee (Chai-Spiced)",
     category: "Soups",
     phase: 1,
     track: "kelly",
     kellyWeek: 1,
-    tags: ["gentle", "warming"],
+    tags: ["gentle", "warming", "sweet", "vata-pacifying"],
     ingredients: [
-      "1 cup jasmine rice",
-      "8 cups water",
-      "8-10 red jujubes // Slice in half and remove the small hard pit before adding",
-      "2 tbsp goji berries",
-      "1 tbsp black sesame seeds // Toast in dry pan until fragrant, then grind",
-      "2\" fresh ginger sliced",
-      "2 tbsp honey or brown sugar",
-      "1 can coconut milk",
-      "Pinch of salt",
+      "3 cups jasmine rice",
+      "24 cups water",
+      "24-30 red jujubes // Slice in half and remove the small hard pit before adding",
+      "6 tbsp goji berries",
+      "3 tbsp black sesame seeds // Toast in dry pan. Keep whole — sprinkle on top when serving for crunch.",
+      "3 tbsp fresh ginger // Grate on a box grater. It dissolves into the congee during the long simmer.",
+      "6 tbsp honey or brown sugar (adjust to taste)",
+      "3 cans coconut milk // Shake well before opening",
+      "1/4 tsp salt",
+      "2 tsp ground cardamom // Add at the END with coconut milk — ground spices go bitter if simmered 1.5 hrs",
+      "1 tbsp ground cinnamon // Same — add at the end only",
+      "1/4 tsp ground clove // Tiny amount. Clove is aggressive. Start here and taste.",
+      "1/4 tsp ground nutmeg",
     ],
     instructions: [
-      "Rinse rice",
-      "Combine rice, water, jujubes, goji, ginger",
-      "Boil then low simmer 1.5 hrs, stir occasionally",
-      "Stir in coconut milk, honey, ground black sesame",
-      "Season with salt",
+      "Rinse rice in cold water until water runs mostly clear",
+      "Combine rice, water, jujubes, goji, and grated ginger in your large pot",
+      "Bring to boil — watch it, stir so rice doesn't stick to the bottom",
+      "Drop to lowest simmer, lid cracked open, stir every 15-20 min for 1.5 hrs",
+      "Stir in coconut milk, honey, ground spices (cardamom, cinnamon, clove, nutmeg), and salt",
+      "Simmer 5 more minutes. Taste. Adjust sweetness and spice.",
+      "Cool before portioning into 1-cup portions for freezing",
     ],
-    yield: "~10 portions",
-    freezing: "Freeze in Souper Cubes. Thickens when frozen — add water/milk when reheating.",
-    note: "Nourishing breakfast bowl. Jujubes + goji + black sesame are all traditional TCM blood-builders.",
+    yield: "~30 portions (tripled batch). This is a breakfast bowl, not a full meal.",
+    freezing: "Freeze in 1-cup Souper Cubes. Thickens a lot when frozen — add a splash of water or milk when reheating on the stove.",
+    note: "Warming chai-spiced sweet congee. Jujubes + goji are traditional TCM blood-builders. Warming spices help counter postpartum vata (cold, dry, depleted). Top with toasted black sesame and a drizzle of honey.",
   },
   {
     id: 62,
@@ -574,6 +580,171 @@ const RECIPES = [
     freezing: "Freeze in layers on sheet, then bag. Grab 2-3 for a snack. Eat directly from freezer or let sit 5 min.",
     note: "No-bake lactation snack. Brewer's yeast + flax + chia = milk supply boost.",
   },
+  {
+    id: 78,
+    name: "Date & Walnut Congee",
+    category: "Soups",
+    phase: 1,
+    block: 2,
+    track: "kelly",
+    kellyWeek: 1,
+    tags: ["gentle", "warming", "sweet", "vata-pacifying"],
+    batchCount: 2,
+    ingredients: [
+      "1 cup jasmine rice",
+      "8 cups water",
+      "8-10 medjool dates // pitted and roughly chopped, they dissolve",
+      "1/2 cup walnuts // roughly chopped, stir in at the end",
+      "1 tbsp grated fresh ginger",
+      "1 can coconut milk",
+      "2 tbsp honey",
+      "pinch salt",
+      "3/4 tsp ground cardamom",
+      "1 tsp cinnamon",
+      "1/8 tsp clove",
+      "pinch nutmeg"
+    ],
+    instructions: [
+      "Combine rice and water in a large pot",
+      "Bring to boil, then reduce heat and simmer for 1.5 hours, stirring occasionally",
+      "Add pitted and chopped dates and ginger after 30 minutes of simmering",
+      "When rice is very soft and broken down, add coconut milk and honey",
+      "Stir in warm spices (cardamom, cinnamon, clove, nutmeg)",
+      "Season with salt to taste",
+      "Stir in chopped walnuts at the end"
+    ],
+    yield: "~20 portions (2 batches of ~10 portions each)",
+    freezing: "Freeze in 1-cup Souper Cubes. Thickens when frozen — add water or milk when reheating. Top with chopped walnuts and honey.",
+    note: "Naturally sweet from the dates — like warm date-walnut cake in congee form. Dates are one of the top postpartum recovery foods across Middle Eastern, Ayurvedic, and TCM traditions."
+  },
+  {
+    id: 79,
+    name: "Sweet Potato & Coconut Soup",
+    category: "Soups",
+    phase: 1,
+    block: 2,
+    track: "kelly",
+    kellyWeek: 1,
+    tags: ["sweet", "warming", "mug-friendly", "vata-pacifying"],
+    batchCount: 2,
+    ingredients: [
+      "3 large sweet potatoes // about 3 lbs, peel and cube into 1-inch pieces",
+      "1 large onion // diced",
+      "3 cloves garlic // minced",
+      "2 tbsp fresh ginger // grated",
+      "4 cups bone broth // beef or chicken",
+      "1 can coconut milk",
+      "2 tbsp ghee or coconut oil",
+      "1 tsp cinnamon",
+      "1/2 tsp cardamom",
+      "1/4 tsp nutmeg",
+      "salt to taste",
+      "optional drizzle of honey or maple syrup"
+    ],
+    instructions: [
+      "Cube sweet potatoes into 1-inch pieces",
+      "Heat ghee in a large pot over medium heat",
+      "Sauté diced onion until soft, about 5 minutes",
+      "Add minced garlic and grated ginger, cook for 1 minute",
+      "Add cubed sweet potatoes and bone broth",
+      "Bring to boil, then reduce heat and simmer 20-25 minutes until sweet potatoes are very soft",
+      "Add coconut milk and warm spices (cinnamon, cardamom, nutmeg)",
+      "Blend until completely smooth using an immersion blender",
+      "Season with salt to taste",
+      "Add honey or maple syrup if desired for extra sweetness"
+    ],
+    yield: "~16-20 portions (2 batches of ~8-10 two-cup portions each)",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheats perfectly — pour into mug, microwave or stovetop.",
+    note: "The sweet lunch/dinner option Kelly asked for. 100% mug-drinkable. Naturally sweet, no added sugar needed. Sweet potatoes are rich in vitamin A and fiber."
+  },
+  {
+    id: 80,
+    name: "Tahini Date Balls",
+    category: "Snacks",
+    phase: 2,
+    block: 2,
+    track: "both",
+    tags: ["snack", "sweet", "no-bake", "grab-and-go"],
+    batchCount: 3,
+    ingredients: [
+      "1 cup medjool dates // about 12 dates, pitted; if dry, soak in warm water 10 min and drain",
+      "1/3 cup tahini",
+      "1 cup rolled oats",
+      "1 tsp cinnamon",
+      "1/4 tsp cardamom",
+      "pinch sea salt",
+      "1 tsp vanilla extract"
+    ],
+    instructions: [
+      "Blend pitted dates in a food processor until they form a sticky paste",
+      "Add tahini, rolled oats, cinnamon, cardamom, salt, and vanilla extract",
+      "Pulse until combined — mixture should hold together when pressed",
+      "Roll into 1-inch balls",
+      "Refrigerate for 30 minutes to firm up"
+    ],
+    yield: "~60 balls (3 batches of ~20 balls each)",
+    freezing: "Freeze flat on a sheet pan, then transfer to freezer bags. Grab from freezer — they're ready to eat in 5 minutes at room temperature.",
+    note: "Rich and caramel-y. Tahini adds creaminess, iron, and calcium. One-handed snacking for both Kelly and Jonny."
+  },
+  {
+    id: 81,
+    name: "Cashew Butter Chocolate Oat Balls",
+    category: "Snacks",
+    phase: 2,
+    block: 2,
+    track: "both",
+    tags: ["snack", "sweet", "no-bake", "grab-and-go"],
+    batchCount: 3,
+    ingredients: [
+      "1 cup rolled oats",
+      "1/2 cup cashew butter // the creamy, drippy kind works best; stir well before measuring",
+      "1/4 cup honey",
+      "1/3 cup dark chocolate chips",
+      "1/4 cup coconut flakes // unsweetened",
+      "pinch sea salt",
+      "1 tsp vanilla extract"
+    ],
+    instructions: [
+      "Mix all ingredients in a bowl until well combined",
+      "If mixture is too dry, add a splash of honey",
+      "If mixture is too wet, add more oats",
+      "Roll into 1-inch balls",
+      "Refrigerate for 30 minutes"
+    ],
+    yield: "~60 balls (3 batches of ~20 balls each)",
+    freezing: "Freeze flat on a sheet pan, then transfer to freezer bags. Eat from freezer or let sit 5 minutes at room temperature.",
+    note: "Tastes like a no-bake cookie. Cashew butter is higher in iron and magnesium than peanut butter and easier to digest. Crowd-pleaser for Jonny."
+  },
+  {
+    id: 82,
+    name: "Almond Coconut Balls",
+    category: "Snacks",
+    phase: 2,
+    block: 2,
+    track: "both",
+    tags: ["snack", "sweet", "no-bake", "grab-and-go"],
+    batchCount: 2,
+    ingredients: [
+      "1 cup medjool dates // pitted",
+      "1/2 cup almond butter",
+      "1/2 cup shredded coconut // unsweetened",
+      "2 tbsp cacao nibs // or dark chocolate chips",
+      "1/4 tsp cardamom",
+      "pinch sea salt",
+      "extra shredded coconut // optional, for coating"
+    ],
+    instructions: [
+      "Blend pitted dates in a food processor until they form a sticky paste",
+      "Add almond butter, shredded coconut, cacao nibs, cardamom, and salt",
+      "Pulse until combined",
+      "Roll into 1-inch balls",
+      "Roll in extra shredded coconut for coating if desired",
+      "Refrigerate for 30 minutes"
+    ],
+    yield: "~40 balls (2 batches of ~20 balls each)",
+    freezing: "Freeze flat on a sheet pan, then transfer to freezer bags. Eat from freezer or let sit 5 minutes at room temperature.",
+    note: "More dessert-like, tropical. Almond butter is rich in vitamin E and calcium. The coconut coating makes them feel special."
+  },
 
   // ─── BLOCK 2: Hearty Meals & Phase 2 ───
   {
@@ -581,6 +752,7 @@ const RECIPES = [
     name: "Butter Chicken",
     category: "Curries",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["curry", "warming"],
@@ -619,6 +791,7 @@ const RECIPES = [
     name: "Coconut Lentil Dal",
     category: "Dals",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["dal", "vegetarian", "warming"],
@@ -651,48 +824,11 @@ const RECIPES = [
     freezing: "SHARED bags. Serve over rice.",
   },
   {
-    id: 27,
-    name: "Tadka Dal",
-    category: "Dals",
-    phase: 2,
-    track: "shared",
-    kellyWeek: 2,
-    tags: ["dal", "vegetarian"],
-    ingredients: [
-      "1 cup yellow lentils (or red lentils)",
-      "4 cups water or broth",
-      "1 onion, diced",
-      "4 garlic cloves, minced",
-      "2\" ginger, minced",
-      "3 tbsp ghee",
-      "1 tbsp cumin seeds",
-      "1 tsp turmeric",
-      "1/2 tsp coriander",
-      "1/4 tsp cayenne",
-      "1 can diced tomatoes",
-      "Fresh cilantro",
-      "Salt, lime",
-    ],
-    instructions: [
-      "Rinse lentils, add to pot with water",
-      "Bring to boil, reduce to simmer 20 min until tender",
-      "Heat 2 tbsp ghee in separate pan, add cumin seeds until they pop",
-      "Add onion, saute until golden",
-      "Add garlic, ginger, cook 1 min",
-      "Add turmeric, coriander, cayenne, cook 30 sec",
-      "Pour this mixture into the cooked lentils",
-      "Add tomatoes, simmer 10 min",
-      "Heat remaining 1 tbsp ghee in small pan until bubbling, serve as garnish drizzle (tadka)",
-      "Season with salt, lime, cilantro",
-    ],
-    yield: "~10 portions",
-    freezing: "SHARED bags. Serve with rice.",
-  },
-  {
     id: 63,
     name: "Kitchari",
     category: "Dals",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["ayurvedic", "warming"],
@@ -726,6 +862,7 @@ const RECIPES = [
     name: "Black Bean Soup",
     category: "Soups",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["soup", "vegetarian"],
@@ -760,6 +897,7 @@ const RECIPES = [
     name: "Minestrone",
     category: "Soups",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["soup", "vegetarian"],
@@ -795,6 +933,7 @@ const RECIPES = [
     name: "Chicken Noodle Soup",
     category: "Soups",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["soup", "comfort"],
@@ -823,40 +962,11 @@ const RECIPES = [
     freezing: "SHARED bags. Freeze without noodles. Cook noodles fresh when serving.",
   },
   {
-    id: 64,
-    name: "Japanese Curry",
-    category: "Curries",
-    phase: 2,
-    track: "shared",
-    kellyWeek: 2,
-    tags: ["curry", "comfort"],
-    ingredients: [
-      "2 lbs chicken thighs (cubed)",
-      "2 onions (sliced thin)",
-      "3 carrots (chunked)",
-      "2 potatoes (cubed)",
-      "1 box Japanese curry roux (S&B Golden Curry, mild)",
-      "4 cups water or chicken broth",
-      "1 tbsp oil",
-    ],
-    instructions: [
-      "Brown chicken in oil, set aside",
-      "Saute onions until deeply golden (10 min)",
-      "Add carrots, potatoes, stir 2 min",
-      "Add water/broth, bring to boil",
-      "Simmer 15 min until vegetables are tender",
-      "Turn off heat, break in curry roux blocks, stir until dissolved",
-      "Return chicken, simmer 10 min until thick",
-    ],
-    yield: "~10 portions",
-    freezing: "SHARED bags. Serve over frozen rice.",
-    note: "Japanese comfort food. The roux blocks make this foolproof. Mild and warming.",
-  },
-  {
     id: 65,
     name: "Chickpea Coconut Curry",
     category: "Curries",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["curry", "vegetarian"],
@@ -892,6 +1002,7 @@ const RECIPES = [
     name: "White Chicken Chili",
     category: "Chilis",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["chili", "warming"],
@@ -922,40 +1033,11 @@ const RECIPES = [
     freezing: "SHARED bags.",
   },
   {
-    id: 67,
-    name: "Lasagna",
-    category: "Comfort",
-    phase: 2,
-    track: "shared",
-    kellyWeek: 2,
-    tags: ["comfort", "italian"],
-    ingredients: [
-      "1 lb lasagna noodles // Cook 2 minutes LESS than package says — they finish cooking in the oven",
-      "2 lbs ricotta",
-      "2 cups mozzarella",
-      "1 cup Parmesan",
-      "2 eggs",
-      "28 oz crushed tomatoes",
-      "2 cups marinara or crushed tomatoes",
-      "Fresh basil",
-      "Salt, pepper, nutmeg",
-    ],
-    instructions: [
-      "Cook noodles 2 min less than package instructions",
-      "Mix ricotta, eggs, half the Parmesan, nutmeg, salt",
-      "Layer in 9x13 pan: sauce, noodles, ricotta mix, mozzarella",
-      "Repeat layers 3 times, ending with sauce + cheese",
-      "Bake 375F covered 25 min, uncovered 15 min until bubbly",
-    ],
-    yield: "~8 portions per lasagna. Make 1 lasagna (need ~7 servings total).",
-    freezing: "SHARED bags. Freeze before or after baking. Thaw and bake 350F 30 min if frozen.",
-    note: "Classic comfort. Can be made with store-bought marinara to save time.",
-  },
-  {
     id: 43,
     name: "Frozen Rice (Batch 1)",
     category: "Bases",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 1,
     tags: ["base", "staple"],
@@ -980,6 +1062,7 @@ const RECIPES = [
     name: "Lactation Savory Muffins",
     category: "Snacks",
     phase: 2,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["lactation", "snack"],
@@ -1046,6 +1129,7 @@ const RECIPES = [
     name: "Bolognese (Hidden Liver)",
     category: "Sauces",
     phase: 2,
+    block: 3,
     track: "shared",
     kellyWeek: 2,
     tags: ["iron", "hidden-liver"],
@@ -1083,6 +1167,7 @@ const RECIPES = [
     name: "Beef Chili (Hidden Liver)",
     category: "Chilis",
     phase: 2,
+    block: 3,
     track: "shared",
     kellyWeek: 2,
     tags: ["chili", "iron", "hidden-liver"],
@@ -1123,6 +1208,7 @@ const RECIPES = [
     name: "Meatballs (Hidden Liver)",
     category: "Proteins",
     phase: 2,
+    block: 3,
     track: "shared",
     kellyWeek: 2,
     tags: ["iron", "hidden-liver"],
@@ -1156,6 +1242,7 @@ const RECIPES = [
     name: "Beef & Sweet Potato Stew",
     category: "Stews",
     phase: 2,
+    block: 3,
     track: "shared",
     kellyWeek: 2,
     tags: ["stew", "warming"],
@@ -1191,6 +1278,7 @@ const RECIPES = [
     name: "Moroccan Beef & Chickpea Stew",
     category: "Stews",
     phase: 2,
+    block: 3,
     track: "shared",
     kellyWeek: 2,
     tags: ["stew", "warming"],
@@ -1220,76 +1308,6 @@ const RECIPES = [
     ],
     yield: "~10 portions",
     freezing: "SHARED bags.",
-  },
-  {
-    id: 70,
-    name: "Beef Rendang",
-    category: "Stews",
-    phase: 2,
-    track: "shared",
-    kellyWeek: 2,
-    tags: ["stew", "indonesian"],
-    ingredients: [
-      "2 lbs beef chuck (cubed)",
-      "2 cans coconut milk",
-      "1 stalk lemongrass // Smash with back of knife to release oils. Remove before freezing.",
-      "4 kaffir lime leaves // Remove before freezing. Or use 1 tbsp lime zest as substitute.",
-      "1 onion",
-      "6 garlic cloves",
-      "2\" ginger",
-      "2\" galangal (or more ginger)",
-      "2 tbsp chili paste or 4 dried chilies (mild)",
-      "1 tsp turmeric",
-      "1 tbsp tamarind paste",
-      "2 tbsp peanut butter or ground peanuts",
-      "2 tbsp oil",
-      "Salt, sugar",
-    ],
-    instructions: [
-      "Blend onion, garlic, ginger, galangal, chili paste into paste",
-      "Fry paste in oil until fragrant 5 min",
-      "Add coconut milk, lemongrass, lime leaves",
-      "Add beef",
-      "Bring to boil, reduce to low simmer",
-      "Cook 2-3 hrs, stirring occasionally, until sauce is thick and dark and coats the beef",
-      "Season with tamarind, salt, sugar",
-    ],
-    yield: "~10 portions",
-    freezing: "SHARED bags.",
-    note: "Indonesian braised beef. Low and slow until the coconut milk caramelizes. Rich, warming, deeply flavorful.",
-  },
-  {
-    id: 71,
-    name: "Beef & Barley Stew",
-    category: "Stews",
-    phase: 2,
-    track: "shared",
-    kellyWeek: 2,
-    tags: ["stew", "comfort"],
-    ingredients: [
-      "2 lbs beef chuck (cubed)",
-      "1 cup pearl barley",
-      "2 onions",
-      "4 carrots",
-      "4 celery stalks",
-      "4 garlic cloves",
-      "6 cups beef broth",
-      "2 tbsp tomato paste",
-      "Thyme, bay leaf",
-      "2 tbsp olive oil",
-      "Salt, pepper",
-    ],
-    instructions: [
-      "Brown beef in batches in olive oil, set aside",
-      "Saute onions, carrots, celery",
-      "Add garlic, tomato paste 2 min",
-      "Return beef, add broth, barley, herbs",
-      "Simmer 1.5-2 hrs until barley is tender and beef is falling apart",
-      "Season with salt and pepper",
-    ],
-    yield: "~10 portions",
-    freezing: "SHARED bags.",
-    note: "Old-fashioned comfort. The barley makes it hearty and thickens the broth.",
   },
   {
     id: 32,
@@ -1435,33 +1453,6 @@ const RECIPES = [
     freezing: "Freeze on sheet, then bag. Reheat toaster oven 350F 8-10 min.",
   },
   {
-    id: 74,
-    name: "Frittata (Broccoli + Cheddar)",
-    category: "Breakfast",
-    phase: 2,
-    track: "shared",
-    kellyWeek: 2,
-    tags: ["breakfast", "protein"],
-    batchCount: 2,
-    ingredients: [
-      "8 eggs",
-      "1/2 cup milk/cream",
-      "2 cups broccoli florets (blanched, chopped)",
-      "1.5 cups sharp cheddar",
-      "2 tbsp olive oil",
-      "Salt, pepper, pinch nutmeg",
-    ],
-    instructions: [
-      "Blanch broccoli 2 min, chop small",
-      "Whisk eggs + milk",
-      "Divide broccoli into greased muffin tins",
-      "Pour egg mixture, sprinkle cheddar",
-      "Bake 375F 15-18 min until set and golden",
-    ],
-    yield: "12 mini frittatas per batch. Need 2 batches.",
-    freezing: "Freeze on sheet, then bag. Reheat toaster oven 350F 8-10 min.",
-  },
-  {
     id: 75,
     name: "Quiche Lorraine (Bacon + Gruyère)",
     category: "Breakfast",
@@ -1490,38 +1481,6 @@ const RECIPES = [
     yield: "8 slices per quiche. Need 3 quiches (24 slices total, 12 servings of 2). 10 eaten.",
     freezing: "SHARED bags. Freeze slices, reheat in toaster oven.",
     note: "The only quiche you need. Bacon + gruyère is classic Lorraine. Freeze slices, reheat in toaster oven.",
-  },
-  {
-    id: 76,
-    name: "Burrito Bowls",
-    category: "Comfort",
-    phase: 2,
-    track: "shared",
-    kellyWeek: 2,
-    tags: ["comfort", "bowl"],
-    ingredients: [
-      "2 lbs ground beef or chicken",
-      "2 cans black beans (drained)",
-      "2 cups rice (cooked)",
-      "1 onion",
-      "4 garlic cloves",
-      "2 tsp cumin",
-      "1 tsp chili powder",
-      "1 tsp smoked paprika",
-      "1 cup salsa",
-      "1 cup cheese",
-      "Salt, lime",
-    ],
-    instructions: [
-      "Brown meat with onion, garlic, spices",
-      "Add beans, salsa, stir until heated",
-      "Combine with rice",
-      "Portion into containers",
-      "Top with cheese",
-    ],
-    yield: "~10 portions",
-    freezing: "SHARED bags.",
-    note: "NOT burritos (tortillas get mushy frozen). Bowl format heats perfectly.",
   },
   {
     id: 77,
@@ -1810,6 +1769,7 @@ export default function MealPrep() {
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Egg Bites x3</strong> — toaster oven 8 min. Quick protein.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Sweet Congee</strong> — jujubes + goji + black sesame already in it. Warming comfort.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Warm Rice Pudding</strong> — jujubes + goji + cinnamon. Like a hug.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Date &amp; Walnut Congee</strong> — warm, sweet, dates dissolve in. Top with walnuts + honey.</div>
                 </div>
               </div>
 
@@ -1820,12 +1780,13 @@ export default function MealPrep() {
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Congee (savory)</strong> — top with shredded chicken from broth-making.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Carrot Ginger Soup</strong> — made with bone broth base.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Kabocha &amp; Red Lentil Soup</strong> — protein from lentils + bone broth.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Sweet Potato &amp; Coconut Soup</strong> — sweet + warming, mug-drinkable. Made with bone broth.</div>
                 </div>
               </div>
 
               <div>
                 <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Snacks <span className="font-normal text-gray-500 normal-case tracking-normal">(throughout the day)</span></h4>
-                <p className="text-sm text-gray-700">Lactation Bites x2-3 • Oatmeal Cup (snack, not meal) • Nettle tea • Jujube goji ginger tea • Pumpkin seeds • Dried apricots • Dates • Walnuts</p>
+                <p className="text-sm text-gray-700">Lactation Bites x2-3 • Oatmeal Cup (snack, not meal) • Tahini Date Balls • Cashew Butter Choco Oat Balls • Almond Coconut Balls • Nettle tea • Jujube goji ginger tea • Pumpkin seeds • Dried apricots • Dates • Walnuts</p>
               </div>
 
               <div className="bg-rose-50/60 rounded-xl p-4 text-sm text-gray-700 border border-rose-100/60">
@@ -1848,7 +1809,7 @@ export default function MealPrep() {
 
               <div>
                 <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Breakfast <span className="font-normal text-gray-500 normal-case tracking-normal">(Kelly picks from Phase 1 + egg options)</span></h4>
-                <p className="text-sm text-gray-700">Congee + Egg • Egg Bites • Sweet Congee • Warm Rice Pudding • Frittata slices • Quiche Lorraine slices</p>
+                <p className="text-sm text-gray-700">Congee + Egg • Egg Bites • Sweet Congee • Date &amp; Walnut Congee • Warm Rice Pudding • Frittata slices • Quiche Lorraine slices</p>
               </div>
 
               <div>
@@ -1856,9 +1817,8 @@ export default function MealPrep() {
                 <p className="text-sm text-gray-700 mb-2">Heat the same thing for both of you. Green cells in the spreadsheet = aligned meals.</p>
                 <div className="grid grid-cols-3 gap-2.5 text-sm text-gray-700">
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Soups:</strong> Black Bean, Minestrone + Meatballs, Chicken Noodle</div>
-                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Curries:</strong> Butter Chicken, Japanese Curry, Chickpea Coconut</div>
-                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Dals:</strong> Coconut Lentil, Tadka Dal, Kitchari</div>
-                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Comfort:</strong> Lasagna, White Chicken Chili, Chicken Pot Pie</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Curries &amp; Dals:</strong> Butter Chicken, Chickpea Coconut Curry, Coconut Lentil Dal, Kitchari</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Comfort:</strong> White Chicken Chili, Chicken Pot Pie</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Phase 1 comfort:</strong> Miyeokguk, Kabocha Soup (Kelly anytime)</div>
                 </div>
@@ -1885,9 +1845,9 @@ export default function MealPrep() {
               <div>
                 <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Everything from Phase 2 PLUS:</h4>
                 <div className="grid grid-cols-2 gap-2.5 text-sm text-gray-700">
-                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Iron-rich stews:</strong> Beef &amp; Sweet Potato, Moroccan Beef &amp; Chickpea, Beef Rendang, Beef &amp; Barley</div>
+                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Iron-rich stews:</strong> Beef &amp; Sweet Potato, Moroccan Beef &amp; Chickpea</div>
                   <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Hidden liver meals:</strong> Bolognese, Beef Chili, Meatballs (add to soups)</div>
-                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Breakfast variety:</strong> Steel-Cut Oatmeal, Burrito Bowls, Frittatas, Quiche</div>
+                  <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Breakfast variety:</strong> Steel-Cut Oatmeal, Frittata, Quiche, Baked Oatmeal Bars</div>
                   <div className="bg-emerald-50/40 rounded-lg p-3 border border-emerald-100/60"><strong className="text-gray-900">Cold foods OK:</strong> Chia pudding (make fresh weekly), raw greens, salads</div>
                 </div>
               </div>
