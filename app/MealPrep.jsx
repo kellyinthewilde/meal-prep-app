@@ -1819,7 +1819,7 @@ export default function MealPrep() {
         >
           <div className="flex items-center gap-3">
             <span className="text-emerald-600 text-lg">&#10003;</span>
-            <span className="font-medium text-gray-700 line-through">{recipe.name}</span>
+            <span className="font-medium text-orange-400 line-through">{recipe.name}</span>
             {getEffectiveBatches(recipe) > 1 && (
               <span className="text-xs text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">{getEffectiveBatches(recipe)} batches</span>
             )}
@@ -1844,7 +1844,7 @@ export default function MealPrep() {
               >&#9650;</button>
             )}
             <div>
-              <h4 className="font-bold text-lg">{recipe.name}</h4>
+              <h4 className="font-bold text-lg text-orange-700">{recipe.name}</h4>
               <p className="text-gray-600 text-sm">{recipe.tags.join(" \u2022 ")}</p>
             </div>
           </div>
