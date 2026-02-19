@@ -1854,7 +1854,7 @@ export default function MealPrep() {
         {(() => {
           const baseBatches = recipe.batchCount || 1;
           const effectiveBatches = getEffectiveBatches(recipe);
-          const multiplier = effectiveBatches / baseBatches;
+          const multiplier = effectiveBatches;
           const isCustom = customBatchCount[recipe.id] != null && customBatchCount[recipe.id] !== baseBatches;
           return (
             <>
@@ -1883,9 +1883,9 @@ export default function MealPrep() {
                   )}
                 </div>
               </div>
-              {multiplier !== 1 && (
+              {multiplier > 1 && (
                 <p className="text-xs text-violet-600 mb-2">
-                  Ingredients scaled {multiplier > 1 ? `${multiplier}x` : `${multiplier.toFixed(1)}x`} from original recipe
+                  Ingredients shown for {effectiveBatches} {effectiveBatches === 1 ? "batch" : "batches"} ({multiplier}x single recipe)
                 </p>
               )}
 
