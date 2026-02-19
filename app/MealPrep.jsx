@@ -191,7 +191,7 @@ const SHOPPING = {
         "Garlic 5+ heads — everything [B1+B2+B3]",
         "Sweet potatoes 8+ lbs total — sweet potato coconut soup (2 batches), stew, mashed [B2+B3]",
         "Kabocha squash x3 — kabocha soup (extra batch for later weeks) [B1]",
-        "Red lentils 2 lbs — kabocha soup (extra batch) [B1]",
+        "Whole mung beans 2 lbs — kabocha soup [B1]",
         "Coconut milk x12 cans — soups, congee, curries, dals, rice pudding, sweet potato soup [B1+B2+B3]",
         "Crushed tomatoes (San Marzano) x7 — bolognese, chili, stews, butter chicken [B2+B3]",
         "Tomato paste x4 — broths, stews, sauces [B1+B2+B3]",
@@ -584,7 +584,7 @@ const RECIPES = [
   },
   {
     id: 11,
-    name: "Kabocha & Red Lentil Soup",
+    name: "Kabocha & Mung Bean Soup",
     category: "Soups",
     phase: 1,
     track: "kelly",
@@ -593,7 +593,7 @@ const RECIPES = [
     batchCount: 2,
     ingredients: [
       "2 kabocha squash + 2 butternut squash (~8 lbs total) // Roast cut-side down. Scoop flesh out — leave skin behind. No need to peel butternut if roasting.",
-      "1 cup whole mung beans // or red lentils if you have them",
+      "1 cup whole mung beans // no soaking needed if using IP",
       "1 onion",
       "4 garlic",
       "2\" ginger",
@@ -613,11 +613,10 @@ const RECIPES = [
       "While squash roasts, sauté onion in ghee 3-4 min until soft (IP: use Sauté mode)",
       "Add garlic + ginger, cook 1 min",
       "Add cumin, turmeric, coriander, cinnamon — stir 30 sec until fragrant",
-      "Add roasted squash flesh, mung beans (no soaking needed for IP), broth, and coconut milk",
-      "STOVE: Bring to boil then simmer 25-30 min (mung beans) or 20 min (red lentils)",
-      "IP (mung beans): Cancel Sauté, HIGH pressure 15 min, natural release 10 min",
-      "IP (red lentils): Cancel Sauté, HIGH pressure 5 min, quick release",
-      "Blend until smooth — blend extra aggressively if using mung beans",
+      "Add roasted squash flesh, mung beans, broth, and coconut milk",
+      "STOVE: Bring to boil then simmer 25-30 min until mung beans are soft",
+      "IP: Cancel Sauté, HIGH pressure 15 min, natural release 10 min",
+      "Blend until smooth — mung beans need aggressive blending",
       "Season with salt and lime",
     ],
     yield: "~10 two-cup portions per batch. Make 2 batches (20 portions for Weeks 1-4).",
@@ -2151,7 +2150,7 @@ export default function MealPrep() {
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Miyeokguk</strong> — Korean seaweed + beef soup. Eat the beef.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Congee (savory)</strong> — top with shredded chicken from broth-making.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Carrot Ginger Soup</strong> — made with bone broth base.</div>
-                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Kabocha &amp; Red Lentil Soup</strong> — protein from lentils + bone broth.</div>
+                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Kabocha &amp; Mung Bean Soup</strong> — protein from lentils + bone broth.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Sweet Potato &amp; Coconut Soup</strong> — sweet + warming, mug-drinkable. Made with bone broth.</div>
                 </div>
               </div>
