@@ -1735,6 +1735,21 @@ export default function MealPrep() {
 
   const [expandedDone, setExpandedDone] = useState({});
 
+  const goToRecipe = (recipeId) => {
+    const recipe = RECIPES.find((r) => r.id === recipeId);
+    if (!recipe) return;
+    let targetTab = "Recipes";
+    if (recipe.phase === 1 && !recipe.block) targetTab = "Block 1";
+    else if (recipe.block === 2) targetTab = "Block 2";
+    else if (recipe.block === 3) targetTab = "Block 3";
+    setExpandedDone((prev) => ({ ...prev, [recipeId]: true }));
+    setCurrentTab(targetTab);
+    setTimeout(() => {
+      const el = document.getElementById(`recipe-${recipeId}`);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+  };
+
   const RecipeCard = ({ recipe }) => {
     const st = recipeStatus[recipe.id] || "todo";
     const isDone = st === "done";
@@ -1744,6 +1759,7 @@ export default function MealPrep() {
     if (isDone && !isExpanded) {
       return (
         <div
+          id={`recipe-${recipe.id}`}
           className={`border rounded p-3 mb-2 flex items-center justify-between cursor-pointer ${cardBg} hover:bg-emerald-50/50 transition-colors`}
           onClick={() => setExpandedDone((prev) => ({ ...prev, [recipe.id]: true }))}
         >
@@ -1763,7 +1779,7 @@ export default function MealPrep() {
     }
 
     return (
-      <div className={`border rounded p-4 mb-4 ${cardBg}`}>
+      <div id={`recipe-${recipe.id}`} className={`border rounded p-4 mb-4 ${cardBg}`}>
         <div className="flex justify-between items-start mb-2">
           <div className="flex items-start gap-2">
             {isDone && (
@@ -1945,13 +1961,15 @@ export default function MealPrep() {
                       return (
                         <div
                           key={id}
-                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors ${isDone ? "bg-white/40" : "bg-white/70 hover:bg-white"}`}
-                          onClick={() => cycleStatus(id)}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isDone ? "bg-white/40" : "bg-white/70 hover:bg-white"}`}
                         >
                           <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${dotColor}`} />
-                          <div className="flex-1 min-w-0">
+                          <div
+                            className="flex-1 min-w-0 cursor-pointer"
+                            onClick={() => goToRecipe(id)}
+                          >
                             <div className="flex items-center gap-2">
-                              <span className={`font-medium text-sm ${textClass}`}>{recipe.name}</span>
+                              <span className={`font-medium text-sm ${textClass} hover:underline`}>{recipe.name}</span>
                               {totalBatches > 1 && (
                                 <span className={`text-xs px-1.5 py-0.5 rounded ${isDone ? "bg-emerald-100 text-emerald-600" : doneBatches > 0 ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
                                   {doneBatches}/{totalBatches} batches
@@ -1960,7 +1978,7 @@ export default function MealPrep() {
                             </div>
                             {!isDone && <p className={`text-xs ${noteClass} truncate`}>{note}</p>}
                           </div>
-                          <div className="flex-shrink-0">
+                          <div className="flex-shrink-0 cursor-pointer" onClick={() => cycleStatus(id)}>
                             <span className={`text-xs font-medium px-2 py-1 rounded ${isDone ? "bg-emerald-100 text-emerald-700" : isProgress ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
                               {isDone ? "\u2713 Done" : isProgress ? "Cooking" : "To Do"}
                             </span>
