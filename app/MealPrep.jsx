@@ -1597,8 +1597,8 @@ export default function MealPrep() {
   const ProgressBar = ({ blockId }) => {
     const blockRecipes = RECIPES.filter((r) => {
       if (blockId === 1) return r.phase === 1;
-      if (blockId === 2) return r.phase === 2 && r.id !== 2 && r.id !== 3 && r.id !== 51;
-      if (blockId === 3) return r.phase === 2 && r.id !== 2 && r.id !== 3 && r.id !== 51;
+      if (blockId === 2) return r.block === 2;
+      if (blockId === 3) return r.block === 3;
       return false;
     });
     const done = blockRecipes.filter((r) => recipeStatus[r.id] === "done").length;
@@ -2089,8 +2089,8 @@ export default function MealPrep() {
         const block = BLOCKS[idx];
         const blockRecipes = RECIPES.filter((r) => {
           if (blockId === 1) return r.phase === 1;
-          if (blockId === 2) return r.phase === 2 && ![2, 3, 51].includes(r.id);
-          if (blockId === 3) return r.phase === 2 && ![2, 3, 51].includes(r.id);
+          if (blockId === 2) return r.block === 2;
+          if (blockId === 3) return r.block === 3;
           return false;
         });
 
