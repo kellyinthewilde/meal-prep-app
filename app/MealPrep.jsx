@@ -1949,9 +1949,9 @@ export default function MealPrep() {
                       const st = recipeStatus[id] || "todo";
                       const isDone = st === "done";
                       const isProgress = st === "progress";
-                      const dotColor = isDone ? "bg-emerald-500" : isProgress ? "bg-amber-500" : "bg-gray-300";
-                      const textClass = isDone ? "text-gray-400 line-through" : "text-gray-900";
-                      const noteClass = isDone ? "text-gray-300" : "text-gray-500";
+                      const dotColor = isDone ? "bg-emerald-500" : isProgress ? "bg-amber-500" : "bg-gray-400";
+                      const textClass = isDone ? "text-gray-500 line-through" : "text-gray-900 font-semibold";
+                      const noteClass = isDone ? "text-gray-400" : "text-gray-700";
 
                       const totalBatches = recipe.batchCount || 1;
                       const doneBatches = totalBatches > 1
@@ -1969,7 +1969,7 @@ export default function MealPrep() {
                             onClick={() => goToRecipe(id)}
                           >
                             <div className="flex items-center gap-2">
-                              <span className={`font-medium text-sm ${textClass} hover:underline`}>{recipe.name}</span>
+                              <span className={`${textClass} hover:underline`}>{recipe.name}</span>
                               {totalBatches > 1 && (
                                 <span className={`text-xs px-1.5 py-0.5 rounded ${isDone ? "bg-emerald-100 text-emerald-600" : doneBatches > 0 ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
                                   {doneBatches}/{totalBatches} batches
