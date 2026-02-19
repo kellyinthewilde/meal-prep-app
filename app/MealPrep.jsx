@@ -1653,6 +1653,7 @@ export default function MealPrep() {
   const [shopChecked, setShopChecked] = useState({});
   const [shopTab, setShopTab] = useState("All Groceries");
   const [batchDone, setBatchDone] = useState({});
+  const [customBatchCount, setCustomBatchCount] = useState({});
 
   const TABS = ["Cook Plan", "Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
 
@@ -1666,6 +1667,7 @@ export default function MealPrep() {
       setFreezerInventory(data.freezer || {});
       setShopChecked(data.shopChecked || {});
       setBatchDone(data.batchDone || {});
+      setCustomBatchCount(data.customBatchCount || {});
     }
   }, []);
 
@@ -1677,9 +1679,10 @@ export default function MealPrep() {
       freezer: freezerInventory,
       shopChecked,
       batchDone,
+      customBatchCount,
     };
     localStorage.setItem("mealprep-v3", JSON.stringify(toSave));
-  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked, batchDone]);
+  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked, batchDone, customBatchCount]);
 
   const cycleStatus = (id) => {
     setRecipeStatus((prev) => {
@@ -1698,6 +1701,56 @@ export default function MealPrep() {
       const key = `${recipeId}-${batchNum}`;
       return { ...prev, [key]: !prev[key] };
     });
+  };
+
+  const getEffectiveBatches = (recipe) => {
+    if (customBatchCount[recipe.id] != null) return customBatchCount[recipe.id];
+    return recipe.batchCount || 1;
+  };
+
+  const adjustBatchCount = (recipeId, delta) => {
+    setCustomBatchCount((prev) => {
+      const recipe = RECIPES.find((r) => r.id === recipeId);
+      const base = recipe?.batchCount || 1;
+      const current = prev[recipeId] != null ? prev[recipeId] : base;
+      const next = Math.max(1, current + delta);
+      return { ...prev, [recipeId]: next };
+    });
+  };
+
+  const scaleIngredient = (ing, multiplier) => {
+    if (multiplier === 1) return ing;
+    const commentSplit = ing.split(" // ");
+    const main = commentSplit[0];
+    const comment = commentSplit.length > 1 ? " // " + commentSplit[1] : "";
+    const match = main.match(/^(\d+\.?\d*|\d+\/\d+)\s*(-\s*\d+\.?\d*)?\s+(.+)/);
+    if (!match) return ing;
+    let numStr = match[1];
+    let num;
+    if (numStr.includes("/")) {
+      const [n, d] = numStr.split("/").map(Number);
+      num = n / d;
+    } else {
+      num = parseFloat(numStr);
+    }
+    const scaled = num * multiplier;
+    const rangePart = match[2];
+    let rangeScaled = "";
+    if (rangePart) {
+      const rangeNum = parseFloat(rangePart.replace("-", "").trim());
+      rangeScaled = `-${rangeNum * multiplier}`;
+    }
+    const formatNum = (n) => {
+      if (n === Math.floor(n)) return String(n);
+      const fracs = [[0.25, "\u00BC"], [0.5, "\u00BD"], [0.75, "\u00BE"], [0.333, "\u2153"], [0.667, "\u2154"]];
+      const whole = Math.floor(n);
+      const frac = n - whole;
+      for (const [val, sym] of fracs) {
+        if (Math.abs(frac - val) < 0.05) return whole > 0 ? `${whole}${sym}` : sym;
+      }
+      return n % 1 === 0 ? String(n) : n.toFixed(1);
+    };
+    return `${formatNum(scaled)}${rangeScaled} ${match[3]}${comment}`;
   };
 
   const StatusBtn = ({ id }) => {
@@ -1767,8 +1820,8 @@ export default function MealPrep() {
           <div className="flex items-center gap-3">
             <span className="text-emerald-600 text-lg">&#10003;</span>
             <span className="font-medium text-gray-700 line-through">{recipe.name}</span>
-            {recipe.batchCount && recipe.batchCount > 1 && (
-              <span className="text-xs text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">{recipe.batchCount} batches</span>
+            {getEffectiveBatches(recipe) > 1 && (
+              <span className="text-xs text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">{getEffectiveBatches(recipe)} batches</span>
             )}
           </div>
           <div className="flex items-center gap-2">
@@ -1798,59 +1851,95 @@ export default function MealPrep() {
           <StatusBtn id={recipe.id} />
         </div>
 
-        {recipe.yield && (
-          <p className="text-gray-600 text-sm mb-2">
-            <strong>Yield:</strong> {recipe.yield}
-          </p>
-        )}
+        {(() => {
+          const baseBatches = recipe.batchCount || 1;
+          const effectiveBatches = getEffectiveBatches(recipe);
+          const multiplier = effectiveBatches / baseBatches;
+          const isCustom = customBatchCount[recipe.id] != null && customBatchCount[recipe.id] !== baseBatches;
+          return (
+            <>
+              <div className="flex items-center gap-4 mb-2 flex-wrap">
+                {recipe.yield && (
+                  <p className="text-gray-600 text-sm">
+                    <strong>Yield:</strong> {recipe.yield}
+                  </p>
+                )}
+                <div className="flex items-center gap-2 ml-auto">
+                  <span className="text-sm text-gray-500">Batches:</span>
+                  <button
+                    onClick={() => adjustBatchCount(recipe.id, -1)}
+                    className="w-7 h-7 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-sm flex items-center justify-center"
+                  >&minus;</button>
+                  <span className={`text-sm font-bold min-w-[1.5rem] text-center ${isCustom ? "text-violet-700" : "text-gray-900"}`}>{effectiveBatches}</span>
+                  <button
+                    onClick={() => adjustBatchCount(recipe.id, 1)}
+                    className="w-7 h-7 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-sm flex items-center justify-center"
+                  >+</button>
+                  {isCustom && (
+                    <button
+                      onClick={() => setCustomBatchCount((prev) => { const n = { ...prev }; delete n[recipe.id]; return n; })}
+                      className="text-xs text-violet-600 hover:text-violet-800 underline ml-1"
+                    >reset</button>
+                  )}
+                </div>
+              </div>
+              {multiplier !== 1 && (
+                <p className="text-xs text-violet-600 mb-2">
+                  Ingredients scaled {multiplier > 1 ? `${multiplier}x` : `${multiplier.toFixed(1)}x`} from original recipe
+                </p>
+              )}
 
-        <div className="grid md:grid-cols-2 gap-4 mb-3">
-          <div>
-            <h5 className="font-semibold text-gray-700 mb-1">Ingredients</h5>
-            <ul className="text-sm text-gray-600 list-disc list-inside">
-              {recipe.ingredients.map((ing, i) => {
-                const parts = ing.split(" // ");
-                return (
-                  <li key={i}>
-                    {parts[0]}
-                    {parts[1] && <span className="block text-xs text-amber-700 ml-5 mt-0.5">{parts[1]}</span>}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div>
-            <h5 className="font-semibold text-gray-700 mb-1">Instructions</h5>
-            <ol className="text-sm text-gray-600 list-decimal list-inside">
-              {recipe.instructions.map((inst, i) => (
-                <li key={i}>{inst}</li>
-              ))}
-            </ol>
-          </div>
-        </div>
+              <div className="grid md:grid-cols-2 gap-4 mb-3">
+                <div>
+                  <h5 className="font-semibold text-gray-700 mb-1">Ingredients</h5>
+                  <ul className="text-sm text-gray-600 list-disc list-inside">
+                    {recipe.ingredients.map((ing, i) => {
+                      const scaled = scaleIngredient(ing, multiplier);
+                      const parts = scaled.split(" // ");
+                      return (
+                        <li key={i}>
+                          {parts[0]}
+                          {parts[1] && <span className="block text-xs text-amber-700 ml-5 mt-0.5">{parts[1]}</span>}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+                <div>
+                  <h5 className="font-semibold text-gray-700 mb-1">Instructions</h5>
+                  <ol className="text-sm text-gray-600 list-decimal list-inside">
+                    {recipe.instructions.map((inst, i) => (
+                      <li key={i}>{inst}</li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
 
-        {recipe.batchCount && recipe.batchCount > 1 && (
-          <div className="mb-3">
-            <h5 className="font-semibold text-gray-700 text-sm mb-1">Batch Progress</h5>
-            <div className="flex flex-wrap gap-2">
-              {Array.from({ length: recipe.batchCount }, (_, i) => {
-                const key = `${recipe.id}-${i + 1}`;
-                const done = !!batchDone[key];
-                return (
-                  <label key={i} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm cursor-pointer ${done ? "bg-emerald-50 border-emerald-300 text-emerald-700" : "bg-gray-50 border-gray-300 text-gray-600"}`}>
-                    <input
-                      type="checkbox"
-                      checked={done}
-                      onChange={() => toggleBatch(recipe.id, i + 1)}
-                      className="w-3.5 h-3.5"
-                    />
-                    Batch {i + 1}
-                  </label>
-                );
-              })}
-            </div>
-          </div>
-        )}
+              {effectiveBatches > 1 && (
+                <div className="mb-3">
+                  <h5 className="font-semibold text-gray-700 text-sm mb-1">Batch Progress</h5>
+                  <div className="flex flex-wrap gap-2">
+                    {Array.from({ length: effectiveBatches }, (_, i) => {
+                      const key = `${recipe.id}-${i + 1}`;
+                      const done = !!batchDone[key];
+                      return (
+                        <label key={i} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm cursor-pointer ${done ? "bg-emerald-50 border-emerald-300 text-emerald-700" : "bg-gray-50 border-gray-300 text-gray-600"}`}>
+                          <input
+                            type="checkbox"
+                            checked={done}
+                            onChange={() => toggleBatch(recipe.id, i + 1)}
+                            className="w-3.5 h-3.5"
+                          />
+                          Batch {i + 1}
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </>
+          );
+        })()}
 
         {recipe.freezing && (
           <p className="text-gray-600 text-sm mb-2">
@@ -1954,7 +2043,7 @@ export default function MealPrep() {
                       const textClass = isDone ? "text-gray-500 line-through" : "text-gray-900 font-semibold";
                       const noteClass = isDone ? "text-gray-400" : "text-gray-700";
 
-                      const totalBatches = recipe.batchCount || 1;
+                      const totalBatches = getEffectiveBatches(recipe);
                       const doneBatches = totalBatches > 1
                         ? Array.from({ length: totalBatches }, (_, i) => batchDone[`${id}-${i + 1}`] ? 1 : 0).reduce((a, b) => a + b, 0)
                         : 0;
