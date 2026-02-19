@@ -8,6 +8,124 @@ const BLOCKS = [
   { id: 3, title: "Iron, Protein & Breakfast", dates: "Post-Birth", description: "Beef Stews, Hidden Liver, Breakfast Prep — Jonny handles when ready", purpose: "Jonny cooks", color: "red" },
 ];
 
+// ── COOK PLAN (phased cooking order) ──
+const COOK_PLAN = [
+  {
+    id: "A",
+    title: "Fridge Prep",
+    when: "Now",
+    description: "No freezer needed. Balls, bites, and pantry prep while waiting for 3rd freezer.",
+    bgClass: "bg-violet-50",
+    borderClass: "border-violet-200",
+    badgeBg: "bg-violet-100",
+    badgeText: "text-violet-800",
+    recipes: [
+      { id: 53, note: "No-bake. All 3 batches at once \u2014 45 min total." },
+      { id: 80, note: "No-bake. All 3 batches. Food processor + roll." },
+      { id: 81, note: "No-bake. All 3 batches. Mix + roll." },
+      { id: 82, note: "No-bake. Both batches. Food processor + roll." },
+      { id: 52, note: "Oven 18 min. Eat from fridge this week." },
+      { id: 6, note: "15 min. Fridge jar, lasts 2 weeks." },
+      { id: 60, note: "Stove 25 min simmer. Both batches. Drink from fridge." },
+    ],
+  },
+  {
+    id: "B",
+    title: "Broth + Soups",
+    when: "Once freezer opens",
+    description: "Run IPs on broth while soups simmer on the stove.",
+    bgClass: "bg-amber-50",
+    borderClass: "border-amber-200",
+    badgeBg: "bg-amber-100",
+    badgeText: "text-amber-800",
+    recipes: [
+      { id: 51, note: "DONE" },
+      { id: 2, note: "Big IP \u2014 3 hrs hands-off. Last R1 batch." },
+      { id: 1, note: "Small IP \u2014 2.5 hrs hands-off. Last R1 batch." },
+      { id: 3, note: "Stove 20 min. Uses chicken broth as base." },
+      { id: 57, note: "Stove 40 min. Eat the beef." },
+      { id: 8, note: "Stove 20 min active + 1.5 hr simmer. Batch 2." },
+      { id: 9, note: "Stove 30 min. Blend smooth. Batch 2." },
+      { id: 11, note: "Roast squash 45 min, then stove 25 min. Both batches." },
+    ],
+  },
+  {
+    id: "C",
+    title: "Sweet + Breakfast",
+    when: "Days 4-5",
+    description: "Congees, sweet soups, and egg prep.",
+    bgClass: "bg-rose-50",
+    borderClass: "border-rose-200",
+    badgeBg: "bg-rose-100",
+    badgeText: "text-rose-800",
+    recipes: [
+      { id: 61, note: "DONE" },
+      { id: 78, note: "Stove 20 min + 1.5 hr simmer. Both batches." },
+      { id: 62, note: "Stove 45 min. Comfort food." },
+      { id: 79, note: "Stove 30 min. Both batches. Mug-drinkable." },
+      { id: 55, note: "Oven 18 min per batch. All 4 batches." },
+    ],
+  },
+  {
+    id: "D",
+    title: "Hearty Meals",
+    when: "Days 6-8",
+    description: "Curries, soups, chilis. The bulk of your freezer meals.",
+    bgClass: "bg-orange-50",
+    borderClass: "border-orange-200",
+    badgeBg: "bg-orange-100",
+    badgeText: "text-orange-800",
+    recipes: [
+      { id: 19, note: "Stove 30 min. Marinate night before. Both batches." },
+      { id: 26, note: "Stove 30 min." },
+      { id: 63, note: "Stove 40 min simmer. Ayurvedic gold." },
+      { id: 12, note: "Stove 2 hrs (dried) or 30 min (canned)." },
+      { id: 13, note: "Stove 30 min. Freeze WITHOUT noodles." },
+      { id: 14, note: "Stove 25 min. Freeze WITHOUT pasta." },
+      { id: 65, note: "Stove 25 min." },
+      { id: 66, note: "Stove 30 min." },
+      { id: 43, note: "Rice cooker. All 3 batches." },
+      { id: 54, note: "Oven 20 min." },
+    ],
+  },
+  {
+    id: "E",
+    title: "Iron + Protein",
+    when: "Days 9-10",
+    description: "Hidden liver recipes and omega-3. Critical postpartum nutrition.",
+    bgClass: "bg-red-50",
+    borderClass: "border-red-200",
+    badgeBg: "bg-red-100",
+    badgeText: "text-red-800",
+    recipes: [
+      { id: 17, note: "Stove 30 min. Hidden liver \u2014 undetectable." },
+      { id: 40, note: "Stove + Oven. Brown then bake 15 min." },
+      { id: 35, note: "Stove 10 min per side." },
+    ],
+  },
+  {
+    id: "F",
+    title: "Block 3 / Friends",
+    when: "Days 11+ or delegate",
+    description: "Stews, breakfast, comfort. Great candidates for friend delegation.",
+    bgClass: "bg-sky-50",
+    borderClass: "border-sky-200",
+    badgeBg: "bg-sky-100",
+    badgeText: "text-sky-800",
+    recipes: [
+      { id: 22, note: "Stove 30 min. Hidden liver." },
+      { id: 68, note: "Stove/IP 1.5 hrs simmer." },
+      { id: 69, note: "Stove/IP 2 hrs simmer." },
+      { id: 32, note: "Stove 20 min. Freeze filling only." },
+      { id: 45, note: "Stove 20 min. Boil + mash." },
+      { id: 72, note: "Stove 30 min. Both batches." },
+      { id: 73, note: "Oven 18 min. Both batches." },
+      { id: 75, note: "Oven 40 min. All 3 quiches." },
+      { id: 77, note: "Oven 35 min. Both batches." },
+    ],
+  },
+];
+
 // ── SHOPPING LISTS ──
 const SHOPPING = {
   equipment: [
@@ -151,7 +269,7 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["collagen", "base"],
-    batchCount: 3,
+    batchCount: 2,
     ingredients: [
       "2-3 chicken carcasses (from roasted chickens)",
       "Remaining chicken feet // Blanch in boiling water 2-3 min first to remove impurities",
@@ -185,7 +303,7 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["collagen", "iron"],
-    batchCount: 8,
+    batchCount: 2,
     ingredients: [
       "3-4 lbs beef marrow bones (cut crosswise) // Ask butcher to cut crosswise to expose the marrow",
       "2-3 lbs oxtail // Keep ALL the meat after cooking. Shred and add back to broth or save for congee topping",
@@ -219,7 +337,7 @@ const RECIPES = [
     track: "kelly",
     kellyWeek: 1,
     tags: ["warming", "tonic"],
-    batchCount: 3,
+    batchCount: 2,
     ingredients: [
       "8 cups ROUND 1 chicken broth",
       "3\" fresh turmeric (or 1 tbsp ground) // Stains everything bright yellow. Use gloves or utensils. No need to peel.",
@@ -557,9 +675,10 @@ const RECIPES = [
     kellyWeek: 1,
     tags: ["lactation", "snack"],
     lactation: true,
+    batchCount: 3,
     ingredients: [
       "1 cup rolled oats",
-      "1/2 cup peanut or almond butter",
+      "1/2 cup almond butter // or cashew butter",
       "1/4 cup honey",
       "2 tbsp brewer's yeast",
       "2 tbsp ground flaxseed",
@@ -573,9 +692,9 @@ const RECIPES = [
       "Roll into 1-inch balls",
       "Refrigerate 30 min before freezing",
     ],
-    yield: "~30 bites",
-    freezing: "Freeze in layers on sheet, then bag. Grab 2-3 for a snack. Eat directly from freezer or let sit 5 min.",
-    note: "No-bake lactation snack. Brewer's yeast + flax + chia = milk supply boost.",
+    yield: "~90 bites (3 batches of ~30). At 3 bites/snack, lasts ~30 days.",
+    freezing: "Freeze flat on sheet pan, then transfer to freezer bags. Grab 2-3 for a snack. Eat from freezer or let sit 5 min.",
+    note: "No-bake lactation snack. Brewer's yeast + flax + chia = milk supply boost. Make all 3 batches at once — 15 min per batch.",
   },
   {
     id: 78,
@@ -1525,7 +1644,7 @@ const RECIPES = [
 
 // ── MAIN COMPONENT ──
 export default function MealPrep() {
-  const [currentTab, setCurrentTab] = useState("Daily Guide");
+  const [currentTab, setCurrentTab] = useState("Cook Plan");
   const [recipeNotes, setRecipeNotes] = useState({});
   const [recipeStatus, setRecipeStatus] = useState({});
   const [globalNotes, setGlobalNotes] = useState("");
@@ -1534,7 +1653,7 @@ export default function MealPrep() {
   const [shopTab, setShopTab] = useState("All Groceries");
   const [batchDone, setBatchDone] = useState({});
 
-  const TABS = ["Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
+  const TABS = ["Cook Plan", "Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
 
   useEffect(() => {
     const saved = localStorage.getItem("mealprep-v3");
@@ -1763,6 +1882,99 @@ export default function MealPrep() {
           </button>
         ))}
       </div>
+
+      {/* COOK PLAN TAB */}
+      {currentTab === "Cook Plan" && (() => {
+        const allPlanRecipeIds = COOK_PLAN.flatMap((p) => p.recipes.map((r) => r.id));
+        const totalRecipes = allPlanRecipeIds.length;
+        const doneRecipes = allPlanRecipeIds.filter((id) => recipeStatus[id] === "done").length;
+        const overallPct = totalRecipes > 0 ? Math.round((doneRecipes / totalRecipes) * 100) : 0;
+
+        return (
+          <div className="space-y-5">
+            {/* Overall progress */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+              <div className="flex items-center justify-between mb-3">
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900">Cooking Progress</h2>
+                  <p className="text-sm text-gray-500">{doneRecipes} of {totalRecipes} recipes complete</p>
+                </div>
+                <span className="text-2xl font-bold text-emerald-600">{overallPct}%</span>
+              </div>
+              <div className="bg-gray-200 rounded-full h-3">
+                <div className="bg-emerald-500 h-3 rounded-full transition-all" style={{ width: `${overallPct}%` }} />
+              </div>
+            </div>
+
+            {/* Phases */}
+            {COOK_PLAN.map((phase) => {
+              const phaseRecipeIds = phase.recipes.map((r) => r.id);
+              const phaseDone = phaseRecipeIds.filter((id) => recipeStatus[id] === "done").length;
+              const phaseTotal = phaseRecipeIds.length;
+
+              return (
+                <div key={phase.id} className={`rounded-xl border p-5 ${phase.bgClass} ${phase.borderClass}`}>
+                  <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center gap-2.5">
+                      <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${phase.badgeBg} ${phase.badgeText}`}>
+                        {phase.id}
+                      </span>
+                      <span className="font-bold text-gray-900">{phase.title}</span>
+                      <span className="text-sm text-gray-500">{phase.when}</span>
+                    </div>
+                    <span className="text-sm font-medium text-gray-600">{phaseDone}/{phaseTotal}</span>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4 ml-9">{phase.description}</p>
+
+                  <div className="space-y-1.5">
+                    {phase.recipes.map(({ id, note }) => {
+                      const recipe = RECIPES.find((r) => r.id === id);
+                      if (!recipe) return null;
+                      const st = recipeStatus[id] || "todo";
+                      const isDone = st === "done";
+                      const isProgress = st === "progress";
+                      const dotColor = isDone ? "bg-emerald-500" : isProgress ? "bg-amber-500" : "bg-gray-300";
+                      const textClass = isDone ? "text-gray-400 line-through" : "text-gray-900";
+                      const noteClass = isDone ? "text-gray-300" : "text-gray-500";
+
+                      const totalBatches = recipe.batchCount || 1;
+                      const doneBatches = totalBatches > 1
+                        ? Array.from({ length: totalBatches }, (_, i) => batchDone[`${id}-${i + 1}`] ? 1 : 0).reduce((a, b) => a + b, 0)
+                        : 0;
+
+                      return (
+                        <div
+                          key={id}
+                          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors ${isDone ? "bg-white/40" : "bg-white/70 hover:bg-white"}`}
+                          onClick={() => cycleStatus(id)}
+                        >
+                          <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${dotColor}`} />
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className={`font-medium text-sm ${textClass}`}>{recipe.name}</span>
+                              {totalBatches > 1 && (
+                                <span className={`text-xs px-1.5 py-0.5 rounded ${isDone ? "bg-emerald-100 text-emerald-600" : doneBatches > 0 ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
+                                  {doneBatches}/{totalBatches} batches
+                                </span>
+                              )}
+                            </div>
+                            {!isDone && <p className={`text-xs ${noteClass} truncate`}>{note}</p>}
+                          </div>
+                          <div className="flex-shrink-0">
+                            <span className={`text-xs font-medium px-2 py-1 rounded ${isDone ? "bg-emerald-100 text-emerald-700" : isProgress ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
+                              {isDone ? "\u2713 Done" : isProgress ? "Cooking" : "To Do"}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })()}
 
       {/* DAILY GUIDE TAB */}
       {currentTab === "Daily Guide" && (
@@ -2123,7 +2335,7 @@ export default function MealPrep() {
       )}
 
       {/* BLOCK TABS */}
-      {TABS.slice(3, 6).map((blockName, idx) => {
+      {TABS.slice(4, 7).map((blockName, idx) => {
         const blockId = idx + 1;
         const block = BLOCKS[idx];
         const blockRecipes = RECIPES.filter((r) => {
