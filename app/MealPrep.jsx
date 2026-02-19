@@ -31,13 +31,13 @@ const SHOPPING = {
         "Chicken feet 3 lbs — broth collagen [B1]",
         "Beef brisket 1 lb sliced thin — miyeokguk [B1]",
         "Silkie chicken (black) 1 small — Wu Ji Tang tonic [B1]",
-        "Chicken thighs bone-in 6 lbs — butter chicken, Japanese curry, chicken noodle, pot pie [B2]",
+        "Chicken thighs bone-in 5 lbs — butter chicken, chicken noodle, pot pie, white chili [B2+B3]",
         "Italian sausage 1 lb — frittatas [B3]",
-        "Ground beef 6 lbs — bolognese, chili, meatballs, burrito bowls [B3]",
-        "Chicken livers 8 oz — hidden liver (puree into bolognese, chili, meatballs) [B3]",
-        "Beef chuck 8 lbs — 4 stews (sweet potato, Moroccan, rendang, barley) [B3]",
+        "Ground beef 6 lbs — bolognese, chili, meatballs [B2+B3]",
+        "Chicken livers 8 oz — hidden liver (puree into bolognese, chili, meatballs) [B2+B3]",
+        "Beef chuck 4 lbs — 2 stews (sweet potato, Moroccan) [B3]",
         "Bacon 1 lb — quiche Lorraine [B3]",
-        "Salmon fillets 1 lb or canned salmon x3 — salmon patties [B3]",
+        "Salmon fillets 1 lb or canned salmon x3 — salmon patties [B2]",
       ],
     },
     {
@@ -74,7 +74,7 @@ const SHOPPING = {
         "Sweet potatoes 8+ lbs total — sweet potato coconut soup (2 batches), stew, mashed [B2+B3]",
         "Kabocha squash x3 — kabocha soup (extra batch for later weeks) [B1]",
         "Red lentils 2 lbs — kabocha soup (extra batch) [B1]",
-        "Coconut milk x13 cans — soups, congee, curries, dals, rendang, rice pudding [B1+B2+B3]",
+        "Coconut milk x12 cans — soups, congee, curries, dals, rice pudding, sweet potato soup [B1+B2+B3]",
         "Crushed tomatoes (San Marzano) x7 — bolognese, chili, stews, butter chicken [B2+B3]",
         "Tomato paste x4 — broths, stews, sauces [B1+B2+B3]",
         "Ghee 1 large jar — golden broth, cooking, dals [B1+B2]",
@@ -102,7 +102,6 @@ const SHOPPING = {
         "Raw almonds — oatmeal cups [B1]",
         "Nut butter (almond or peanut) — oatmeal cups, bites [B1]",
         "Dark chocolate chips — lactation bites [B1]",
-        "Peanut butter — rendang [B3]",
         "Medjool dates 2 lbs — date congee, tahini date balls, almond coconut balls [B2]",
         "Walnuts 1 lb — date congee topping [B2]",
         "Tahini 1 jar — tahini date balls [B2]",
@@ -112,26 +111,24 @@ const SHOPPING = {
         "Cacao nibs or extra dark chocolate chips — almond coconut balls [B2]",
         "Coconut flakes (unsweetened) 1 bag — cashew butter choco oat balls [B2]",
         "Dried black beans 1 lb — black bean soup [B2]",
-        "Yellow lentils 1 lb — tadka dal [B2]",
+        "Red lentils 1 lb — coconut lentil dal [B2]",
         "Yellow mung dal or red lentils — kitchari [B2]",
         "Dried chickpeas 1 lb or 2 cans — chickpea curry [B2]",
         "Chickpeas 1 can — Moroccan stew [B3]",
         "White beans 2 cans — white chicken chili [B2]",
-        "Black beans 2 cans — burrito bowls [B3]",
+        "Black beans 1 can — beef chili [B2]",
         "Diced green chiles 2 cans — white chicken chili [B2]",
-        "Pearl barley 1 cup — beef barley stew [B3]",
+        "Breadcrumbs — meatballs [B2], salmon patties [B2]",
         "Spinach 2 bags — chickpea curry, minestrone [B2]",
         "Zucchini 2 — savory muffins [B2]",
         "Red bell peppers 2 — frittatas [B3]",
         "Broccoli 2 heads — frittatas [B3]",
         "Fennel seeds — muffins (lactation) [B2]",
         "Flour — muffins [B2]",
-        "Breadcrumbs — meatballs, salmon patties [B3]",
+        "Cocoa powder — beef chili (flavor depth) [B2]",
         "Pie crusts x3 (store-bought) — quiche [B3]",
         "Puff pastry 1 box — chicken pot pie [B3]",
         "Red wine 1 bottle — bolognese [B3]",
-        "Cocoa powder — beef chili (flavor depth) [B3]",
-        "Salsa 1 jar — burrito bowls [B3]",
         "Chicken stock backup x2 — pantry safety [B2]",
         "Nettle tea bags — daily iron tonic [B1]",
         "Dried apricots unsulfured — iron snack [B1]",
@@ -431,7 +428,7 @@ const RECIPES = [
       "Top with black sesame",
     ],
     yield: "~8 portions",
-    freezing: "Freeze in Souper Cubes. Add splash of milk when reheating.",
+    freezing: "Freeze in 1-cup Souper Cubes. Add splash of milk when reheating on stovetop.",
     note: "Comfort food meets TCM blood-builders. Warming, nourishing, easy to digest.",
   },
   {
@@ -784,7 +781,7 @@ const RECIPES = [
       "Season with salt and pepper",
     ],
     yield: "~10 portions per batch. Need 2 batches (20 portions total).",
-    freezing: "SHARED bags (split between Kelly + Jonny). Freeze in portions. Serve over frozen rice.",
+    freezing: "Freeze in 2-cup Souper Cubes (single serving over rice). Thaw in fridge night before or reheat from frozen on stovetop.",
   },
   {
     id: 26,
@@ -821,7 +818,7 @@ const RECIPES = [
       "Simmer 5 min, season with salt and lime",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags. Serve over rice.",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop, serve over frozen rice.",
   },
   {
     id: 63,
@@ -854,7 +851,7 @@ const RECIPES = [
       "Season with salt and lemon",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags. Reheat with splash of water/broth. Serve as is.",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheat with splash of water or broth — it thickens when frozen.",
     note: "The Ayurvedic gold standard for postpartum recovery. Gentle, warming, deeply nourishing. Easy to digest.",
   },
   {
@@ -890,7 +887,7 @@ const RECIPES = [
       "Season with salt, pepper, lime",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags. Thick and hearty.",
+    freezing: "Freeze in 2-cup Souper Cubes. Thick and hearty — reheats perfectly on stovetop.",
   },
   {
     id: 14,
@@ -926,7 +923,7 @@ const RECIPES = [
       "Season with salt, pepper",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags. Freeze base without pasta. Add fresh pasta when reheating.",
+    freezing: "Freeze in 2-cup Souper Cubes WITHOUT pasta. Cook pasta fresh when serving — add to reheated soup.",
   },
   {
     id: 13,
@@ -959,7 +956,7 @@ const RECIPES = [
       "Season with salt, pepper",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags. Freeze without noodles. Cook noodles fresh when serving.",
+    freezing: "Freeze in 2-cup Souper Cubes WITHOUT noodles. Cook egg noodles fresh when serving.",
   },
   {
     id: 65,
@@ -994,7 +991,7 @@ const RECIPES = [
       "Season with salt and lime",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags.",
+    freezing: "Freeze in 2-cup Souper Cubes. Serve over frozen rice.",
     note: "Plant-based iron + protein. The spinach wilts into nothing but adds iron.",
   },
   {
@@ -1030,7 +1027,7 @@ const RECIPES = [
       "Season with lime and cilantro",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags.",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — great over rice or with tortilla chips.",
   },
   {
     id: 43,
@@ -1055,7 +1052,7 @@ const RECIPES = [
       "Portion into freezer bags or containers",
     ],
     yield: "~12 one-cup portions",
-    freezing: "Freeze flat in bags (stacks easily). Reheat in saucepan with splash of water or microwave 3 min with cover.",
+    freezing: "Freeze in ½-cup Souper Cubes (side portions to pair with curries/stews). Reheat in saucepan with splash of water or microwave 3 min with cover.",
   },
   {
     id: 54,
@@ -1159,7 +1156,7 @@ const RECIPES = [
       "Season with salt and pepper",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags. Serve over pasta or rice.",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop, serve over pasta or rice.",
     note: "Liver is puréed to liquid, 10% ratio, mixed in with ground beef. Strong flavors (wine, tomato, herbs) mask completely. Undetectable iron boost.",
   },
   {
@@ -1167,7 +1164,7 @@ const RECIPES = [
     name: "Beef Chili (Hidden Liver)",
     category: "Chilis",
     phase: 2,
-    block: 3,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["chili", "iron", "hidden-liver"],
@@ -1200,7 +1197,7 @@ const RECIPES = [
       "Season with salt and pepper",
     ],
     yield: "~12 portions",
-    freezing: "SHARED bags.",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — great over rice or with cornbread.",
     note: "Hidden liver — chicken livers pur\u00e9ed to liquid, 10% ratio mixed with ground beef. Cocoa deepens flavor. Completely undetectable.",
   },
   {
@@ -1208,7 +1205,7 @@ const RECIPES = [
     name: "Meatballs (Hidden Liver)",
     category: "Proteins",
     phase: 2,
-    block: 3,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["iron", "hidden-liver"],
@@ -1234,7 +1231,7 @@ const RECIPES = [
       "Transfer to baking sheet, bake 350F 12-15 min until cooked through",
     ],
     yield: "~30 meatballs",
-    freezing: "SHARED bags. Add to minestrone, chicken noodle soup, or eat standalone with marinara.",
+    freezing: "Freeze flat on sheet pan, then transfer to freezer bags. Drop into minestrone or chicken noodle soup, or reheat standalone with marinara.",
     note: "Hidden liver — chicken livers pur\u00e9ed to liquid, 10% ratio mixed with ground beef. Italian seasoning + tomato paste mask completely. Undetectable.",
   },
   {
@@ -1270,7 +1267,7 @@ const RECIPES = [
       "Season with salt and pepper",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags.",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — complete meal, no side needed.",
     note: "Iron-rich and naturally sweet. The cinnamon + cumin + paprika give it warmth.",
   },
   {
@@ -1307,7 +1304,7 @@ const RECIPES = [
       "Season with lemon, garnish cilantro",
     ],
     yield: "~10 portions",
-    freezing: "SHARED bags.",
+    freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop. Warming spice blend.",
   },
   {
     id: 32,
@@ -1341,14 +1338,14 @@ const RECIPES = [
       "Season with salt and pepper",
     ],
     yield: "~8 portions",
-    freezing: "SHARED bags. Thaw, pour into ramekin, top with puff pastry, 400F 20-25 min.",
+    freezing: "Freeze in 1-cup Souper Cubes. Thaw, pour into ramekin, top with puff pastry, bake 400F 20-25 min.",
   },
   {
     id: 35,
     name: "Salmon Patties + Rice + Warm Greens",
     category: "Proteins",
     phase: 2,
-    block: 3,
+    block: 2,
     track: "shared",
     kellyWeek: 2,
     tags: ["omega-3", "lactation"],
@@ -1370,7 +1367,7 @@ const RECIPES = [
       "Heat olive oil, brown patties 4-5 min each side until golden",
     ],
     yield: "~8 patties (4 servings of 2)",
-    freezing: "SHARED bags. Serve with frozen rice + sauteed greens (spinach, kale).",
+    freezing: "Freeze flat on sheet pan with parchment between patties, then transfer to freezer bags. Reheat in skillet or toaster oven. Serve with frozen rice + sauteed greens.",
     note: "Omega-3 supports lactation + baby's brain development.",
   },
   {
@@ -1396,7 +1393,7 @@ const RECIPES = [
       "Mash with butter, milk, cinnamon, salt, pepper",
     ],
     yield: "~8 portions",
-    freezing: "SHARED bags.",
+    freezing: "Freeze in ½-cup Souper Cubes (side dish portions). Reheat on stovetop or microwave.",
   },
   {
     id: 72,
@@ -1423,7 +1420,7 @@ const RECIPES = [
       "Stir in cinnamon",
     ],
     yield: "~12 portions per batch. Need 2 batches (24 total, 15 eaten).",
-    freezing: "Freeze in Souper Cubes. Reheat with splash of milk.",
+    freezing: "Freeze in 1-cup Souper Cubes. Reheat with splash of milk on stovetop or microwave.",
     note: "Hearty breakfast base. Top with whatever's in the pantry — honey, walnuts, berries.",
   },
   {
@@ -1485,7 +1482,7 @@ const RECIPES = [
       "Cool before slicing",
     ],
     yield: "8 slices per quiche. Need 3 quiches (24 slices total, 12 servings of 2). 10 eaten.",
-    freezing: "SHARED bags. Freeze slices, reheat in toaster oven.",
+    freezing: "Wrap individual slices in parchment, then freezer bag. Reheat in toaster oven 350F 10-12 min.",
     note: "The only quiche you need. Bacon + gruyère is classic Lorraine. Freeze slices, reheat in toaster oven.",
   },
   {
@@ -1617,15 +1614,50 @@ export default function MealPrep() {
     );
   };
 
+  const [expandedDone, setExpandedDone] = useState({});
+
   const RecipeCard = ({ recipe }) => {
     const st = recipeStatus[recipe.id] || "todo";
-    const cardBg = st === "done" ? "border-emerald-200 bg-emerald-50/30" : st === "progress" ? "border-amber-200 bg-amber-50/20" : "border-gray-300 bg-white";
+    const isDone = st === "done";
+    const isExpanded = !!expandedDone[recipe.id];
+    const cardBg = isDone ? "border-emerald-200 bg-emerald-50/30" : st === "progress" ? "border-amber-200 bg-amber-50/20" : "border-gray-300 bg-white";
+
+    if (isDone && !isExpanded) {
+      return (
+        <div
+          className={`border rounded p-3 mb-2 flex items-center justify-between cursor-pointer ${cardBg} hover:bg-emerald-50/50 transition-colors`}
+          onClick={() => setExpandedDone((prev) => ({ ...prev, [recipe.id]: true }))}
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-emerald-600 text-lg">&#10003;</span>
+            <span className="font-medium text-gray-700 line-through">{recipe.name}</span>
+            {recipe.batchCount && recipe.batchCount > 1 && (
+              <span className="text-xs text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">{recipe.batchCount} batches</span>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            <StatusBtn id={recipe.id} />
+            <span className="text-gray-400 text-xs">tap to expand</span>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className={`border rounded p-4 mb-4 ${cardBg}`}>
         <div className="flex justify-between items-start mb-2">
-          <div>
-            <h4 className="font-bold text-lg">{recipe.name}</h4>
-            <p className="text-gray-600 text-sm">{recipe.tags.join(" • ")}</p>
+          <div className="flex items-start gap-2">
+            {isDone && (
+              <button
+                onClick={() => setExpandedDone((prev) => ({ ...prev, [recipe.id]: false }))}
+                className="text-gray-400 hover:text-gray-600 text-sm mt-1"
+                title="Collapse"
+              >&#9650;</button>
+            )}
+            <div>
+              <h4 className="font-bold text-lg">{recipe.name}</h4>
+              <p className="text-gray-600 text-sm">{recipe.tags.join(" \u2022 ")}</p>
+            </div>
           </div>
           <StatusBtn id={recipe.id} />
         </div>
