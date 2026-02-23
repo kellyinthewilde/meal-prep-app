@@ -487,7 +487,7 @@ const RECIPES = [
       "Stir in chicken + sesame oil",
       "Season",
     ],
-    yield: "~12 two-cup portions. Need 2 batches (14 servings needed).",
+    yield: "~8 two-cup portions per batch. 2 batches = ~16 two-cup portions.",
     freezing: "KELLY bags. Thickens when frozen — add broth when reheating.",
     toppings: "Soft-boiled egg, shredded chicken (from broth-making), ginger-scallion oil, sesame seeds, coconut aminos, pumpkin seeds, black sesame seeds, sliced jujubes, goji berries",
   },
@@ -524,7 +524,7 @@ const RECIPES = [
       "Optional: simmer 4 cups frozen dark cherries with 1 tbsp honey + pinch of vanilla for 5 min, then swirl warm cooked cherries through one batch of congee before portioning",
       "Cool before portioning into 1-cup portions for freezing",
     ],
-    yield: "~30 portions (tripled batch). This is a breakfast bowl, not a full meal.",
+    yield: "~30 one-cup portions (tripled batch). Breakfast bowl, not a full meal.",
     freezing: "Freeze in 1-cup Souper Cubes. Thickens a lot when frozen — add a splash of water or milk when reheating on the stove.",
     note: "Warming chai-spiced sweet congee. Jujubes + goji are traditional TCM blood-builders. Warming spices help counter postpartum vata (cold, dry, depleted). Top with toasted black sesame and a drizzle of honey. Dark cherry swirl takes this to another level.",
   },
@@ -557,7 +557,7 @@ const RECIPES = [
       "Optional: simmer 4 cups frozen mixed berries with 1 tbsp honey for 5 min, then fold warm cooked berries through the pudding before portioning",
       "Top with black sesame",
     ],
-    yield: "~8 portions",
+    yield: "~8 one-cup portions",
     freezing: "Freeze in 1-cup Souper Cubes. Add splash of milk when reheating on stovetop.",
     note: "Comfort food meets TCM blood-builders. Warming, nourishing, easy to digest. Folding in warm cooked berries before portioning makes a gorgeous swirl.",
   },
@@ -588,7 +588,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 8 min, natural release 10 min then quick release // coconut milk added after, but carrots foam",
       "Blend smooth, stir in coconut milk",
     ],
-    yield: "~10 two-cup portions per batch. Make 2 batches (20 portions for Weeks 1-4).",
+    yield: "~5 two-cup portions per batch. 2 batches = ~10 two-cup portions.",
     freezing: "KELLY bags. Freezes beautifully.",
   },
   {
@@ -628,7 +628,7 @@ const RECIPES = [
       "Blend until smooth — mung beans need aggressive blending",
       "Season with salt and lime",
     ],
-    yield: "~10 two-cup portions per batch. Make 2 batches (20 portions for Weeks 1-4).",
+    yield: "~8 two-cup portions per batch. 2 batches = ~16 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. May thicken — add broth when reheating.",
   },
   {
@@ -752,7 +752,7 @@ const RECIPES = [
       "Season with salt to taste",
       "Stir in chopped walnuts at the end"
     ],
-    yield: "~20 portions (2 batches of ~10 portions each)",
+    yield: "~10 one-cup portions per batch. 2 batches = ~20 one-cup portions.",
     freezing: "Freeze in 1-cup Souper Cubes. Thickens when frozen — add water or milk when reheating. Top with chopped walnuts and honey.",
     note: "Naturally sweet from the dates — like warm date-walnut cake in congee form. Dates are one of the top postpartum recovery foods across Middle Eastern, Ayurvedic, and TCM traditions."
   },
@@ -791,7 +791,7 @@ const RECIPES = [
       "Blend until completely smooth using an immersion blender",
       "Season with salt. Add honey or maple syrup if desired"
     ],
-    yield: "~16-20 portions (2 batches of ~8-10 two-cup portions each)",
+    yield: "~6 two-cup portions per batch. 2 batches = ~12 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Reheats perfectly — pour into mug, microwave or stovetop.",
     note: "The sweet lunch/dinner option Kelly asked for. 100% mug-drinkable. Naturally sweet, no added sugar needed. Sweet potatoes are rich in vitamin A and fiber."
   },
@@ -922,7 +922,7 @@ const RECIPES = [
       "Add frozen broccoli, stir in cream, simmer on low 5 min until broccoli is tender",
       "Season with salt and pepper",
     ],
-    yield: "~10 portions per batch. Need 2 batches (20 portions total).",
+    yield: "~5 two-cup portions per batch. 2 batches = ~10 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes (single serving over rice). Thaw in fridge night before or reheat from frozen on stovetop.",
   },
   {
@@ -960,7 +960,7 @@ const RECIPES = [
       "Add frozen broccoli, stir in coconut milk, simmer 5 min on low until broccoli is tender",
       "Season with salt and lime",
     ],
-    yield: "~10 portions",
+    yield: "~5 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop, serve over frozen rice.",
   },
   {
@@ -996,7 +996,7 @@ const RECIPES = [
       "Stir in frozen broccoli, cook 5 min on low until tender",
       "Season with salt and lemon",
     ],
-    yield: "~10 portions",
+    yield: "~5 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat with splash of water or broth — it thickens when frozen.",
     note: "The Ayurvedic gold standard for postpartum recovery. Gentle, warming, deeply nourishing. Broccoli adds nutrients without changing the character.",
   },
@@ -1034,7 +1034,7 @@ const RECIPES = [
       "Mash some beans against side of pot to thicken",
       "Season with salt, pepper, lime",
     ],
-    yield: "~10 portions",
+    yield: "~8 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes. Thick and hearty — reheats perfectly on stovetop.",
   },
   {
@@ -1071,7 +1071,7 @@ const RECIPES = [
       "Add spinach, stir until wilted (2 min on Sauté or residual heat)",
       "Season with salt, pepper",
     ],
-    yield: "~10 portions",
+    yield: "~6 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes WITHOUT pasta. Cook pasta fresh when serving — add to reheated soup.",
   },
   {
@@ -1105,7 +1105,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 10 min, quick release",
       "Season with salt, pepper",
     ],
-    yield: "~10 portions",
+    yield: "~6 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes WITHOUT noodles. Cook egg noodles fresh when serving.",
   },
   {
@@ -1142,7 +1142,7 @@ const RECIPES = [
       "Add spinach, stir until wilted",
       "Season with salt and lime",
     ],
-    yield: "~10 portions",
+    yield: "~5 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes. Serve over frozen rice.",
     note: "Plant-based iron + protein. Broccoli adds bulk and nutrients. Spinach wilts into nothing but adds iron.",
   },
@@ -1176,7 +1176,7 @@ const RECIPES = [
       "Mash some beans for creaminess",
       "Stir in cream. Season with lime and cilantro",
     ],
-    yield: "~10 portions",
+    yield: "~6 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — great over rice or with tortilla chips.",
   },
   {
@@ -1201,7 +1201,7 @@ const RECIPES = [
       "Fluff, cool slightly",
       "Portion into freezer bags or containers",
     ],
-    yield: "~12 one-cup portions",
+    yield: "~12 half-cup portions per batch. 3 batches = ~36 half-cup portions.",
     freezing: "Freeze in ½-cup Souper Cubes (side portions to pair with curries/stews). Reheat in saucepan with splash of water or microwave 3 min with cover.",
   },
   {
@@ -1305,7 +1305,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 12 min, natural release 5 min",
       "Season with salt and pepper",
     ],
-    yield: "~10 portions",
+    yield: "~4 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop, serve over pasta or rice.",
     note: "Liver is puréed to liquid, 10% ratio, mixed in with ground beef. Strong flavors (wine, tomato, herbs) mask completely. Undetectable iron boost.",
   },
@@ -1345,7 +1345,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 12 min, natural release 5 min",
       "Season with salt and pepper",
     ],
-    yield: "~12 portions",
+    yield: "~7 two-cup portions",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — great over rice or with cornbread.",
     note: "Hidden liver — chicken livers pur\u00e9ed to liquid, 10% ratio mixed with ground beef. Cocoa deepens flavor. Completely undetectable.",
   },
@@ -1393,28 +1393,28 @@ const RECIPES = [
     kellyWeek: 2,
     tags: ["stew", "warming"],
     ingredients: [
-      "2 lbs beef chuck (cubed)",
-      "2 large sweet potatoes (cubed)",
-      "1 onion",
-      "4 garlic cloves",
-      "2 cups beef broth",
-      "14 oz diced tomatoes",
-      "2 tbsp tomato paste",
-      "1 tsp cumin",
-      "1 tsp smoked paprika",
-      "1 tsp cinnamon",
-      "2 tbsp olive oil",
+      "3.5 lbs beef chuck (cubed)",
+      "4 large sweet potatoes (cubed) // ~8 cups",
+      "2 onions",
+      "6 garlic cloves",
+      "5 cups beef broth",
+      "28 oz diced tomatoes (2 cans)",
+      "3 tbsp tomato paste",
+      "2 tsp cumin",
+      "2 tsp smoked paprika",
+      "1.5 tsp cinnamon",
+      "3 tbsp olive oil",
       "Salt, pepper",
     ],
     instructions: [
       "Brown beef in batches in olive oil, set aside (IP: use Sauté mode)",
-      "Sauté onion, garlic. Add spices, tomato paste 2 min",
+      "Sauté onions, garlic. Add spices, tomato paste 2 min",
       "Add tomatoes, broth, return beef, add sweet potatoes",
       "STOVE: Simmer 1.5 hrs (add sweet potatoes last 30 min)",
       "IP: Cancel Sauté, HIGH pressure 20 min, natural release 10 min (sweet potatoes go in from the start)",
       "Season with salt and pepper",
     ],
-    yield: "~10 portions",
+    yield: "10 two-cup portions (20 cups total)",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — complete meal, no side needed.",
     note: "Iron-rich and naturally sweet. The cinnamon + cumin + paprika give it warmth.",
   },
@@ -1428,29 +1428,29 @@ const RECIPES = [
     kellyWeek: 2,
     tags: ["stew", "warming"],
     ingredients: [
-      "2 lbs beef chuck (cubed)",
-      "1 can chickpeas",
-      "14 oz diced tomatoes",
-      "1 onion",
-      "4 garlic cloves",
-      "2 cups beef broth",
-      "2 tsp cumin",
-      "1 tsp cinnamon",
-      "1 tsp turmeric",
-      "1 tsp ginger",
+      "3.5 lbs beef chuck (cubed)",
+      "2 cans chickpeas (drained)",
+      "28 oz diced tomatoes (2 cans)",
+      "2 onions",
+      "6 garlic cloves",
+      "5 cups beef broth",
+      "1 tbsp cumin",
+      "1.5 tsp cinnamon",
+      "1.5 tsp turmeric",
+      "1.5 tsp ginger",
       "1/2 tsp cayenne (optional)",
-      "2 tbsp olive oil",
+      "3 tbsp olive oil",
       "Cilantro, lemon",
     ],
     instructions: [
       "Brown beef in batches in olive oil, set aside (IP: use Sauté mode)",
-      "Sauté onion, garlic. Add all spices 1 min",
+      "Sauté onions, garlic. Add all spices 1 min",
       "Add tomatoes, broth, return beef",
       "STOVE: Simmer 1.5-2 hrs, add chickpeas last 20 min",
       "IP: Cancel Sauté, add chickpeas now, HIGH pressure 20 min, natural release 10 min",
       "Season with lemon, garnish cilantro",
     ],
-    yield: "~10 portions",
+    yield: "10 two-cup portions (20 cups total)",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop. Warming spice blend.",
   },
   {
@@ -1484,7 +1484,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 8 min, quick release",
       "Season with salt and pepper",
     ],
-    yield: "~8 portions",
+    yield: "~8 one-cup portions",
     freezing: "Freeze in 1-cup Souper Cubes. Thaw, pour into ramekin, top with puff pastry, bake 400F 20-25 min.",
   },
   {
@@ -1539,7 +1539,7 @@ const RECIPES = [
       "IP: Add 1 cup water + trivet, HIGH pressure 5 min, quick release, drain",
       "Mash with butter, milk, cinnamon, salt, pepper",
     ],
-    yield: "~8 portions",
+    yield: "~12 half-cup portions",
     freezing: "Freeze in ½-cup Souper Cubes (side dish portions). Reheat on stovetop or microwave.",
   },
   {
@@ -1567,7 +1567,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 12 min, natural release 5 min",
       "Stir in cinnamon",
     ],
-    yield: "~12 portions per batch. Need 2 batches (24 total, 15 eaten).",
+    yield: "~12 one-cup portions per batch. 2 batches = ~24 one-cup portions.",
     freezing: "Freeze in 1-cup Souper Cubes. Reheat with splash of milk on stovetop or microwave.",
     note: "Hearty breakfast base. Top with whatever's in the pantry — honey, walnuts, berries.",
   },
@@ -1725,7 +1725,7 @@ const RECIPES = [
       "Blend warm with immersion blender until smooth",
       "Cool slightly, pour into 1-cup Souper Cube molds",
     ],
-    yield: "~6-8 one-cup portions per batch (2 batches = 12-16 cubes total)",
+    yield: "~5 one-cup portions per batch (2 batches = ~10 cubes total)",
     freezing: "Freeze in 1-cup Souper Cubes. Each cube = one mug serving. Reheat in small pot, stir well.",
     note: "DRINK. Warm, creamy, and soothing — like a cooked mango smoothie. Uses Costco frozen mango bags. Always serve warm.",
   },
@@ -1895,8 +1895,15 @@ export default function MealPrep() {
   const [shopTab, setShopTab] = useState("All Groceries");
   const [batchDone, setBatchDone] = useState({});
   const [customBatchCount, setCustomBatchCount] = useState({});
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const TABS = ["Cook Plan", "Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
+
+  useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 400);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const saved = localStorage.getItem("mealprep-v3");
@@ -2818,6 +2825,19 @@ export default function MealPrep() {
       <div className="text-center text-gray-600 text-sm mt-12 py-4 border-t">
         <p>Made with love for Kelly, Jonny & baby Miller</p>
       </div>
+
+      {/* SCROLL TO TOP BUTTON */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 bg-amber-700 hover:bg-amber-800 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg transition-all z-50"
+          aria-label="Scroll to top"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }
