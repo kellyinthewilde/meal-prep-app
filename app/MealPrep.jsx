@@ -933,6 +933,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["dal", "vegetarian", "warming"],
     ingredients: [
       "1 cup red lentils",
@@ -960,7 +961,7 @@ const RECIPES = [
       "Add frozen broccoli, stir in coconut milk, simmer 5 min on low until broccoli is tender",
       "Season with salt and lime",
     ],
-    yield: "~5 two-cup portions",
+    yield: "~5 two-cup portions per batch. 2 batches = ~10 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop, serve over frozen rice.",
   },
   {
@@ -971,6 +972,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["ayurvedic", "warming"],
     ingredients: [
       "1 cup basmati rice",
@@ -996,7 +998,7 @@ const RECIPES = [
       "Stir in frozen broccoli, cook 5 min on low until tender",
       "Season with salt and lemon",
     ],
-    yield: "~5 two-cup portions",
+    yield: "~5 two-cup portions per batch. 2 batches = ~10 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat with splash of water or broth — it thickens when frozen.",
     note: "The Ayurvedic gold standard for postpartum recovery. Gentle, warming, deeply nourishing. Broccoli adds nutrients without changing the character.",
   },
@@ -1008,6 +1010,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["soup", "vegetarian"],
     ingredients: [
       "2 cups dried black beans (or 3 cans, drained)",
@@ -1034,7 +1037,7 @@ const RECIPES = [
       "Mash some beans against side of pot to thicken",
       "Season with salt, pepper, lime",
     ],
-    yield: "~8 two-cup portions",
+    yield: "~8 two-cup portions per batch. 2 batches = ~16 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Thick and hearty — reheats perfectly on stovetop.",
   },
   {
@@ -1045,6 +1048,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["soup", "vegetarian"],
     ingredients: [
       "2 tbsp olive oil",
@@ -1071,7 +1075,7 @@ const RECIPES = [
       "Add spinach, stir until wilted (2 min on Sauté or residual heat)",
       "Season with salt, pepper",
     ],
-    yield: "~6 two-cup portions",
+    yield: "~6 two-cup portions per batch. 2 batches = ~12 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes WITHOUT pasta. Cook pasta fresh when serving — add to reheated soup.",
   },
   {
@@ -1082,6 +1086,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["soup", "comfort"],
     ingredients: [
       "2 tbsp olive oil",
@@ -1105,7 +1110,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 10 min, quick release",
       "Season with salt, pepper",
     ],
-    yield: "~6 two-cup portions",
+    yield: "~6 two-cup portions per batch. 2 batches = ~12 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes WITHOUT noodles. Cook egg noodles fresh when serving.",
   },
   {
@@ -1116,6 +1121,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["curry", "vegetarian"],
     ingredients: [
       "2 cans chickpeas (drained)",
@@ -1142,7 +1148,7 @@ const RECIPES = [
       "Add spinach, stir until wilted",
       "Season with salt and lime",
     ],
-    yield: "~5 two-cup portions",
+    yield: "~5 two-cup portions per batch. 2 batches = ~10 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Serve over frozen rice.",
     note: "Plant-based iron + protein. Broccoli adds bulk and nutrients. Spinach wilts into nothing but adds iron.",
   },
@@ -1154,6 +1160,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["chili", "warming"],
     ingredients: [
       "2 lbs chicken thighs (cubed)",
@@ -1176,7 +1183,7 @@ const RECIPES = [
       "Mash some beans for creaminess",
       "Stir in cream. Season with lime and cilantro",
     ],
-    yield: "~6 two-cup portions",
+    yield: "~6 two-cup portions per batch. 2 batches = ~12 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — great over rice or with tortilla chips.",
   },
   {
@@ -1279,6 +1286,7 @@ const RECIPES = [
     block: 3,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
@@ -1305,7 +1313,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 12 min, natural release 5 min",
       "Season with salt and pepper",
     ],
-    yield: "~4 two-cup portions",
+    yield: "~4 two-cup portions per batch. 2 batches = ~8 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop, serve over pasta or rice.",
     note: "Liver is puréed to liquid, 10% ratio, mixed in with ground beef. Strong flavors (wine, tomato, herbs) mask completely. Undetectable iron boost.",
   },
@@ -1317,6 +1325,7 @@ const RECIPES = [
     block: 2,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["chili", "iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
@@ -1345,7 +1354,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 12 min, natural release 5 min",
       "Season with salt and pepper",
     ],
-    yield: "~7 two-cup portions",
+    yield: "~7 two-cup portions per batch. 2 batches = ~14 two-cup portions.",
     freezing: "Freeze in 2-cup Souper Cubes. Reheat on stovetop — great over rice or with cornbread.",
     note: "Hidden liver — chicken livers pur\u00e9ed to liquid, 10% ratio mixed with ground beef. Cocoa deepens flavor. Completely undetectable.",
   },
@@ -1461,6 +1470,7 @@ const RECIPES = [
     block: 3,
     track: "shared",
     kellyWeek: 2,
+    batchCount: 2,
     tags: ["comfort", "filling"],
     ingredients: [
       "1.5 lbs chicken thighs (cubed)",
@@ -1484,7 +1494,7 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 8 min, quick release",
       "Season with salt and pepper",
     ],
-    yield: "~8 one-cup portions",
+    yield: "~8 one-cup portions per batch. 2 batches = ~16 one-cup portions.",
     freezing: "Freeze in 1-cup Souper Cubes. Thaw, pour into ramekin, top with puff pastry, bake 400F 20-25 min.",
   },
   {
