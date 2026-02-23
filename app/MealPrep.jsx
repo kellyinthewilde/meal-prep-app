@@ -1507,8 +1507,8 @@ const RECIPES = [
       "IP: Cancel Sauté, HIGH pressure 8 min, quick release",
       "Season with salt and pepper",
     ],
-    yield: "~8 one-cup portions per batch. 2 batches = ~16 one-cup portions.",
-    freezing: "Freeze in 1-cup Souper Cubes. Thaw, pour into ramekin, top with puff pastry, bake 400F 20-25 min.",
+    yield: "~4 two-cup portions per batch. 2 batches = ~8 two-cup portions.",
+    freezing: "Freeze in 2-cup Souper Cubes. Thaw, pour into bowl, top with puff pastry, bake 400F 20-25 min.",
   },
   {
     id: 35,
