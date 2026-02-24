@@ -1921,6 +1921,7 @@ export default function MealPrep() {
   const [customBatchCount, setCustomBatchCount] = useState({});
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [friendSourced, setFriendSourced] = useState({});
+  const [nextUp, setNextUp] = useState({});
 
   const TABS = ["Cook Plan", "Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
 
@@ -1942,6 +1943,7 @@ export default function MealPrep() {
       setBatchDone(data.batchDone || {});
       setCustomBatchCount(data.customBatchCount || {});
       setFriendSourced(data.friendSourced || {});
+      setNextUp(data.nextUp || {});
     }
   }, []);
 
@@ -1955,9 +1957,10 @@ export default function MealPrep() {
       batchDone,
       customBatchCount,
       friendSourced,
+      nextUp,
     };
     localStorage.setItem("mealprep-v3", JSON.stringify(toSave));
-  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked, batchDone, customBatchCount, friendSourced]);
+  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked, batchDone, customBatchCount, friendSourced, nextUp]);
 
   const cycleStatus = (id) => {
     setRecipeStatus((prev) => {
@@ -2329,20 +2332,16 @@ export default function MealPrep() {
               );
             })()}
 
-            {/* Next Up */}
+            {/* Next Up (manual) */}
             {(() => {
-              const allIds = COOK_PLAN.flatMap((p) => p.recipes.map((r) => r.id));
-              const nextUpIds = allIds
-                .filter((id) => !recipeStatus[id] || recipeStatus[id] === "todo")
-                .filter((id) => !friendSourced[id])
-                .slice(0, 5);
+              const nextUpIds = Object.keys(nextUp).filter((id) => nextUp[id]).map(Number);
               if (nextUpIds.length === 0) return null;
               return (
                 <div className="rounded-xl border border-blue-200 bg-blue-50/30 p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-blue-500 text-lg">&#x25B6;</span>
                     <h3 className="font-bold text-gray-900">Next Up</h3>
-                    <span className="text-sm text-blue-500 font-medium">upcoming recipes</span>
+                    <span className="text-sm text-blue-500 font-medium">{nextUpIds.length} queued</span>
                   </div>
                   <div className="space-y-1.5">
                     {nextUpIds.map((id) => {
@@ -2362,10 +2361,10 @@ export default function MealPrep() {
                               className="text-xs font-medium px-2 py-1 rounded bg-gray-100 text-gray-500 hover:bg-amber-100 hover:text-amber-700"
                             >Start</button>
                             <button
-                              onClick={(e) => { e.stopPropagation(); setFriendSourced((prev) => ({ ...prev, [id]: prev[id] ? "" : "Friend" })); }}
-                              className="text-xs font-medium px-2 py-1 rounded bg-gray-100 text-gray-500 hover:bg-purple-100 hover:text-purple-700"
-                              title="Assign to a friend"
-                            >&#x1F91D;</button>
+                              onClick={(e) => { e.stopPropagation(); setNextUp((prev) => { const n = { ...prev }; delete n[id]; return n; }); }}
+                              className="text-xs font-medium px-2 py-1 rounded bg-gray-100 text-gray-400 hover:bg-red-100 hover:text-red-600"
+                              title="Remove from Next Up"
+                            >&#x2715;</button>
                           </div>
                         </div>
                       );
@@ -2478,8 +2477,27 @@ export default function MealPrep() {
                             </div>
                             {!isDone && <p className={`text-xs ${noteClass} truncate`}>{note}</p>}
                           </div>
-                          <div className="flex-shrink-0 cursor-pointer" onClick={() => cycleStatus(id)}>
-                            <span className={`text-xs font-medium px-2 py-1 rounded ${isDone ? "bg-emerald-100 text-emerald-700" : isProgress ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}>
+                          <div className="flex-shrink-0 flex items-center gap-1">
+                            {st === "todo" && !nextUp[id] && !friendSourced[id] && (
+                              <>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); setNextUp((prev) => ({ ...prev, [id]: true })); }}
+                                  className="text-xs font-medium px-2 py-1 rounded bg-blue-50 text-blue-500 hover:bg-blue-100 hover:text-blue-700"
+                                  title="Add to Next Up"
+                                >Next</button>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); setFriendSourced((prev) => ({ ...prev, [id]: "Friend" })); }}
+                                  className="text-xs font-medium px-1.5 py-1 rounded bg-purple-50 text-purple-400 hover:bg-purple-100 hover:text-purple-700"
+                                  title="Assign to friend"
+                                >&#x1F91D;</button>
+                              </>
+                            )}
+                            {nextUp[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-blue-100 text-blue-600">Queued</span>}
+                            {friendSourced[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-purple-100 text-purple-600">{friendSourced[id]}</span>}
+                            <span
+                              className={`text-xs font-medium px-2 py-1 rounded cursor-pointer ${isDone ? "bg-emerald-100 text-emerald-700" : isProgress ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}
+                              onClick={(e) => { e.stopPropagation(); cycleStatus(id); }}
+                            >
                               {isDone ? "\u2713 Done" : isProgress ? "Cooking" : "To Do"}
                             </span>
                           </div>
