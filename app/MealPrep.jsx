@@ -2334,7 +2334,7 @@ export default function MealPrep() {
 
             {/* Next Up (manual) */}
             {(() => {
-              const nextUpIds = Object.keys(nextUp).filter((id) => nextUp[id]).map(Number);
+              const nextUpIds = Object.keys(nextUp).filter((id) => nextUp[id] && recipeStatus[id] !== "done" && recipeStatus[id] !== "progress").map(Number);
               if (nextUpIds.length === 0) return null;
               return (
                 <div className="rounded-xl border border-blue-200 bg-blue-50/30 p-5">
