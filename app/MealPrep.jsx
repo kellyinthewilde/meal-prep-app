@@ -2351,31 +2351,32 @@ export default function MealPrep() {
                     <h3 className="font-bold text-gray-900">Friend Sourced</h3>
                     <span className="text-sm text-purple-500 font-medium">{friendIds.length} recipe{friendIds.length > 1 ? "s" : ""}</span>
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     {friendIds.map((id) => {
                       const numId = Number(id);
                       const recipe = RECIPES.find((r) => r.id === numId);
                       if (!recipe) return null;
                       const friendName = friendSourced[id];
+                      const hasName = friendName && friendName !== "Friend";
                       return (
-                        <div key={id} className="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-white/70">
+                        <div key={id} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-purple-100">
                           <div className="w-2.5 h-2.5 rounded-full flex-shrink-0 bg-purple-400" />
                           <div className="flex-1 min-w-0 cursor-pointer" onClick={() => goToRecipe(numId)}>
                             <span className="font-semibold text-gray-900 hover:underline">{recipe.name}</span>
-                            <span className="text-xs text-purple-600 ml-2">{friendName}</span>
+                            {hasName && <span className="text-sm font-medium text-purple-700 ml-2">— {friendName}</span>}
                           </div>
-                          <div className="flex-shrink-0 flex gap-1.5">
+                          <div className="flex-shrink-0 flex gap-2 items-center">
                             <input
                               type="text"
-                              placeholder="Friend name"
+                              placeholder="Who's making this?"
                               value={friendName === "Friend" ? "" : friendName}
                               onChange={(e) => setFriendSourced((prev) => ({ ...prev, [id]: e.target.value || "Friend" }))}
-                              className="text-xs border border-purple-200 rounded px-2 py-1 w-24 focus:outline-none focus:ring-1 focus:ring-purple-300"
+                              className="text-sm border border-purple-200 rounded-md px-3 py-1.5 w-40 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300"
                               onClick={(e) => e.stopPropagation()}
                             />
                             <button
                               onClick={() => setFriendSourced((prev) => { const n = { ...prev }; delete n[id]; return n; })}
-                              className="text-xs font-medium px-2 py-1 rounded bg-gray-100 text-gray-400 hover:bg-red-100 hover:text-red-600"
+                              className="text-xs font-medium px-2 py-1.5 rounded bg-gray-100 text-gray-500 hover:bg-red-100 hover:text-red-600"
                               title="Remove from friend sourced"
                             >&#x2715;</button>
                           </div>
@@ -2459,7 +2460,7 @@ export default function MealPrep() {
                               </>
                             )}
                             {nextUp[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-blue-100 text-blue-600">Queued</span>}
-                            {friendSourced[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-purple-100 text-purple-600">{friendSourced[id]}</span>}
+                            {friendSourced[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-purple-100 text-purple-700">{friendSourced[id] === "Friend" ? "Friend (tap to name)" : friendSourced[id]}</span>}
                             <span
                               className={`text-xs font-medium px-2 py-1 rounded cursor-pointer ${isDone ? "bg-emerald-100 text-emerald-700" : isProgress ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}
                               onClick={(e) => { e.stopPropagation(); cycleStatus(id); }}
