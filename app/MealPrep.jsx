@@ -181,9 +181,9 @@ const SHOPPING = {
       store: "Asian Market / Weee!",
       items: [
         "Dried miyeok (wakame seaweed) 2 oz — miyeokguk [B1]",
-        "Red dates (jujubes) 12 oz — congee, tea, rice pudding, silkie tonic [B1]",
-        "Goji berries 8 oz — congee, tea, rice pudding, silkie tonic [B1]",
-        "Black sesame seeds 8 oz — sweet congee, rice pudding [B1]",
+        "Red dates (jujubes) 12 oz — congee, tea, silkie tonic [B1]",
+        "Goji berries 8 oz — congee, tea, silkie tonic [B1]",
+        "Black sesame seeds 8 oz — sweet congee [B1]",
         "Dried longan 8 oz — silkie tonic [B1]",
         "Dried shiitake 8 oz — silkie tonic [B1]",
         "Fresh turmeric ~12 oz total — 3 golden broth batches [B1+B2+B3]",
@@ -211,19 +211,19 @@ const SHOPPING = {
         "Sweet potatoes 8+ lbs total — sweet potato coconut soup (2 batches), stew, mashed [B2+B3]",
         "Kabocha squash x3 — kabocha soup (extra batch for later weeks) [B1]",
         "Whole mung beans 2 lbs — kabocha soup [B1]",
-        "Coconut milk x12 cans — soups, congee, curries, dals, rice pudding, sweet potato soup [B1+B2+B3]",
+        "Coconut milk x12 cans — soups, congee, curries, dals, sweet potato soup [B1+B2+B3]",
         "Crushed tomatoes (San Marzano) x7 — bolognese, chili, stews, butter chicken [B2+B3]",
         "Tomato paste x4 — broths, stews, sauces [B1+B2+B3]",
         "Ghee 1 large jar — golden broth, cooking, dals [B1+B2]",
         "Cream 1 quart total — butter chicken, dals, quiche [B2+B3]",
-        "Whole milk 1/2 gal — rice pudding + oatmeal [B1+B2]",
+        "Whole milk 1/2 gal — oatmeal [B1+B2]",
         "Buttermilk — muffins [B2]",
         "Yogurt (plain) — butter chicken marinade [B2]",
         "Sour cream — white chicken chili [B2]",
         "Cottage cheese — egg bites [B3]",
         "Gruyere 1 lb — quiche Lorraine [B3]",
         "Sharp cheddar 2 blocks — frittatas, muffins [B2+B3]",
-        "Honey — sweet congee, rice pudding, jujube tea, oatmeal cups [B1]",
+        "Honey — sweet congee, jujube tea, oatmeal cups [B1]",
         "Maple syrup — oatmeal cups, baked oatmeal bars [B1+B3]",
         "Cinnamon, cardamom, cumin, curry powder, turmeric (ground) [B1+B2]",
         "Apple cider vinegar — broth [B1]",
@@ -440,6 +440,92 @@ const RECIPES = [
     note: "Classic TCM postpartum blood-building tea. Jujubes rebuild blood, goji nourish yin, ginger warms the center. Make alongside your broths — zero effort.",
   },
   {
+    id: 91,
+    name: "Postpartum Recovery Tea Blend",
+    category: "Foundations",
+    phase: 1,
+    track: "kelly",
+    kellyWeek: 1,
+    tags: ["beverage", "mineral-rich", "blood-building"],
+    batchCount: 1,
+    ingredients: [
+      "1 cup dried nettle leaf // Iron-rich, replenishes blood loss, supports milk supply",
+      "1 cup dried red raspberry leaf // Uterine toning, classic postpartum herb",
+      "1/2 cup dried oat straw // Nervous system nourishing, mineral-rich, supports milk supply",
+    ],
+    instructions: [
+      "Combine all dried herbs in a bowl, mix well",
+      "Transfer to a mason jar or airtight container — this is your pre-mixed blend",
+      "TO BREW: Add 1-2 tbsp blend to a mug, pour boiling water over, steep 10-15 min (longer = stronger)",
+      "Strain and drink warm. Can add honey if desired.",
+      "For a stronger infusion: 1/4 cup blend in a quart mason jar, fill with boiling water, steep 4+ hours or overnight, strain and drink throughout the day",
+    ],
+    yield: "~2.5 cups loose blend. At 2 tbsp per mug, that's roughly 20 mugs.",
+    freezing: "Store dry blend in a mason jar at room temp. Lasts 6+ months.",
+    note: "TEA BLEND. Pre-mix this jar now and it's ready to grab-and-steep for weeks. Nettle is the #1 postpartum herb (iron, minerals, milk supply). Red raspberry leaf tones the uterus. Oat straw calms the nervous system. The midwife trio.",
+  },
+  {
+    id: 92,
+    name: "Lactation Tea",
+    category: "Foundations",
+    phase: 1,
+    track: "kelly",
+    kellyWeek: 1,
+    tags: ["beverage", "lactation"],
+    lactation: true,
+    batchCount: 1,
+    ingredients: [
+      "Mother's Milk tea bags (Traditional Medicinals) // Fenugreek + fennel + blessed thistle",
+      "OR make your own blend:",
+      "2 tbsp fenugreek seeds // The #1 galactagogue — slightly maple-flavored",
+      "2 tbsp fennel seeds // Sweet, licorice-like, reduces gas in baby too",
+      "1 tbsp blessed thistle // Traditional milk-boosting herb",
+      "1 tbsp dried nettle leaf // Iron + milk supply",
+      "Optional: 1 tsp anise seeds // Additional milk support",
+    ],
+    instructions: [
+      "EASIEST: Use Mother's Milk tea bags. Steep 10-15 min for full strength. 2-3 cups/day.",
+      "DIY BLEND: Combine all seeds and herbs in a mason jar, mix well",
+      "Lightly crush fenugreek and fennel seeds with a mortar and pestle (or rolling pin in a bag) to release oils",
+      "TO BREW: 1 tbsp blend per mug, pour boiling water, steep 10-15 min",
+      "Strain and drink. Add honey if desired — fenugreek has a natural maple taste.",
+      "Start with 2-3 cups/day once milk is coming in (usually day 3-5 postpartum)",
+    ],
+    yield: "Pre-made bags: buy a few boxes. DIY blend: ~1/2 cup blend = ~8 mugs.",
+    freezing: "Store dry blend in a mason jar at room temp.",
+    note: "LACTATION SUPPORT. Start once milk begins coming in (not before — colostrum comes first). Mother's Milk tea bags are genuinely effective and easiest. DIY blend lets you control strength. Fenugreek is the heavy hitter — you'll know it's working when your sweat smells like maple syrup.",
+  },
+  {
+    id: 93,
+    name: "Ginger Turmeric Concentrate",
+    category: "Foundations",
+    phase: 1,
+    track: "kelly",
+    kellyWeek: 1,
+    tags: ["beverage", "anti-inflammatory", "warming"],
+    batchCount: 2,
+    ingredients: [
+      "1 cup fresh ginger // Peeled and roughly chopped",
+      "1/2 cup fresh turmeric root // Peeled (wear gloves — it stains everything)",
+      "4 cups water",
+      "2 tbsp honey",
+      "1 tsp black pepper // Activates curcumin absorption 20x",
+      "1 cinnamon stick or 1/2 tsp ground cinnamon",
+      "Pinch cayenne // optional, tiny amount for warmth",
+    ],
+    instructions: [
+      "Combine ginger, turmeric, water, cinnamon, black pepper in pot",
+      "STOVE: Bring to boil, reduce to simmer 20-25 min until liquid reduces by about half",
+      "Strain through fine mesh strainer, pressing solids to extract liquid",
+      "Stir in honey while warm",
+      "Cool, then pour into tablespoon Souper Cube molds",
+      "TO USE: Drop 1-2 frozen cubes into a mug, pour hot water over, stir. Add a splash of coconut milk for golden milk.",
+    ],
+    yield: "~2 cups concentrate = ~30 tablespoon cubes. Each cube = one mug of tea.",
+    freezing: "Freeze in tablespoon Souper Cubes. Each cube is one serving — just add hot water. Lasts months in the freezer.",
+    note: "ANTI-INFLAMMATORY TEA. Fresh ginger + turmeric go bad in the fridge within a week, but frozen concentrate cubes last months. Black pepper is essential — it makes turmeric 20x more bioavailable. Add coconut milk for golden milk. The ultimate postpartum inflammation fighter.",
+  },
+  {
     id: 57,
     name: "Miyeokguk (Korean Seaweed & Beef Soup)",
     category: "Soups",
@@ -539,40 +625,6 @@ const RECIPES = [
     yield: "~15 two-cup portions (tripled batch).",
     freezing: "Freeze in 2-cup Souper Cubes. Thickens a lot when frozen — add a splash of water or milk when reheating on the stove.",
     note: "Warming chai-spiced sweet congee. Jujubes + goji are traditional TCM blood-builders. Warming spices help counter postpartum vata (cold, dry, depleted). Top with toasted black sesame and a drizzle of honey. Dark cherry swirl takes this to another level.",
-  },
-  {
-    id: 62,
-    name: "Warm Rice Pudding",
-    category: "Soups",
-    phase: 1,
-    batchCount: 2,
-    track: "kelly",
-    kellyWeek: 1,
-    tags: ["comfort", "warming"],
-    ingredients: [
-      "1 cup jasmine rice",
-      "4 cups whole milk",
-      "1 can coconut milk",
-      "6-8 jujubes // Slice in half and remove the small hard pit before adding",
-      "1 tbsp goji berries",
-      "1 tbsp black sesame seeds // Toast in dry pan until fragrant",
-      "3 tbsp honey or maple syrup",
-      "1 tsp cinnamon",
-      "1/2 tsp cardamom",
-      "Pinch salt",
-      "1 tsp vanilla",
-    ],
-    instructions: [
-      "Combine rice, milk, coconut milk, jujubes, goji in pot",
-      "STOVE: Gentle boil, then lowest simmer. Stir frequently 35-45 min until thick and creamy",
-      "IP: HIGH pressure 12 min, natural release 5 min",
-      "Stir in honey, spices, vanilla",
-      "Optional: simmer 4 cups frozen mixed berries with 1 tbsp honey for 5 min, then fold warm cooked berries through the pudding before portioning",
-      "Top with black sesame",
-    ],
-    yield: "~4 two-cup portions per batch. 2 batches = ~8 two-cup portions.",
-    freezing: "Freeze in 2-cup Souper Cubes. Add splash of milk when reheating on stovetop.",
-    note: "Comfort food meets TCM blood-builders. Warming, nourishing, easy to digest. Folding in warm cooked berries before portioning makes a gorgeous swirl.",
   },
   {
     id: 9,
@@ -1729,7 +1781,7 @@ const RECIPES = [
     ],
     yield: "~8-10 half-cup portions per batch (4 batches = 32-40 cubes total)",
     freezing: "Freeze in ½-cup Souper Cubes. Each cube = one topping portion. Reheat in small pot or microwave.",
-    note: "TOPPING. Spoon warm over Date & Walnut Congee, Rice Pudding, or Baked Oatmeal Bars. Uses Costco frozen berry bags. Always serve warm.",
+    note: "TOPPING. Spoon warm over Date & Walnut Congee, Sweet Congee, or Baked Oatmeal Bars. Uses Costco frozen berry bags. Always serve warm.",
   },
   {
     id: 84,
@@ -1759,35 +1811,6 @@ const RECIPES = [
     yield: "~5 one-cup portions per batch (2 batches = ~10 cubes total)",
     freezing: "Freeze in 1-cup Souper Cubes. Each cube = one mug serving. Reheat in small pot, stir well.",
     note: "DRINK. Warm, creamy, and soothing — like a cooked mango smoothie. Uses Costco frozen mango bags. Always serve warm.",
-  },
-  {
-    id: 85,
-    name: "Dark Cherry Compote",
-    category: "Toppings",
-    phase: 1,
-    block: 1,
-    track: "kelly",
-    kellyWeek: 1,
-    tags: ["topping", "warming", "fruit"],
-    batchCount: 1,
-    ingredients: [
-      "4 cups frozen dark cherries",
-      "3 tbsp honey",
-      "1 tsp vanilla extract",
-      "pinch ground clove",
-      "1/4 tsp cinnamon",
-      "2 tbsp water",
-    ],
-    instructions: [
-      "Combine frozen cherries, water, honey, and cinnamon in a saucepan",
-      "STOVE: Bring to gentle simmer over medium heat, stirring occasionally",
-      "Cook 8-10 min until cherries break down and liquid thickens to jam-like consistency",
-      "Stir in vanilla and clove",
-      "Cool slightly, pour into ½-cup Souper Cube molds",
-    ],
-    yield: "~8-10 half-cup portions. High in melatonin (sleep!) and anti-inflammatory.",
-    freezing: "Freeze in ½-cup Souper Cubes. Each cube = one topping portion. Reheat in small pot or microwave.",
-    note: "TOPPING. Incredible over Date & Walnut Congee. Cherries are high in melatonin and anti-inflammatory — perfect for postpartum sleep support. Always serve warm.",
   },
   {
     id: 87,
@@ -1850,7 +1873,7 @@ const RECIPES = [
     ],
     yield: "~20-24 two-tablespoon portions per batch. Enough for weeks of toast and oatmeal.",
     freezing: "Freeze in 2-tablespoon Souper Cube molds. Pop one cube out, spread on toast or swirl into oatmeal/congee.",
-    note: "JAM. Zero refined sugar, chia seeds add omega-3 and fiber. Uses the 2-tbsp Souper Cubes. Spread on toast, swirl into congee, spoon over rice pudding.",
+    note: "JAM. Zero refined sugar, chia seeds add omega-3 and fiber. Uses the 2-tbsp Souper Cubes. Spread on toast, swirl into congee, top oatmeal bars.",
   },
   {
     id: 89,
@@ -1883,35 +1906,6 @@ const RECIPES = [
     yield: "~8-10 one-cup portions.",
     freezing: "Freeze in 1-cup Souper Cubes. Reheat in pot with a splash of coconut milk.",
     note: "SIDE DISH. Coconut rice with warm mango stirred through. Pairs beautifully with Butter Chicken, Chickpea Curry, or Coconut Dal. InstaPot for rice is faster and more consistent.",
-  },
-  {
-    id: 90,
-    name: "Mango-Ginger Chutney",
-    category: "Toppings",
-    phase: 1,
-    block: 1,
-    track: "shared",
-    kellyWeek: 1,
-    tags: ["topping", "warming", "savory", "fruit"],
-    batchCount: 1,
-    ingredients: [
-      "4 cups frozen mango chunks",
-      "2 tbsp grated fresh ginger",
-      "1 tbsp apple cider vinegar // you have this for broth",
-      "2 tbsp honey",
-      "1/2 tsp cumin",
-      "1/4 tsp chili flakes // optional, small amount for warmth",
-      "1/4 tsp salt",
-    ],
-    instructions: [
-      "Combine all ingredients in a saucepan",
-      "STOVE: Simmer over medium heat 12-15 min, stirring, until mango breaks down and liquid reduces",
-      "Mash lightly for chunky texture or blend for smooth",
-      "Cool slightly, pour into ½-cup Souper Cube molds",
-    ],
-    yield: "~6-8 half-cup portions.",
-    freezing: "Freeze in ½-cup Souper Cubes. Reheat in small pot or microwave.",
-    note: "CONDIMENT. Savory-sweet, goes on a completely different lane than the compotes. Spoon over Butter Chicken, Kitchari, Coconut Dal, or any curry. The vinegar and cumin make it feel like a real chutney.",
   },
 ];
 
@@ -2562,7 +2556,6 @@ export default function MealPrep() {
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Congee + Egg</strong> — reheat congee, top with soft-boiled egg, ginger-scallion oil, black sesame, jujubes</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Egg Bites x3</strong> — toaster oven 8 min. Quick protein.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Sweet Congee</strong> — jujubes + goji + black sesame already in it. Warming comfort.</div>
-                  <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Warm Rice Pudding</strong> — jujubes + goji + cinnamon. Like a hug.</div>
                   <div className="bg-amber-50/40 rounded-lg p-3 border border-amber-100/60"><strong className="text-gray-900">Date &amp; Walnut Congee</strong> — warm, sweet, dates dissolve in. Top with walnuts + honey.</div>
                 </div>
               </div>
@@ -2603,7 +2596,7 @@ export default function MealPrep() {
 
               <div>
                 <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Breakfast <span className="font-normal text-gray-500 normal-case tracking-normal">(Kelly picks from Phase 1 + egg options)</span></h4>
-                <p className="text-sm text-gray-700">Congee + Egg • Egg Bites • Sweet Congee • Date &amp; Walnut Congee • Warm Rice Pudding • Frittata slices • Quiche Lorraine slices</p>
+                <p className="text-sm text-gray-700">Congee + Egg • Egg Bites • Sweet Congee • Date &amp; Walnut Congee • Frittata slices • Quiche Lorraine slices</p>
               </div>
 
               <div>
@@ -2934,7 +2927,7 @@ export default function MealPrep() {
                 <p className="text-gray-600 text-sm">Thaw in fridge or gently warm in saucepan over low heat. Add splash of water if too thick.</p>
               </div>
               <div className="bg-blue-50 border-l-4 border-blue-300 p-3 mb-3">
-                <h4 className="font-semibold text-gray-700">Congee & Rice Pudding</h4>
+                <h4 className="font-semibold text-gray-700">Congee</h4>
                 <p className="text-gray-600 text-sm">Thaws thick — add water/milk when reheating. Gentle simmer or microwave with cover.</p>
               </div>
               <div className="bg-blue-50 border-l-4 border-blue-300 p-3 mb-3">
