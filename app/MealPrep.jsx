@@ -599,7 +599,7 @@ const RECIPES = [
       "Add carrots, cumin, broth",
       "STOVE: Simmer 25-30 min until carrots are very tender",
       "IP: Cancel Sauté, HIGH pressure 8 min, natural release 10 min then quick release // coconut milk added after, but carrots foam",
-      "Blend smooth, stir in coconut milk",
+      "Blend smooth using immersion blender or food processor, stir in coconut milk",
     ],
     yield: "~5 two-cup portions per batch. 2 batches = ~10 two-cup portions.",
     freezing: "KELLY bags. Freezes beautifully.",
@@ -638,7 +638,7 @@ const RECIPES = [
       "Add roasted squash flesh, mung beans, broth, and coconut milk",
       "STOVE: Bring to boil then simmer 25-30 min until mung beans are soft",
       "IP: Cancel Sauté, HIGH pressure 15 min, natural release 10 min",
-      "Blend until smooth — mung beans need aggressive blending",
+      "Blend until smooth using immersion blender or food processor — mung beans need aggressive blending",
       "Season with salt and lime",
     ],
     yield: "~8 two-cup portions per batch. 2 batches = ~16 two-cup portions.",
@@ -801,7 +801,7 @@ const RECIPES = [
       "STOVE: Boil, then simmer 20-25 min until sweet potatoes are very soft",
       "IP: Cancel Sauté, HIGH pressure 8 min, natural release 10 min, then quick release // starchy + coconut milk = no full quick release",
       "Add coconut milk and warm spices (cinnamon, cardamom, nutmeg)",
-      "Blend until completely smooth using an immersion blender",
+      "Blend until completely smooth using immersion blender or food processor",
       "Season with salt. Add honey or maple syrup if desired"
     ],
     yield: "~6 two-cup portions per batch. 2 batches = ~12 two-cup portions.",
@@ -1252,7 +1252,7 @@ const RECIPES = [
       "Preheat 375F",
       "Whisk dry: flour, baking powder, salt, brewer's yeast, flax",
       "Whisk wet: butter, eggs, milk",
-      "Combine wet and dry, fold in cheese, spinach, tomatoes",
+      "Combine wet and dry, fold in cheese, spinach, tomatoes // Food processor: pulse spinach + sun-dried tomatoes for faster prep",
       "Fill greased muffin tin 2/3 full",
       "Bake 18-20 min until golden and set",
     ],
@@ -1303,7 +1303,7 @@ const RECIPES = [
     tags: ["iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
-      "8 oz chicken livers // Puree in blender until completely smooth liquid. This is the hidden liver — 10% ratio, completely undetectable.",
+      "8 oz chicken livers // Puree in food processor or blender until completely smooth liquid. This is the hidden liver — 10% ratio, completely undetectable.",
       "2 tbsp olive oil",
       "1 large onion, finely diced",
       "4 garlic cloves, minced",
@@ -1316,7 +1316,7 @@ const RECIPES = [
       "Salt, pepper",
     ],
     instructions: [
-      "Puree chicken livers until smooth liquid consistency",
+      "Puree chicken livers in food processor or blender until smooth liquid consistency",
       "Brown ground beef in olive oil, breaking apart (IP: use Sauté mode)",
       "Add onion, sauté 5 min. Add garlic 30 sec",
       "Add tomato paste, cook 2 min",
@@ -1342,7 +1342,7 @@ const RECIPES = [
     tags: ["chili", "iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
-      "8 oz chicken livers // Puree in blender until completely smooth liquid. Hidden liver — 10% ratio, undetectable.",
+      "8 oz chicken livers // Puree in food processor or blender until completely smooth liquid. Hidden liver — 10% ratio, undetectable.",
       "1 tbsp olive oil",
       "1 large onion, diced",
       "4 garlic cloves, minced",
@@ -1358,7 +1358,7 @@ const RECIPES = [
     ],
     instructions: [
       "BEANS FIRST: IP no-soak method — rinse beans, cover by 2\" water, HIGH pressure 30-35 min, natural release 15 min. Drain and set aside. (If soaked overnight, only 25 min.)",
-      "Puree chicken livers until smooth",
+      "Puree chicken livers in food processor or blender until smooth",
       "Brown ground beef in olive oil, breaking apart (IP: use Sauté mode)",
       "Add onion 5 min. Add garlic 30 sec",
       "Add chili powder, cumin, paprika 1 min. Add tomato paste 1 min",
@@ -1383,8 +1383,8 @@ const RECIPES = [
     tags: ["iron", "hidden-liver"],
     ingredients: [
       "2 lbs ground beef",
-      "8 oz chicken livers // Puree in blender until completely smooth liquid. Hidden liver — 10% ratio, undetectable.",
-      "1 onion, finely minced",
+      "8 oz chicken livers // Puree in food processor or blender until completely smooth liquid. Hidden liver — 10% ratio, undetectable.",
+      "1 onion, finely minced // Food processor: pulse to finely mince",
       "4 garlic cloves, minced",
       "1 cup breadcrumbs",
       "2 eggs",
@@ -1395,7 +1395,7 @@ const RECIPES = [
       "2 tbsp olive oil",
     ],
     instructions: [
-      "Puree chicken livers until smooth",
+      "Puree chicken livers in food processor or blender until smooth",
       "Combine ground beef, liver puree, onion, garlic, breadcrumbs, eggs, milk, tomato paste, herbs",
       "Mix gently (don't overwork)",
       "Roll into 1.5\" balls",
@@ -1520,6 +1520,7 @@ const RECIPES = [
     track: "shared",
     kellyWeek: 2,
     tags: ["omega-3", "lactation"],
+    batchCount: 2,
     lactation: true,
     ingredients: [
       "14.75 oz canned salmon (or fresh fillets, cooked, flaked) // Drain well. Soft bones in canned salmon are edible and calcium-rich — leave them in.",
@@ -1533,6 +1534,7 @@ const RECIPES = [
     ],
     instructions: [
       "Drain salmon, remove any bones or skin (bones are fine if canned)",
+      "Pulse salmon in food processor 3-4 times for even texture (optional — skip for chunkier patties)",
       "Combine salmon, breadcrumbs, eggs, milk, mustard, lemon juice, salt, pepper",
       "Form into patties (about 8)",
       "Heat olive oil, brown patties 4-5 min each side until golden",
