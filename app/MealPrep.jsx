@@ -1290,14 +1290,23 @@ const RECIPES = [
       "12 eggs",
       "1/2 cup milk or cream",
       "1 cup cheese (cheddar or combination)",
-      "Optional fillings: cooked bacon pieces, sauteed spinach, diced peppers, diced ham",
       "Salt, pepper",
+      "",
+      "BATCH 1-2 FILLING: Bacon Pepper",
+      "  Cooked bacon, crumbled // Reserve the rest for Quiche Lorraine!",
+      "  Diced peppers // Reserve some for Frittata",
+      "  Cheddar cheese",
+      "",
+      "BATCH 3-4 FILLING: Spinach Broccoli",
+      "  Frozen spinach, thawed and squeezed dry // Squeeze in a towel — wet spinach = watery bites",
+      "  Small broccoli florets, steamed 2 min // Don't use raw — won't cook through",
+      "  Cheddar cheese",
     ],
     instructions: [
       "Preheat 375F",
       "Whisk eggs, milk, salt, pepper",
       "Oil or butter silicone muffin molds",
-      "Add optional fillings to each mold",
+      "Add fillings to each mold (don't overfill — leave room for egg)",
       "Pour egg mixture to fill",
       "Top with cheese",
       "Bake 15-18 min until set and lightly golden",
@@ -2159,11 +2168,11 @@ export default function MealPrep() {
                 </div>
               </div>
 
-              {effectiveBatches > 1 && (
+              {baseBatches > 1 && (
                 <div className="mb-3">
-                  <h5 className="font-semibold text-gray-700 text-sm mb-1">Batch Progress</h5>
+                  <h5 className="font-semibold text-gray-700 text-sm mb-1">Batch Progress <span className="font-normal text-gray-400">({baseBatches} needed)</span></h5>
                   <div className="flex flex-wrap gap-2">
-                    {Array.from({ length: effectiveBatches }, (_, i) => {
+                    {Array.from({ length: baseBatches }, (_, i) => {
                       const key = `${recipe.id}-${i + 1}`;
                       const done = !!batchDone[key];
                       return (
@@ -2272,7 +2281,7 @@ export default function MealPrep() {
                     {inProgressIds.map((id) => {
                       const recipe = RECIPES.find((r) => r.id === id);
                       if (!recipe) return null;
-                      const totalBatches = getEffectiveBatches(recipe);
+                      const totalBatches = recipe.batchCount || 1;
                       const doneBatches = totalBatches > 1
                         ? Array.from({ length: totalBatches }, (_, i) => batchDone[`${id}-${i + 1}`] ? 1 : 0).reduce((a, b) => a + b, 0)
                         : 0;
@@ -2421,7 +2430,7 @@ export default function MealPrep() {
                       const textClass = isDone ? "text-gray-500 line-through" : "text-gray-900 font-semibold";
                       const noteClass = isDone ? "text-gray-400" : "text-gray-700";
 
-                      const totalBatches = getEffectiveBatches(recipe);
+                      const totalBatches = recipe.batchCount || 1;
                       const doneBatches = totalBatches > 1
                         ? Array.from({ length: totalBatches }, (_, i) => batchDone[`${id}-${i + 1}`] ? 1 : 0).reduce((a, b) => a + b, 0)
                         : 0;
