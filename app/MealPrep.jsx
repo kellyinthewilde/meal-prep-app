@@ -2366,14 +2366,16 @@ export default function MealPrep() {
                             {hasName && <span className="text-sm font-medium text-purple-700 ml-2">— {friendName}</span>}
                           </div>
                           <div className="flex-shrink-0 flex gap-2 items-center">
-                            <input
-                              type="text"
-                              placeholder="Who's making this?"
-                              value={friendName === "Friend" ? "" : friendName}
-                              onChange={(e) => setFriendSourced((prev) => ({ ...prev, [id]: e.target.value || "Friend" }))}
-                              className="text-sm border border-purple-200 rounded-md px-3 py-1.5 w-40 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300"
-                              onClick={(e) => e.stopPropagation()}
-                            />
+                            {!hasName && (
+                              <input
+                                type="text"
+                                placeholder="Who's making this?"
+                                value=""
+                                onChange={(e) => setFriendSourced((prev) => ({ ...prev, [id]: e.target.value || "Friend" }))}
+                                className="text-sm border border-purple-200 rounded-md px-3 py-1.5 w-40 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300"
+                                onClick={(e) => e.stopPropagation()}
+                              />
+                            )}
                             <button
                               onClick={() => setFriendSourced((prev) => { const n = { ...prev }; delete n[id]; return n; })}
                               className="text-xs font-medium px-2 py-1.5 rounded bg-gray-100 text-gray-500 hover:bg-red-100 hover:text-red-600"
