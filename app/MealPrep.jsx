@@ -168,7 +168,7 @@ const SHOPPING = {
         "Chicken feet 3 lbs — broth collagen [B1]",
         "Beef brisket 1 lb sliced thin — miyeokguk [B1]",
         "Silkie chicken (black) 1 small — Wu Ji Tang tonic [B1]",
-        "Chicken thighs bone-in 5 lbs — butter chicken, chicken noodle, pot pie, white chili [B2+B3]",
+        "Chicken thighs bone-in 5 lbs — butter chicken, pot pie, white chili [B2+B3]",
         "Italian sausage 1 lb — frittatas [B3]",
         "Ground beef 6 lbs — bolognese, chili, meatballs [B2+B3]",
         "Chicken livers 8 oz — hidden liver (puree into bolognese, chili, meatballs) [B2+B3]",
@@ -1144,41 +1144,6 @@ const RECIPES = [
     freezing: "Freeze in 2-cup Souper Cubes WITHOUT pasta. Cook pasta fresh when serving — add to reheated soup.",
   },
   {
-    id: 13,
-    name: "Chicken Noodle Soup",
-    category: "Soups",
-    phase: 2,
-    block: 2,
-    track: "shared",
-    kellyWeek: 2,
-    batchCount: 2,
-    tags: ["soup", "comfort"],
-    ingredients: [
-      "2 tbsp olive oil",
-      "1 lb chicken thighs, diced",
-      "1 large onion, diced",
-      "4 garlic cloves, minced",
-      "4 carrots, sliced",
-      "3 celery stalks, sliced",
-      "8 cups chicken broth",
-      "2 bay leaves",
-      "1 tsp thyme",
-      "Salt, pepper",
-      "Egg noodles (add fresh when serving)",
-      "Fresh parsley",
-    ],
-    instructions: [
-      "Brown chicken in olive oil, set aside (IP: use Sauté mode)",
-      "Sauté onion, garlic, carrots, celery 5 min",
-      "Add broth, bay leaves, thyme, return chicken",
-      "STOVE: Simmer 25 min until chicken is cooked and veggies tender",
-      "IP: Cancel Sauté, HIGH pressure 10 min, quick release",
-      "Season with salt, pepper",
-    ],
-    yield: "~6 two-cup portions per batch. 2 batches = ~12 two-cup portions.",
-    freezing: "Freeze in 2-cup Souper Cubes WITHOUT noodles. Cook egg noodles fresh when serving.",
-  },
-  {
     id: 65,
     name: "Chickpea Coconut Curry",
     category: "Curries",
@@ -1455,7 +1420,7 @@ const RECIPES = [
       "Transfer to baking sheet, bake 350F 12-15 min until cooked through",
     ],
     yield: "~30 meatballs",
-    freezing: "Freeze flat on sheet pan, then transfer to freezer bags. Drop into minestrone or chicken noodle soup, or reheat standalone with marinara.",
+    freezing: "Freeze flat on sheet pan, then transfer to freezer bags. Drop into minestrone, or reheat standalone with marinara.",
     note: "Hidden liver — chicken livers pur\u00e9ed to liquid, 10% ratio mixed with ground beef. Italian seasoning + tomato paste mask completely. Undetectable.",
   },
   {
@@ -2603,7 +2568,7 @@ export default function MealPrep() {
                 <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">Lunch &amp; Dinner <span className="font-normal text-gray-500 normal-case tracking-normal">(aligned with Jonny where possible)</span></h4>
                 <p className="text-sm text-gray-700 mb-2">Heat the same thing for both of you. Green cells in the spreadsheet = aligned meals.</p>
                 <div className="grid grid-cols-3 gap-2.5 text-sm text-gray-700">
-                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Soups:</strong> Black Bean, Minestrone + Meatballs, Chicken Noodle</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Soups:</strong> Black Bean, Minestrone + Meatballs</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Curries &amp; Dals:</strong> Butter Chicken, Chickpea Coconut Curry, Coconut Lentil Dal, Kitchari</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Comfort:</strong> White Chicken Chili, Chicken Pot Pie</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
