@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 const RECIPES = [
   // Foundations & Broths
   { id: 1, name: "Chicken Bone Broth", category: "Broths", track: "kelly", servingUnit: "2-cup bag", color: "#f59e0b" },
-  { id: 2, name: "Beef Bone Broth", category: "Broths", track: "kelly", servingUnit: "2-cup bag", color: "#f59e0b" },
+  { id: 2, name: "Beef Bone Broth (2-cup)", category: "Broths", track: "kelly", servingUnit: "2-cup bag", color: "#f59e0b" },
+  { id: 202, name: "Beef Bone Broth (1-cup)", category: "Broths", track: "kelly", servingUnit: "1-cup portion", color: "#f59e0b" },
   { id: 3, name: "Golden Broth", category: "Broths", track: "kelly", servingUnit: "2-cup bag", color: "#f59e0b" },
   { id: 51, name: "Silkie Chicken Tonic", category: "Broths", track: "kelly", servingUnit: "1-cup bag", color: "#f59e0b" },
   { id: 60, name: "Jujube Goji Ginger Tea", category: "Broths", track: "kelly", servingUnit: "1-cup cube", color: "#f59e0b" },
