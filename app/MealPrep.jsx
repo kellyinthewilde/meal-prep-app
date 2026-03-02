@@ -2327,7 +2327,8 @@ export default function MealPrep() {
                           <div className="w-2.5 h-2.5 rounded-full flex-shrink-0 bg-blue-400" />
                           <div className="flex-1 min-w-0">
                             <span className="font-semibold text-gray-900 hover:underline">{recipe.name}</span>
-                            {planRecipe && <p className="text-xs text-gray-500 truncate">{planRecipe.note}</p>}
+                            {friendSourced[id] && <span className="text-xs font-medium text-purple-600 ml-2">(was friend-sourced)</span>}
+                            {planRecipe && !friendSourced[id] && <p className="text-xs text-gray-500 truncate">{planRecipe.note}</p>}
                           </div>
                           <div className="flex-shrink-0 flex gap-1.5">
                             <button
@@ -2359,6 +2360,7 @@ export default function MealPrep() {
                     <h3 className="font-bold text-gray-900">Friend Sourced</h3>
                     <span className="text-sm text-purple-500 font-medium">{friendIds.length} recipe{friendIds.length > 1 ? "s" : ""}</span>
                   </div>
+                  <p className="text-xs text-gray-500 mb-3">If a friend hasn&apos;t claimed a recipe, tap &quot;I&apos;ll cook&quot; to move it to your Next Up queue.</p>
                   <div className="space-y-2">
                     {friendIds.map((id) => {
                       const numId = Number(id);
@@ -2366,15 +2368,17 @@ export default function MealPrep() {
                       if (!recipe) return null;
                       const friendName = friendSourced[id];
                       const hasName = friendName && friendName !== "Friend";
+                      const isAlsoNextUp = nextUp[id];
                       return (
-                        <div key={id} className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-purple-100">
-                          <div className="w-2.5 h-2.5 rounded-full flex-shrink-0 bg-purple-400" />
+                        <div key={id} className={`flex items-center gap-3 px-4 py-3 rounded-lg bg-white border ${isAlsoNextUp ? "border-blue-200 bg-blue-50/30" : "border-purple-100"}`}>
+                          <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${isAlsoNextUp ? "bg-blue-400" : "bg-purple-400"}`} />
                           <div className="flex-1 min-w-0 cursor-pointer" onClick={() => goToRecipe(numId)}>
                             <span className="font-semibold text-gray-900 hover:underline">{recipe.name}</span>
                             {hasName && <span className="text-sm font-medium text-purple-700 ml-2">— {friendName}</span>}
+                            {isAlsoNextUp && <span className="text-xs font-medium text-blue-600 ml-2">( you&apos;re cooking this)</span>}
                           </div>
                           <div className="flex-shrink-0 flex gap-2 items-center">
-                            {!hasName && (
+                            {!hasName && !isAlsoNextUp && (
                               <input
                                 type="text"
                                 placeholder="Who's making this?"
@@ -2384,8 +2388,22 @@ export default function MealPrep() {
                                 onClick={(e) => e.stopPropagation()}
                               />
                             )}
+                            {!isAlsoNextUp && (
+                              <button
+                                onClick={() => setNextUp((prev) => ({ ...prev, [id]: true }))}
+                                className="text-xs font-medium px-2 py-1.5 rounded bg-blue-50 text-blue-500 hover:bg-blue-100 hover:text-blue-700"
+                                title="Move to your Next Up queue"
+                              >I&apos;ll cook</button>
+                            )}
+                            {isAlsoNextUp && (
+                              <button
+                                onClick={() => setNextUp((prev) => { const n = { ...prev }; delete n[id]; return n; })}
+                                className="text-xs font-medium px-2 py-1.5 rounded bg-blue-100 text-blue-600 hover:bg-gray-100 hover:text-gray-500"
+                                title="Remove from your Next Up queue"
+                              >Undo</button>
+                            )}
                             <button
-                              onClick={() => setFriendSourced((prev) => { const n = { ...prev }; delete n[id]; return n; })}
+                              onClick={() => { setFriendSourced((prev) => { const n = { ...prev }; delete n[id]; return n; }); setNextUp((prev) => { const n = { ...prev }; delete n[id]; return n; }); }}
                               className="text-xs font-medium px-2 py-1.5 rounded bg-gray-100 text-gray-500 hover:bg-red-100 hover:text-red-600"
                               title="Remove from friend sourced"
                             >&#x2715;</button>
@@ -2469,8 +2487,9 @@ export default function MealPrep() {
                                 >&#x1F91D;</button>
                               </>
                             )}
-                            {nextUp[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-blue-100 text-blue-600">Queued</span>}
-                            {friendSourced[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-purple-100 text-purple-700">{friendSourced[id] === "Friend" ? "Friend (tap to name)" : friendSourced[id]}</span>}
+                            {nextUp[id] && !friendSourced[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-blue-100 text-blue-600">Queued</span>}
+                            {nextUp[id] && friendSourced[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-blue-100 text-blue-600">You&apos;re cooking</span>}
+                            {friendSourced[id] && !nextUp[id] && <span className="text-xs font-medium px-2 py-1 rounded bg-purple-100 text-purple-700">{friendSourced[id] === "Friend" ? "Friend (tap to name)" : friendSourced[id]}</span>}
                             <span
                               className={`text-xs font-medium px-2 py-1 rounded cursor-pointer ${isDone ? "bg-emerald-100 text-emerald-700" : isProgress ? "bg-amber-100 text-amber-700" : "bg-gray-100 text-gray-500"}`}
                               onClick={(e) => { e.stopPropagation(); cycleStatus(id); }}
