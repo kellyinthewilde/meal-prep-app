@@ -99,7 +99,7 @@ const COOK_PLAN = [
     recipes: [
       { id: 55, note: "Oven 18 min per batch. All 4 batches." },
       { id: 73, note: "Oven 18 min. Both batches." },
-      { id: 75, note: "Oven 40 min. All 3 quiches." },
+      { id: 75, note: "Oven 40 min. Both quiches." },
       { id: 72, note: "Stove 30 min. Both batches." },
       { id: 52, note: "Oven 18 min per batch. All 3 batches — same tin, just reload." },
       { id: 54, note: "Oven 20 min." },
@@ -991,7 +991,7 @@ const RECIPES = [
   },
   {
     id: 26,
-    name: "Coconut Lentil Dal",
+    name: "Coconut Mung Bean Dal",
     category: "Dals",
     phase: 2,
     block: 2,
@@ -1000,7 +1000,7 @@ const RECIPES = [
     batchCount: 2,
     tags: ["dal", "vegetarian", "warming"],
     ingredients: [
-      "1 cup red lentils",
+      "1 cup dried mung beans // Soak 4+ hrs or overnight, drain before cooking",
       "1 can coconut milk",
       "4 cups water or vegetable broth",
       "1 onion, diced",
@@ -1015,13 +1015,13 @@ const RECIPES = [
       "Salt, lime juice",
     ],
     instructions: [
-      "Rinse lentils",
+      "Soak mung beans 4+ hrs or overnight, drain and rinse",
       "Heat ghee, add cumin seeds until they pop (IP: use Sauté mode)",
       "Add onion, sauté until golden. Add garlic, ginger 1 min",
       "Add turmeric, coriander, cook 30 sec",
-      "Add lentils, water, tomatoes if using",
-      "STOVE: Boil, then simmer 20-25 min until lentils break down",
-      "IP: Cancel Sauté, HIGH pressure 5 min, natural release 5 min then quick release // lentils are foamy under pressure",
+      "Add mung beans, water, tomatoes if using",
+      "STOVE: Boil, then simmer 30-40 min until beans are soft and starting to break down",
+      "IP: Cancel Sauté, HIGH pressure 10 min, natural release 10 min then quick release",
       "Add frozen broccoli, stir in coconut milk, simmer 5 min on low until broccoli is tender",
       "Season with salt and lime",
     ],
@@ -1655,34 +1655,36 @@ const RECIPES = [
   },
   {
     id: 75,
-    name: "Quiche Lorraine (Bacon + Gruyère)",
+    name: "Quiche (Sausage, Leek + Gruyère)",
     category: "Breakfast",
     phase: 2,
     block: 3,
     track: "shared",
     kellyWeek: 2,
     tags: ["breakfast", "comfort"],
-    batchCount: 3,
+    batchCount: 2,
     ingredients: [
       "1 pie crust (store-bought) // Blind-bake first (375F 10 min with pie weights) to prevent soggy bottom",
-      "6 slices bacon (cooked, crumbled)",
+      "8 oz breakfast sausage (cooked, crumbled)",
+      "1 large leek (white + light green parts, sliced thin, washed well)",
       "1.5 cups gruyère (shredded)",
       "4 eggs",
-      "1 cup cream",
-      "1/2 cup milk",
+      "1.5 cups half-and-half",
       "Nutmeg, salt, pepper",
     ],
     instructions: [
       "Blind-bake crust 375F 10 min",
-      "Layer bacon + gruyère in crust",
-      "Whisk eggs, cream, milk, nutmeg, salt",
+      "Cook sausage, crumble, set aside",
+      "Sauté leek in sausage drippings until soft (5 min)",
+      "Layer sausage, leek + gruyère in crust",
+      "Whisk eggs, half-and-half, nutmeg, salt",
       "Pour over",
       "Bake 350F 35-40 min until set and golden",
       "Cool before slicing",
     ],
-    yield: "8 slices per quiche. Need 3 quiches (24 slices total, 12 servings of 2). 10 eaten.",
+    yield: "8 slices per quiche. 2 quiches = 16 slices (8 servings of 2 slices).",
     freezing: "Wrap individual slices in parchment, then freezer bag. Reheat in toaster oven 350F 10-12 min.",
-    note: "The only quiche you need. Bacon + gruyère is classic Lorraine. Freeze slices, reheat in toaster oven.",
+    note: "Lighter than classic Lorraine. Half-and-half instead of cream, sausage + leek for savory depth without heaviness.",
   },
   {
     id: 77,
@@ -2599,7 +2601,7 @@ export default function MealPrep() {
                 <p className="text-sm text-gray-700 mb-2">Heat the same thing for both of you. Green cells in the spreadsheet = aligned meals.</p>
                 <div className="grid grid-cols-3 gap-2.5 text-sm text-gray-700">
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Soups:</strong> Black Bean, Minestrone + Meatballs</div>
-                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Curries &amp; Dals:</strong> Butter Chicken, Chickpea Coconut Curry, Coconut Lentil Dal, Kitchari</div>
+                  <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Curries &amp; Dals:</strong> Butter Chicken, Chickpea Coconut Curry, Coconut Mung Bean Dal, Kitchari</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Comfort:</strong> White Chicken Chili, Chicken Pot Pie</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Omega-3:</strong> Salmon Patties + Rice + Warm Greens</div>
                   <div className="bg-orange-50/40 rounded-lg p-3 border border-orange-100/60"><strong className="text-gray-900">Phase 1 comfort:</strong> Miyeokguk, Kabocha Soup (Kelly anytime)</div>
