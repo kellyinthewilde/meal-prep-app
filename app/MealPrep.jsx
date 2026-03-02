@@ -1884,6 +1884,26 @@ const RECIPES = [
   },
 ];
 
+// ── 42-DAY MEAL PLAN DAY-BAG LOOKUP ──
+// Maps meal plan display names to their day assignments
+const MEAL_PLAN_DAYS = {"Beef & Sweet Potato Stew":[{day:1,slot:"Lunch",person:"J"},{day:3,slot:"Dinner",person:"K+J"},{day:7,slot:"Lunch",person:"J"},{day:9,slot:"Lunch",person:"K"},{day:22,slot:"Dinner",person:"K+J"},{day:29,slot:"Dinner",person:"K+J"}],"Beef Bone Broth (2-cup)":[{day:17,slot:"AM",person:"K"},{day:19,slot:"AM",person:"K"},{day:21,slot:"AM",person:"K"},{day:23,slot:"AM",person:"K"},{day:25,slot:"AM",person:"K"},{day:27,slot:"AM",person:"K"},{day:30,slot:"AM",person:"K"},{day:32,slot:"AM",person:"K"},{day:34,slot:"AM",person:"K"},{day:37,slot:"AM",person:"K"},{day:39,slot:"AM",person:"K"},{day:41,slot:"AM",person:"K"}],"Beef Chili":[{day:3,slot:"Lunch",person:"J"},{day:5,slot:"Dinner",person:"K+J"},{day:14,slot:"Dinner",person:"K+J"},{day:18,slot:"Dinner",person:"K+J"},{day:26,slot:"Lunch",person:"J"},{day:35,slot:"Dinner",person:"K+J"},{day:41,slot:"Dinner",person:"K+J"}],"Black Bean Soup":[{day:7,slot:"Lunch",person:"K"},{day:11,slot:"Lunch",person:"K"},{day:12,slot:"Lunch",person:"J"},{day:16,slot:"Dinner",person:"K+J"},{day:22,slot:"Lunch",person:"J"},{day:25,slot:"Lunch",person:"K"},{day:26,slot:"Lunch",person:"K"},{day:29,slot:"Lunch",person:"K+J"},{day:30,slot:"Lunch",person:"K"},{day:38,slot:"Lunch",person:"J"},{day:39,slot:"Lunch",person:"K"},{day:42,slot:"Lunch",person:"J"}],"Bolognese + Meatballs":[{day:4,slot:"Lunch",person:"J"},{day:7,slot:"Dinner",person:"K+J"},{day:27,slot:"Dinner",person:"K+J"},{day:39,slot:"Dinner",person:"K+J"}],"Butter Chicken + Rice":[{day:9,slot:"Dinner",person:"K+J"},{day:15,slot:"Dinner",person:"K+J"},{day:23,slot:"Dinner",person:"K+J"},{day:32,slot:"Dinner",person:"K+J"},{day:42,slot:"Dinner",person:"K+J"}],"Carrot Ginger Soup":[{day:2,slot:"Dinner",person:"K+J"},{day:6,slot:"Bkfst",person:"K"},{day:14,slot:"Lunch",person:"K+J"},{day:21,slot:"Lunch",person:"K+J"},{day:26,slot:"Bkfst",person:"K"},{day:30,slot:"Lunch",person:"J"},{day:37,slot:"Lunch",person:"K"}],"Chicken Bone Broth":[{day:15,slot:"AM",person:"K"},{day:16,slot:"AM",person:"K"},{day:18,slot:"AM",person:"K"},{day:20,slot:"AM",person:"K"},{day:22,slot:"AM",person:"K"},{day:24,slot:"AM",person:"K"},{day:26,slot:"AM",person:"K"},{day:28,slot:"AM",person:"K"},{day:29,slot:"AM",person:"K"},{day:31,slot:"AM",person:"K"},{day:33,slot:"AM",person:"K"},{day:35,slot:"AM",person:"K"},{day:36,slot:"AM",person:"K"},{day:38,slot:"AM",person:"K"},{day:40,slot:"AM",person:"K"},{day:42,slot:"AM",person:"K"}],"Chicken Ginger Congee":[{day:1,slot:"Dinner",person:"K+J"},{day:2,slot:"Bkfst",person:"K"},{day:7,slot:"Bkfst",person:"K"},{day:8,slot:"Lunch",person:"K+J"},{day:15,slot:"Lunch",person:"K"},{day:23,slot:"Bkfst",person:"K"},{day:24,slot:"Lunch",person:"K"},{day:25,slot:"Bkfst",person:"K"},{day:31,slot:"Lunch",person:"K+J"},{day:36,slot:"Bkfst",person:"K"},{day:39,slot:"Bkfst",person:"K"},{day:41,slot:"Lunch",person:"K"}],"Chicken Pot Pie":[{day:13,slot:"Dinner",person:"K+J"},{day:27,slot:"Lunch",person:"J"},{day:34,slot:"Dinner",person:"K+J"},{day:40,slot:"Lunch",person:"J"}],"Chickpea Curry + Rice":[{day:11,slot:"Dinner",person:"K+J"},{day:19,slot:"Dinner",person:"K+J"},{day:28,slot:"Dinner",person:"K+J"},{day:34,slot:"Lunch",person:"J"},{day:38,slot:"Dinner",person:"K+J"}],"Coconut Mung Bean Dal":[{day:10,slot:"Dinner",person:"K+J"},{day:17,slot:"Dinner",person:"K+J"},{day:23,slot:"Lunch",person:"J"},{day:30,slot:"Dinner",person:"K+J"},{day:37,slot:"Lunch",person:"J"}],"Date & Walnut Congee":[{day:5,slot:"Bkfst",person:"K"},{day:5,slot:"Lunch",person:"J"},{day:16,slot:"Bkfst",person:"K"},{day:18,slot:"Lunch",person:"K+J"},{day:19,slot:"Bkfst",person:"K"},{day:28,slot:"Lunch",person:"K+J"},{day:30,slot:"Bkfst",person:"K"},{day:35,slot:"Bkfst",person:"K"}],"Egg Bites":[{day:2,slot:"Bkfst",person:"J"},{day:6,slot:"Bkfst",person:"J"},{day:10,slot:"Bkfst",person:"K+J"},{day:11,slot:"Bkfst",person:"J"},{day:14,slot:"Bkfst",person:"J"},{day:17,slot:"Bkfst",person:"J"},{day:20,slot:"Bkfst",person:"J"},{day:24,slot:"Bkfst",person:"K+J"},{day:29,slot:"Bkfst",person:"K"},{day:33,slot:"Bkfst",person:"K"},{day:42,slot:"Bkfst",person:"K"}],"Frittata":[{day:1,slot:"Bkfst",person:"J"},{day:5,slot:"Bkfst",person:"J"},{day:7,slot:"Bkfst",person:"J"},{day:9,slot:"Bkfst",person:"J"},{day:15,slot:"Bkfst",person:"K"},{day:18,slot:"Bkfst",person:"K"},{day:26,slot:"Bkfst",person:"J"},{day:27,slot:"Bkfst",person:"J"},{day:38,slot:"Bkfst",person:"K"},{day:41,slot:"Bkfst",person:"K"}],"Golden Broth":[{day:1,slot:"PM",person:"K"},{day:3,slot:"PM",person:"K"},{day:5,slot:"PM",person:"K"},{day:7,slot:"PM",person:"K"},{day:9,slot:"PM",person:"K"},{day:11,slot:"PM",person:"K"},{day:13,slot:"PM",person:"K"}],"Jujube Goji Ginger Tea":[{day:2,slot:"PM",person:"K"},{day:4,slot:"PM",person:"K"},{day:6,slot:"PM",person:"K"},{day:8,slot:"PM",person:"K"},{day:10,slot:"PM",person:"K"},{day:12,slot:"PM",person:"K"},{day:14,slot:"PM",person:"K"}],"Kabocha & Mung Bean Soup":[{day:4,slot:"Lunch",person:"K"},{day:9,slot:"Bkfst",person:"K"},{day:10,slot:"Lunch",person:"K+J"},{day:16,slot:"Lunch",person:"J"},{day:17,slot:"Bkfst",person:"K"},{day:22,slot:"Lunch",person:"K"},{day:31,slot:"Bkfst",person:"K"},{day:32,slot:"Lunch",person:"K+J"},{day:36,slot:"Lunch",person:"K+J"},{day:42,slot:"Lunch",person:"K"}],"Kitchari":[{day:9,slot:"Lunch",person:"J"},{day:11,slot:"Lunch",person:"J"},{day:12,slot:"Dinner",person:"K+J"},{day:25,slot:"Dinner",person:"K+J"},{day:36,slot:"Dinner",person:"K+J"}],"Minestrone + Meatballs":[{day:13,slot:"Lunch",person:"K"},{day:16,slot:"Lunch",person:"K"},{day:17,slot:"Lunch",person:"J"},{day:20,slot:"Lunch",person:"K"},{day:24,slot:"Lunch",person:"J"},{day:25,slot:"Lunch",person:"J"},{day:27,slot:"Lunch",person:"K"},{day:31,slot:"Dinner",person:"K+J"},{day:34,slot:"Lunch",person:"K"},{day:35,slot:"Lunch",person:"J"}],"Miyeokguk":[{day:1,slot:"Lunch",person:"K"},{day:3,slot:"Lunch",person:"K"},{day:12,slot:"Lunch",person:"K"},{day:17,slot:"Lunch",person:"K"},{day:23,slot:"Lunch",person:"K"},{day:40,slot:"Lunch",person:"K"}],"Moroccan Beef Stew":[{day:8,slot:"Dinner",person:"K+J"},{day:15,slot:"Lunch",person:"J"},{day:21,slot:"Dinner",person:"K+J"},{day:33,slot:"Lunch",person:"J"},{day:37,slot:"Dinner",person:"K+J"}],"Oatmeal Bowl + Compote":[{day:14,slot:"Bkfst",person:"K"},{day:19,slot:"Bkfst",person:"J"},{day:21,slot:"Bkfst",person:"K"},{day:23,slot:"Bkfst",person:"J"},{day:27,slot:"Bkfst",person:"K"},{day:29,slot:"Bkfst",person:"J"},{day:30,slot:"Bkfst",person:"J"},{day:32,slot:"Bkfst",person:"K"},{day:33,slot:"Bkfst",person:"J"},{day:34,slot:"Bkfst",person:"J"},{day:37,slot:"Bkfst",person:"K"}],"Quiche":[{day:3,slot:"Bkfst",person:"K+J"},{day:4,slot:"Bkfst",person:"K+J"},{day:8,slot:"Bkfst",person:"K+J"},{day:12,slot:"Bkfst",person:"K+J"},{day:13,slot:"Bkfst",person:"J"},{day:22,slot:"Bkfst",person:"K+J"},{day:40,slot:"Bkfst",person:"K"}],"Salmon Patties + Rice":[{day:4,slot:"Dinner",person:"K+J"},{day:20,slot:"Dinner",person:"K+J"},{day:26,slot:"Dinner",person:"K+J"},{day:40,slot:"Dinner",person:"K+J"}],"Silkie Chicken Tonic":[{day:1,slot:"AM",person:"K"},{day:2,slot:"AM",person:"K"},{day:3,slot:"AM",person:"K"},{day:4,slot:"AM",person:"K"},{day:5,slot:"AM",person:"K"},{day:6,slot:"AM",person:"K"},{day:7,slot:"AM",person:"K"},{day:8,slot:"AM",person:"K"},{day:9,slot:"AM",person:"K"},{day:10,slot:"AM",person:"K"},{day:11,slot:"AM",person:"K"},{day:12,slot:"AM",person:"K"},{day:13,slot:"AM",person:"K"},{day:14,slot:"AM",person:"K"}],"Sweet Congee (Chai)":[{day:1,slot:"Bkfst",person:"K"},{day:2,slot:"Lunch",person:"K"},{day:5,slot:"Lunch",person:"K"},{day:11,slot:"Bkfst",person:"K"},{day:13,slot:"Bkfst",person:"K"},{day:13,slot:"Lunch",person:"J"},{day:20,slot:"Bkfst",person:"K"},{day:28,slot:"Bkfst",person:"K"},{day:34,slot:"Bkfst",person:"K"},{day:35,slot:"Lunch",person:"K"},{day:38,slot:"Lunch",person:"K"}],"Sweet Potato Coconut Soup":[{day:6,slot:"Lunch",person:"K+J"},{day:19,slot:"Lunch",person:"K+J"},{day:33,slot:"Lunch",person:"K"},{day:39,slot:"Lunch",person:"J"}],"White Chicken Chili":[{day:2,slot:"Lunch",person:"J"},{day:6,slot:"Dinner",person:"K+J"},{day:20,slot:"Lunch",person:"J"},{day:24,slot:"Dinner",person:"K+J"},{day:33,slot:"Dinner",person:"K+J"},{day:41,slot:"Lunch",person:"J"}]};
+
+// Map recipe names to their meal plan lookup keys
+const RECIPE_TO_PLAN_KEY = {};
+RECIPES.forEach((r) => {
+  const name = r.name;
+  // Try exact match first, then partial matches
+  const keys = Object.keys(MEAL_PLAN_DAYS);
+  const exact = keys.find((k) => k === name);
+  if (exact) { RECIPE_TO_PLAN_KEY[r.id] = exact; return; }
+  // Try if recipe name starts with a plan key
+  const partial = keys.find((k) => name.startsWith(k) || name.includes(k));
+  if (partial) { RECIPE_TO_PLAN_KEY[r.id] = partial; return; }
+  // Try if a plan key starts with the recipe name
+  const reverse = keys.find((k) => k.startsWith(name.split(" (")[0]));
+  if (reverse) { RECIPE_TO_PLAN_KEY[r.id] = reverse; }
+});
+
 // ── MAIN COMPONENT ──
 export default function MealPrep() {
   const [currentTab, setCurrentTab] = useState("Cook Plan");
@@ -2206,6 +2226,45 @@ export default function MealPrep() {
             <p className="text-sm text-gray-700">{recipe.note}</p>
           </div>
         )}
+
+        {/* Day-Bag Packing Guide */}
+        {(() => {
+          const planKey = RECIPE_TO_PLAN_KEY[recipe.id];
+          const dayEntries = planKey ? MEAL_PLAN_DAYS[planKey] : null;
+          if (!dayEntries || dayEntries.length === 0) return null;
+          // Group by day for cleaner display
+          const byDay = {};
+          dayEntries.forEach((e) => {
+            if (!byDay[e.day]) byDay[e.day] = [];
+            byDay[e.day].push(e);
+          });
+          const days = Object.keys(byDay).map(Number).sort((a, b) => a - b);
+          return (
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-3">
+              <h5 className="font-semibold text-amber-800 text-sm mb-2">Pack Into Day Bags ({dayEntries.length} portions)</h5>
+              <div className="flex flex-wrap gap-1.5">
+                {days.map((d) => {
+                  const entries = byDay[d];
+                  const person = entries[0].person;
+                  const slot = entries[0].slot;
+                  const isShared = person === "K+J";
+                  const isKelly = person === "K";
+                  const bgColor = isShared ? "bg-amber-100 text-amber-800 border-amber-300" : isKelly ? "bg-pink-100 text-pink-800 border-pink-300" : "bg-blue-100 text-blue-800 border-blue-300";
+                  return (
+                    <span key={d} className={`text-xs font-medium px-2 py-1 rounded border ${bgColor}`} title={`${slot} - ${person}`}>
+                      D{d} {slot} {person}
+                    </span>
+                  );
+                })}
+              </div>
+              <div className="flex gap-3 mt-2 text-xs text-gray-500">
+                <span><span className="inline-block w-2.5 h-2.5 rounded bg-pink-200 border border-pink-300 mr-1" />Kelly</span>
+                <span><span className="inline-block w-2.5 h-2.5 rounded bg-blue-200 border border-blue-300 mr-1" />Jonny</span>
+                <span><span className="inline-block w-2.5 h-2.5 rounded bg-amber-200 border border-amber-300 mr-1" />Both</span>
+              </div>
+            </div>
+          );
+        })()}
 
         <textarea
           className="w-full border border-gray-300 rounded p-2 text-sm"
