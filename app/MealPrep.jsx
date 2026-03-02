@@ -3067,7 +3067,7 @@ export default function MealPrep() {
       )}
 
       {/* BLOCK TABS */}
-      {TABS.slice(4, 7).map((blockName, idx) => {
+      {TABS.slice(5, 8).map((blockName, idx) => {
         const blockId = idx + 1;
         const block = BLOCKS[idx];
         const blockRecipes = RECIPES.filter((r) => {
