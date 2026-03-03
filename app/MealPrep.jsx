@@ -2621,8 +2621,18 @@ export default function MealPrep() {
 
       {/* 42-DAY PLAN TAB */}
       {currentTab === "42-Day Plan" && (() => {
-        const assembledCount = Object.values(daysAssembled).filter(Boolean).length;
-        const toggleAssembled = (dayNum) => setDaysAssembled((prev) => ({ ...prev, [dayNum]: !prev[dayNum] }));
+        const getDayState = (d) => daysAssembled[d] || {};
+        const isFullDay = (d) => { const s = getDayState(d); return (s === true) || (!!s.kelly && !!s.jonny); };
+        const assembledCount = Array.from({length:42},(_,i)=>i+1).filter(isFullDay).length;
+        const kellyCount = Array.from({length:42},(_,i)=>i+1).filter(d => { const s = getDayState(d); return s === true || !!s.kelly; }).length;
+        const jonnyCount = Array.from({length:42},(_,i)=>i+1).filter(d => { const s = getDayState(d); return s === true || !!s.jonny; }).length;
+        const togglePerson = (dayNum, person) => setDaysAssembled((prev) => {
+          const cur = prev[dayNum] || {};
+          // Migrate old boolean format
+          const state = cur === true ? { kelly: true, jonny: true } : { kelly: !!cur.kelly, jonny: !!cur.jonny };
+          state[person] = !state[person];
+          return { ...prev, [dayNum]: state };
+        });
         return (
         <div className="space-y-6">
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 mb-4">
@@ -2637,14 +2647,24 @@ export default function MealPrep() {
             {/* Assembly Progress */}
             <div className="mt-4 pt-4 border-t border-gray-100">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-semibold text-gray-700">Days Assembled in Freezer</span>
+                <span className="text-sm font-semibold text-gray-700">Days Fully Assembled</span>
                 <span className="text-sm font-bold text-emerald-700">{assembledCount} / 42</span>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
                 <div className="h-full rounded-full transition-all duration-500 ease-out" style={{ width: `${(assembledCount / 42) * 100}%`, background: assembledCount === 42 ? '#059669' : 'linear-gradient(90deg, #f59e0b, #ef4444, #ec4899)' }} />
               </div>
+              <div className="flex gap-4 mt-2">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-pink-400" />
+                  <span className="text-xs text-gray-500">Kelly: <span className="font-semibold text-gray-700">{kellyCount}/42</span></span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-blue-400" />
+                  <span className="text-xs text-gray-500">Jonny: <span className="font-semibold text-gray-700">{jonnyCount}/42</span></span>
+                </div>
+              </div>
               {assembledCount > 0 && assembledCount < 42 && (
-                <p className="text-xs text-gray-400 mt-1">{42 - assembledCount} days remaining</p>
+                <p className="text-xs text-gray-400 mt-1">{42 - assembledCount} days fully assembled remaining</p>
               )}
               {assembledCount === 42 && (
                 <p className="text-xs text-emerald-600 mt-1 font-medium">All 42 days assembled! You&apos;re ready.</p>
@@ -2654,7 +2674,7 @@ export default function MealPrep() {
 
           {PLAN_DATA.weeks.map((week) => {
             const weekDays = week.days.map(d => d.day);
-            const weekAssembled = weekDays.filter(d => daysAssembled[d]).length;
+            const weekAssembled = weekDays.filter(isFullDay).length;
             return (
             <div key={week.title} className="space-y-3">
               <div className="sticky top-0 z-10 bg-gradient-to-r from-amber-50 to-rose-50 rounded-lg px-4 py-3 border border-amber-200 shadow-sm">
@@ -2668,21 +2688,27 @@ export default function MealPrep() {
               </div>
 
               {week.days.map((day) => {
-                const isAssembled = !!daysAssembled[day.day];
+                const dayState = getDayState(day.day);
+                const kellyDone = dayState === true || !!dayState.kelly;
+                const jonnyDone = dayState === true || !!dayState.jonny;
+                const isAssembled = kellyDone && jonnyDone;
                 return (
                 <div key={day.day} className={`rounded-lg shadow-sm border overflow-hidden transition-all duration-300 ${isAssembled ? 'bg-gray-50 border-gray-200 opacity-60' : 'bg-white border-gray-100'}`}>
-                  <div className={`px-4 py-3 border-b ${isAssembled ? 'bg-emerald-50/80 border-emerald-100' : 'bg-gray-50 border-gray-100'}`}>
+                  <div className={`px-4 py-3 border-b ${isAssembled ? 'bg-emerald-50/80 border-emerald-100' : (kellyDone || jonnyDone) ? 'bg-amber-50/50 border-amber-100' : 'bg-gray-50 border-gray-100'}`}>
                     <div className="flex items-center justify-between">
                       <h4 className={`font-bold ${isAssembled ? 'text-gray-400' : 'text-gray-900'}`}>
                         <span className={isAssembled ? 'text-emerald-500' : 'text-amber-700'}>Day {day.day}</span>
                       </h4>
-                      <button onClick={() => toggleAssembled(day.day)} className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all ${isAssembled ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}>
-                        {isAssembled ? (
-                          <><svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>Assembled</>
-                        ) : (
-                          <><svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><rect x="3" y="3" width="18" height="18" rx="3" /></svg>Mark Ready</>
-                        )}
-                      </button>
+                      <div className="flex items-center gap-1.5">
+                        <button onClick={() => togglePerson(day.day, 'kelly')} className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-all ${kellyDone ? 'bg-pink-100 text-pink-700 hover:bg-pink-200' : 'bg-gray-100 text-gray-400 hover:bg-pink-50 hover:text-pink-500'}`}>
+                          {kellyDone ? (<svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>) : (<svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><rect x="3" y="3" width="18" height="18" rx="3" /></svg>)}
+                          K
+                        </button>
+                        <button onClick={() => togglePerson(day.day, 'jonny')} className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-all ${jonnyDone ? 'bg-blue-100 text-blue-700 hover:bg-blue-200' : 'bg-gray-100 text-gray-400 hover:bg-blue-50 hover:text-blue-500'}`}>
+                          {jonnyDone ? (<svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>) : (<svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><rect x="3" y="3" width="18" height="18" rx="3" /></svg>)}
+                          J
+                        </button>
+                      </div>
                     </div>
                     <p className={`text-sm mt-1 italic leading-relaxed ${isAssembled ? 'text-gray-400' : 'text-gray-600'}`}>{day.description}</p>
                   </div>
