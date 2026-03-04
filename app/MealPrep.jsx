@@ -1967,8 +1967,17 @@ export default function MealPrep() {
   const [friendSourced, setFriendSourced] = useState({});
   const [nextUp, setNextUp] = useState({});
   const [daysAssembled, setDaysAssembled] = useState({});
+  const [darkMode, setDarkMode] = useState(false);
 
   const TABS = ["Cook Plan", "42-Day Plan", "Daily Guide", "Overview", "Shopping", "Block 1", "Block 2", "Block 3", "Recipes", "Freezer"];
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   useEffect(() => {
     const handleScroll = () => setShowScrollTop(window.scrollY > 400);
@@ -1990,6 +1999,7 @@ export default function MealPrep() {
       setFriendSourced(data.friendSourced || {});
       setNextUp(data.nextUp || {});
       setDaysAssembled(data.daysAssembled || {});
+      if (data.darkMode) setDarkMode(true);
     }
   }, []);
 
@@ -2005,9 +2015,10 @@ export default function MealPrep() {
       friendSourced,
       nextUp,
       daysAssembled,
+      darkMode,
     };
     localStorage.setItem("mealprep-v3", JSON.stringify(toSave));
-  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked, batchDone, customBatchCount, friendSourced, nextUp, daysAssembled]);
+  }, [recipeNotes, recipeStatus, globalNotes, freezerInventory, shopChecked, batchDone, customBatchCount, friendSourced, nextUp, daysAssembled, darkMode]);
 
   const cycleStatus = (id) => {
     setRecipeStatus((prev) => {
@@ -2329,8 +2340,19 @@ export default function MealPrep() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4 sm:p-6 min-h-screen" style={{ background: 'linear-gradient(180deg, #FFF7ED 0%, #FFF1F2 15%, #F8FAFC 40%)' }}>
-      <div className="text-center mb-6 pt-2">
+    <div className="meal-prep-root max-w-6xl mx-auto p-4 sm:p-6 min-h-screen" style={{ background: darkMode ? 'linear-gradient(180deg, #1a1200 0%, #1a0a0e 15%, #111827 40%)' : 'linear-gradient(180deg, #FFF7ED 0%, #FFF1F2 15%, #F8FAFC 40%)' }}>
+      <div className="text-center mb-6 pt-2 relative">
+        <button
+          onClick={() => setDarkMode(d => !d)}
+          className="absolute right-0 top-0 p-2 rounded-full bg-white/70 hover:bg-white border border-gray-200 text-gray-500 hover:text-gray-800 transition-all"
+          title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {darkMode ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+          )}
+        </button>
         <p className="text-sm font-medium tracking-widest uppercase text-amber-600 mb-2">Postpartum Nourishment</p>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">Kelly&apos;s Meal Prep</h1>
         <p className="text-gray-500 text-sm">6-week recovery plan — warming foods, healing broths, aligned meals</p>

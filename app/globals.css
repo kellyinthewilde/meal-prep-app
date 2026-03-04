@@ -7,13 +7,6 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -25,3 +18,120 @@ body {
     text-wrap: balance;
   }
 }
+
+/* ── DARK MODE OVERRIDES ── */
+html.dark body {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+/* Main wrapper gradient */
+html.dark .meal-prep-root {
+  background: linear-gradient(180deg, #1a1200 0%, #1a0a0e 15%, #111827 40%) !important;
+}
+
+/* Cards and panels */
+html.dark .bg-white {
+  background-color: #1f2937 !important;
+}
+html.dark .bg-white\/80 {
+  background-color: rgba(31,41,55,0.8) !important;
+}
+html.dark .bg-white\/70 {
+  background-color: rgba(31,41,55,0.7) !important;
+}
+html.dark .bg-gray-50 {
+  background-color: #111827 !important;
+}
+html.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+/* Text */
+html.dark .text-gray-900 { color: #f9fafb !important; }
+html.dark .text-gray-800 { color: #f3f4f6 !important; }
+html.dark .text-gray-700 { color: #e5e7eb !important; }
+html.dark .text-gray-600 { color: #d1d5db !important; }
+html.dark .text-gray-500 { color: #9ca3af !important; }
+html.dark .text-gray-400 { color: #6b7280 !important; }
+
+/* Borders */
+html.dark .border-gray-100 { border-color: #374151 !important; }
+html.dark .border-gray-200 { border-color: #374151 !important; }
+html.dark .border-gray-300 { border-color: #4b5563 !important; }
+
+/* Hover states */
+html.dark .hover\:bg-white:hover { background-color: #374151 !important; }
+html.dark .hover\:bg-gray-50:hover { background-color: #1f2937 !important; }
+
+/* Inactive tabs */
+html.dark button.bg-white\/80 {
+  background-color: rgba(31,41,55,0.8) !important;
+  border-color: #374151 !important;
+  color: #d1d5db !important;
+}
+
+/* Amber-tinted sections */
+html.dark .bg-amber-50 { background-color: #1c1500 !important; }
+html.dark .bg-amber-50\/60 { background-color: rgba(28,21,0,0.6) !important; }
+html.dark .border-amber-200 { border-color: #78350f !important; }
+html.dark .bg-amber-100 { background-color: #292100 !important; }
+
+/* Rose/pink sections */
+html.dark .bg-rose-50 { background-color: #1a0611 !important; }
+html.dark .border-rose-200 { border-color: #9f1239 !important; }
+html.dark .bg-rose-100 { background-color: #2d0a1a !important; }
+html.dark .bg-pink-50 { background-color: #1a0611 !important; }
+
+/* Orange sections */
+html.dark .bg-orange-50 { background-color: #1a0e00 !important; }
+html.dark .border-orange-200 { border-color: #9a3412 !important; }
+html.dark .bg-orange-100 { background-color: #2a1200 !important; }
+
+/* Red sections */
+html.dark .bg-red-50 { background-color: #1a0505 !important; }
+html.dark .border-red-200 { border-color: #991b1b !important; }
+
+/* Violet/purple sections */
+html.dark .bg-violet-50 { background-color: #0d0a1a !important; }
+html.dark .border-violet-200 { border-color: #6d28d9 !important; }
+
+/* Indigo sections */
+html.dark .bg-indigo-50\/60 { background-color: rgba(13,10,40,0.6) !important; }
+html.dark .border-indigo-100 { border-color: #3730a3 !important; }
+
+/* Green sections */
+html.dark .bg-emerald-50 { background-color: #052e16 !important; }
+html.dark .border-emerald-300 { border-color: #065f46 !important; }
+html.dark .bg-green-50 { background-color: #052e16 !important; }
+
+/* Blue sections */
+html.dark .bg-blue-50 { background-color: #0c1a2e !important; }
+html.dark .border-blue-200 { border-color: #1e40af !important; }
+
+/* Sky sections */
+html.dark .bg-sky-50 { background-color: #0a1a2e !important; }
+html.dark .border-sky-200 { border-color: #0369a1 !important; }
+
+/* Inputs and textareas */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #374151 !important;
+  color: #f3f4f6 !important;
+  border-color: #4b5563 !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Progress bars background */
+html.dark .bg-gray-200 { background-color: #374151 !important; }
+
+/* Sticky headers */
+html.dark .sticky { background-color: #111827 !important; }
+
+/* Shadow softening in dark mode */
+html.dark .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.5) !important; }
+html.dark .shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.5) !important; }
