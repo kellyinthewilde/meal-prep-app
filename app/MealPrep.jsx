@@ -1931,10 +1931,11 @@ const MEAL_PAIRINGS = {
   "White Chicken Chili": "Standalone. Optional: serve with rice or tortilla chips.",
   "Beef & Sweet Potato Stew": "Standalone — already has sweet potato.",
   "Moroccan Beef Stew": "Standalone — already has chickpeas + root veg.",
-  "Black Bean Soup": "Standalone. Optional: serve with rice or tortilla chips.",
-  "Carrot Ginger Soup": "Light meal. Consider pairing with egg bites (×3) or 2-3 meatballs for more substance.",
-  "Sweet Potato Coconut Soup": "Light meal. Consider pairing with egg bites (×3) or 2-3 meatballs for more substance.",
-  "Kabocha & Mung Bean Soup": "Light meal. Consider pairing with egg bites (×3) or 2-3 meatballs for more substance.",
+  "Black Bean Soup": "Standalone. Optional: serve with rice, tortilla chips, or ½ cup shredded chicken.",
+  "Carrot Ginger Soup": "Light meal. Consider pairing with egg bites (×3), 2-3 meatballs, or ½ cup shredded chicken.",
+  "Sweet Potato Coconut Soup": "Light meal. Consider pairing with egg bites (×3), 2-3 meatballs, or ½ cup shredded chicken.",
+  "Kabocha & Mung Bean Soup": "Light meal. Consider pairing with egg bites (×3), 2-3 meatballs, or ½ cup shredded chicken.",
+  "Chicken Ginger Congee": "Optional: add ½ cup shredded chicken for extra protein.",
   "Miyeokguk": "Kelly's iron therapy. Standalone — seaweed + beef is a complete recovery meal.",
 };
 const getPairingsForDay = (meals) => {
