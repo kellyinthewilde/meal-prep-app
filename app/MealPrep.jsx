@@ -1932,9 +1932,9 @@ const MEAL_PAIRINGS = {
   "Beef & Sweet Potato Stew": "Standalone — already has sweet potato.",
   "Moroccan Beef Stew": "Standalone — already has chickpeas + root veg.",
   "Black Bean Soup": "Standalone. Optional: serve with rice or tortilla chips.",
-  "Carrot Ginger Soup": "Light meal. Consider pairing with egg bites (×3) for more substance.",
-  "Sweet Potato Coconut Soup": "Light meal. Consider pairing with egg bites (×3) for more substance.",
-  "Kabocha & Mung Bean Soup": "Light meal. Consider pairing with egg bites (×3) for more substance.",
+  "Carrot Ginger Soup": "Light meal. Consider pairing with egg bites (×3) or 2-3 meatballs for more substance.",
+  "Sweet Potato Coconut Soup": "Light meal. Consider pairing with egg bites (×3) or 2-3 meatballs for more substance.",
+  "Kabocha & Mung Bean Soup": "Light meal. Consider pairing with egg bites (×3) or 2-3 meatballs for more substance.",
   "Miyeokguk": "Kelly's iron therapy. Standalone — seaweed + beef is a complete recovery meal.",
 };
 const getPairingsForDay = (meals) => {
