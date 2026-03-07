@@ -15,199 +15,192 @@ const ALL_DAYS = PLAN_DATA.weeks.flatMap(w => w.days);
 const REHEAT_GUIDE = {
   "Silkie Chicken Tonic": {
     thawMethod: "overnight",
-    reheating: "Pot or microwave on medium-low 3–4 min. Don\u2019t boil. Gentle heat only.",
+    reheating: "Small pot on medium-low, 3\u20134 min. Gentle heat \u2014 don\u2019t boil. Pour into a mug.",
     toppings: [],
-    notes: "Kelly only. Pour into a mug — it\u2019s a sipping broth, not a bowl meal.",
-    icon: "🍵",
+    notes: "Kelly only. Sipping broth, not a bowl meal.",
+    icon: "\ud83c\udf75",
   },
   "Golden Broth": {
     thawMethod: "overnight",
-    reheating: "Pot or microwave 3 min. Whisk if turmeric has settled.",
+    reheating: "Small pot on medium-low, 3\u20134 min. Whisk if turmeric has settled.",
     toppings: ["Pinch of black pepper (helps absorb curcumin)", "Splash of coconut milk for creaminess"],
     notes: "Kelly only. Sipping broth. Drink warm, not hot.",
-    icon: "✨",
+    icon: "\u2728",
   },
   "Jujube Goji Ginger Tea": {
     thawMethod: "overnight",
-    reheating: "Pot or microwave 3 min. Can add a little hot water if too concentrated.",
+    reheating: "Small pot on medium-low, 3 min. Add a little hot water if too concentrated.",
     toppings: ["Optional: drizzle of honey"],
     notes: "Kelly only. Sweet and gingery. Serve in a mug.",
-    icon: "🍵",
+    icon: "\ud83c\udf75",
   },
   "Chicken Bone Broth": {
     thawMethod: "overnight",
-    reheating: "Microwave 3 min or small pot 5 min. PM sip only — pour into a mug.",
+    reheating: "Small pot on medium, 4\u20135 min. Pour into a mug.",
     toppings: ["Pinch of salt if needed", "Optional: few drops toasted sesame oil"],
     notes: "Served as PM sip (1-cup) or AM broth (2-cup). Check bag label for size.",
-    icon: "🥣",
+    icon: "\ud83e\udd63",
   },
   "Beef Bone Broth (2-cup)": {
     thawMethod: "overnight",
-    reheating: "Microwave 4 min or small pot 5 min. AM broth — serve in a bowl or large mug.",
+    reheating: "Pot on medium, 5 min. AM broth \u2014 serve in a bowl or large mug.",
     toppings: ["Pinch of salt", "Optional: fresh ginger grated in"],
     notes: "2-cup portion. Mornings only for Kelly.",
-    icon: "🥣",
+    icon: "\ud83e\udd63",
   },
   "Beef Bone Broth (1-cup)": {
     thawMethod: "overnight",
-    reheating: "Microwave 2–3 min. PM sip — pour into a mug.",
+    reheating: "Small pot on medium, 3\u20134 min. PM sip \u2014 pour into a mug.",
     toppings: ["Pinch of salt", "Optional: few drops sesame oil"],
-    notes: "1-cup evening portion. Both Kelly and Jonny get this slot from Day 15 on.",
-    icon: "🥣",
+    notes: "1-cup evening portion. Both Kelly and Jonny from Day 15 on.",
+    icon: "\ud83e\udd63",
   },
   "Sweet Congee (Chai)": {
     thawMethod: "overnight",
-    reheating: "Microwave 3 min, stir halfway. Or pot on medium 5 min with lid. Add a splash of water if thick.",
+    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often, it sticks. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Handful of granola or toasted coconut flakes", "Sliced banana or fresh berries", "Drizzle of honey or maple syrup", "Sprinkle of cinnamon"],
-    notes: "Chai-spiced sweet congee. Thick and porridge-like. Stir well before serving.",
-    icon: "🍚",
+    notes: "Thick and porridge-like. Always add a splash of water when reheating \u2014 stir well.",
+    icon: "\ud83c\udf5a",
   },
   "Date & Walnut Congee": {
     thawMethod: "overnight",
-    reheating: "Microwave 3 min, stir halfway. Add a splash of water if thick.",
+    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Extra chopped dates", "Toasted walnuts", "Drizzle of honey", "Sprinkle of cinnamon or cardamom"],
-    notes: "Sweet, rich, warming breakfast. Kelly loves this one.",
-    icon: "🍚",
+    notes: "Sweet, rich, warming. Add water to loosen when reheating on the stove.",
+    icon: "\ud83c\udf5a",
   },
   "Chicken Ginger Congee": {
     thawMethod: "overnight",
-    reheating: "Microwave 3–4 min, stir halfway. Or pot on medium 5–6 min. Loosen with a splash of broth or water.",
+    reheating: "Stove: pot on medium, 5\u20136 min with a splash of broth or water \u2014 stir often. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Sliced green onion (scallion)", "Drizzle of toasted sesame oil", "Pinch of white pepper", "Crispy shallots if you have them", "Soft-boiled egg, halved (optional)"],
     notes: "Savory rice porridge. Ginger-forward. Good for any meal of the day.",
-    icon: "🍚",
+    icon: "\ud83c\udf5a",
   },
   "Egg Bites (\u00d73)": {
     thawMethod: "from-frozen",
-    reheating: "Toaster oven: 325\u00b0F for 8–10 min directly from frozen. Microwave: 60–90 sec from frozen (wrap in damp paper towel). Don\u2019t thaw — they get rubbery.",
+    reheating: "Toaster oven: 325\u00b0F for 8\u201310 min directly from frozen. Don\u2019t thaw \u2014 they get rubbery.",
     toppings: ["Hot sauce (Cholula or Valentina)", "Sliced avocado", "Salsa", "Sprinkle of everything bagel seasoning"],
-    notes: "3 bites per bag. Reheat from frozen \u2014 DO NOT thaw overnight. Toaster oven gives best texture.",
-    icon: "🥚",
+    notes: "3 bites per bag. Reheat from frozen \u2014 DO NOT thaw overnight. Toaster oven only for best texture.",
+    icon: "\ud83e\udd5a",
   },
   "Oatmeal Bowl + Compote": {
     thawMethod: "overnight",
-    reheating: "Oatmeal: microwave 2–3 min with a splash of milk or water, stir well. Compote: microwave 45 sec in a small bowl.",
+    reheating: "Oatmeal: pot on medium with a splash of milk or water, 5 min, stir well. Compote: small pot, 2\u20133 min on low. Hot Logic Mini: thawed oatmeal in the mini, heat compote on stove separately.",
     toppings: ["Fresh or frozen berries", "Sliced banana", "Sprinkle of hemp seeds or flaxseed", "Drizzle of almond butter or honey", "Chopped toasted walnuts"],
-    notes: "Two bags: one oatmeal, one compote portion. Microwave separately and spoon compote on top.",
-    icon: "🥣",
+    notes: "Two parts: oatmeal + compote portion. Spoon compote on top to serve.",
+    icon: "\ud83e\udd63",
   },
   "Berry Banana Smoothie": {
     thawMethod: "from-frozen",
-    reheating: "Blend from frozen: dump bag into blender, add \u00be cup milk of choice and blend 30–45 sec. No need to thaw.",
+    reheating: "Blender from frozen: dump bag into blender, add \u00be cup milk of choice, blend 30\u201345 sec. No heat needed.",
     toppings: ["Handful of spinach (blends in invisibly)", "Scoop of protein powder", "Tablespoon of almond butter", "Chia seeds"],
-    notes: "Jonny only. Frozen smoothie pack \u2014 blend straight from frozen.",
-    icon: "🫐",
+    notes: "Jonny only. Frozen smoothie pack \u2014 blend straight from frozen, no thawing.",
+    icon: "\ud83faf0",
   },
   "Miyeokguk": {
     thawMethod: "overnight",
-    reheating: "Pot on medium 5–7 min until hot through. Or microwave 4 min, stirring halfway. Add a splash of water if too thick.",
+    reheating: "Pot on medium, 5\u20137 min until hot through. Add a splash of water if too thick. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Splash of toasted sesame oil", "Pinch of sea salt", "A few drops fish sauce (optional)"],
-    notes: "Kelly only. Korean seaweed soup — traditional postpartum recovery. Earthy, mild, nutritious.",
-    icon: "🫙",
+    notes: "Kelly only. Korean seaweed soup \u2014 traditional postpartum recovery. Earthy, mild, nutritious.",
+    icon: "\ud83e\udeb4",
   },
   "Carrot Ginger Soup": {
     thawMethod: "overnight",
-    reheating: "Microwave 3–4 min, stir halfway. Or pot 5 min on medium. Thin with a splash of broth or water if too thick.",
+    reheating: "Stove: pot on medium, 5\u20136 min, stir occasionally. Thin with a splash of broth or water if needed. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Swirl of coconut cream or sour cream", "Toasted pumpkin seeds (pepitas)", "Drizzle of olive oil", "Fresh cilantro or parsley", "Squeeze of lime (brightens flavor)"],
-    notes: "Smooth blended soup. Light lunch — pair with 2–3 meatballs or egg bites if she\u2019s extra hungry.",
-    icon: "🥕",
+    notes: "Smooth blended soup. Light lunch \u2014 pair with 2\u20133 meatballs or egg bites if she\u2019s extra hungry.",
+    icon: "\ud83e\udd55",
   },
   "Sweet Potato Coconut Soup": {
     thawMethod: "overnight",
-    reheating: "Microwave 3–4 min, stir halfway. Or pot 5 min on medium.",
+    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Swirl of coconut cream", "Toasted coconut flakes", "Drizzle of chili oil or red pepper flakes", "Fresh cilantro", "Squeeze of lime"],
-    notes: "Creamy, slightly sweet. Light lunch — consider adding egg bites or meatballs for more protein.",
-    icon: "🍠",
+    notes: "Creamy, slightly sweet. Light lunch \u2014 consider adding egg bites or meatballs for more protein.",
+    icon: "\ud83c\udf60",
   },
   "Kabocha & Mung Bean Soup": {
     thawMethod: "overnight",
-    reheating: "Microwave 3–4 min, stir halfway. Or pot 5 min on medium. May thicken up — add a splash of water.",
+    reheating: "Stove: pot on medium, 5\u20136 min. Add a splash of water \u2014 it thickens in the fridge. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Drizzle of sesame oil", "Sprinkle of toasted sesame seeds", "Pinch of white pepper", "Fresh ginger grated in (optional)"],
-    notes: "Japanese pumpkin + mung bean. Hearty and slightly sweet. More substantial than the other soups.",
-    icon: "🎃",
+    notes: "Japanese kabocha pumpkin + mung bean. Hearty and slightly sweet. More substantial than the other soups.",
+    icon: "\ud83c\udf83",
   },
   "Black Bean Soup": {
     thawMethod: "overnight",
-    reheating: "Microwave 3–4 min, stir halfway. Or pot 5 min on medium.",
+    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Dollop of sour cream or Greek yogurt", "Sliced avocado or guacamole", "Lime wedge", "Cilantro", "Tortilla chips", "Shredded cheddar"],
-    notes: "Satisfying standalone. Can serve with rice or tortilla chips on the side if she\u2019s very hungry.",
-    icon: "🫘",
+    notes: "Satisfying standalone. Can serve with rice or tortilla chips on the side.",
+    icon: "\ud83e\udeb8",
   },
   "White Chicken Chili": {
     thawMethod: "overnight",
-    reheating: "Pot on medium 6–8 min until hot through. Or microwave 4 min, stirring halfway. Stir well as it\u2019s thick.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
     toppings: ["Dollop of sour cream", "Sliced avocado", "Lime wedge", "Fresh cilantro", "Tortilla chips", "Shredded Monterey Jack cheese"],
-    notes: "Chunky white bean and chicken chili. Hearty — no side needed.",
-    icon: "🌶️",
+    notes: "Chunky white bean and chicken chili. Hearty \u2014 no side needed.",
+    icon: "\ud83c\udf36\ufe0f",
   },
   "Beef Chili": {
     thawMethod: "overnight",
-    reheating: "Pot on medium 6–8 min. Or microwave 4 min, stirring halfway. Thick — stir well.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
     toppings: ["Dollop of sour cream", "Shredded cheddar", "Sliced avocado or guacamole", "Lime wedge", "Tortilla chips", "Fresh jalape\u00f1o"],
-    notes: "Has hidden puree\u0301d liver — totally undetectable. Iron and B12 boost. Can serve with rice.",
-    icon: "🍲",
+    notes: "Has hidden pur\u00e9ed liver \u2014 totally undetectable. Iron and B12 boost. Can serve with rice.",
+    icon: "\ud83c\udf72",
   },
   "Beef & Sweet Potato Stew": {
     thawMethod: "overnight",
-    reheating: "Pot on medium 6–8 min. Or microwave 4 min, stirring halfway.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
     toppings: ["Fresh parsley or cilantro", "Crusty bread (for Jonny)", "Sprinkle of flaky sea salt"],
-    notes: "Complete meal — sweet potato chunks built in. Iron-rich and filling.",
-    icon: "🥘",
+    notes: "Complete meal \u2014 sweet potato chunks built in. Iron-rich and filling.",
+    icon: "\ud83e\udd58",
   },
   "Moroccan Beef Stew": {
     thawMethod: "overnight",
-    reheating: "Pot on medium 6–8 min. Or microwave 4 min, stirring halfway.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
     toppings: ["Fresh cilantro", "Squeeze of lemon", "Drizzle of harissa or chili sauce (for Jonny)", "Plain yogurt or sour cream (for Kelly)", "Couscous or rice alongside (optional)"],
     notes: "Warming spiced stew with chickpeas and root veg. Complete meal as-is.",
-    icon: "🥘",
+    icon: "\ud83e\udd58",
   },
   "Kitchari": {
     thawMethod: "overnight",
-    reheating: "Pot on medium 5–6 min with a splash of water — it thickens as it sits. Or microwave 3–4 min, stir, add water.",
+    reheating: "Stove: pot on medium with a splash of water, 5\u20136 min \u2014 stir, it thickens as it sits. Hot Logic Mini: thawed container in (add a splash of water), plug in 1.5 hrs before serving.",
     toppings: ["Drizzle of ghee", "Squeeze of lemon", "Pinch of cumin or garam masala", "Fresh cilantro", "Plain yogurt (for Kelly)"],
     notes: "Rice + lentil Ayurvedic dish. Complete meal, no side needed. Restorative and easy to digest.",
-    icon: "🍛",
+    icon: "\ud83c\udf5b",
   },
   "Coconut Mung Bean Dal + Rice": {
     thawMethod: "overnight",
-    reheating: "Dal: microwave 3–4 min, stir, add a splash of water if thick. Rice: microwave from frozen 90 sec in separate dish (or thaw overnight).",
+    reheating: "Dal: pot on medium, 4\u20135 min with a splash of water \u2014 stir well. Rice: small pot or toaster oven in foil, 5 min. Hot Logic Mini: thawed dal in the mini 1.5 hrs; heat rice on stove separately.",
     toppings: ["Drizzle of coconut cream", "Fresh cilantro", "Squeeze of lime", "Pinch of garam masala", "Mango chutney or mango rice (complements naturally)"],
-    notes: "Dal is a sauce — it needs the rice. Pack rice portion separately (frozen \u00bd-cup cube). Mango rice is a great match.",
-    icon: "🍛",
+    notes: "Dal is a sauce \u2014 it needs the rice. Pack rice portion separately (frozen \u00bd-cup cube). Mango rice is a great match.",
+    icon: "\ud83c\udf5b",
   },
   "Chickpea Curry + Rice": {
     thawMethod: "overnight",
-    reheating: "Curry: pot 5–6 min or microwave 3–4 min, stir halfway. Rice: microwave from frozen 90 sec (or thaw overnight).",
+    reheating: "Curry: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: thawed curry in the mini 1.5 hrs; heat rice on stove separately.",
     toppings: ["Fresh cilantro", "Squeeze of lemon", "Plain yogurt or raita", "Naan (optional, for Jonny)"],
     notes: "Pack rice portion in the bag or separately. Good protein + iron combo.",
-    icon: "🍛",
+    icon: "\ud83c\udf5b",
   },
   "Butter Chicken + Rice": {
     thawMethod: "overnight",
-    reheating: "Butter chicken: microwave 3–4 min or pot 5 min. Rice: microwave from frozen 90 sec.",
+    reheating: "Butter chicken: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: thawed butter chicken in the mini 1.5 hrs; heat rice on stove separately.",
     toppings: ["Fresh cilantro", "Drizzle of coconut cream", "Naan (optional, for Jonny)", "Squeeze of lemon"],
     notes: "Crowd pleaser. Rich and creamy. Rice frozen separately as \u00bd-cup cube.",
-    icon: "🍛",
+    icon: "\ud83c\udf5b",
   },
   "Bolognese + Meatballs": {
     thawMethod: "overnight",
-    reheating: "Pot on medium 6–7 min, stirring often (meat sauce can stick). Or microwave 3–4 min, stir halfway. Has hidden liver — undetectable.",
+    reheating: "Pot on medium, 6\u20137 min, stir often \u2014 meat sauce sticks. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
     toppings: ["Parmesan cheese", "Fresh basil", "Drizzle of olive oil", "Red pepper flakes (for Jonny)", "Pasta cooked fresh (for Jonny) or serve with rice"],
-    notes: "Hidden liver \u2014 undetectable. Jonny can cook pasta fresh and ladle sauce over. Or just serve with rice.",
-    icon: "🍝",
+    notes: "Hidden liver \u2014 undetectable. Jonny can cook pasta fresh and ladle sauce over, or serve with rice.",
+    icon: "\ud83c\udf5d",
   },
   "Salmon Patties + Rice": {
     thawMethod: "overnight",
-    reheating: "Patties: toaster oven 350\u00b0F 8–10 min OR skillet with olive oil 3 min per side over medium heat. Rice: microwave from frozen 90 sec. Reheat patties separately from rice.",
+    reheating: "Patties: toaster oven 350\u00b0F for 8\u201310 min, OR skillet with olive oil on medium, 3 min per side. Rice: small pot, 4\u20135 min with a splash of water. Reheat patties and rice separately.",
     toppings: ["Lemon wedge (squeeze over patties)", "Dollop of tartar sauce or garlic aioli", "Sliced avocado", "Fresh dill or parsley", "Capers (for Kelly if she wants)"],
-    notes: "Omega-3 priority meal. Don\u2019t microwave patties \u2014 toaster oven or skillet keeps them from getting soggy.",
-    icon: "🐟",
-  },
-  "Kabocha & Mung Bean Soup": {
-    thawMethod: "overnight",
-    reheating: "Microwave 3–4 min, stir halfway. Or pot 5 min on medium.",
-    toppings: ["Sesame oil drizzle", "Toasted sesame seeds", "White pepper", "Fresh ginger (optional)"],
-    notes: "Hearty and naturally sweet. Japanese kabocha pumpkin. Will thicken when cold — add a splash of water when reheating.",
-    icon: "🎃",
+    notes: "Omega-3 priority meal. Toaster oven or skillet for patties \u2014 keeps them from getting soggy.",
+    icon: "\ud83d\udc1f",
   },
 };
 
@@ -411,7 +404,11 @@ function DayView({ dayNum }) {
           <div className="text-indigo-100 text-xs mt-0.5">
             Move <strong>&ldquo;Day {dayNum} Kelly&rdquo;</strong> and <strong>&ldquo;Day {dayNum} Jonny&rdquo;</strong> from Freezer 3 to the fridge tonight to thaw overnight.
           </div>
-          <div className="text-indigo-200 text-xs mt-1">⚠️ Egg Bites + Berry Smoothie: keep frozen — reheat from frozen instead.</div>
+          {allUnique.filter(i => { const g = REHEAT_GUIDE[i.meal]; return g && g.thawMethod === "from-frozen"; }).length > 0 && (
+            <div className="text-indigo-200 text-xs mt-1">
+              ⚠️ Keep frozen (reheat from frozen): {allUnique.filter(i => { const g = REHEAT_GUIDE[i.meal]; return g && g.thawMethod === "from-frozen"; }).map(i => i.meal.replace(" (×3)", " bites")).join(" + ")}
+            </div>
+          )}
         </div>
       </div>
 
@@ -447,7 +444,7 @@ function DayView({ dayNum }) {
           </div>
           <div className="p-2 space-y-1.5">
             {jonnyBag.length === 0 ? (
-              <div className="text-xs text-gray-400 p-2">Sharing Kelly\u2019s bags today</div>
+              <div className="text-xs text-gray-400 p-2">Sharing Kelly’s bags today</div>
             ) : (
               jonnyBag.map((item, i) => (
                 <div key={i} className="bg-white rounded-lg px-2 py-1.5">
@@ -462,7 +459,7 @@ function DayView({ dayNum }) {
 
       {/* Reheat guide for today's meals */}
       <div>
-        <h3 className="text-sm font-bold text-gray-700 mb-2">Today\u2019s reheat guide</h3>
+        <h3 className="text-sm font-bold text-gray-700 mb-2">Today’s reheat guide</h3>
         <div className="space-y-2">
           {allUnique.map((item, i) => (
             <RecipeCard key={i} meal={item.meal} />
@@ -572,8 +569,8 @@ export default function JonnyPrep() {
         <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-lg font-bold text-gray-900">Jonny\u2019s Prep Guide</h1>
-              <p className="text-xs text-gray-500">Kelly\u2019s postpartum meals \u2014 30 days</p>
+              <h1 className="text-lg font-bold text-gray-900">Jonny’s Prep Guide</h1>
+              <p className="text-xs text-gray-500">Kelly’s postpartum meals — 30 days</p>
             </div>
             <a
               href="/"

@@ -1,5 +1,5 @@
 import JonnyPrep from "./JonnyPrep";
 
-export default function JonnyPage() {
+export default function MealsPage() {
   return <JonnyPrep />;
 }
