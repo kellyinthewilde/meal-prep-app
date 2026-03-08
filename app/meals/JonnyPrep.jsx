@@ -57,21 +57,21 @@ const REHEAT_GUIDE = {
   },
   "Sweet Congee (Chai)": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often, it sticks. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often, it sticks. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Handful of granola or toasted coconut flakes", "Sliced banana or fresh berries", "Drizzle of honey or maple syrup", "Sprinkle of cinnamon"],
     notes: "Thick and porridge-like. Always add a splash of water when reheating \u2014 stir well.",
     icon: "\ud83c\udf5a",
   },
   "Date & Walnut Congee": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Extra chopped dates", "Toasted walnuts", "Drizzle of honey", "Sprinkle of cinnamon or cardamom"],
     notes: "Sweet, rich, warming. Add water to loosen when reheating on the stove.",
     icon: "\ud83c\udf5a",
   },
   "Chicken Ginger Congee": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min with a splash of broth or water \u2014 stir often. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium, 5\u20136 min with a splash of broth or water \u2014 stir often. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Sliced green onion (scallion)", "Drizzle of toasted sesame oil", "Pinch of white pepper", "Crispy shallots if you have them", "Soft-boiled egg, halved (optional)"],
     notes: "Savory rice porridge. Ginger-forward. Good for any meal of the day.",
     icon: "\ud83c\udf5a",
@@ -85,7 +85,7 @@ const REHEAT_GUIDE = {
   },
   "Oatmeal Bowl + Compote": {
     thawMethod: "overnight",
-    reheating: "Oatmeal: pot on medium with a splash of milk or water, 5 min, stir well. Compote: small pot, 2\u20133 min on low. Hot Logic Mini: thawed oatmeal in the mini, heat compote on stove separately.",
+    reheating: "Oatmeal: pot on medium with a splash of milk or water, 5 min, stir well. Compote: small pot, 2\u20133 min on low. Hot Logic Mini: transfer thawed oatmeal into a glass container with lid — never the bag — plug in 1.5–2 hrs; heat compote on stove separately.",
     toppings: ["Fresh or frozen berries", "Sliced banana", "Sprinkle of hemp seeds or flaxseed", "Drizzle of almond butter or honey", "Chopped toasted walnuts"],
     notes: "Two parts: oatmeal + compote portion. Spoon compote on top to serve.",
     icon: "\ud83e\udd63",
@@ -99,98 +99,98 @@ const REHEAT_GUIDE = {
   },
   "Miyeokguk": {
     thawMethod: "overnight",
-    reheating: "Pot on medium, 5\u20137 min until hot through. Add a splash of water if too thick. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Pot on medium, 5\u20137 min until hot through. Add a splash of water if too thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Splash of toasted sesame oil", "Pinch of sea salt", "A few drops fish sauce (optional)"],
     notes: "Kelly only. Korean seaweed soup \u2014 traditional postpartum recovery. Earthy, mild, nutritious.",
     icon: "\ud83e\udeb4",
   },
   "Carrot Ginger Soup": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min, stir occasionally. Thin with a splash of broth or water if needed. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium, 5\u20136 min, stir occasionally. Thin with a splash of broth or water if needed. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Swirl of coconut cream or sour cream", "Toasted pumpkin seeds (pepitas)", "Drizzle of olive oil", "Fresh cilantro or parsley", "Squeeze of lime (brightens flavor)"],
     notes: "Smooth blended soup. Light lunch \u2014 pair with 2\u20133 meatballs or egg bites if she\u2019s extra hungry.",
     icon: "\ud83e\udd55",
   },
   "Sweet Potato Coconut Soup": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Swirl of coconut cream", "Toasted coconut flakes", "Drizzle of chili oil or red pepper flakes", "Fresh cilantro", "Squeeze of lime"],
     notes: "Creamy, slightly sweet. Light lunch \u2014 consider adding egg bites or meatballs for more protein.",
     icon: "\ud83c\udf60",
   },
   "Kabocha & Mung Bean Soup": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min. Add a splash of water \u2014 it thickens in the fridge. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium, 5\u20136 min. Add a splash of water \u2014 it thickens in the fridge. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Drizzle of sesame oil", "Sprinkle of toasted sesame seeds", "Pinch of white pepper", "Fresh ginger grated in (optional)"],
     notes: "Japanese kabocha pumpkin + mung bean. Hearty and slightly sweet. More substantial than the other soups.",
     icon: "\ud83c\udf83",
   },
   "Black Bean Soup": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Dollop of sour cream or Greek yogurt", "Sliced avocado or guacamole", "Lime wedge", "Cilantro", "Tortilla chips", "Shredded cheddar"],
     notes: "Satisfying standalone. Can serve with rice or tortilla chips on the side.",
     icon: "\ud83e\udeb8",
   },
   "White Chicken Chili": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Dollop of sour cream", "Sliced avocado", "Lime wedge", "Fresh cilantro", "Tortilla chips", "Shredded Monterey Jack cheese"],
     notes: "Chunky white bean and chicken chili. Hearty \u2014 no side needed.",
     icon: "\ud83c\udf36\ufe0f",
   },
   "Beef Chili": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Dollop of sour cream", "Shredded cheddar", "Sliced avocado or guacamole", "Lime wedge", "Tortilla chips", "Fresh jalape\u00f1o"],
     notes: "Has hidden pur\u00e9ed liver \u2014 totally undetectable. Iron and B12 boost. Can serve with rice.",
     icon: "\ud83c\udf72",
   },
   "Beef & Sweet Potato Stew": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Fresh parsley or cilantro", "Crusty bread (for Jonny)", "Sprinkle of flaky sea salt"],
     notes: "Complete meal \u2014 sweet potato chunks built in. Iron-rich and filling.",
     icon: "\ud83e\udd58",
   },
   "Moroccan Beef Stew": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: thawed container in, plug in 2 hrs before serving.",
+    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Fresh cilantro", "Squeeze of lemon", "Drizzle of harissa or chili sauce (for Jonny)", "Plain yogurt or sour cream (for Kelly)", "Couscous or rice alongside (optional)"],
     notes: "Warming spiced stew with chickpeas and root veg. Complete meal as-is.",
     icon: "\ud83e\udd58",
   },
   "Kitchari": {
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium with a splash of water, 5\u20136 min \u2014 stir, it thickens as it sits. Hot Logic Mini: thawed container in (add a splash of water), plug in 1.5 hrs before serving.",
+    reheating: "Stove: pot on medium with a splash of water, 5\u20136 min \u2014 stir, it thickens as it sits. Hot Logic Mini: transfer thawed kitchari into a glass container with lid — never the plastic bag — add a splash of water, plug in 1.5–2 hrs before serving.",
     toppings: ["Drizzle of ghee", "Squeeze of lemon", "Pinch of cumin or garam masala", "Fresh cilantro", "Plain yogurt (for Kelly)"],
     notes: "Rice + lentil Ayurvedic dish. Complete meal, no side needed. Restorative and easy to digest.",
     icon: "\ud83c\udf5b",
   },
   "Coconut Mung Bean Dal + Rice": {
     thawMethod: "overnight",
-    reheating: "Dal: pot on medium, 4\u20135 min with a splash of water \u2014 stir well. Rice: small pot or toaster oven in foil, 5 min. Hot Logic Mini: thawed dal in the mini 1.5 hrs; heat rice on stove separately.",
+    reheating: "Dal: pot on medium, 4\u20135 min with a splash of water \u2014 stir well. Rice: small pot or toaster oven in foil, 5 min. Hot Logic Mini: transfer thawed dal into a glass container with lid — never the plastic bag — plug in 1.5–2 hrs; heat rice on stove separately.",
     toppings: ["Drizzle of coconut cream", "Fresh cilantro", "Squeeze of lime", "Pinch of garam masala", "Mango chutney or mango rice (complements naturally)"],
     notes: "Dal is a sauce \u2014 it needs the rice. Pack rice portion separately (frozen \u00bd-cup cube). Mango rice is a great match.",
     icon: "\ud83c\udf5b",
   },
   "Chickpea Curry + Rice": {
     thawMethod: "overnight",
-    reheating: "Curry: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: thawed curry in the mini 1.5 hrs; heat rice on stove separately.",
+    reheating: "Curry: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: transfer thawed curry into a glass container with lid — never the plastic bag — plug in 1.5–2 hrs; heat rice on stove separately.",
     toppings: ["Fresh cilantro", "Squeeze of lemon", "Plain yogurt or raita", "Naan (optional, for Jonny)"],
     notes: "Pack rice portion in the bag or separately. Good protein + iron combo.",
     icon: "\ud83c\udf5b",
   },
   "Butter Chicken + Rice": {
     thawMethod: "overnight",
-    reheating: "Butter chicken: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: thawed butter chicken in the mini 1.5 hrs; heat rice on stove separately.",
+    reheating: "Butter chicken: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: transfer thawed butter chicken into a glass container with lid — never the plastic bag — plug in 1.5–2 hrs; heat rice on stove separately.",
     toppings: ["Fresh cilantro", "Drizzle of coconut cream", "Naan (optional, for Jonny)", "Squeeze of lemon"],
     notes: "Crowd pleaser. Rich and creamy. Rice frozen separately as \u00bd-cup cube.",
     icon: "\ud83c\udf5b",
   },
   "Bolognese + Meatballs": {
     thawMethod: "overnight",
-    reheating: "Pot on medium, 6\u20137 min, stir often \u2014 meat sauce sticks. Hot Logic Mini: thawed container in, plug in 1.5 hrs before serving.",
+    reheating: "Pot on medium, 6\u20137 min, stir often \u2014 meat sauce sticks. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Parmesan cheese", "Fresh basil", "Drizzle of olive oil", "Red pepper flakes (for Jonny)", "Pasta cooked fresh (for Jonny) or serve with rice"],
     notes: "Hidden liver \u2014 undetectable. Jonny can cook pasta fresh and ladle sauce over, or serve with rice.",
     icon: "\ud83c\udf5d",
@@ -296,11 +296,20 @@ const STAPLES = {
     emoji: "📦",
     color: "slate",
     items: [
-      { name: "All daily meal bags", note: "Labeled \u201cDay X Kelly\u201d and \u201cDay X Jonny\u201d. Pull BOTH bags the night before.", icon: "🏷️" },
-      { name: "Rice portions", note: "\u00bd-cup frozen cubes. Used as sides for curry, dal, butter chicken, bolognese, salmon patties.", icon: "🍚" },
-      { name: "Mango Rice", note: "Mango-cooked rice, frozen in \u00bd-cup cubes. Pairs with the dal.", icon: "🥭" },
-      { name: "Berry Compote", note: "Frozen in 2-tbsp cubes. Spooned over oatmeal.", icon: "🍓" },
-      { name: "Smoothie packs", note: "Jonny\u2019s berry banana smoothie \u2014 pre-portioned bags. Blend from frozen.", icon: "🫐" },
+      { name: "All daily meal bags", note: "Labeled \u201cDay X Kelly\u201d and \u201cDay X Jonny\u201d. Pull BOTH bags the night before and move to the main fridge to thaw.", icon: "🏷️" },
+      { name: "Smoothie packs", note: "Jonny\u2019s berry banana smoothie \u2014 pre-portioned bags in his daily bag. Blend straight from frozen.", icon: "🫐" },
+    ],
+  },
+  fridge: {
+    label: "Main Home Fridge",
+    sublabel: "Keep these stocked and rotating",
+    emoji: "🏠",
+    color: "teal",
+    items: [
+      { name: "Lactation Bites", note: "Rotate a small container from Freezer 3 door into the fridge. They\u2019re much better at fridge temp than eaten frozen \u2014 soft, chewy, ready to grab. Refresh every few days.", icon: "🍪" },
+      { name: "Energy Balls (Choc PB / Tahini Date / Almond Coconut)", note: "Same deal \u2014 move a batch from the Freezer 3 door into the fridge. Grab 2\u20133 whenever Kelly wants a snack. Keep rotating so there\u2019s always some ready.", icon: "⚽" },
+      { name: "Berry Compote", note: "Keep a jar of this in the fridge at all times. Goes on oatmeal, snack bars, yogurt, straight off the spoon \u2014 it\u2019s versatile. The oatmeal bags have their own compote portion already; this is a bonus jar for everything else.", icon: "🍓" },
+      { name: "Fresh toppings to keep stocked", note: "Avocados, lemon + lime, sour cream or Greek yogurt, cilantro, green onions. These make basically every meal better and are called for across multiple recipes.", icon: "🥑" },
     ],
   },
 };
@@ -475,6 +484,7 @@ function StaplesView() {
     blue: { header: "bg-blue-600", border: "border-blue-200", bg: "bg-blue-50", badge: "bg-blue-100 text-blue-700" },
     emerald: { header: "bg-emerald-600", border: "border-emerald-200", bg: "bg-emerald-50", badge: "bg-emerald-100 text-emerald-700" },
     slate: { header: "bg-slate-600", border: "border-slate-200", bg: "bg-slate-50", badge: "bg-slate-100 text-slate-700" },
+    teal: { header: "bg-teal-600", border: "border-teal-200", bg: "bg-teal-50", badge: "bg-teal-100 text-teal-700" },
   };
 
   return (
@@ -483,9 +493,11 @@ function StaplesView() {
       <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-3">
         <div className="font-semibold text-amber-900 text-sm mb-1">📦 Freezer orientation</div>
         <p className="text-xs text-amber-800">
-          <strong>Freezer 2</strong> = small fridge freezer in the garage. Broths and drinks live here.
+          <strong>Freezer 2</strong> = small fridge freezer in the garage. All broths and drinks live here — silkie tonic, bone broths, golden broth, jujube tea.
           <br /><br />
-          <strong>Freezer 3</strong> = tall standing freezer. All daily meal bags in the main body. Snacks and lactation items in the door.
+          <strong>Freezer 3</strong> = tall standing freezer. Daily meal bags in the main body. Lactation bites, energy balls, and snack bars in the door.
+          <br /><br />
+          <strong>Main fridge</strong> = keep a rotating container of snacks (lactation bites + energy balls) and a jar of berry compote here at all times.
         </p>
       </div>
 
