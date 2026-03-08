@@ -3,9 +3,11 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const NAV_ITEMS = [
-  { href: "/hq", label: "HQ", icon: "📋" },
+  { href: "/today", label: "Today", icon: "📋" },
   { href: "/meals", label: "Meals", icon: "🍽️" },
   { href: "/guide", label: "Guide", icon: "📖" },
+  { href: "/plants", label: "Plants", icon: "🌱" },
+  { href: "/calendar", label: "Calendar", icon: "📅" },
 ];
 
 export default function BottomNav() {
@@ -37,9 +39,9 @@ export default function BottomNav() {
               flexDirection: "column",
               alignItems: "center",
               gap: 2,
-              padding: "4px 16px",
+              padding: "4px 8px",
               textDecoration: "none",
-              fontSize: 10,
+              fontSize: 9,
               fontWeight: 600,
               color: active ? "#E11D48" : "#9CA3AF",
               letterSpacing: "0.03em",

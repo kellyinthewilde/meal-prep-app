@@ -1524,8 +1524,8 @@ function CalendarTab() {
 
 // ─── Main App ───
 
-export default function PostpartumHQ() {
-  const [activeTab, setActiveTab] = useState("today");
+export default function PostpartumHQ({ defaultTab = "today" }) {
+  const [activeTab, setActiveTab] = useState(defaultTab);
   const [checkedTasks, setCheckedTasks] = useState({});
   const [expandedGuide, setExpandedGuide] = useState(null);
 
@@ -1579,47 +1579,6 @@ export default function PostpartumHQ() {
         flexDirection: "column",
       }}
     >
-      {/* Top Tab Bar */}
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 20,
-          background: colors.card,
-          borderBottom: `1px solid ${colors.border}`,
-          display: "flex",
-          justifyContent: "space-around",
-          padding: "12px 0",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-        }}
-      >
-        {[
-          { id: "today", label: "📋 Today" },
-          { id: "plant", label: "🌿 Plant Daddy" },
-          { id: "guide", label: "💛 Postpartum Guide" },
-          { id: "calendar", label: "📅 Calendar" },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            style={{
-              flex: 1,
-              background: "none",
-              border: "none",
-              fontFamily: font,
-              fontSize: 12,
-              fontWeight: activeTab === tab.id ? 600 : 400,
-              color: activeTab === tab.id ? colors.accent : colors.textLight,
-              cursor: "pointer",
-              padding: "8px 0",
-              transition: "all 0.2s ease-out",
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
       {/* Content */}
       <div
         style={{

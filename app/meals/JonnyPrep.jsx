@@ -527,22 +527,16 @@ export default function JonnyPrep() {
   if (!day1Timestamp && !previewMode) {
     return (
       <div className="min-h-screen bg-stone-50 flex flex-col items-center justify-center p-8 text-center">
-        <div className="text-7xl mb-4">🌸</div>
-        <h1 className="text-2xl font-bold text-stone-800 mb-1">{"Jonny's Prep Guide"}</h1>
-        <p className="text-stone-500 mb-8 max-w-xs text-sm leading-relaxed">
-          {"When she arrives, tap below to start the 30-day meal clock and unlock today's plan."}
+        <div className="text-5xl mb-4">🍽️</div>
+        <h1 className="text-xl font-bold text-stone-800 mb-1">{"Meal Plan"}</h1>
+        <p className="text-stone-500 mb-6 max-w-xs text-sm leading-relaxed">
+          {"Start Day 1 from the home screen to unlock the daily meal plan."}
         </p>
         <button
-          onClick={startDay1}
-          className="bg-rose-500 hover:bg-rose-600 text-white px-8 py-4 rounded-2xl text-base font-semibold shadow-lg transition-colors mb-4"
-        >
-          {"She's here — Start Day 1 🎉"}
-        </button>
-        <button
           onClick={() => setPreviewMode(true)}
-          className="text-sm text-stone-400 underline underline-offset-2"
+          className="text-sm bg-stone-200 text-stone-700 px-6 py-3 rounded-xl font-medium"
         >
-          Preview the guide
+          Preview all meals
         </button>
       </div>
     );

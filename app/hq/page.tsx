@@ -1,11 +1,5 @@
-import PostpartumHQ from "./PostpartumHQ";
-import BottomNav from "../components/BottomNav";
+import { redirect } from "next/navigation";
 
 export default function HQPage() {
-  return (
-    <>
-      <PostpartumHQ />
-      <BottomNav />
-    </>
-  );
+  redirect("/today");
 }
