@@ -282,12 +282,14 @@ const STAPLES = {
     emoji: "🚪",
     color: "emerald",
     items: [
-      { name: "Lactation Bites", note: "Oat + flax + brewer\u2019s yeast energy balls. Grab 2–3 whenever Kelly wants a snack.", icon: "🍪" },
-      { name: "Chocolate Peanut Butter Balls", note: "No-bake energy balls. Great for both of you — grab anytime.", icon: "🍫" },
+      { name: "Lactation Bites", note: "No-bake oat + flax + brewer\u2019s yeast balls. Grab 2\u20133 whenever Kelly wants a snack.", icon: "🍪" },
+      { name: "Lactation Oatmeal Cups", note: "Baked oat cups. Individual portions. Good with a smear of berry compote.", icon: "🫙" },
+      { name: "Lactation Savory Muffins", note: "Baked savory muffins. Good as a snack or alongside soup.", icon: "🧁" },
       { name: "Tahini Date Balls", note: "No-bake. Dates + tahini + oats. Natural energy boost.", icon: "🟤" },
-      { name: "Almond Coconut Bites", note: "No-bake. Lighter, coconutty. Grab 2–3 as a snack.", icon: "🥥" },
-      { name: "Lactation Bars", note: "Baked oat bars. Sliced and individually foil-wrapped. 1–2 bars per snack.", icon: "🍫" },
-      { name: "Snack Bars (other)", note: "Any other baked bars Kelly prepped. Check door \u2014 labeled individually.", icon: "🟫" },
+      { name: "Cashew Butter Chocolate Oat Balls", note: "No-bake. Chocolatey and satisfying. Great for both of you.", icon: "🍫" },
+      { name: "Almond Coconut Balls", note: "No-bake. Lighter, coconutty. Grab 2\u20133 as a snack.", icon: "🥥" },
+      { name: "Baked Oatmeal Bars", note: "Baked in two batches (32 squares), individually foil-wrapped. 1\u20132 bars per snack.", icon: "🍫" },
+      { name: "Cherry-Chocolate Chunk Brownies", note: "Baked, individually wrapped. Both batches \u2014 one berry, one cherry-choc.", icon: "🍒" },
     ],
   },
   freezer3main: {
@@ -307,7 +309,7 @@ const STAPLES = {
     color: "teal",
     items: [
       { name: "Lactation Bites", note: "Rotate a small container from Freezer 3 door into the fridge. They\u2019re much better at fridge temp than eaten frozen \u2014 soft, chewy, ready to grab. Refresh every few days.", icon: "🍪" },
-      { name: "Energy Balls (Choc PB / Tahini Date / Almond Coconut)", note: "Same deal \u2014 move a batch from the Freezer 3 door into the fridge. Grab 2\u20133 whenever Kelly wants a snack. Keep rotating so there\u2019s always some ready.", icon: "⚽" },
+      { name: "Energy Balls (Tahini Date / Cashew Choc Oat / Almond Coconut)", note: "Same deal \u2014 move a small batch from the Freezer 3 door into the fridge. Grab 2\u20133 whenever Kelly wants a snack. Keep rotating so there\u2019s always some ready.", icon: "⚽" },
       { name: "Berry Compote", note: "Keep a jar of this in the fridge at all times. Goes on oatmeal, snack bars, yogurt, straight off the spoon \u2014 it\u2019s versatile. The oatmeal bags have their own compote portion already; this is a bonus jar for everything else.", icon: "🍓" },
       { name: "Fresh toppings to keep stocked", note: "Avocados, lemon + lime, sour cream or Greek yogurt, cilantro, green onions. These make basically every meal better and are called for across multiple recipes.", icon: "🥑" },
     ],
