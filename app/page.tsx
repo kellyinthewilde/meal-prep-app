@@ -1,5 +1,5 @@
-import MealPrep from "./MealPrep";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <MealPrep />;
+  redirect("/hq");
 }

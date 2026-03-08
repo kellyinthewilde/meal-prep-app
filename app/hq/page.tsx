@@ -1,10 +1,10 @@
-import JonnyPrep from "./JonnyPrep";
+import PostpartumHQ from "./PostpartumHQ";
 import BottomNav from "../components/BottomNav";
 
-export default function MealsPage() {
+export default function HQPage() {
   return (
     <>
-      <JonnyPrep />
+      <PostpartumHQ />
       <BottomNav />
     </>
   );

@@ -670,7 +670,7 @@ export default function JonnyPrep() {
       </div>
 
       {/* ── Main content ── */}
-      <div className="p-4 max-w-lg mx-auto pb-12">
+      <div className="p-4 max-w-lg mx-auto pb-20">
         {/* Completion banner */}
         {isComplete && (
           <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 text-center mb-4">
