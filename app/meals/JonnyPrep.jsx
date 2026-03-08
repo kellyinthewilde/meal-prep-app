@@ -66,7 +66,7 @@ const REHEAT_GUIDE = {
     thawMethod: "overnight",
     reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
     toppings: ["Extra chopped dates", "Toasted walnuts", "Drizzle of honey", "Sprinkle of cinnamon or cardamom"],
-    notes: "Sweet, rich, warming. Add water to loosen when reheating on the stove.",
+    notes: "Sweet, rich, warming. Add a splash of milk to loosen when reheating.",
     icon: "\ud83c\udf5a",
   },
   "Chicken Ginger Congee": {
@@ -107,7 +107,7 @@ const REHEAT_GUIDE = {
   "Carrot Ginger Soup": {
     thawMethod: "overnight",
     reheating: "Stove: pot on medium, 5\u20136 min, stir occasionally. Thin with a splash of broth or water if needed. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Swirl of coconut cream or sour cream", "Toasted pumpkin seeds (pepitas)", "Drizzle of olive oil", "Fresh cilantro or parsley", "Squeeze of lime (brightens flavor)"],
+    toppings: ["Swirl of coconut cream", "Toasted pumpkin seeds (pepitas)", "Drizzle of olive oil", "Fresh cilantro or parsley", "Squeeze of lime (brightens flavor)"],
     notes: "Smooth blended soup. Light lunch \u2014 pair with 2\u20133 meatballs or egg bites if she\u2019s extra hungry.",
     icon: "\ud83e\udd55",
   },
@@ -128,21 +128,21 @@ const REHEAT_GUIDE = {
   "Black Bean Soup": {
     thawMethod: "overnight",
     reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Dollop of sour cream or Greek yogurt", "Sliced avocado or guacamole", "Lime wedge", "Cilantro", "Tortilla chips", "Shredded cheddar"],
-    notes: "Satisfying standalone. Can serve with rice or tortilla chips on the side.",
+    toppings: ["Dollop of Greek yogurt", "Sliced avocado or guacamole", "Lime wedge", "Cilantro", "Tortilla chips", "Shredded cheddar"],
+    notes: "Satisfying standalone. Tortilla chips on the side if you want.",
     icon: "\ud83e\udeb8",
   },
   "White Chicken Chili": {
     thawMethod: "overnight",
     reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Dollop of sour cream", "Sliced avocado", "Lime wedge", "Fresh cilantro", "Tortilla chips", "Shredded Monterey Jack cheese"],
+    toppings: ["Sliced avocado", "Lime wedge", "Fresh cilantro", "Tortilla chips", "Shredded Monterey Jack cheese"],
     notes: "Chunky white bean and chicken chili. Hearty \u2014 no side needed.",
     icon: "\ud83c\udf36\ufe0f",
   },
   "Beef Chili": {
     thawMethod: "overnight",
     reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Dollop of sour cream", "Shredded cheddar", "Sliced avocado or guacamole", "Lime wedge", "Tortilla chips", "Fresh jalape\u00f1o"],
+    toppings: ["Shredded cheddar", "Sliced avocado or guacamole", "Lime wedge", "Tortilla chips", "Fresh jalape\u00f1o"],
     notes: "Has hidden pur\u00e9ed liver \u2014 totally undetectable. Iron and B12 boost. Can serve with rice.",
     icon: "\ud83c\udf72",
   },
@@ -156,7 +156,7 @@ const REHEAT_GUIDE = {
   "Moroccan Beef Stew": {
     thawMethod: "overnight",
     reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Fresh cilantro", "Squeeze of lemon", "Drizzle of harissa or chili sauce (for Jonny)", "Plain yogurt or sour cream (for Kelly)", "Couscous or rice alongside (optional)"],
+    toppings: ["Fresh cilantro", "Squeeze of lemon", "Drizzle of harissa or chili sauce (for Jonny)", "Plain yogurt", "Couscous or rice alongside (optional)"],
     notes: "Warming spiced stew with chickpeas and root veg. Complete meal as-is.",
     icon: "\ud83e\udd58",
   },
@@ -178,7 +178,7 @@ const REHEAT_GUIDE = {
     thawMethod: "overnight",
     reheating: "Curry: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: transfer thawed curry into a glass container with lid — never the plastic bag — plug in 1.5–2 hrs; heat rice on stove separately.",
     toppings: ["Fresh cilantro", "Squeeze of lemon", "Plain yogurt or raita", "Naan (optional, for Jonny)"],
-    notes: "Pack rice portion in the bag or separately. Good protein + iron combo.",
+    notes: "Rice is already in your bag. Reheat separately on the stove.",
     icon: "\ud83c\udf5b",
   },
   "Butter Chicken + Rice": {
@@ -407,6 +407,14 @@ function DayView({ dayNum }) {
 
   return (
     <div className="space-y-5">
+      {/* Day description */}
+      {dayObj.description && (
+        <div className="rounded-xl bg-stone-100 border border-stone-200 px-4 py-3">
+          <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-1">Day {dayNum} — why these foods</div>
+          <p className="text-sm text-stone-700 leading-relaxed">{dayObj.description}</p>
+        </div>
+      )}
+
       {/* Pull reminder */}
       <div className="rounded-xl bg-indigo-600 text-white px-4 py-3 flex items-start gap-3">
         <span className="text-2xl flex-shrink-0">🌙</span>
@@ -532,15 +540,25 @@ function StaplesView() {
   );
 }
 
+const RECIPE_GROUPS = [
+  { label: "Broths & Tonics", emoji: "🥣", meals: ["Silkie Chicken Tonic", "Golden Broth", "Jujube Goji Ginger Tea", "Chicken Bone Broth", "Beef Bone Broth (2-cup)", "Beef Bone Broth (1-cup)"] },
+  { label: "Congees & Porridge", emoji: "🍚", meals: ["Sweet Congee (Chai)", "Date & Walnut Congee", "Chicken Ginger Congee", "Oatmeal Bowl + Compote"] },
+  { label: "Soups", emoji: "🫙", meals: ["Miyeokguk", "Carrot Ginger Soup", "Sweet Potato Coconut Soup", "Kabocha & Mung Bean Soup", "Black Bean Soup", "White Chicken Chili"] },
+  { label: "Stews & Chilis", emoji: "🥘", meals: ["Beef Chili", "Beef & Sweet Potato Stew", "Moroccan Beef Stew"] },
+  { label: "Curries & Dals", emoji: "🍛", meals: ["Butter Chicken + Rice", "Chickpea Curry + Rice", "Coconut Mung Bean Dal + Rice", "Kitchari"] },
+  { label: "Mains", emoji: "🍝", meals: ["Bolognese + Meatballs", "Salmon Patties + Rice"] },
+  { label: "Breakfast & Smoothies", emoji: "🌅", meals: ["Egg Bites (\u00d73)", "Berry Banana Smoothie"] },
+];
+
 function AllRecipesView() {
   const [search, setSearch] = useState("");
-  const allMeals = Object.keys(REHEAT_GUIDE).sort();
-  const filtered = search
-    ? allMeals.filter(m => m.toLowerCase().includes(search.toLowerCase()))
-    : allMeals;
+
+  const searchResults = search
+    ? Object.keys(REHEAT_GUIDE).filter(m => m.toLowerCase().includes(search.toLowerCase()))
+    : null;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       <div className="relative">
         <input
           type="text"
@@ -552,14 +570,28 @@ function AllRecipesView() {
         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
       </div>
 
-      <div className="space-y-2">
-        {filtered.map((meal, i) => (
-          <RecipeCard key={i} meal={meal} />
-        ))}
-        {filtered.length === 0 && (
-          <div className="text-center text-gray-400 py-6 text-sm">No recipes found</div>
-        )}
-      </div>
+      {searchResults ? (
+        <div className="space-y-2">
+          {searchResults.map((meal, i) => <RecipeCard key={i} meal={meal} />)}
+          {searchResults.length === 0 && (
+            <div className="text-center text-gray-400 py-6 text-sm">No recipes found</div>
+          )}
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {RECIPE_GROUPS.map(group => (
+            <div key={group.label}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-base">{group.emoji}</span>
+                <h3 className="text-sm font-bold text-gray-600 uppercase tracking-wide">{group.label}</h3>
+              </div>
+              <div className="space-y-2">
+                {group.meals.map((meal, i) => <RecipeCard key={i} meal={meal} />)}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
