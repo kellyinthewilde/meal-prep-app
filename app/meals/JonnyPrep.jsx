@@ -1,544 +1,201 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// ── PLAN DATA (30 days) ──
-const PLAN_DATA = {weeks:[{title:"Week 1",days:[{day:1,description:"Birth day. Gentle, warming. Miyeokguk is THE Korean recovery soup \u2014 iron-rich seaweed + beef. Sweet congee for Kelly healing breakfast.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Beef & Sweet Potato Stew"},{slot:"Dinner",kelly:"Chicken Ginger Congee",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:2,description:"Iron rebuilding. Silkie tonic for blood replenishment. Congee breakfast for postpartum healing.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Sweet Congee (Chai)",jonny:"White Chicken Chili"},{slot:"Dinner",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:3,description:"Day 3: Hormone crash. Milk transitioning. Beef stew for iron. Don\u2019t hold back on hearty food if craving it.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Beef Chili"},{slot:"Dinner",kelly:"Beef & Sweet Potato Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:4,description:"Day 4: Baby blues peak. Salmon for omega-3s \u2014 directly supports mood. B vitamins from egg-based breakfast.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Bolognese + Meatballs"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:5,description:"Day 5: Milk fully in. Engorgement. Caloric needs climbing. Carrot ginger soup for lunch is savory + warming \u2014 different texture from the date congee at breakfast.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Date & Walnut Congee",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"Sweet Potato Coconut Soup"},{slot:"Dinner",kelly:"Beef Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:6,description:"Building toward growth spurt. Calorie-dense dinner. Sweet congee breakfast \u2014 comforting and easy.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Sweet Potato Coconut Soup",jonny:"(same)"},{slot:"Dinner",kelly:"White Chicken Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:7,description:"DAY 7: Growth spurt likely starting. Cluster feeding. Hunger surges. Bolognese + meatballs for calorie density.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Black Bean Soup",jonny:"Beef & Sweet Potato Stew"},{slot:"Dinner",kelly:"Bolognese + Meatballs",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]}]},{title:"Week 2",days:[{day:8,description:"Growth spurt day 2. Cluster feeding. Eat on demand \u2014 your body needs it.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Chicken Ginger Congee"},{slot:"Dinner",kelly:"Moroccan Beef Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:9,description:"Growth spurt peak. Butter chicken = protein + healthy fat. Extra snacks encouraged.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Kabocha & Mung Bean Soup",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef & Sweet Potato Stew",jonny:"Kitchari"},{slot:"Dinner",kelly:"Butter Chicken + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:10,description:"Growth spurt easing. Dal is warming, easy to digest, protein-rich.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Coconut Mung Bean Dal + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:11,description:"Between growth spurts. Building reserves. Sweet congee for Kelly, kitchari for Jonny (uses surplus).",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Black Bean Soup",jonny:"Kitchari"},{slot:"Dinner",kelly:"Chickpea Curry + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:12,description:"Kitchari = Ayurvedic reset. Gentle on digestion, deeply nourishing.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"Black Bean Soup"},{slot:"Dinner",kelly:"Kitchari",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:13,description:"Iron and comfort. Beef chili has hidden liver; stew adds B12 and warming nourishment.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef Chili",jonny:"(same)"},{slot:"Dinner",kelly:"Moroccan Beef Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:14,description:"Loading iron before week 2-3 growth spurt. Last day of silkie tonic daily schedule.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Oatmeal Bowl + Compote",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Beef Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]}]},{title:"Week 3",days:[{day:15,description:"Week 3 growth spurt window. Calorie-dense dinner. Nutrient density matters. Smoothie for Jonny \u2014 using up frozen berries.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Chicken Ginger Congee",jonny:"Moroccan Beef Stew"},{slot:"Dinner",kelly:"Butter Chicken + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:16,description:"Black bean soup \u2014 protein, fiber, iron. Easy on digestion.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Date & Walnut Congee",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Black Bean Soup",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:17,description:"Dal for dinner \u2014 warming and protein-rich. Sweet potato coconut soup at lunch.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Kabocha & Mung Bean Soup",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Sweet Potato Coconut Soup",jonny:"Bolognese + Meatballs"},{slot:"Dinner",kelly:"Coconut Mung Bean Dal + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:18,description:"Iron + protein focus. Hidden liver in the chili = stealth nutrition.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Date & Walnut Congee",jonny:"Carrot Ginger Soup"},{slot:"Dinner",kelly:"Beef Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:19,description:"Chickpea curry \u2014 plant protein + iron. Good variety from beef-heavy earlier days.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Date & Walnut Congee",jonny:"Oatmeal Bowl + Compote"},{slot:"Lunch",kelly:"Sweet Potato Coconut Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Chickpea Curry + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:20,description:"Salmon = omega-3 for mood support. Week 3 is highest PPD risk window.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef & Sweet Potato Stew",jonny:"(same)"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:21,description:"Heading into week 3-4 crisis. Moroccan stew is iron + protein dense.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Oatmeal Bowl + Compote",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Moroccan Beef Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]}]},{title:"Week 4",days:[{day:22,description:"Crisis window. Beef stew = iron + B12 + comfort. Choline-rich breakfast.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Black Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Beef & Sweet Potato Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:23,description:"Kabocha & mung bean soup for Kelly. Butter chicken for protein-dense dinner.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Oatmeal Bowl + Compote"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"Coconut Mung Bean Dal + Rice"},{slot:"Dinner",kelly:"Butter Chicken + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:24,description:"Eggs for choline. White chili for protein.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Chicken Ginger Congee",jonny:"Moroccan Beef Stew"},{slot:"Dinner",kelly:"White Chicken Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:25,description:"Kitchari for digestive reset amid the intensity.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Kitchari",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:26,description:"Salmon again \u2014 omega-3 is your best nutritional ally for mood right now.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Carrot Ginger Soup",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef Chili",jonny:"(same)"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:27,description:"Hidden liver in bolognese = stealth iron + B12. The body doesn\u2019t know, but it benefits.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Oatmeal Bowl + Compote",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Kitchari",jonny:"(same)"},{slot:"Dinner",kelly:"Bolognese + Meatballs",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:28,description:"Closing the crisis window. Hormones beginning to rise. You\u2019re through the hardest part.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Date & Walnut Congee",jonny:"Kitchari"},{slot:"Dinner",kelly:"Chickpea Curry + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:29,description:"Hormones stabilizing. Sleep still hard but you’re through the hardest stretch.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Kitchari",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:30,description:"Day 30. One month in. You did it. The fog lifts. You are through the hardest chapter.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]}]}]};
+const PLAN_DATA = {weeks:[{title:"Week 1",notes:["DAYS 1-3: Acute recovery. Massive hormone drop. Iron + protein critical. Warm, easy-to-digest meals. Broth sipping throughout the day.","DAYS 3-5: Baby blues window. Milk coming in. Omega-3s + B vitamins for mood. Caloric needs climbing.","DAYS 5-10: FIRST GROWTH SPURT. Cluster feeding begins. Hunger surges. Calorie-dense meals. Your body suppresses appetite regulation \u2014 eat on demand."],days:[{day:1,description:"Birth day. Gentle, warming. Miyeokguk is THE Korean recovery soup \u2014 iron-rich seaweed + beef. Sweet congee for Kelly healing breakfast.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Beef & Sweet Potato Stew"},{slot:"Dinner",kelly:"Chicken Ginger Congee",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:2,description:"Iron rebuilding. Silkie tonic for blood replenishment. Congee breakfast for postpartum healing.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Sweet Congee (Chai)",jonny:"White Chicken Chili"},{slot:"Dinner",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:3,description:"Day 3: Hormone crash. Milk transitioning. Beef stew for iron. Don\u2019t hold back on hearty food if craving it.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Beef Chili"},{slot:"Dinner",kelly:"Beef & Sweet Potato Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:4,description:"Day 4: Baby blues peak. Salmon for omega-3s \u2014 directly supports mood. B vitamins from egg-based breakfast.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Bolognese + Meatballs"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:5,description:"Day 5: Milk fully in. Engorgement. Caloric needs climbing. Carrot ginger soup for lunch is savory + warming \u2014 different texture from the date congee at breakfast.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Date & Walnut Congee",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"Sweet Potato Coconut Soup"},{slot:"Dinner",kelly:"Beef Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:6,description:"Building toward growth spurt. Calorie-dense dinner. Sweet congee breakfast \u2014 comforting and easy.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Sweet Potato Coconut Soup",jonny:"(same)"},{slot:"Dinner",kelly:"White Chicken Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:7,description:"DAY 7: Growth spurt likely starting. Cluster feeding. Hunger surges. Bolognese + meatballs for calorie density.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Black Bean Soup",jonny:"Beef & Sweet Potato Stew"},{slot:"Dinner",kelly:"Bolognese + Meatballs",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]}]},{title:"Week 2",notes:["DAYS 5-10: FIRST GROWTH SPURT continues.","WEEKS 2-3: Second growth spurt. Sustained elevated appetite. Cumulative sleep deprivation peaks. Nutrient density critical."],days:[{day:8,description:"Growth spurt day 2. Cluster feeding. Eat on demand \u2014 your body needs it.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Miyeokguk",jonny:"Chicken Ginger Congee"},{slot:"Dinner",kelly:"Moroccan Beef Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:9,description:"Growth spurt peak. Butter chicken = protein + healthy fat. Extra snacks encouraged.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Kabocha & Mung Bean Soup",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef & Sweet Potato Stew",jonny:"Kitchari"},{slot:"Dinner",kelly:"Butter Chicken + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:10,description:"Growth spurt easing. Dal is warming, easy to digest, protein-rich.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Coconut Mung Bean Dal + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:11,description:"Between growth spurts. Building reserves. Sweet congee for Kelly, kitchari for Jonny (uses surplus).",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Black Bean Soup",jonny:"Kitchari"},{slot:"Dinner",kelly:"Chickpea Curry + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:12,description:"Kitchari = Ayurvedic reset. Gentle on digestion, deeply nourishing.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"Black Bean Soup"},{slot:"Dinner",kelly:"Kitchari",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]},{day:13,description:"Iron and comfort. Beef chili has hidden liver; stew adds B12 and warming nourishment.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef Chili",jonny:"(same)"},{slot:"Dinner",kelly:"Moroccan Beef Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Golden Broth",jonny:"\u2014"}]},{day:14,description:"Loading iron before week 2-3 growth spurt. Last day of silkie tonic daily schedule.",meals:[{slot:"AM Broth",kelly:"Silkie Chicken Tonic",jonny:"\u2014"},{slot:"Breakfast",kelly:"Oatmeal Bowl + Compote",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Beef Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Jujube Goji Ginger Tea",jonny:"\u2014"}]}]},{title:"Week 3",notes:["WEEKS 2-3: Second growth spurt. Sustained elevated appetite. Sleep deprivation peaks.","WEEK 3-4: THE CRISIS WINDOW. Highest PPD/PPA risk. Iron, protein, B vitamins, choline all mood-supporting."],days:[{day:15,description:"Week 3 growth spurt window. Calorie-dense dinner. Nutrient density matters. Smoothie for Jonny \u2014 using up frozen berries.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Chicken Ginger Congee",jonny:"Moroccan Beef Stew"},{slot:"Dinner",kelly:"Butter Chicken + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:16,description:"Black bean soup \u2014 protein, fiber, iron. Easy on digestion.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Date & Walnut Congee",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Black Bean Soup",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:17,description:"Dal for dinner \u2014 warming and protein-rich. Sweet potato coconut soup at lunch.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Kabocha & Mung Bean Soup",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Sweet Potato Coconut Soup",jonny:"Bolognese + Meatballs"},{slot:"Dinner",kelly:"Coconut Mung Bean Dal + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:18,description:"Iron + protein focus. Hidden liver in the chili = stealth nutrition.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Date & Walnut Congee",jonny:"Carrot Ginger Soup"},{slot:"Dinner",kelly:"Beef Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:19,description:"Chickpea curry \u2014 plant protein + iron. Good variety from beef-heavy earlier days.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Date & Walnut Congee",jonny:"Oatmeal Bowl + Compote"},{slot:"Lunch",kelly:"Sweet Potato Coconut Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Chickpea Curry + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:20,description:"Salmon = omega-3 for mood support. Week 3 is highest PPD risk window.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef & Sweet Potato Stew",jonny:"(same)"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:21,description:"Heading into week 3-4 crisis. Moroccan stew is iron + protein dense.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Oatmeal Bowl + Compote",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Moroccan Beef Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]}]},{title:"Week 4",notes:["WEEK 3-4: THE CRISIS WINDOW. Highest PPD/PPA risk. Growth spurt + sleep debt + hormonal low. Iron, protein, B vitamins, choline all mood-supporting."],days:[{day:22,description:"Crisis window. Beef stew = iron + B12 + comfort. Choline-rich breakfast.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Black Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Beef & Sweet Potato Stew",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:23,description:"Kabocha & mung bean soup for Kelly. Butter chicken for protein-dense dinner.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Oatmeal Bowl + Compote"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"Coconut Mung Bean Dal + Rice"},{slot:"Dinner",kelly:"Butter Chicken + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:24,description:"Eggs for choline. White chili for protein.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Chicken Ginger Congee",jonny:"Moroccan Beef Stew"},{slot:"Dinner",kelly:"White Chicken Chili",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:25,description:"Kitchari for digestive reset amid the intensity.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Chicken Ginger Congee",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Kitchari",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:26,description:"Salmon again \u2014 omega-3 is your best nutritional ally for mood right now.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Carrot Ginger Soup",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Beef Chili",jonny:"(same)"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:27,description:"Hidden liver in bolognese = stealth iron + B12. The body doesn\u2019t know, but it benefits.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Oatmeal Bowl + Compote",jonny:"Egg Bites (\u00d73)"},{slot:"Lunch",kelly:"Kitchari",jonny:"(same)"},{slot:"Dinner",kelly:"Bolognese + Meatballs",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:28,description:"Closing the crisis window. Hormones beginning to rise. You\u2019re through the hardest part.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Date & Walnut Congee",jonny:"Kitchari"},{slot:"Dinner",kelly:"Chickpea Curry + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:29,description:"Hormones stabilizing. Sleep still hard but you're through the hardest stretch.",meals:[{slot:"AM Broth",kelly:"Beef Bone Broth (2-cup)",jonny:"\u2014"},{slot:"Breakfast",kelly:"Egg Bites (\u00d73)",jonny:"(same)"},{slot:"Lunch",kelly:"Kabocha & Mung Bean Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Kitchari",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]},{day:30,description:"Day 30. One month in. You did it. The fog lifts. You are through the hardest chapter.",meals:[{slot:"AM Broth",kelly:"Chicken Bone Broth",jonny:"\u2014"},{slot:"Breakfast",kelly:"Sweet Congee (Chai)",jonny:"Berry Banana Smoothie"},{slot:"Lunch",kelly:"Carrot Ginger Soup",jonny:"(same)"},{slot:"Dinner",kelly:"Salmon Patties + Rice",jonny:"(same)"},{slot:"PM Sip",kelly:"Beef Bone Broth (1-cup)",jonny:"\u2014"}]}]}]};
 
-// Flatten all days for easy lookup
-const ALL_DAYS = PLAN_DATA.weeks.flatMap(w => w.days);
-
-// ── RECIPE REHEAT GUIDE ──
-// thawMethod: "overnight" | "from-frozen"
-// reheating: how to actually heat it
-// toppings: optional add-ons
-// notes: extra context
+// thawMethod: "overnight" = pull night before to thaw in fridge
+// thawMethod: "from-frozen" = do NOT pull, always cook from frozen
 const REHEAT_GUIDE = {
   "Silkie Chicken Tonic": {
+    icon: "🐓",
     thawMethod: "overnight",
-    reheating: "Small pot on medium-low, 3\u20134 min. Gentle heat \u2014 don\u2019t boil. Pour into a mug.",
-    toppings: [],
-    notes: "Kelly only. Sipping broth, not a bowl meal.",
-    icon: "\ud83c\udf75",
+    reheating: "Stove: med-low, 5–8 min, stir gently. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Sliced green onion", "Drop of sesame oil"],
+    notes: "Gentle simmer only — don't boil. Add a splash of broth if it thickened in the freezer."
   },
   "Golden Broth": {
+    icon: "✨",
     thawMethod: "overnight",
-    reheating: "Small pot on medium-low, 3\u20134 min. Whisk if turmeric has settled.",
-    toppings: ["Pinch of black pepper (helps absorb curcumin)", "Splash of coconut milk for creaminess"],
-    notes: "Kelly only. Sipping broth. Drink warm, not hot.",
-    icon: "\u2728",
+    reheating: "Stove: med-low, 5 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Pinch of black pepper", "Optional squeeze of lemon"],
+    notes: "Sip throughout the morning. Light and warming."
   },
   "Jujube Goji Ginger Tea": {
+    icon: "🍵",
     thawMethod: "overnight",
-    reheating: "Small pot on medium-low, 3 min. Add a little hot water if too concentrated.",
-    toppings: ["Optional: drizzle of honey"],
-    notes: "Kelly only. Sweet and gingery. Serve in a mug.",
-    icon: "\ud83c\udf75",
+    reheating: "Stove: med-low, 5 min. Strain solids if desired before serving.",
+    toppings: [],
+    notes: "Gently sweet. Strain before serving or leave the goji berries in."
   },
   "Chicken Bone Broth": {
+    icon: "🫙",
     thawMethod: "overnight",
-    reheating: "Small pot on medium, 4\u20135 min. Pour into a mug.",
-    toppings: ["Pinch of salt if needed", "Optional: few drops toasted sesame oil"],
-    notes: "Served as PM sip (1-cup) or AM broth (2-cup). Check bag label for size.",
-    icon: "\ud83e\udd63",
+    reheating: "Stove: med, 5 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Green onion", "Pinch of sea salt if needed"],
+    notes: ""
   },
   "Beef Bone Broth (2-cup)": {
+    icon: "🫙",
     thawMethod: "overnight",
-    reheating: "Pot on medium, 5 min. AM broth \u2014 serve in a bowl or large mug.",
-    toppings: ["Pinch of salt", "Optional: fresh ginger grated in"],
-    notes: "2-cup portion. Mornings only for Kelly.",
-    icon: "\ud83e\udd63",
+    reheating: "Stove: med, 5 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Green onion", "Pinch of sea salt if needed"],
+    notes: "Kelly's AM broth. Larger portion — two cups."
   },
   "Beef Bone Broth (1-cup)": {
+    icon: "🫙",
     thawMethod: "overnight",
-    reheating: "Small pot on medium, 3\u20134 min. PM sip \u2014 pour into a mug.",
-    toppings: ["Pinch of salt", "Optional: few drops sesame oil"],
-    notes: "1-cup evening portion. Both Kelly and Jonny from Day 15 on.",
-    icon: "\ud83e\udd63",
+    reheating: "Stove: med, 5 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: [],
+    notes: "PM sip. Small amount — drink warm."
   },
   "Sweet Congee (Chai)": {
+    icon: "🍚",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often, it sticks. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Handful of granola or toasted coconut flakes", "Sliced banana or fresh berries", "Drizzle of honey or maple syrup", "Sprinkle of cinnamon"],
-    notes: "Thick and porridge-like. Always add a splash of water when reheating \u2014 stir well.",
-    icon: "\ud83c\udf5a",
+    reheating: "Stove: med-low, 8–10 min. Add a splash of MILK (not water) and stir while warming. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Drizzle of honey or maple syrup", "Chopped walnuts or pecans", "Spoonful of berry compote", "Ghee"],
+    notes: "Use milk — not water — when reheating. Stir frequently to prevent sticking on the bottom."
   },
   "Date & Walnut Congee": {
+    icon: "🍚",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5 min with a splash of water \u2014 stir often. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Extra chopped dates", "Toasted walnuts", "Drizzle of honey", "Sprinkle of cinnamon or cardamom"],
-    notes: "Sweet, rich, warming. Add a splash of milk to loosen when reheating.",
-    icon: "\ud83c\udf5a",
+    reheating: "Stove: med-low, 8–10 min. Add a splash of MILK (not water) and stir while warming. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Extra chopped walnuts", "Drizzle of honey", "Ghee", "Pinch of cinnamon"],
+    notes: "Use milk — not water — when reheating. Stir frequently."
   },
   "Chicken Ginger Congee": {
+    icon: "🍚",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min with a splash of broth or water \u2014 stir often. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Sliced green onion (scallion)", "Drizzle of toasted sesame oil", "Pinch of white pepper", "Crispy shallots if you have them", "Soft-boiled egg, halved (optional)"],
-    notes: "Savory rice porridge. Ginger-forward. Good for any meal of the day.",
-    icon: "\ud83c\udf5a",
-  },
-  "Egg Bites (\u00d73)": {
-    thawMethod: "from-frozen",
-    reheating: "Toaster oven: 325\u00b0F for 8\u201310 min directly from frozen. Don\u2019t thaw \u2014 they get rubbery.",
-    toppings: ["Hot sauce (Cholula or Valentina)", "Sliced avocado", "Salsa", "Sprinkle of everything bagel seasoning"],
-    notes: "3 bites per bag. Reheat from frozen \u2014 DO NOT thaw overnight. Toaster oven only for best texture.",
-    icon: "\ud83e\udd5a",
+    reheating: "Stove: med-low, 8–10 min. Add a splash of chicken broth or water and stir. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Sliced green onion", "Sesame oil", "Grated fresh ginger"],
+    notes: "Stir while warming. Add more broth if too thick."
   },
   "Oatmeal Bowl + Compote": {
+    icon: "🌾",
     thawMethod: "overnight",
-    reheating: "Oatmeal: pot on medium with a splash of milk or water, 5 min, stir well. Compote: small pot, 2\u20133 min on low. Hot Logic Mini: transfer thawed oatmeal into a glass container with lid — never the bag — plug in 1.5–2 hrs; heat compote on stove separately.",
-    toppings: ["Fresh or frozen berries", "Sliced banana", "Sprinkle of hemp seeds or flaxseed", "Drizzle of almond butter or honey", "Chopped toasted walnuts"],
-    notes: "Two parts: oatmeal + compote portion. Spoon compote on top to serve.",
-    icon: "\ud83e\udd63",
-  },
-  "Berry Banana Smoothie": {
-    thawMethod: "from-frozen",
-    reheating: "Blender from frozen: dump bag into blender, add \u00be cup milk of choice, blend 30\u201345 sec. No heat needed.",
-    toppings: ["Handful of spinach (blends in invisibly)", "Scoop of protein powder", "Tablespoon of almond butter", "Chia seeds"],
-    notes: "Jonny only. Frozen smoothie pack \u2014 blend straight from frozen, no thawing.",
-    icon: "\ud83faf0",
+    reheating: "Stove: med, 5–7 min. Add splash of water or milk, stir. Compote is in the fridge — spoon on top after reheating.",
+    toppings: ["Berry compote (from fridge jar)", "Hemp seeds", "Chopped nuts", "Ghee", "Honey"],
+    notes: "Compote is in a jar in the main fridge. Spoon it on after warming the oats."
   },
   "Miyeokguk": {
+    icon: "🌊",
     thawMethod: "overnight",
-    reheating: "Pot on medium, 5\u20137 min until hot through. Add a splash of water if too thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Splash of toasted sesame oil", "Pinch of sea salt", "A few drops fish sauce (optional)"],
-    notes: "Kelly only. Korean seaweed soup \u2014 traditional postpartum recovery. Earthy, mild, nutritious.",
-    icon: "\ud83e\udeb4",
+    reheating: "Stove: med, 8–10 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Sesame oil", "Sliced green onion"],
+    notes: "Korean seaweed + beef soup. Iron-rich. Stir gently — the seaweed is delicate."
   },
   "Carrot Ginger Soup": {
+    icon: "🥕",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min, stir occasionally. Thin with a splash of broth or water if needed. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Swirl of coconut cream", "Toasted pumpkin seeds (pepitas)", "Drizzle of olive oil", "Fresh cilantro or parsley", "Squeeze of lime (brightens flavor)"],
-    notes: "Smooth blended soup. Light lunch \u2014 pair with 2\u20133 meatballs or egg bites if she\u2019s extra hungry.",
-    icon: "\ud83e\udd55",
+    reheating: "Stove: med, 8 min, stir. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Coconut cream drizzle", "Pumpkin seeds", "Fresh herbs"],
+    notes: ""
   },
   "Sweet Potato Coconut Soup": {
+    icon: "🍠",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Swirl of coconut cream", "Toasted coconut flakes", "Drizzle of chili oil or red pepper flakes", "Fresh cilantro", "Squeeze of lime"],
-    notes: "Creamy, slightly sweet. Light lunch \u2014 consider adding egg bites or meatballs for more protein.",
-    icon: "\ud83c\udf60",
+    reheating: "Stove: med, 8 min, stir. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Coconut cream drizzle", "Cilantro", "Lime squeeze", "Hemp seeds"],
+    notes: ""
   },
   "Kabocha & Mung Bean Soup": {
+    icon: "🎃",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min. Add a splash of water \u2014 it thickens in the fridge. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Drizzle of sesame oil", "Sprinkle of toasted sesame seeds", "Pinch of white pepper", "Fresh ginger grated in (optional)"],
-    notes: "Japanese kabocha pumpkin + mung bean. Hearty and slightly sweet. More substantial than the other soups.",
-    icon: "\ud83c\udf83",
+    reheating: "Stove: med, 8–10 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Sesame oil", "Green onion", "Sesame seeds"],
+    notes: ""
   },
   "Black Bean Soup": {
+    icon: "🫘",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 5\u20136 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Dollop of Greek yogurt", "Sliced avocado or guacamole", "Lime wedge", "Cilantro", "Tortilla chips", "Shredded cheddar"],
-    notes: "Satisfying standalone. Tortilla chips on the side if you want.",
-    icon: "\ud83e\udeb8",
+    reheating: "Stove: med, 8–10 min, stir frequently. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Cilantro", "Lime squeeze", "Avocado slices"],
+    notes: ""
   },
   "White Chicken Chili": {
+    icon: "🍲",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Sliced avocado", "Lime wedge", "Fresh cilantro", "Tortilla chips", "Shredded Monterey Jack cheese"],
-    notes: "Chunky white bean and chicken chili. Hearty \u2014 no side needed.",
-    icon: "\ud83c\udf36\ufe0f",
+    reheating: "Stove: med, 8–10 min, stir. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Cilantro", "Lime squeeze", "Avocado", "Coconut yogurt"],
+    notes: ""
   },
   "Beef Chili": {
+    icon: "🥘",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir well \u2014 it\u2019s thick. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Shredded cheddar", "Sliced avocado or guacamole", "Lime wedge", "Tortilla chips", "Fresh jalape\u00f1o"],
-    notes: "Has hidden pur\u00e9ed liver \u2014 totally undetectable. Iron and B12 boost. Can serve with rice.",
-    icon: "\ud83c\udf72",
+    reheating: "Stove: med-low, 10–12 min, stir frequently. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Cilantro", "Avocado", "Lime squeeze"],
+    notes: "Contains hidden liver — iron-rich, totally undetectable in flavour."
   },
   "Beef & Sweet Potato Stew": {
+    icon: "🥩",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Fresh parsley or cilantro", "Crusty bread (for Jonny)", "Sprinkle of flaky sea salt"],
-    notes: "Complete meal \u2014 sweet potato chunks built in. Iron-rich and filling.",
-    icon: "\ud83e\udd58",
+    reheating: "Stove: med-low, 10 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Fresh parsley", "Squeeze of lemon"],
+    notes: ""
   },
   "Moroccan Beef Stew": {
+    icon: "🫕",
     thawMethod: "overnight",
-    reheating: "Stove: pot on medium, 6\u20138 min, stir. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Fresh cilantro", "Squeeze of lemon", "Drizzle of harissa or chili sauce (for Jonny)", "Plain yogurt", "Couscous or rice alongside (optional)"],
-    notes: "Warming spiced stew with chickpeas and root veg. Complete meal as-is.",
-    icon: "\ud83e\udd58",
-  },
-  "Kitchari": {
-    thawMethod: "overnight",
-    reheating: "Stove: pot on medium with a splash of water, 5\u20136 min \u2014 stir, it thickens as it sits. Hot Logic Mini: transfer thawed kitchari into a glass container with lid — never the plastic bag — add a splash of water, plug in 1.5–2 hrs before serving.",
-    toppings: ["Drizzle of ghee", "Squeeze of lemon", "Pinch of cumin or garam masala", "Fresh cilantro", "Plain yogurt (for Kelly)"],
-    notes: "Rice + lentil Ayurvedic dish. Complete meal, no side needed. Restorative and easy to digest.",
-    icon: "\ud83c\udf5b",
-  },
-  "Coconut Mung Bean Dal + Rice": {
-    thawMethod: "overnight",
-    reheating: "Dal: pot on medium, 4\u20135 min with a splash of water \u2014 stir well. Rice: small pot or toaster oven in foil, 5 min. Hot Logic Mini: transfer thawed dal into a glass container with lid — never the plastic bag — plug in 1.5–2 hrs; heat rice on stove separately.",
-    toppings: ["Drizzle of coconut cream", "Fresh cilantro", "Squeeze of lime", "Pinch of garam masala", "Mango chutney or mango rice (complements naturally)"],
-    notes: "Dal is a sauce \u2014 it needs the rice. Pack rice portion separately (frozen \u00bd-cup cube). Mango rice is a great match.",
-    icon: "\ud83c\udf5b",
-  },
-  "Chickpea Curry + Rice": {
-    thawMethod: "overnight",
-    reheating: "Curry: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: transfer thawed curry into a glass container with lid — never the plastic bag — plug in 1.5–2 hrs; heat rice on stove separately.",
-    toppings: ["Fresh cilantro", "Squeeze of lemon", "Plain yogurt or raita", "Naan (optional, for Jonny)"],
-    notes: "Rice is already in your bag. Reheat separately on the stove.",
-    icon: "\ud83c\udf5b",
+    reheating: "Stove: med-low, 10 min. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Cilantro", "Toasted almonds", "Squeeze of lemon"],
+    notes: ""
   },
   "Butter Chicken + Rice": {
+    icon: "🍛",
     thawMethod: "overnight",
-    reheating: "Butter chicken: pot on medium, 5\u20136 min, stir. Rice: small pot, 4\u20135 min with a splash of water. Hot Logic Mini: transfer thawed butter chicken into a glass container with lid — never the plastic bag — plug in 1.5–2 hrs; heat rice on stove separately.",
-    toppings: ["Fresh cilantro", "Drizzle of coconut cream", "Naan (optional, for Jonny)", "Squeeze of lemon"],
-    notes: "Crowd pleaser. Rich and creamy. Rice frozen separately as \u00bd-cup cube.",
-    icon: "\ud83c\udf5b",
+    reheating: "Stove: med, 8–10 min, stir. Rice is in the bag — heat separately in a pot with a splash of water.",
+    toppings: ["Cilantro", "Lime squeeze", "Coconut yogurt"],
+    notes: "Rice is already paired in your bag. Reheat curry + rice separately."
+  },
+  "Chickpea Curry + Rice": {
+    icon: "🍛",
+    thawMethod: "overnight",
+    reheating: "Stove: med, 8–10 min, stir. Rice is in the bag — heat separately in a pot with a splash of water.",
+    toppings: ["Cilantro", "Lime squeeze"],
+    notes: "Rice is already paired in your bag."
+  },
+  "Coconut Mung Bean Dal + Rice": {
+    icon: "🍛",
+    thawMethod: "overnight",
+    reheating: "Stove: med, 8–10 min, stir gently. Rice is in the bag — heat separately with a splash of water.",
+    toppings: ["Cilantro", "Ghee drizzle", "Lime squeeze"],
+    notes: "Rice is already in the bag. Add a little water if the dal has thickened."
+  },
+  "Kitchari": {
+    icon: "🍲",
+    thawMethod: "overnight",
+    reheating: "Stove: med-low, 8–10 min. Add a splash of water to loosen, stir. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Ghee drizzle", "Cilantro", "Lime squeeze"],
+    notes: "All-in-one rice + dal — Ayurvedic dish. Will thicken when cold. Just add water when reheating."
   },
   "Bolognese + Meatballs": {
+    icon: "🍝",
     thawMethod: "overnight",
-    reheating: "Pot on medium, 6\u20137 min, stir often \u2014 meat sauce sticks. Hot Logic Mini: transfer thawed meal into a glass container with lid — never the plastic bag — and plug in 1.5–2 hrs before serving.",
-    toppings: ["Parmesan cheese", "Fresh basil", "Drizzle of olive oil", "Red pepper flakes (for Jonny)", "Pasta cooked fresh (for Jonny) or serve with rice"],
-    notes: "Hidden liver \u2014 undetectable. Jonny can cook pasta fresh and ladle sauce over, or serve with rice.",
-    icon: "\ud83c\udf5d",
+    reheating: "Stove: med, 10–12 min, stir. Hot Logic Mini: glass container + lid, 1.5–2 hrs.",
+    toppings: ["Nutritional yeast or parmesan", "Fresh basil", "Drizzle of olive oil"],
+    notes: "⚠️ No carb is in this bag — make rice or pasta fresh.\n\nIP Rice: Rinse 1 cup rice → add to Instant Pot with 1 cup water → Pressure Cook HIGH 3 min → natural release 10 min → fluff and serve."
   },
   "Salmon Patties + Rice": {
+    icon: "🐟",
     thawMethod: "overnight",
-    reheating: "Patties: toaster oven 350\u00b0F for 8\u201310 min, OR skillet with olive oil on medium, 3 min per side. Rice: small pot, 4\u20135 min with a splash of water. Reheat patties and rice separately.",
-    toppings: ["Lemon wedge (squeeze over patties)", "Dollop of tartar sauce or garlic aioli", "Sliced avocado", "Fresh dill or parsley", "Capers (for Kelly if she wants)"],
-    notes: "Omega-3 priority meal. Toaster oven or skillet for patties \u2014 keeps them from getting soggy.",
-    icon: "\ud83d\udc1f",
+    reheating: "Toaster oven: 375°F, 10–12 min, flip halfway. Or skillet: med, 4–5 min per side. Hot Logic Mini: glass + lid, 1.5–2 hrs. Rice is in the bag — heat separately.",
+    toppings: ["Lemon squeeze", "Capers or pickles", "Fresh dill or parsley"],
+    notes: "Rice is already in the bag. Salmon patties reheat best in the toaster oven — crispy outside."
+  },
+  "Egg Bites (\u00d73)": {
+    icon: "🥚",
+    thawMethod: "from-frozen",
+    reheating: "Toaster oven: 350°F, 12–15 min, straight from frozen. Or skillet: med-low with lid, 8–10 min, from frozen.",
+    toppings: ["Hot sauce", "Sliced avocado", "Fresh herbs"],
+    notes: "Do NOT thaw first — always cook from frozen. Works straight from the freezer."
+  },
+  "Berry Banana Smoothie": {
+    icon: "🫐",
+    thawMethod: "from-frozen",
+    reheating: "Blend straight from frozen: add 1 cup milk or nut milk. Optional: scoop of protein powder. Blend 60 sec.",
+    toppings: [],
+    notes: "Keep frozen until ready to blend. No thawing needed."
   },
 };
-
-// Resolve "(same)" — returns actual meal name
-function resolveJonnyMeal(kellyMeal, jonnyMeal) {
-  if (!jonnyMeal || jonnyMeal === "\u2014") return null;
-  if (jonnyMeal === "(same)") return kellyMeal;
-  return jonnyMeal;
-}
-
-// Build bag contents for a given day
-function getBagContents(dayObj) {
-  const kellyBag = [];
-  const jonnyBag = [];
-
-  dayObj.meals.forEach(meal => {
-    const k = meal.kelly;
-    const j = resolveJonnyMeal(meal.kelly, meal.jonny);
-
-    if (k && k !== "\u2014") {
-      kellyBag.push({ slot: meal.slot, meal: k });
-    }
-    if (j) {
-      jonnyBag.push({ slot: meal.slot, meal: j });
-    }
-  });
-
-  return { kellyBag, jonnyBag };
-}
-
-// Unique meals for a person on a given day (for reheat guide)
-function getUniqueMeals(bag) {
-  const seen = new Set();
-  return bag.filter(item => {
-    if (seen.has(item.meal)) return false;
-    seen.add(item.meal);
-    return true;
-  });
-}
-
-// Slot color coding
-const SLOT_COLORS = {
-  "AM Broth": { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700", dot: "bg-amber-400" },
-  "Breakfast": { bg: "bg-rose-50", border: "border-rose-200", text: "text-rose-700", dot: "bg-rose-400" },
-  "Lunch": { bg: "bg-green-50", border: "border-green-200", text: "text-green-700", dot: "bg-green-400" },
-  "Dinner": { bg: "bg-indigo-50", border: "border-indigo-200", text: "text-indigo-700", dot: "bg-indigo-400" },
-  "PM Sip": { bg: "bg-purple-50", border: "border-purple-200", text: "text-purple-700", dot: "bg-purple-400" },
-};
-
-function SlotBadge({ slot }) {
-  const c = SLOT_COLORS[slot] || { bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600", dot: "bg-gray-400" };
-  return (
-    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${c.bg} ${c.text} border ${c.border}`}>
-      <span className={`w-1.5 h-1.5 rounded-full ${c.dot}`}></span>
-      {slot}
-    </span>
-  );
-}
-
-// ── STAPLES DATA ──
-const STAPLES = {
-  freezer2: {
-    label: "Freezer 2",
-    sublabel: "Small garage fridge freezer",
-    emoji: "🧊",
-    color: "blue",
-    items: [
-      { name: "Silkie Chicken Tonic", note: "1-cup bags. Kelly\u2019s morning tonic — Days 1–14 only.", icon: "🍵" },
-      { name: "Chicken Bone Broth", note: "1-cup and 2-cup bags. Kelly AM broth Days 15+. PM sip both.", icon: "🥣" },
-      { name: "Beef Bone Broth (2-cup)", note: "2-cup bags. Kelly\u2019s morning broth on alternating days.", icon: "🥣" },
-      { name: "Beef Bone Broth (1-cup)", note: "1-cup bags. Evening sip for both of you from Day 15.", icon: "🥣" },
-      { name: "Golden Broth", note: "1-cup bags. Kelly\u2019s PM sip in Week 1. Turmeric, anti-inflammatory.", icon: "✨" },
-      { name: "Jujube Goji Ginger Tea", note: "1-cup bags. Kelly\u2019s PM sip alternating Days 2–14.", icon: "🍵" },
-    ],
-  },
-  freezer3door: {
-    label: "Freezer 3 Door",
-    sublabel: "Tall standing freezer — door only",
-    emoji: "🚪",
-    color: "emerald",
-    items: [
-      { name: "Lactation Bites", note: "No-bake oat + flax + brewer\u2019s yeast balls. Grab 2\u20133 whenever Kelly wants a snack.", icon: "🍪" },
-      { name: "Lactation Oatmeal Cups", note: "Baked oat cups. Individual portions. Good with a smear of berry compote.", icon: "🫙" },
-      { name: "Lactation Savory Muffins", note: "Baked savory muffins. Good as a snack or alongside soup.", icon: "🧁" },
-      { name: "Tahini Date Balls", note: "No-bake. Dates + tahini + oats. Natural energy boost.", icon: "🟤" },
-      { name: "Cashew Butter Chocolate Oat Balls", note: "No-bake. Chocolatey and satisfying. Great for both of you.", icon: "🍫" },
-      { name: "Almond Coconut Balls", note: "No-bake. Lighter, coconutty. Grab 2\u20133 as a snack.", icon: "🥥" },
-      { name: "Baked Oatmeal Bars", note: "Baked in two batches (32 squares), individually foil-wrapped. 1\u20132 bars per snack.", icon: "🍫" },
-      { name: "Cherry-Chocolate Chunk Brownies", note: "Baked, individually wrapped. Both batches \u2014 one berry, one cherry-choc.", icon: "🍒" },
-    ],
-  },
-  freezer3main: {
-    label: "Freezer 3 Main",
-    sublabel: "Tall standing freezer — body",
-    emoji: "📦",
-    color: "slate",
-    items: [
-      { name: "All daily meal bags", note: "Labeled \u201cDay X Kelly\u201d and \u201cDay X Jonny\u201d. Pull BOTH bags the night before and move to the main fridge to thaw.", icon: "🏷️" },
-      { name: "Smoothie packs", note: "Jonny\u2019s berry banana smoothie \u2014 pre-portioned bags in his daily bag. Blend straight from frozen.", icon: "🫐" },
-    ],
-  },
-  fridge: {
-    label: "Main Home Fridge",
-    sublabel: "Keep these stocked and rotating",
-    emoji: "🏠",
-    color: "teal",
-    items: [
-      { name: "Lactation Bites", note: "Rotate a small container from Freezer 3 door into the fridge. They\u2019re much better at fridge temp than eaten frozen \u2014 soft, chewy, ready to grab. Refresh every few days.", icon: "🍪" },
-      { name: "Energy Balls (Tahini Date / Cashew Choc Oat / Almond Coconut)", note: "Same deal \u2014 move a small batch from the Freezer 3 door into the fridge. Grab 2\u20133 whenever Kelly wants a snack. Keep rotating so there\u2019s always some ready.", icon: "⚽" },
-      { name: "Berry Compote", note: "Keep a jar of this in the fridge at all times. Goes on oatmeal, snack bars, yogurt, straight off the spoon \u2014 it\u2019s versatile. The oatmeal bags have their own compote portion already; this is a bonus jar for everything else.", icon: "🍓" },
-      { name: "Fresh toppings to keep stocked", note: "Avocados, lemon + lime, sour cream or Greek yogurt, cilantro, green onions. These make basically every meal better and are called for across multiple recipes.", icon: "🥑" },
-    ],
-  },
-};
-
-// ── COMPONENTS ──
-
-function ThawBadge({ method }) {
-  if (method === "from-frozen") {
-    return (
-      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 border border-blue-200">
-        ❄️ Reheat from frozen
-      </span>
-    );
-  }
-  return (
-    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-700 border border-orange-200">
-      🌙 Thaw overnight
-    </span>
-  );
-}
-
-function RecipeCard({ meal, showFull = false }) {
-  const [open, setOpen] = useState(showFull);
-  const guide = REHEAT_GUIDE[meal];
-
-  if (!guide) {
-    return (
-      <div className="rounded-xl border border-gray-100 bg-gray-50 p-3">
-        <div className="flex items-center gap-2">
-          <span className="text-lg">🍽️</span>
-          <span className="font-medium text-gray-800 text-sm">{meal}</span>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="rounded-xl border border-stone-200 bg-white shadow-sm overflow-hidden">
-      <button
-        className="w-full text-left px-4 py-3 flex items-center justify-between gap-2"
-        onClick={() => setOpen(!open)}
-      >
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="text-xl flex-shrink-0">{guide.icon}</span>
-          <div className="min-w-0">
-            <div className="font-semibold text-gray-900 text-sm leading-tight">{meal}</div>
-            <div className="mt-0.5">
-              <ThawBadge method={guide.thawMethod} />
-            </div>
-          </div>
-        </div>
-        <span className="text-gray-400 flex-shrink-0 text-lg">{open ? "▲" : "▼"}</span>
-      </button>
-
-      {open && (
-        <div className="px-4 pb-4 border-t border-stone-100 pt-3 space-y-3">
-          <div>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">How to reheat</div>
-            <p className="text-sm text-gray-700">{guide.reheating}</p>
-          </div>
-
-          {guide.toppings && guide.toppings.length > 0 && (
-            <div>
-              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Toppings & add-ons</div>
-              <ul className="space-y-0.5">
-                {guide.toppings.map((t, i) => (
-                  <li key={i} className="text-sm text-gray-700 flex items-start gap-1.5">
-                    <span className="text-stone-400 mt-0.5 flex-shrink-0">•</span>
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {guide.notes && (
-            <div className="rounded-lg bg-amber-50 border border-amber-100 px-3 py-2">
-              <p className="text-xs text-amber-800">{guide.notes}</p>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function DayView({ dayNum }) {
-  const dayObj = ALL_DAYS.find(d => d.day === dayNum);
-  if (!dayObj) return <div className="text-center text-gray-400 py-8">No data for Day {dayNum}</div>;
-
-  const { kellyBag, jonnyBag } = getBagContents(dayObj);
-  const allUnique = getUniqueMeals([...kellyBag, ...jonnyBag]);
-
-  return (
-    <div className="space-y-5">
-      {/* Day description */}
-      {dayObj.description && (
-        <div className="rounded-xl bg-stone-100 border border-stone-200 px-4 py-3">
-          <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-1">Day {dayNum} — why these foods</div>
-          <p className="text-sm text-stone-700 leading-relaxed">{dayObj.description}</p>
-        </div>
-      )}
-
-      {/* Pull reminder */}
-      <div className="rounded-xl bg-indigo-600 text-white px-4 py-3 flex items-start gap-3">
-        <span className="text-2xl flex-shrink-0">🌙</span>
-        <div>
-          <div className="font-bold text-sm">Tonight: Pull both bags</div>
-          <div className="text-indigo-100 text-xs mt-0.5">
-            Move <strong>&ldquo;Day {dayNum} Kelly&rdquo;</strong> and <strong>&ldquo;Day {dayNum} Jonny&rdquo;</strong> from Freezer 3 to the fridge tonight to thaw overnight.
-          </div>
-          {allUnique.filter(i => { const g = REHEAT_GUIDE[i.meal]; return g && g.thawMethod === "from-frozen"; }).length > 0 && (
-            <div className="text-indigo-200 text-xs mt-1">
-              ⚠️ Keep frozen (reheat from frozen): {allUnique.filter(i => { const g = REHEAT_GUIDE[i.meal]; return g && g.thawMethod === "from-frozen"; }).map(i => i.meal.replace(" (×3)", " bites")).join(" + ")}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Two bag columns */}
-      <div className="grid grid-cols-2 gap-3">
-        {/* Kelly's bag */}
-        <div className="rounded-xl border-2 border-rose-200 bg-rose-50 overflow-hidden">
-          <div className="bg-rose-500 text-white px-3 py-2 flex items-center gap-2">
-            <span>💕</span>
-            <div>
-              <div className="font-bold text-sm">Kelly</div>
-              <div className="text-rose-100 text-xs">Day {dayNum}</div>
-            </div>
-          </div>
-          <div className="p-2 space-y-1.5">
-            {kellyBag.map((item, i) => (
-              <div key={i} className="bg-white rounded-lg px-2 py-1.5">
-                <SlotBadge slot={item.slot} />
-                <div className="text-xs font-medium text-gray-800 mt-0.5 leading-tight">{item.meal}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Jonny's bag */}
-        <div className="rounded-xl border-2 border-blue-200 bg-blue-50 overflow-hidden">
-          <div className="bg-blue-600 text-white px-3 py-2 flex items-center gap-2">
-            <span>🤙</span>
-            <div>
-              <div className="font-bold text-sm">Jonny</div>
-              <div className="text-blue-100 text-xs">Day {dayNum}</div>
-            </div>
-          </div>
-          <div className="p-2 space-y-1.5">
-            {jonnyBag.length === 0 ? (
-              <div className="text-xs text-gray-400 p-2">Sharing Kelly’s bags today</div>
-            ) : (
-              jonnyBag.map((item, i) => (
-                <div key={i} className="bg-white rounded-lg px-2 py-1.5">
-                  <SlotBadge slot={item.slot} />
-                  <div className="text-xs font-medium text-gray-800 mt-0.5 leading-tight">{item.meal}</div>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Reheat guide for today's meals */}
-      <div>
-        <h3 className="text-sm font-bold text-gray-700 mb-2">Today’s reheat guide</h3>
-        <div className="space-y-2">
-          {allUnique.map((item, i) => (
-            <RecipeCard key={i} meal={item.meal} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function StaplesView() {
-  const colorMap = {
-    blue: { header: "bg-blue-600", border: "border-blue-200", bg: "bg-blue-50", badge: "bg-blue-100 text-blue-700" },
-    emerald: { header: "bg-emerald-600", border: "border-emerald-200", bg: "bg-emerald-50", badge: "bg-emerald-100 text-emerald-700" },
-    slate: { header: "bg-slate-600", border: "border-slate-200", bg: "bg-slate-50", badge: "bg-slate-100 text-slate-700" },
-    teal: { header: "bg-teal-600", border: "border-teal-200", bg: "bg-teal-50", badge: "bg-teal-100 text-teal-700" },
-  };
-
-  return (
-    <div className="space-y-5">
-      {/* Top reminder */}
-      <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-3">
-        <div className="font-semibold text-amber-900 text-sm mb-1">📦 Freezer orientation</div>
-        <p className="text-xs text-amber-800">
-          <strong>Freezer 2</strong> = small fridge freezer in the garage. All broths and drinks live here — silkie tonic, bone broths, golden broth, jujube tea.
-          <br /><br />
-          <strong>Freezer 3</strong> = tall standing freezer. Daily meal bags in the main body. Lactation bites, energy balls, and snack bars in the door.
-          <br /><br />
-          <strong>Main fridge</strong> = keep a rotating container of snacks (lactation bites + energy balls) and a jar of berry compote here at all times.
-        </p>
-      </div>
-
-      {Object.values(STAPLES).map(section => {
-        const c = colorMap[section.color];
-        return (
-          <div key={section.label} className={`rounded-xl border-2 ${c.border} overflow-hidden`}>
-            <div className={`${c.header} text-white px-4 py-3`}>
-              <div className="font-bold text-sm flex items-center gap-2">
-                <span>{section.emoji}</span>
-                {section.label}
-              </div>
-              <div className="text-xs opacity-75 mt-0.5">{section.sublabel}</div>
-            </div>
-            <div className={`${c.bg} p-3 space-y-2`}>
-              {section.items.map((item, i) => (
-                <div key={i} className="bg-white rounded-lg px-3 py-2.5 flex items-start gap-2.5">
-                  <span className="text-xl flex-shrink-0 mt-0.5">{item.icon}</span>
-                  <div>
-                    <div className="font-semibold text-gray-900 text-sm">{item.name}</div>
-                    <div className="text-xs text-gray-600 mt-0.5">{item.note}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
 
 const RECIPE_GROUPS = [
   { label: "Broths & Tonics", emoji: "🥣", meals: ["Silkie Chicken Tonic", "Golden Broth", "Jujube Goji Ginger Tea", "Chicken Bone Broth", "Beef Bone Broth (2-cup)", "Beef Bone Broth (1-cup)"] },
@@ -550,184 +207,499 @@ const RECIPE_GROUPS = [
   { label: "Breakfast & Smoothies", emoji: "🌅", meals: ["Egg Bites (\u00d73)", "Berry Banana Smoothie"] },
 ];
 
-function AllRecipesView() {
-  const [search, setSearch] = useState("");
+const STAPLES = {
+  freezer2: {
+    label: "Freezer 2 — Garage Small Fridge",
+    emoji: "🏠",
+    items: [
+      { name: "Silkie Chicken Tonic", note: "Daily AM broth, Days 1–14" },
+      { name: "Golden Broth", note: "Daily PM sip, Days 1–14" },
+      { name: "Jujube Goji Ginger Tea", note: "Rotating PM sip, Days 1–14" },
+      { name: "Chicken Bone Broth", note: "AM broth, Days 15–30" },
+      { name: "Beef Bone Broth (2-cup)", note: "Kelly AM broth, alternating Days 15–30" },
+      { name: "Beef Bone Broth (1-cup)", note: "Kelly PM sip, Days 15–30" },
+    ]
+  },
+  freezer3door: {
+    label: "Freezer 3 Door — Lactation Bites & Snacks",
+    emoji: "🍫",
+    items: [
+      { name: "Cashew Butter Chocolate Oat Balls" },
+      { name: "Almond Coconut Balls" },
+      { name: "Baked Oatmeal Bars" },
+      { name: "Cherry-Chocolate Chunk Brownies" },
+      { name: "Lactation Oatmeal Cups" },
+      { name: "Lactation Savory Muffins" },
+    ]
+  },
+  freezer3main: {
+    label: "Freezer 3 Main — Daily Meal Bags",
+    emoji: "🧊",
+    items: [
+      { name: "Day X — Kelly", note: "Labeled by day. Pull the night before to thaw." },
+      { name: "Day X — Jonny", note: "Labeled by day. Pull the night before to thaw." },
+      { name: "Egg Bites (\u00d73)", note: "Multiple bags. Always cook from frozen — do not pull to thaw." },
+      { name: "Berry Banana Smoothie", note: "Multiple bags. Blend straight from frozen — do not pull to thaw." },
+    ]
+  },
+  fridge: {
+    label: "Main Home Fridge — Fresh Add-Ons",
+    emoji: "❄️",
+    items: [
+      { name: "Berry Compote", note: "Jar in fridge. Spoon onto oatmeal, congee, yogurt." },
+      { name: "Lactation bites rotation", note: "Move small batches from freezer door to fridge. Thaw overnight." },
+      { name: "Energy balls", note: "Thaw in fridge. Grab-and-go snack." },
+      { name: "Ghee", note: "Add to congees, soups, oatmeal." },
+      { name: "Walnuts, hemp seeds, pumpkin seeds", note: "Top anything savoury or sweet." },
+      { name: "Dates (Medjool)", note: "Quick energy. Top congee or eat alongside." },
+      { name: "Fresh ginger", note: "Grate into broths when reheating for extra warmth." },
+    ]
+  }
+};
 
-  const searchResults = search
-    ? Object.keys(REHEAT_GUIDE).filter(m => m.toLowerCase().includes(search.toLowerCase()))
-    : null;
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
+function getUniqueMeals(dayObj) {
+  const seen = new Set();
+  const meals = [];
+  dayObj.meals.forEach((m) => {
+    const jonnyMeal = m.jonny === "(same)" ? m.kelly : m.jonny;
+    [m.kelly, jonnyMeal].forEach((meal) => {
+      if (meal && meal !== "\u2014" && meal !== "\u2013" && meal !== "—" && meal !== "–" && !seen.has(meal)) {
+        seen.add(meal);
+        meals.push(meal);
+      }
+    });
+  });
+  return meals;
+}
+
+function isBrothOrTonic(name) {
+  return name.includes("Broth") || name.includes("Tonic") || name.includes("Tea");
+}
+
+function getPullList(dayObj) {
+  // Returns { mainBagNeeded, freezer2Items, keepFrozen }
+  if (!dayObj) return null;
+  const allMeals = getUniqueMeals(dayObj);
+  const freezer2Items = [];
+  const keepFrozen = [];
+  allMeals.forEach((meal) => {
+    const info = REHEAT_GUIDE[meal];
+    if (!info) return;
+    if (info.thawMethod === "from-frozen") {
+      keepFrozen.push(meal);
+    } else if (isBrothOrTonic(meal)) {
+      freezer2Items.push(meal);
+    }
+  });
+  return { freezer2Items, keepFrozen };
+}
+
+// ─── Sub-components ──────────────────────────────────────────────────────────
+
+function ReheatingCard({ meal }) {
+  const [open, setOpen] = useState(false);
+  const info = REHEAT_GUIDE[meal];
+  if (!info) return null;
 
   return (
-    <div className="space-y-4">
-      <div className="relative">
-        <input
-          type="text"
-          placeholder="Search recipes..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 pl-9"
-        />
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
-      </div>
-
-      {searchResults ? (
-        <div className="space-y-2">
-          {searchResults.map((meal, i) => <RecipeCard key={i} meal={meal} />)}
-          {searchResults.length === 0 && (
-            <div className="text-center text-gray-400 py-6 text-sm">No recipes found</div>
+    <div className="border border-stone-200 rounded-xl overflow-hidden bg-white">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-4 py-3 text-left"
+      >
+        <span className="font-medium text-stone-800 text-sm">
+          {info.icon} {meal}
+          {info.thawMethod === "from-frozen" && (
+            <span className="ml-2 text-xs bg-sky-100 text-sky-600 px-1.5 py-0.5 rounded font-medium">keep frozen</span>
           )}
-        </div>
-      ) : (
-        <div className="space-y-6">
-          {RECIPE_GROUPS.map(group => (
-            <div key={group.label}>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-base">{group.emoji}</span>
-                <h3 className="text-sm font-bold text-gray-600 uppercase tracking-wide">{group.label}</h3>
-              </div>
-              <div className="space-y-2">
-                {group.meals.map((meal, i) => <RecipeCard key={i} meal={meal} />)}
-              </div>
+        </span>
+        <span className="text-stone-400 text-xs ml-2">{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div className="border-t border-stone-100 bg-stone-50 px-4 py-3 space-y-2.5 text-sm">
+          <div>
+            <span className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Thaw</span>
+            <p className="text-stone-700 mt-0.5">
+              {info.thawMethod === "from-frozen"
+                ? "🧊 Keep frozen — do not thaw. Cook directly from frozen."
+                : "Pull night before → thaw overnight in fridge."}
+            </p>
+          </div>
+          <div>
+            <span className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Reheat</span>
+            <p className="text-stone-700 mt-0.5">{info.reheating}</p>
+          </div>
+          {info.toppings?.length > 0 && (
+            <div>
+              <span className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Toppings</span>
+              <p className="text-stone-700 mt-0.5">{info.toppings.join(", ")}</p>
             </div>
-          ))}
+          )}
+          {info.notes ? (
+            <div className="text-stone-500 text-xs leading-relaxed whitespace-pre-line">{info.notes}</div>
+          ) : null}
         </div>
       )}
     </div>
   );
 }
 
-// ── MAIN APP ──
+function DayView({ dayObj }) {
+  if (!dayObj) return <p className="text-stone-400 text-sm p-4">No data for this day.</p>;
+  const dayNum = dayObj.day;
+  const allMeals = getUniqueMeals(dayObj);
+
+  // Pull-tonight is for tomorrow's bags
+  const allDays = PLAN_DATA.weeks.flatMap((w) => w.days);
+  const tomorrowObj = allDays.find((d) => d.day === dayNum + 1);
+  const pullInfo = tomorrowObj ? getPullList(tomorrowObj) : null;
+
+  return (
+    <div className="space-y-4">
+      {/* Why these foods */}
+      {dayObj.description && (
+        <div className="rounded-xl bg-stone-100 border border-stone-200 px-4 py-3">
+          <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-1">
+            Day {dayNum} — why these foods
+          </div>
+          <p className="text-sm text-stone-700 leading-relaxed">{dayObj.description}</p>
+        </div>
+      )}
+
+      {/* Hot Logic reminder */}
+      <div className="rounded-xl bg-orange-50 border border-orange-200 px-4 py-2.5 text-xs text-orange-800">
+        <span className="font-semibold">Hot Logic Mini:</span> glass tupperware + lid only — never the plastic bag. 1.5–2 hrs from thawed.
+      </div>
+
+      {/* Pull tonight for tomorrow */}
+      {tomorrowObj && pullInfo && (
+        <div className="rounded-xl bg-indigo-50 border border-indigo-200 px-4 py-3">
+          <div className="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-2">
+            🌙 Pull tonight for Day {dayNum + 1}
+          </div>
+          <div className="space-y-1.5 text-sm text-indigo-800">
+            <div>
+              <span className="font-medium">Freezer 3 (main):</span>{" "}
+              Day {dayNum + 1} Kelly bag + Day {dayNum + 1} Jonny bag
+            </div>
+            {pullInfo.freezer2Items.length > 0 && (
+              <div>
+                <span className="font-medium">Freezer 2 (garage fridge):</span>{" "}
+                {pullInfo.freezer2Items.join(", ")}
+              </div>
+            )}
+            {pullInfo.keepFrozen.length > 0 && (
+              <div className="text-indigo-500 text-xs">
+                Keep frozen (do not pull): {pullInfo.keepFrozen.join(", ")}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+      {!tomorrowObj && (
+        <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-700">
+          Last day of the plan — no bags to pull tonight. 🎉
+        </div>
+      )}
+
+      {/* Bag contents — two columns */}
+      <div className="grid grid-cols-2 gap-3">
+        {/* Kelly */}
+        <div className="bg-rose-50 rounded-xl p-3">
+          <div className="font-semibold text-rose-700 mb-2 text-sm">{"Kelly's Bag"}</div>
+          {dayObj.meals
+            .filter((m) => m.kelly && m.kelly !== "\u2014" && m.kelly !== "—")
+            .map((m, i) => (
+              <div key={i} className="mb-1.5">
+                <div className="text-[10px] text-stone-400 uppercase tracking-wide">{m.slot}</div>
+                <div className="text-xs text-stone-800 font-medium leading-snug">{m.kelly}</div>
+              </div>
+            ))}
+        </div>
+
+        {/* Jonny */}
+        <div className="bg-sky-50 rounded-xl p-3">
+          <div className="font-semibold text-sky-700 mb-2 text-sm">{"Jonny's Bag"}</div>
+          {dayObj.meals.map((m, i) => {
+            const jonnyMeal = m.jonny === "(same)" ? m.kelly : m.jonny;
+            if (!jonnyMeal || jonnyMeal === "\u2014" || jonnyMeal === "—") return null;
+            return (
+              <div key={i} className="mb-1.5">
+                <div className="text-[10px] text-stone-400 uppercase tracking-wide">{m.slot}</div>
+                <div className="text-xs text-stone-800 font-medium leading-snug">{jonnyMeal}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Reheat guide */}
+      <div>
+        <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2 px-1">
+          Reheat guide — tap to expand
+        </div>
+        <div className="space-y-2">
+          {allMeals.map((meal) => (
+            <ReheatingCard key={meal} meal={meal} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AllRecipesView() {
+  return (
+    <div className="space-y-6">
+      {RECIPE_GROUPS.map((group) => (
+        <div key={group.label}>
+          <div className="font-semibold text-stone-700 mb-2 flex items-center gap-1.5">
+            <span>{group.emoji}</span>
+            <span>{group.label}</span>
+          </div>
+          <div className="space-y-2">
+            {group.meals.map((meal) => (
+              <ReheatingCard key={meal} meal={meal} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function StaplesView() {
+  return (
+    <div className="space-y-5">
+      {Object.values(STAPLES).map((section) => (
+        <div key={section.label}>
+          <div className="font-semibold text-stone-700 mb-2">
+            {section.emoji} {section.label}
+          </div>
+          <div className="space-y-1.5">
+            {section.items.map((item, i) => (
+              <div key={i} className="bg-white rounded-lg border border-stone-200 px-3 py-2 text-sm">
+                <span className="font-medium text-stone-800">{item.name}</span>
+                {item.note && (
+                  <span className="text-stone-500"> — {item.note}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
 export default function JonnyPrep() {
   const [tab, setTab] = useState("today");
   const [selectedDay, setSelectedDay] = useState(1);
+  const [day1Timestamp, setDay1Timestamp] = useState(null);
+  const [previewMode, setPreviewMode] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
-  const TABS = [
-    { id: "today", label: "Today", emoji: "📅" },
-    { id: "days", label: "All Days", emoji: "📆" },
-    { id: "recipes", label: "Recipes", emoji: "🍽️" },
-    { id: "staples", label: "Staples", emoji: "📦" },
-  ];
+  useEffect(() => {
+    const saved = localStorage.getItem("postpartum_day1");
+    if (saved) {
+      const ts = parseInt(saved, 10);
+      setDay1Timestamp(ts);
+      const dayNum = Math.max(1, Math.min(30, Math.floor((Date.now() - ts) / 86400000) + 1));
+      setSelectedDay(dayNum);
+    }
+    setHasLoaded(true);
+  }, []);
+
+  const totalElapsed = day1Timestamp
+    ? Math.floor((Date.now() - day1Timestamp) / 86400000) + 1
+    : null;
+  const currentDay = totalElapsed ? Math.max(1, Math.min(30, totalElapsed)) : null;
+  const isComplete = totalElapsed && totalElapsed > 30;
+
+  function startDay1() {
+    const now = Date.now();
+    localStorage.setItem("postpartum_day1", now.toString());
+    setDay1Timestamp(now);
+    setSelectedDay(1);
+    setPreviewMode(false);
+  }
+
+  function resetDay1() {
+    if (!window.confirm("Reset Day 1 date? This will recalculate your current day.")) return;
+    localStorage.removeItem("postpartum_day1");
+    setDay1Timestamp(null);
+    setSelectedDay(1);
+    setPreviewMode(false);
+  }
+
+  const allDays = PLAN_DATA.weeks.flatMap((w) => w.days);
+  const selectedDayObj = allDays.find((d) => d.day === selectedDay);
+
+  // ── Loading ──────────────────────────────────────────────────────────────
+  if (!hasLoaded) {
+    return <div className="min-h-screen bg-stone-50" />;
+  }
+
+  // ── Pre-birth landing ────────────────────────────────────────────────────
+  if (!day1Timestamp && !previewMode) {
+    return (
+      <div className="min-h-screen bg-stone-50 flex flex-col items-center justify-center p-8 text-center">
+        <div className="text-7xl mb-4">🌸</div>
+        <h1 className="text-2xl font-bold text-stone-800 mb-1">{"Jonny's Prep Guide"}</h1>
+        <p className="text-stone-500 mb-8 max-w-xs text-sm leading-relaxed">
+          {"When she arrives, tap below to start the 30-day meal clock and unlock today's plan."}
+        </p>
+        <button
+          onClick={startDay1}
+          className="bg-rose-500 hover:bg-rose-600 text-white px-8 py-4 rounded-2xl text-base font-semibold shadow-lg transition-colors mb-4"
+        >
+          {"She's here — Start Day 1 🎉"}
+        </button>
+        <button
+          onClick={() => setPreviewMode(true)}
+          className="text-sm text-stone-400 underline underline-offset-2"
+        >
+          Preview the guide
+        </button>
+      </div>
+    );
+  }
+
+  // ── Shared guide UI (active + preview) ──────────────────────────────────
+  const progressPct = currentDay ? Math.min(100, (currentDay / 30) * 100) : 0;
 
   return (
     <div className="min-h-screen bg-stone-50">
-      {/* Header */}
+      {/* ── Sticky header ── */}
       <div className="bg-white border-b border-stone-200 sticky top-0 z-10">
-        <div className="max-w-md mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
+        <div className="px-4 pt-3 pb-0">
+          {/* Title row */}
+          <div className="flex items-center justify-between mb-2">
             <div>
-              <h1 className="text-lg font-bold text-gray-900">Jonny’s Prep Guide</h1>
-              <p className="text-xs text-gray-500">Kelly’s postpartum meals — 30 days</p>
+              <h1 className="font-bold text-stone-800 text-base leading-tight">{"Jonny's Prep Guide"}</h1>
+              {previewMode && (
+                <span className="text-xs text-amber-600 font-medium">Preview mode</span>
+              )}
+              {currentDay && !previewMode && (
+                <div className="text-xs text-stone-500">
+                  {isComplete ? "30 days complete ✓" : `Day ${currentDay} of 30`}
+                </div>
+              )}
             </div>
-            <a
-              href="/"
-              className="text-xs text-indigo-600 font-medium hover:underline"
-            >
-              ← Full plan
-            </a>
+            {/* Start Day 1 button if in preview */}
+            {previewMode && (
+              <button
+                onClick={startDay1}
+                className="text-xs bg-rose-500 text-white px-3 py-1.5 rounded-lg font-medium"
+              >
+                Start Day 1 🎉
+              </button>
+            )}
           </div>
 
-          {/* Tab bar */}
-          <div className="flex mt-3 bg-stone-100 rounded-xl p-1 gap-0.5">
-            {TABS.map(t => (
+          {/* Progress bar */}
+          {currentDay && !previewMode && (
+            <div className="h-1.5 bg-stone-100 rounded-full mb-2">
+              <div
+                className="h-full bg-rose-400 rounded-full transition-all duration-500"
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+          )}
+
+          {/* Tabs */}
+          <div className="flex gap-0 -mb-px">
+            {[
+              { key: "today", label: "Today" },
+              { key: "staples", label: "Staples" },
+              { key: "recipes", label: "Recipes" },
+            ].map((t) => (
               <button
-                key={t.id}
-                onClick={() => setTab(t.id)}
-                className={`flex-1 flex flex-col items-center py-1.5 rounded-lg text-xs font-medium transition-all ${
-                  tab === t.id
-                    ? "bg-white text-gray-900 shadow-sm"
-                    : "text-gray-500 hover:text-gray-700"
+                key={t.key}
+                onClick={() => setTab(t.key)}
+                className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+                  tab === t.key
+                    ? "border-rose-400 text-rose-600"
+                    : "border-transparent text-stone-500 hover:text-stone-700"
                 }`}
               >
-                <span className="text-base">{t.emoji}</span>
-                <span className="mt-0.5">{t.label}</span>
+                {t.label}
               </button>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className="max-w-md mx-auto px-4 py-5">
-        {/* TODAY tab */}
+        {/* Day selector (Today tab only) */}
         {tab === "today" && (
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base font-bold text-gray-800">Day selector</h2>
-              <span className="text-xs text-gray-400">tap to change</span>
-            </div>
-
-            {/* Day picker carousel */}
-            <div className="flex gap-2 overflow-x-auto pb-2 mb-5 scrollbar-hide">
-              {Array.from({ length: 30 }, (_, i) => i + 1).map(d => (
-                <button
-                  key={d}
-                  onClick={() => setSelectedDay(d)}
-                  className={`flex-shrink-0 w-10 h-10 rounded-full text-sm font-semibold transition-all ${
-                    selectedDay === d
-                      ? "bg-indigo-600 text-white shadow-md scale-110"
-                      : "bg-white border border-stone-200 text-gray-600 hover:border-indigo-300"
-                  }`}
-                >
-                  {d}
-                </button>
-              ))}
-            </div>
-
-            <DayView dayNum={selectedDay} />
-          </div>
-        )}
-
-        {/* ALL DAYS tab */}
-        {tab === "days" && (
-          <div>
-            <p className="text-xs text-gray-500 mb-4">
-              Tap any day to see full bag contents + reheat guide.
-            </p>
-            <div className="space-y-2">
-              {ALL_DAYS.map(dayObj => {
-                const { kellyBag, jonnyBag } = getBagContents(dayObj);
+          <div className="overflow-x-auto py-2 border-t border-stone-100">
+            <div className="flex gap-1.5 px-4 min-w-max">
+              {allDays.map((d) => {
+                const isPast = currentDay && d.day < currentDay;
+                const isToday = currentDay && d.day === currentDay;
+                const isSel = d.day === selectedDay;
                 return (
                   <button
-                    key={dayObj.day}
-                    onClick={() => { setSelectedDay(dayObj.day); setTab("today"); }}
-                    className="w-full text-left bg-white rounded-xl border border-stone-200 px-4 py-3 hover:border-indigo-300 hover:shadow-sm transition-all"
+                    key={d.day}
+                    onClick={() => setSelectedDay(d.day)}
+                    className={`relative flex flex-col items-center justify-center min-w-[40px] h-10 rounded-lg text-xs font-semibold transition-all ${
+                      isSel
+                        ? "bg-rose-500 text-white shadow-sm"
+                        : isPast
+                        ? "bg-stone-100 text-stone-400"
+                        : isToday
+                        ? "bg-rose-100 text-rose-700 ring-1 ring-rose-400"
+                        : "bg-stone-50 text-stone-600 border border-stone-200"
+                    }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
-                          {dayObj.day}
-                        </div>
-                        <div>
-                          <div className="text-xs text-gray-500 flex gap-2">
-                            <span>💕 {kellyBag.length} items</span>
-                            <span>🤙 {jonnyBag.length} items</span>
-                          </div>
-                          <div className="text-xs text-gray-700 mt-0.5 truncate max-w-48">
-                            {kellyBag.find(x => x.slot === "Dinner")?.meal || kellyBag[0]?.meal || ""}
-                          </div>
-                        </div>
-                      </div>
-                      <span className="text-gray-300 text-lg">›</span>
-                    </div>
+                    {isToday && !isSel && (
+                      <span className="text-[7px] font-bold text-rose-600 uppercase leading-none mb-0.5">
+                        TODAY
+                      </span>
+                    )}
+                    <span>{isPast && !isSel ? "✓" : d.day}</span>
                   </button>
                 );
               })}
             </div>
           </div>
         )}
+      </div>
 
-        {/* RECIPES tab */}
-        {tab === "recipes" && (
-          <div>
-            <p className="text-xs text-gray-500 mb-3">
-              Reheat instructions and toppings for every recipe.
-            </p>
-            <AllRecipesView />
+      {/* ── Main content ── */}
+      <div className="p-4 max-w-lg mx-auto pb-12">
+        {/* Completion banner */}
+        {isComplete && (
+          <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 text-center mb-4">
+            <div className="text-2xl mb-1">🎉</div>
+            <div className="font-semibold text-emerald-700">30 days complete!</div>
+            <div className="text-sm text-emerald-600">You did it, Jonny. Kelly is through the hardest chapter.</div>
           </div>
         )}
 
-        {/* STAPLES tab */}
+        {tab === "today" && <DayView dayObj={selectedDayObj} currentDay={currentDay} />}
         {tab === "staples" && <StaplesView />}
+        {tab === "recipes" && <AllRecipesView />}
+
+        {/* Footer links */}
+        <div className="mt-10 text-center space-y-2">
+          {day1Timestamp && (
+            <button onClick={resetDay1} className="text-xs text-stone-300 underline underline-offset-2">
+              Change Day 1 date
+            </button>
+          )}
+          {previewMode && (
+            <button
+              onClick={() => setPreviewMode(false)}
+              className="block mx-auto text-xs text-stone-300 underline underline-offset-2"
+            >
+              ← Back
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
