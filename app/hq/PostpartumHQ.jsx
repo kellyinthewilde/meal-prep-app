@@ -1371,24 +1371,26 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
 }
 
 function PlantDaddyTab() {
+  const [expandedPlant, setExpandedPlant] = useState(null);
+
   const plants = [
-    { room: "Kelly's Room", name: "Variegated Rubber Plant", emoji: "🌿", pot: "Blue patterned pot on green nightstand", water: "Water when top inch dry", issue: "Yellowing leaves = too much water" },
-    { room: "Kelly's Room", name: "Orchid (Phalaenopsis)", emoji: "🌸", pot: "White pot near birth plan", water: "Soak roots 10-15 min weekly, drain fully", issue: "Don't get water in the crown. Yellow/peach blooms." },
-    { room: "Living Room", name: "Monstera", emoji: "🪴", pot: "Blue textured pot on black tripod plant stand, near kitchen", water: "Spray with water bottle. Water when top 1-2 inches dry", issue: "Brown crispy edges = needs more water" },
-    { room: "Living Room", name: "Fiddle Leaf Fig", emoji: "🌳", pot: "Brown/dark pot on floor by window, near bookshelf", water: "Water when top inch dry. Drama queen.", issue: "Droopy leaves = thirsty" },
-    { room: "Living Room", name: "Pilea Peperomioides", emoji: "🪙", pot: "Two-tone sage/cream pot on bookshelf", water: "Water when top inch dry", issue: "Curling leaves = thirsty or too much sun" },
-    { room: "Living Room", name: "Trailing Jade #1", emoji: "🍃", pot: "Boob pot (white ceramic) on bookshelf", water: "Every other Saturday", issue: "Tiny round leaves. Let soil dry between waterings." },
-    { room: "Living Room", name: "Dark Philodendron", emoji: "🌑", pot: "Terra cotta pot on floor next to TV", water: "Water when top inch dry", issue: "Dark glossy leaves with burgundy/red stems" },
-    { room: "Jonny's Room", name: "Snake Plant", emoji: "🐍", pot: "Blue decorative pot on floor", water: "Every other Saturday only", issue: "Tall upright striped leaves. Thrives on neglect." },
-    { room: "Jonny's Room", name: "Satin Pothos", emoji: "✨", pot: "Small terra cotta pot on nightstand", water: "Water when soil dry about an inch down", issue: "Silver-speckled heart-shaped leaves" },
-    { room: "Jonny's Office", name: "Dark Philodendron", emoji: "🌑", pot: "Terra cotta pot on floor by sliding door", water: "Water when top inch dry", issue: "Same dark variety as living room" },
-    { room: "Jonny's Office", name: "Peperomia", emoji: "🌱", pot: "Small white ridged pot, near salt lamp", water: "Every other Saturday", issue: "Small thick variegated leaves" },
-    { room: "Jonny's Office", name: "Neon Pothos", emoji: "💚", pot: "Grey-blue pot on wooden shelf", water: "Water when soil dry about an inch down", issue: "Bright lime-green leaves" },
-    { room: "Kitchen", name: "Trailing Jade #2", emoji: "🍃", pot: "White ribbed pot on cork coaster, top shelf", water: "Every other Saturday", issue: "Same care as boob pot one" },
-    { room: "Kitchen", name: "Pothos", emoji: "💧", pot: "On hydration station shelf", water: "Water when soil dry about an inch down", issue: "Smaller trailing plant" },
-    { room: "Kitchen", name: "Dark Philodendron", emoji: "🌑", pot: "Terra cotta pot next to hydration station", water: "Water when top inch dry", issue: "Same dark variety" },
-    { room: "Kelly's Bathroom", name: "Pothos", emoji: "💧", pot: "Terra cotta pot on cream cabinet", water: "Water when soil dry about an inch down", issue: "Green trailing heart-shaped leaves" },
-    { room: "Jonny's Bathroom", name: "Pothos", emoji: "💧", pot: "Blue-grey/white pot on top of shuttered cabinet", water: "Water when soil dry about an inch down", issue: "Golden variegated trailing leaves" },
+    { room: "Kelly's Room", name: "Variegated Rubber Plant", emoji: "🌿", pot: "Blue patterned pot on green nightstand", water: "Water when top inch dry", issue: "Yellowing leaves = too much water", img: "/plants/variegated-rubber-plant.jpg" },
+    { room: "Kelly's Room", name: "Orchid (Phalaenopsis)", emoji: "🌸", pot: "White pot near birth plan", water: "Soak roots 10-15 min weekly, drain fully", issue: "Don't get water in the crown. Yellow/peach blooms.", img: "/plants/orchid.jpg" },
+    { room: "Living Room", name: "Monstera", emoji: "🪴", pot: "Blue textured pot on black tripod plant stand, near kitchen", water: "Spray with water bottle. Water when top 1-2 inches dry", issue: "Brown crispy edges = needs more water", img: "/plants/monstera.jpg" },
+    { room: "Living Room", name: "Fiddle Leaf Fig", emoji: "🌳", pot: "Brown/dark pot on floor by window, near bookshelf", water: "Water when top inch dry. Drama queen.", issue: "Droopy leaves = thirsty", img: "/plants/fiddle-leaf-fig.jpg" },
+    { room: "Living Room", name: "Pilea Peperomioides", emoji: "🪙", pot: "Two-tone sage/cream pot on bookshelf", water: "Water when top inch dry", issue: "Curling leaves = thirsty or too much sun", img: "/plants/pilea.jpg" },
+    { room: "Living Room", name: "Trailing Jade #1", emoji: "🍃", pot: "Boob pot (white ceramic) on bookshelf", water: "Every other Saturday", issue: "Tiny round leaves. Let soil dry between waterings.", img: "/plants/trailing-jade-boob-pot.jpg" },
+    { room: "Living Room", name: "Dark Philodendron", emoji: "🌑", pot: "Terra cotta pot on floor next to TV", water: "Water when top inch dry", issue: "Dark glossy leaves with burgundy/red stems", img: "/plants/dark-philodendron-tv.jpg" },
+    { room: "Jonny's Room", name: "Snake Plant", emoji: "🐍", pot: "Blue decorative pot on floor", water: "Every other Saturday only", issue: "Tall upright striped leaves. Thrives on neglect.", img: "/plants/snake-plant.jpg" },
+    { room: "Jonny's Room", name: "Satin Pothos", emoji: "✨", pot: "Small terra cotta pot on nightstand", water: "Water when soil dry about an inch down", issue: "Silver-speckled heart-shaped leaves", img: "/plants/satin-pothos.jpg" },
+    { room: "Jonny's Office", name: "Dark Philodendron", emoji: "🌑", pot: "Terra cotta pot on floor by sliding door", water: "Water when top inch dry", issue: "Same dark variety as living room", img: "/plants/dark-philodendron-office-1.jpg" },
+    { room: "Jonny's Office", name: "Peperomia", emoji: "🌱", pot: "Small white ridged pot, near salt lamp", water: "Every other Saturday", issue: "Small thick variegated leaves", img: "/plants/peperomia.jpg" },
+    { room: "Jonny's Office", name: "Neon Pothos", emoji: "💚", pot: "Grey-blue pot on wooden shelf", water: "Water when soil dry about an inch down", issue: "Bright lime-green leaves", img: "/plants/neon-pothos.jpg" },
+    { room: "Kitchen", name: "Trailing Jade #2", emoji: "🍃", pot: "White ribbed pot on cork coaster, top shelf", water: "Every other Saturday", issue: "Same care as boob pot one", img: "/plants/trailing-jade-hydration-station.jpg" },
+    { room: "Kitchen", name: "Pothos", emoji: "💧", pot: "On hydration station shelf", water: "Water when soil dry about an inch down", issue: "Smaller trailing plant", img: "/plants/pothos-hydration-station.jpg" },
+    { room: "Kitchen", name: "Dark Philodendron", emoji: "🌑", pot: "Terra cotta pot next to hydration station", water: "Water when top inch dry", issue: "Same dark variety", img: "/plants/dark-philodendron-hydration-station.jpg" },
+    { room: "Kelly's Bathroom", name: "Pothos", emoji: "💧", pot: "Terra cotta pot on cream cabinet", water: "Water when soil dry about an inch down", issue: "Green trailing heart-shaped leaves", img: "/plants/pothos-kellys-bathroom.jpg" },
+    { room: "Jonny's Bathroom", name: "Pothos", emoji: "💧", pot: "Blue-grey/white pot on top of shuttered cabinet", water: "Water when soil dry about an inch down", issue: "Golden variegated trailing leaves", img: "/plants/pothos-jonnys-bathroom.jpg" },
   ];
 
   const rooms = [...new Set(plants.map((p) => p.room))];
@@ -1422,20 +1424,35 @@ function PlantDaddyTab() {
           </div>
           {plants
             .filter((p) => p.room === room)
-            .map((plant, i) => (
-              <Card key={i} style={{ borderLeft: `4px solid ${colors.accent}` }}>
+            .map((plant, i) => {
+              const plantKey = `${room}-${i}`;
+              const isExpanded = expandedPlant === plantKey;
+              return (
+              <Card key={i} style={{ borderLeft: `4px solid ${colors.accent}`, overflow: "hidden" }}>
+                {plant.img && (
+                  <div
+                    onClick={() => setExpandedPlant(isExpanded ? null : plantKey)}
+                    style={{ cursor: "pointer", marginBottom: 12, borderRadius: 10, overflow: "hidden", maxHeight: isExpanded ? 400 : 140, transition: "max-height 0.3s ease" }}
+                  >
+                    <img
+                      src={plant.img}
+                      alt={plant.name}
+                      style={{ width: "100%", height: isExpanded ? 400 : 140, objectFit: "cover", display: "block", borderRadius: 10, transition: "height 0.3s ease" }}
+                    />
+                  </div>
+                )}
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 12 }}>
                   <div
                     style={{
-                      fontSize: 40,
+                      fontSize: 28,
                       flexShrink: 0,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      width: 50,
-                      height: 50,
+                      width: 40,
+                      height: 40,
                       background: `${colors.accent}15`,
-                      borderRadius: 12,
+                      borderRadius: 10,
                     }}
                   >
                     {plant.emoji}
@@ -1454,7 +1471,8 @@ function PlantDaddyTab() {
                   {plant.issue}
                 </div>
               </Card>
-            ))}
+              );
+            })}
         </div>
       ))}
     </div>
@@ -1525,47 +1543,7 @@ function CalendarTab() {
 // ─── Main App ───
 
 export default function PostpartumHQ({ defaultTab = "today" }) {
-  const [activeTab, setActiveTab] = useState(defaultTab);
   const [checkedTasks, setCheckedTasks] = useState({});
-  const [expandedGuide, setExpandedGuide] = useState(null);
-
-  const SECTION_COMPONENTS = {
-    fivefiverule: FiveFiveRuleSection,
-    physical: PhysicalSection,
-    mental: MentalHealthSection,
-    breastfeeding: BreastfeedingSection,
-    sleep: SleepSection,
-    practical: PracticalSection,
-    laundry: LaundrySection,
-    temperature: TemperatureSection,
-    coregulation: CoregulationSection,
-    decisions: DecisionTreesSection,
-    relationship: RelationshipSection,
-    visitors: VisitorSection,
-    redflags: RedFlagsSection,
-    timeline: TimelineSection,
-    contacts: ContactsSection,
-    jonny: JonnySection,
-  };
-
-  const GUIDE_SECTIONS = [
-    { id: "fivefiverule", label: "🛏️ The 5-5-5 Rule" },
-    { id: "physical", label: "💪 Physical Recovery" },
-    { id: "mental", label: "🧠 Mental Health" },
-    { id: "breastfeeding", label: "🍼 Breastfeeding" },
-    { id: "sleep", label: "🌙 Sleep Strategy" },
-    { id: "practical", label: "✅ What To Do" },
-    { id: "laundry", label: "🧺 Laundry Guide" },
-    { id: "temperature", label: "🌡️ Baby Clothing & Temp" },
-    { id: "coregulation", label: "🫁 Co-Regulation" },
-    { id: "decisions", label: "🌿 Decision Trees" },
-    { id: "relationship", label: "💛 Relationship" },
-    { id: "visitors", label: "🚪 Visitors" },
-    { id: "redflags", label: "🚨 Red Flags" },
-    { id: "timeline", label: "📅 Timeline" },
-    { id: "contacts", label: "📞 Contacts & Support" },
-    { id: "jonny", label: "🧘 Jonny's Health" },
-  ];
 
   return (
     <div
@@ -1579,7 +1557,6 @@ export default function PostpartumHQ({ defaultTab = "today" }) {
         flexDirection: "column",
       }}
     >
-      {/* Content */}
       <div
         style={{
           flex: 1,
@@ -1588,57 +1565,9 @@ export default function PostpartumHQ({ defaultTab = "today" }) {
           paddingBottom: 80,
         }}
       >
-        {activeTab === "today" && <TodayTab checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks} />}
-        {activeTab === "plant" && <PlantDaddyTab />}
-        {activeTab === "guide" && (
-          <div>
-            <SectionTitle subtitle="Everything you need to know, in one place.">Postpartum Guide</SectionTitle>
-            {GUIDE_SECTIONS.map((section) => {
-              const Component = SECTION_COMPONENTS[section.id];
-              const isExpanded = expandedGuide === section.id;
-
-              return (
-                <Card
-                  key={section.id}
-                  onClick={() => setExpandedGuide(isExpanded ? null : section.id)}
-                  style={{ cursor: "pointer", marginBottom: 12 }}
-                >
-                  <div
-                    style={{
-                      fontFamily: font,
-                      fontSize: 14,
-                      fontWeight: 600,
-                      color: colors.text,
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    {section.label}
-                    <span style={{ fontSize: 12, color: colors.textLight }}>
-                      {isExpanded ? "\u2212" : "+"}
-                    </span>
-                  </div>
-
-                  {isExpanded && (
-                    <div
-                      style={{
-                        marginTop: 16,
-                        paddingTop: 16,
-                        borderTop: `1px solid ${colors.border}`,
-                        fontSize: 13,
-                        color: colors.textLight,
-                      }}
-                    >
-                      <Component />
-                    </div>
-                  )}
-                </Card>
-              );
-            })}
-          </div>
-        )}
-        {activeTab === "calendar" && <CalendarTab />}
+        {defaultTab === "today" && <TodayTab checkedTasks={checkedTasks} setCheckedTasks={setCheckedTasks} />}
+        {defaultTab === "plant" && <PlantDaddyTab />}
+        {defaultTab === "calendar" && <CalendarTab />}
       </div>
     </div>
   );
