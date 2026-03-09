@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kelly's Postpartum Meal Prep",
-  description: "4-6 weeks of nourishing freezer meals before baby arrives",
+  title: "The Fourth Trimester",
+  description: "A 30-day postpartum quest — meals, daily tasks, and everything you need.",
 };
 
 export default function RootLayout({
@@ -25,8 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ background: "#1a1a2e" }}
       >
         {children}
       </body>

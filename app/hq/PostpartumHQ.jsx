@@ -2,26 +2,31 @@
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from "react";
 
-// ─── Color System (NSM Brand) ───
+// ─── Color System (Adventure Theme) ───
 const colors = {
-  bg: "#FAFAF8",
-  card: "#FFFFFF",
-  text: "#374151",
-  textLight: "#6B7280",
-  accent: "#3B5BDB",
-  accentLight: "#EEF2FF",
-  highlight: "#FFF176",
-  warmBg: "#FDF8F4",
-  red: "#DC2626",
-  redLight: "#FEF2F2",
-  orange: "#EA580C",
-  orangeLight: "#FFF7ED",
-  green: "#059669",
-  greenLight: "#ECFDF5",
-  border: "#E5E7EB",
+  bg: "#1a1a2e",
+  card: "#22223a",
+  parchment: "#f5f0e1",
+  parchmentDark: "#e8e0c8",
+  text: "#e8e0d0",
+  textLight: "#9ca3af",
+  textDark: "#2d2a1e",
+  accent: "#ffd700",
+  accentLight: "#ffd70020",
+  highlight: "#ffd700",
+  warmBg: "#2a2a4a",
+  red: "#ef4444",
+  redLight: "#ef444420",
+  orange: "#f59e0b",
+  orangeLight: "#f59e0b20",
+  green: "#4ade80",
+  greenLight: "#4ade8020",
+  border: "#2a2a4a",
+  navi: "#60a5fa",
 };
 
 const font = "'Consolas', 'Monaco', 'Courier New', monospace";
+const pixelFont = "'Press Start 2P', monospace";
 
 // ─── Reusable Components ───
 
@@ -31,9 +36,10 @@ function Card({ children, style, onClick }) {
       onClick={onClick}
       style={{
         background: colors.card,
-        borderRadius: 16,
+        borderRadius: 4,
         padding: "24px",
-        boxShadow: "0 2px 24px rgba(0,0,0,0.04)",
+        border: `1px solid ${colors.border}`,
+        boxShadow: "0 2px 12px rgba(0,0,0,0.2)",
         marginBottom: 16,
         cursor: onClick ? "pointer" : "default",
         ...style,
@@ -41,12 +47,12 @@ function Card({ children, style, onClick }) {
       onMouseEnter={(e) => {
         if (onClick) {
           e.currentTarget.style.transform = "translateY(-2px)";
-          e.currentTarget.style.boxShadow = "0 4px 32px rgba(0,0,0,0.08)";
+          e.currentTarget.style.boxShadow = "0 4px 20px rgba(255,215,0,0.1)";
         }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "0 2px 24px rgba(0,0,0,0.04)";
+        e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.2)";
       }}
     >
       {children}
@@ -65,12 +71,12 @@ function Checkbox({ checked, onChange, label }) {
         width: "100%",
         background: checked ? colors.greenLight : colors.card,
         border: `1px solid ${checked ? colors.green : colors.border}`,
-        borderRadius: 10,
+        borderRadius: 4,
         padding: "12px 16px",
         marginBottom: 8,
         fontFamily: font,
-        fontSize: 14,
-        color: checked ? colors.text : colors.text,
+        fontSize: 13,
+        color: colors.text,
         cursor: "pointer",
         textAlign: "left",
         transition: "all 0.15s ease-out",
@@ -80,14 +86,14 @@ function Checkbox({ checked, onChange, label }) {
         style={{
           width: 20,
           height: 20,
-          borderRadius: 6,
-          background: checked ? colors.green : colors.card,
-          border: `2px solid ${checked ? colors.green : colors.border}`,
+          borderRadius: 2,
+          background: checked ? colors.green : "transparent",
+          border: `2px solid ${checked ? colors.green : "#5b5b7b"}`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           fontSize: 12,
-          color: colors.card,
+          color: "#1a1a2e",
           flexShrink: 0,
         }}
       >
@@ -97,10 +103,11 @@ function Checkbox({ checked, onChange, label }) {
         style={{
           flex: 1,
           textDecoration: checked ? "line-through" : "none",
-          opacity: checked ? 0.7 : 1,
+          opacity: checked ? 0.6 : 1,
+          color: checked ? colors.green : colors.text,
         }}
       >
-        {label}
+        {checked ? `${label} — COMPLETE` : label}
       </span>
     </button>
   );
@@ -126,12 +133,13 @@ function SectionTitle({ children, subtitle }) {
     <div style={{ marginBottom: 24 }}>
       <h2
         style={{
-          fontFamily: font,
-          fontSize: 28,
-          fontWeight: 600,
-          color: colors.text,
+          fontFamily: pixelFont,
+          fontSize: 14,
+          fontWeight: 400,
+          color: colors.accent,
           margin: 0,
-          lineHeight: 1.2,
+          lineHeight: 1.6,
+          textShadow: "0 0 12px rgba(255, 215, 0, 0.2)",
         }}
       >
         {children}
@@ -140,7 +148,7 @@ function SectionTitle({ children, subtitle }) {
         <p
           style={{
             fontFamily: font,
-            fontSize: 14,
+            fontSize: 13,
             color: colors.textLight,
             margin: "8px 0 0",
             lineHeight: 1.6,
@@ -158,8 +166,8 @@ function InfoItem({ title, text, color = colors.accent }) {
     <div
       style={{
         padding: "16px 20px",
-        background: colors.card,
-        borderRadius: 12,
+        background: colors.warmBg,
+        borderRadius: 4,
         borderLeft: `4px solid ${color}`,
         marginBottom: 12,
       }}
@@ -167,7 +175,7 @@ function InfoItem({ title, text, color = colors.accent }) {
       <div
         style={{
           fontFamily: font,
-          fontSize: 15,
+          fontSize: 14,
           fontWeight: 600,
           color: colors.text,
           marginBottom: 4,
@@ -178,7 +186,7 @@ function InfoItem({ title, text, color = colors.accent }) {
       <div
         style={{
           fontFamily: font,
-          fontSize: 14,
+          fontSize: 13,
           color: colors.textLight,
           lineHeight: 1.6,
         }}
@@ -1288,61 +1296,111 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
     }));
   };
 
-  // Build task list based on day and date
+  // Build quest list based on day and date
   const tasks = [
-    { id: "lola-food", label: "🐕 Rotate Lola's food: move a portion from freezer to fridge" },
+    { id: "lola-food", label: "Rotate Lola's food: move a portion from freezer to fridge", type: "side" },
   ];
 
-  // Day-specific tasks
   if (dayName === "Monday") {
-    tasks.push({ id: "alejandrina", label: "🏠 Alejandrina (cleaning lady) comes around 12pm" });
+    tasks.push({ id: "alejandrina", label: "Alejandrina arrives around 12pm", type: "event" });
   }
   if (dayName === "Wednesday") {
-    tasks.push({ id: "trash", label: "🗑️ Take out trash, recycling, compost, green waste" });
+    tasks.push({ id: "trash", label: "Take out trash, recycling, compost, green waste", type: "side" });
   }
   if (dayName === "Saturday") {
-    tasks.push({ id: "domestic-daddy", label: "🌿 Domestic Daddy + Plant Daddy day! Water all plants (see Plant Daddy tab)" });
-    tasks.push({ id: "lola-bowl", label: "🐕 Clean Lola's water bowl and refill with fresh water" });
-    tasks.push({ id: "monstera", label: "🪴 Spray Monstera with water bottle" });
+    tasks.push({ id: "domestic-daddy", label: "Domestic Daddy + Grove Quest: Water all plants", type: "main" });
+    tasks.push({ id: "lola-bowl", label: "Clean Lola's water bowl and refill", type: "side" });
+    tasks.push({ id: "monstera", label: "Spray Monstera with water bottle", type: "side" });
   }
 
-  // Monthly tasks
   const dayOfMonth = today.getDate();
   if (dayOfMonth === 1) {
-    tasks.push({ id: "lola-interceptor", label: "💊 Give Lola an Interceptor Plus tablet in her food" });
+    tasks.push({ id: "lola-interceptor", label: "Potion Quest: Give Lola Interceptor Plus tablet", type: "main" });
   }
   if (dayOfMonth === 15) {
-    tasks.push({ id: "lola-credelio", label: "💊 Give Lola a Credelio tablet in her food" });
+    tasks.push({ id: "lola-credelio", label: "Potion Quest: Give Lola Credelio tablet", type: "main" });
   }
 
   const tasksToday = checkedTasks[dateStr] || {};
   const completedCount = Object.values(tasksToday).filter(Boolean).length;
+  const allComplete = completedCount === tasks.length && tasks.length > 0;
+  const xpPercent = tasks.length > 0 ? (completedCount / tasks.length) * 100 : 0;
 
   return (
     <div>
-      <SectionTitle>
-        {greeting}, Jonny
-      </SectionTitle>
-
-      <Card style={{ background: colors.accentLight, marginBottom: 24 }}>
-        <div style={{ fontFamily: font, fontSize: 14, color: colors.accent, marginBottom: 4 }}>
-          {dayName}, {dateStr}
+      {/* Header */}
+      <div style={{ marginBottom: 24 }}>
+        <div style={{ fontFamily: font, fontSize: 13, color: colors.textLight, marginBottom: 4 }}>
+          {greeting}, Hero
         </div>
-        <div style={{ fontFamily: font, fontSize: 24, fontWeight: 600, color: colors.accent }}>
-          {completedCount} of {tasks.length} tasks
+        <h2 style={{ fontFamily: pixelFont, fontSize: 14, color: colors.accent, margin: 0, lineHeight: 1.6, textShadow: "0 0 12px rgba(255,215,0,0.2)" }}>
+          Quest Log
+        </h2>
+      </div>
+
+      {/* Status Card */}
+      <Card style={{ background: "linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%)", border: `1px solid ${colors.accent}40`, marginBottom: 24 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+          <div>
+            <div style={{ fontFamily: pixelFont, fontSize: 8, color: colors.textLight, marginBottom: 6, letterSpacing: "0.05em" }}>
+              {dayName.toUpperCase()}
+            </div>
+            <div style={{ fontFamily: font, fontSize: 13, color: colors.text }}>
+              {dateStr}
+            </div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontFamily: pixelFont, fontSize: 8, color: colors.textLight, marginBottom: 6 }}>
+              QUESTS
+            </div>
+            <div style={{ fontFamily: pixelFont, fontSize: 12, color: allComplete ? colors.green : colors.accent }}>
+              {completedCount}/{tasks.length}
+            </div>
+          </div>
+        </div>
+
+        {/* XP Bar */}
+        <div style={{ background: "#0f0f1a", borderRadius: 2, height: 12, overflow: "hidden", border: "1px solid #3a3a5a" }}>
+          <div
+            style={{
+              height: "100%",
+              width: `${xpPercent}%`,
+              background: allComplete
+                ? "linear-gradient(90deg, #4ade80, #22c55e)"
+                : "linear-gradient(90deg, #ffd700, #f59e0b)",
+              transition: "width 0.4s ease-out",
+              boxShadow: allComplete ? "0 0 8px rgba(74,222,128,0.5)" : "0 0 8px rgba(255,215,0,0.3)",
+            }}
+          />
+        </div>
+        <div style={{ fontFamily: pixelFont, fontSize: 7, color: allComplete ? colors.green : colors.textLight, marginTop: 6, textAlign: "right" }}>
+          {allComplete ? "ALL QUESTS COMPLETE ✨" : `${Math.round(xpPercent)}% XP`}
         </div>
       </Card>
 
+      {/* Navi hint for Saturdays */}
       {dayName === "Saturday" && (
-        <Card style={{ background: colors.orangeLight, marginBottom: 20 }}>
-          <div style={{ fontFamily: font, fontSize: 12, fontWeight: 700, color: colors.orange, textTransform: "uppercase", marginBottom: 8 }}>
-            Every Other Saturday
-          </div>
-          <div style={{ fontFamily: font, fontSize: 14, color: colors.text, lineHeight: 1.6 }}>
-            Snake Plant and Trailing Jades only need water every other Saturday. Check if soil is still moist — if so, skip them this week.
+        <Card style={{ background: "#60a5fa15", border: "1px solid #60a5fa30", marginBottom: 20 }}>
+          <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+            <span style={{ fontSize: 20, filter: "drop-shadow(0 0 4px rgba(96,165,250,0.5))" }}>🧚</span>
+            <div>
+              <div style={{ fontFamily: pixelFont, fontSize: 7, color: colors.navi, marginBottom: 6 }}>
+                HEY, LISTEN!
+              </div>
+              <div style={{ fontFamily: font, fontSize: 13, color: colors.textLight, lineHeight: 1.6 }}>
+                Snake Plant and Trailing Jades only need water every other Saturday. Check soil moisture before watering.
+              </div>
+            </div>
           </div>
         </Card>
       )}
+
+      {/* Quest List */}
+      <div style={{ marginBottom: 8 }}>
+        <div style={{ fontFamily: pixelFont, fontSize: 8, color: colors.textLight, marginBottom: 12, letterSpacing: "0.05em" }}>
+          DAILY QUESTS
+        </div>
+      </div>
 
       <div style={{ marginBottom: 20 }}>
         {tasks.map((task) => (
@@ -1355,15 +1413,19 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
         ))}
       </div>
 
-      <Card style={{ background: colors.warmBg, marginTop: 24 }}>
-        <div style={{ fontFamily: font, fontSize: 13, fontWeight: 600, color: colors.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
-          Coming Soon
+      {/* Locked Quest */}
+      <Card style={{ background: "#1a1a2e", border: "1px dashed #3a3a5a", opacity: 0.7 }}>
+        <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
+          <span style={{ fontSize: 20 }}>🔒</span>
+          <div style={{ fontFamily: pixelFont, fontSize: 8, color: "#5b5b7b", letterSpacing: "0.03em" }}>
+            LOCKED QUEST
+          </div>
         </div>
-        <div style={{ fontFamily: font, fontSize: 15, fontWeight: 600, color: colors.text, marginBottom: 8 }}>
-          🍼 Daily Postpartum Companion
+        <div style={{ fontFamily: font, fontSize: 14, fontWeight: 600, color: "#5b5b7b", marginBottom: 6 }}>
+          Daily Postpartum Companion
         </div>
-        <div style={{ fontFamily: font, fontSize: 13, color: colors.textLight, lineHeight: 1.7 }}>
-          Once Eliana arrives and we set the birth date, this section will show you a daily snapshot: what's happening in Kelly's body, what Eliana is experiencing, and your specific tasks for each day of the postpartum journey.
+        <div style={{ fontFamily: font, fontSize: 12, color: "#4a4a6a", lineHeight: 1.7 }}>
+          This quest chain unlocks when the adventure begins. Daily snapshots of Kelly's recovery, Eliana's milestones, and your specific quests for each day.
         </div>
       </Card>
     </div>
@@ -1393,17 +1455,27 @@ function PlantDaddyTab() {
     { room: "Jonny's Bathroom", name: "Pothos", emoji: "💧", pot: "Blue-grey/white pot on top of shuttered cabinet", water: "Water when soil dry about an inch down", issue: "Golden variegated trailing leaves", img: "/plants/pothos-jonnys-bathroom.jpg" },
   ];
 
+  const ROOM_NAMES = {
+    "Kelly's Room": "Kelly's Chamber",
+    "Living Room": "The Great Hall",
+    "Jonny's Room": "Hero's Quarters",
+    "Jonny's Office": "The Study",
+    "Kitchen": "The Kitchen Keep",
+    "Kelly's Bathroom": "Kelly's Spring",
+    "Jonny's Bathroom": "Hero's Spring",
+  };
+
   const rooms = [...new Set(plants.map((p) => p.room))];
 
   return (
     <div>
-      <SectionTitle subtitle="Saturday Plant Care Roster">
-        Plant Daddy
+      <SectionTitle subtitle="Saturday Grove Quest">
+        The Grove
       </SectionTitle>
 
-      <Card style={{ background: colors.warmBg, marginBottom: 20 }}>
-        <div style={{ fontFamily: font, fontSize: 14, fontWeight: 600, color: colors.text, marginBottom: 12 }}>
-          Saturday Checklist
+      <Card style={{ background: "#4ade8015", border: "1px solid #4ade8030", marginBottom: 20 }}>
+        <div style={{ fontFamily: pixelFont, fontSize: 8, color: colors.green, marginBottom: 10 }}>
+          GROVE OBJECTIVES
         </div>
         <ul style={{ margin: 0, paddingLeft: 20 }}>
           {[
@@ -1419,8 +1491,8 @@ function PlantDaddyTab() {
 
       {rooms.map((room) => (
         <div key={room}>
-          <div style={{ fontFamily: font, fontSize: 16, fontWeight: 600, color: colors.accent, marginTop: 24, marginBottom: 12, background: `${colors.accent}08`, padding: "8px 12px", borderRadius: 20, display: "inline-block" }}>
-            {room}
+          <div style={{ fontFamily: pixelFont, fontSize: 8, color: colors.accent, marginTop: 28, marginBottom: 14, background: colors.accentLight, padding: "10px 14px", borderRadius: 2, display: "inline-block", letterSpacing: "0.03em" }}>
+            {ROOM_NAMES[room] || room}
           </div>
           {plants
             .filter((p) => p.room === room)
@@ -1428,16 +1500,16 @@ function PlantDaddyTab() {
               const plantKey = `${room}-${i}`;
               const isExpanded = expandedPlant === plantKey;
               return (
-              <Card key={i} style={{ borderLeft: `4px solid ${colors.accent}`, overflow: "hidden" }}>
+              <Card key={i} style={{ borderLeft: `4px solid ${colors.green}`, overflow: "hidden" }}>
                 {plant.img && (
                   <div
                     onClick={() => setExpandedPlant(isExpanded ? null : plantKey)}
-                    style={{ cursor: "pointer", marginBottom: 12, borderRadius: 10, overflow: "hidden", maxHeight: isExpanded ? 400 : 140, transition: "max-height 0.3s ease" }}
+                    style={{ cursor: "pointer", marginBottom: 12, borderRadius: 4, overflow: "hidden", maxHeight: isExpanded ? 400 : 140, transition: "max-height 0.3s ease" }}
                   >
                     <img
                       src={plant.img}
                       alt={plant.name}
-                      style={{ width: "100%", height: isExpanded ? 400 : 140, objectFit: "cover", display: "block", borderRadius: 10, transition: "height 0.3s ease" }}
+                      style={{ width: "100%", height: isExpanded ? 400 : 140, objectFit: "cover", display: "block", borderRadius: 4, transition: "height 0.3s ease" }}
                     />
                   </div>
                 )}
@@ -1451,8 +1523,8 @@ function PlantDaddyTab() {
                       justifyContent: "center",
                       width: 40,
                       height: 40,
-                      background: `${colors.accent}15`,
-                      borderRadius: 10,
+                      background: `${colors.green}15`,
+                      borderRadius: 4,
                     }}
                   >
                     {plant.emoji}
@@ -1496,44 +1568,74 @@ function CalendarTab() {
   const getTasksForDay = (date) => {
     const dayOfWeek = dayNames[date.getDay()];
     const dayOfMonth = date.getDate();
-    const tasks = ["Daily: Rotate Lola's food"];
+    const tasks = ["Rotate Lola's provisions"];
 
-    if (dayOfWeek === "Monday") tasks.push("Alejandrina comes ~12pm");
+    if (dayOfWeek === "Monday") tasks.push("Alejandrina arrives ~12pm");
     if (dayOfWeek === "Wednesday") tasks.push("Trash night");
     if (dayOfWeek === "Saturday") {
-      tasks.push("Domestic Daddy + Plant Daddy");
-      tasks.push("Water plants");
+      tasks.push("Grove Quest + Domestic Quest");
+      tasks.push("Water all plants");
       tasks.push("Clean Lola's bowl");
     }
 
-    if (dayOfMonth === 1) tasks.push("Lola: Interceptor Plus");
-    if (dayOfMonth === 15) tasks.push("Lola: Credelio");
+    if (dayOfMonth === 1) tasks.push("Potion: Lola's Interceptor Plus");
+    if (dayOfMonth === 15) tasks.push("Potion: Lola's Credelio");
 
     return tasks;
   };
 
   return (
     <div>
-      <SectionTitle>Calendar</SectionTitle>
+      <SectionTitle subtitle="This Week's Journey">
+        The Map
+      </SectionTitle>
 
       {days.map((day, i) => {
         const isToday = day.toDateString() === today.toDateString();
+        const isPast = day < today && !isToday;
         const tasks = getTasksForDay(day);
 
         return (
-          <Card key={i} style={{ background: isToday ? colors.accentLight : colors.card }}>
-            <div style={{ fontFamily: font, fontSize: 13, fontWeight: 600, color: isToday ? colors.accent : colors.textLight, marginBottom: 8 }}>
-              {dayNames[day.getDay()]} {day.getDate()}
-              {isToday && " (Today)"}
+          <div key={i} style={{ display: "flex", gap: 12, marginBottom: 4 }}>
+            {/* Path line */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 24 }}>
+              <div style={{
+                width: 12,
+                height: 12,
+                borderRadius: isToday ? 0 : 6,
+                background: isToday ? colors.accent : isPast ? colors.green : "#3a3a5a",
+                border: isToday ? `2px solid ${colors.accent}` : "none",
+                boxShadow: isToday ? "0 0 8px rgba(255,215,0,0.5)" : "none",
+                flexShrink: 0,
+                transform: isToday ? "rotate(45deg)" : "none",
+              }} />
+              {i < 6 && <div style={{ width: 2, flex: 1, background: isPast ? `${colors.green}40` : "#2a2a4a" }} />}
             </div>
-            <ul style={{ margin: 0, paddingLeft: 20 }}>
-              {tasks.map((task, j) => (
-                <li key={j} style={{ fontFamily: font, fontSize: 12, color: colors.text, lineHeight: 1.6 }}>
-                  {task}
-                </li>
-              ))}
-            </ul>
-          </Card>
+
+            <Card style={{
+              flex: 1,
+              background: isToday ? `${colors.accent}12` : colors.card,
+              border: isToday ? `1px solid ${colors.accent}40` : `1px solid ${colors.border}`,
+              opacity: isPast ? 0.5 : 1,
+            }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                <div style={{ fontFamily: pixelFont, fontSize: 7, color: isToday ? colors.accent : colors.textLight }}>
+                  {dayNames[day.getDay()].toUpperCase()}
+                </div>
+                <div style={{ fontFamily: font, fontSize: 12, color: colors.textLight }}>
+                  {day.getDate()}
+                  {isToday && <span style={{ color: colors.accent, marginLeft: 6 }}>◆ YOU ARE HERE</span>}
+                </div>
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 16 }}>
+                {tasks.map((task, j) => (
+                  <li key={j} style={{ fontFamily: font, fontSize: 12, color: colors.text, lineHeight: 1.7 }}>
+                    {task}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
         );
       })}
     </div>

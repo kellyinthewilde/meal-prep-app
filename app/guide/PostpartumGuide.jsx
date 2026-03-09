@@ -18,31 +18,36 @@ const SECTIONS = [
   { id: "visitors", label: "Visitors", icon: "🚪" },
   { id: "redflags", label: "Red Flags", icon: "🚨" },
   { id: "timeline", label: "Timeline", icon: "📅" },
-  { id: "contacts", label: "Contacts", icon: "📞" },
-  { id: "jonny", label: "Jonny's Health", icon: "🧘" },
+  { id: "contacts", label: "The Council", icon: "📞" },
+  { id: "jonny", label: "Hero's Wellbeing", icon: "🧘" },
 ];
 
 // ─── Styles ───
 const colors = {
-  bg: "#FAFAF8",
-  card: "#FFFFFF",
-  text: "#374151",
-  textLight: "#6B7280",
-  accent: "#3B5BDB",
-  accentLight: "#EEF2FF",
-  highlight: "#FFF176",
-  warmBg: "#FDF8F4",
-  red: "#DC2626",
-  redLight: "#FEF2F2",
-  orange: "#EA580C",
-  orangeLight: "#FFF7ED",
-  green: "#059669",
-  greenLight: "#ECFDF5",
-  border: "#E5E7EB",
-  navBg: "#FFFFFF",
+  bg: "#1a1a2e",
+  card: "#22223a",
+  parchment: "#f5f0e1",
+  parchmentDark: "#e8e0c8",
+  text: "#e8e0d0",
+  textLight: "#9ca3af",
+  textDark: "#2d2a1e",
+  accent: "#ffd700",
+  accentLight: "#ffd70020",
+  highlight: "#ffd700",
+  warmBg: "#2a2a4a",
+  red: "#ef4444",
+  redLight: "#ef444420",
+  orange: "#f59e0b",
+  orangeLight: "#f59e0b20",
+  green: "#4ade80",
+  greenLight: "#4ade8020",
+  border: "#2a2a4a",
+  navBg: "#12121f",
+  navi: "#60a5fa",
 };
 
 const font = "'Consolas', 'Monaco', 'Courier New', monospace";
+const pixelFont = "'Press Start 2P', monospace";
 
 // ─── Components ───
 
@@ -52,9 +57,10 @@ function Card({ children, style, onClick }) {
       onClick={onClick}
       style={{
         background: colors.card,
-        borderRadius: 16,
+        borderRadius: 4,
         padding: "24px",
-        boxShadow: "0 2px 24px rgba(0,0,0,0.04)",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.2)",
+        border: `1px solid ${colors.border}`,
         marginBottom: 16,
         cursor: onClick ? "pointer" : "default",
         transition: "transform 0.2s ease-out, box-shadow 0.2s ease-out",
@@ -94,10 +100,11 @@ function SectionTitle({ children, subtitle }) {
     <div style={{ marginBottom: 24 }}>
       <h2
         style={{
-          fontFamily: font,
-          fontSize: 28,
-          fontWeight: 600,
-          color: colors.text,
+          fontFamily: pixelFont,
+          fontSize: 14,
+          fontWeight: 400,
+          color: colors.accent,
+          textShadow: "0 0 12px rgba(255,215,0,0.2)",
           margin: 0,
           lineHeight: 1.2,
         }}
@@ -354,11 +361,11 @@ function HomeSection({ setSection }) {
             fontFamily: font,
             fontSize: 32,
             fontWeight: 600,
-            color: colors.text,
+            color: colors.accent,
             margin: "0 0 8px",
           }}
         >
-          Postpartum Guide
+          The Codex
         </h1>
         <p
           style={{
@@ -369,7 +376,7 @@ function HomeSection({ setSection }) {
             lineHeight: 1.6,
           }}
         >
-          for <Highlight>Jonny</Highlight> — from Kelly, with love
+          Your complete guide to the fourth trimester.
         </p>
         <p
           style={{
@@ -395,13 +402,27 @@ function HomeSection({ setSection }) {
         }}
       >
         {SECTIONS.filter((s) => s.id !== "home").map((s) => (
-          <Card
+          <div
             key={s.id}
             onClick={() => setSection(s.id)}
             style={{
               padding: "16px",
               textAlign: "center",
               marginBottom: 0,
+              background: colors.card,
+              borderRadius: 4,
+              boxShadow: "0 2px 12px rgba(0,0,0,0.2)",
+              border: `1px solid ${colors.border}`,
+              cursor: "pointer",
+              transition: "transform 0.2s ease-out, box-shadow 0.2s ease-out",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 4px 32px rgba(0,0,0,0.08)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.2)";
             }}
           >
             <div style={{ fontSize: 24, marginBottom: 6 }}>{s.icon}</div>
@@ -415,7 +436,7 @@ function HomeSection({ setSection }) {
             >
               {s.label}
             </div>
-          </Card>
+          </div>
         ))}
       </div>
     </div>
@@ -1850,7 +1871,7 @@ export default function PostpartumGuide() {
             top: 0,
             zIndex: 100,
             background: colors.navBg,
-            borderBottom: `1px solid ${colors.border}`,
+            borderBottom: `1px solid #2a2a4a`,
             padding: "12px 20px",
             display: "flex",
             alignItems: "center",
@@ -1947,7 +1968,7 @@ export default function PostpartumGuide() {
                   width: "100%",
                   textAlign: "left",
                   background:
-                    section === s.id ? colors.accentLight : "transparent",
+                    section === s.id ? colors.warmBg : "transparent",
                   border: "none",
                   padding: "12px 20px",
                   fontFamily: font,
@@ -1984,7 +2005,7 @@ export default function PostpartumGuide() {
             position: "sticky",
             bottom: 0,
             background: colors.navBg,
-            borderTop: `1px solid ${colors.border}`,
+            borderTop: `1px solid #2a2a4a`,
             display: "flex",
             justifyContent: "space-around",
             padding: "8px 0",

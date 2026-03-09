@@ -5,6 +5,19 @@ const PLAN_DATA = {weeks:[{title:"Week 1",notes:["DAYS 1-3: Acute recovery. Mass
 
 // thawMethod: "overnight" = pull night before to thaw in fridge
 // thawMethod: "from-frozen" = do NOT pull, always cook from frozen
+// ─── Theme Constants ────────────────────────────────────────────────────────────
+const COLORS = {
+  bg: "#1a1a2e",
+  card: "#22223a",
+  text: "#e8e0d0",
+  textMuted: "#9ca3af",
+  accent: "#ffd700",
+  border: "#2a2a4a",
+  green: "#4ade80",
+};
+
+const pixelFont = "'Press Start 2P', monospace";
+
 const REHEAT_GUIDE = {
   "Silkie Chicken Tonic": {
     icon: "🐓",
@@ -283,41 +296,42 @@ function ReheatingCard({ meal }) {
   if (!info) return null;
 
   return (
-    <div className="border border-stone-200 rounded-xl overflow-hidden bg-white">
+    <div className="overflow-hidden" style={{ border: `1px solid ${COLORS.border}`, borderRadius: "4px", backgroundColor: COLORS.card }}>
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between px-4 py-3 text-left"
+        style={{ color: COLORS.text }}
       >
-        <span className="font-medium text-stone-800 text-sm">
+        <span className="font-medium text-sm">
           {info.icon} {meal}
           {info.thawMethod === "from-frozen" && (
-            <span className="ml-2 text-xs bg-sky-100 text-sky-600 px-1.5 py-0.5 rounded font-medium">keep frozen</span>
+            <span className="ml-2 text-xs px-1.5 py-0.5 font-medium" style={{ backgroundColor: COLORS.accent + "30", color: COLORS.accent, borderRadius: "4px" }}>keep frozen</span>
           )}
         </span>
-        <span className="text-stone-400 text-xs ml-2">{open ? "▲" : "▼"}</span>
+        <span className="text-xs ml-2" style={{ color: COLORS.textMuted }}>{open ? "▲" : "▼"}</span>
       </button>
       {open && (
-        <div className="border-t border-stone-100 bg-stone-50 px-4 py-3 space-y-2.5 text-sm">
+        <div className="px-4 py-3 space-y-2.5 text-sm" style={{ borderTop: `1px solid ${COLORS.border}`, backgroundColor: COLORS.bg }}>
           <div>
-            <span className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Thaw</span>
-            <p className="text-stone-700 mt-0.5">
+            <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: COLORS.accent }}>Thaw</span>
+            <p className="mt-0.5" style={{ color: COLORS.text }}>
               {info.thawMethod === "from-frozen"
                 ? "🧊 Keep frozen — do not thaw. Cook directly from frozen."
                 : "Pull night before → thaw overnight in fridge."}
             </p>
           </div>
           <div>
-            <span className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Reheat</span>
-            <p className="text-stone-700 mt-0.5">{info.reheating}</p>
+            <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: COLORS.accent }}>Reheat</span>
+            <p className="mt-0.5" style={{ color: COLORS.text }}>{info.reheating}</p>
           </div>
           {info.toppings?.length > 0 && (
             <div>
-              <span className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Toppings</span>
-              <p className="text-stone-700 mt-0.5">{info.toppings.join(", ")}</p>
+              <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: COLORS.accent }}>Toppings</span>
+              <p className="mt-0.5" style={{ color: COLORS.text }}>{info.toppings.join(", ")}</p>
             </div>
           )}
           {info.notes ? (
-            <div className="text-stone-500 text-xs leading-relaxed whitespace-pre-line">{info.notes}</div>
+            <div className="text-xs leading-relaxed whitespace-pre-line" style={{ color: COLORS.textMuted }}>{info.notes}</div>
           ) : null}
         </div>
       )}
@@ -326,7 +340,7 @@ function ReheatingCard({ meal }) {
 }
 
 function DayView({ dayObj }) {
-  if (!dayObj) return <p className="text-stone-400 text-sm p-4">No data for this day.</p>;
+  if (!dayObj) return <p className="text-sm p-4" style={{ color: COLORS.textMuted }}>No data for this day.</p>;
   const dayNum = dayObj.day;
   const allMeals = getUniqueMeals(dayObj);
 
@@ -339,26 +353,26 @@ function DayView({ dayObj }) {
     <div className="space-y-4">
       {/* Why these foods */}
       {dayObj.description && (
-        <div className="rounded-xl bg-stone-100 border border-stone-200 px-4 py-3">
-          <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-1">
-            Day {dayNum} — why these foods
+        <div className="px-4 py-3" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: "4px" }}>
+          <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: COLORS.accent }}>
+            Chapter {dayNum} — why these foods
           </div>
-          <p className="text-sm text-stone-700 leading-relaxed">{dayObj.description}</p>
+          <p className="text-sm leading-relaxed" style={{ color: COLORS.text }}>{dayObj.description}</p>
         </div>
       )}
 
       {/* Hot Logic reminder */}
-      <div className="rounded-xl bg-orange-50 border border-orange-200 px-4 py-2.5 text-xs text-orange-800">
+      <div className="px-4 py-2.5 text-xs" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: "4px", color: COLORS.text }}>
         <span className="font-semibold">Hot Logic Mini:</span> glass tupperware + lid only — never the plastic bag. 1.5–2 hrs from thawed.
       </div>
 
       {/* Pull tonight for tomorrow */}
       {tomorrowObj && pullInfo && (
-        <div className="rounded-xl bg-indigo-50 border border-indigo-200 px-4 py-3">
-          <div className="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-2">
-            🌙 Pull tonight for Day {dayNum + 1}
+        <div className="px-4 py-3" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: "4px" }}>
+          <div className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: COLORS.accent }}>
+            🌙 Pull tonight for Chapter {dayNum + 1}
           </div>
-          <div className="space-y-1.5 text-sm text-indigo-800">
+          <div className="space-y-1.5 text-sm" style={{ color: COLORS.text }}>
             <div>
               <span className="font-medium">Freezer 3 (main):</span>{" "}
               Day {dayNum + 1} Kelly bag + Day {dayNum + 1} Jonny bag
@@ -370,7 +384,7 @@ function DayView({ dayObj }) {
               </div>
             )}
             {pullInfo.keepFrozen.length > 0 && (
-              <div className="text-indigo-500 text-xs">
+              <div className="text-xs" style={{ color: COLORS.textMuted }}>
                 Keep frozen (do not pull): {pullInfo.keepFrozen.join(", ")}
               </div>
             )}
@@ -378,7 +392,7 @@ function DayView({ dayObj }) {
         </div>
       )}
       {!tomorrowObj && (
-        <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-700">
+        <div className="px-4 py-3 text-sm" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.green}`, borderRadius: "4px", color: COLORS.green }}>
           Last day of the plan — no bags to pull tonight. 🎉
         </div>
       )}
@@ -386,28 +400,28 @@ function DayView({ dayObj }) {
       {/* Bag contents — two columns */}
       <div className="grid grid-cols-2 gap-3">
         {/* Kelly */}
-        <div className="bg-rose-50 rounded-xl p-3">
-          <div className="font-semibold text-rose-700 mb-2 text-sm">{"Kelly's Bag"}</div>
+        <div className="p-3" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: "4px" }}>
+          <div className="font-semibold mb-2 text-sm" style={{ color: COLORS.accent }}>{"Kelly's Bag"}</div>
           {dayObj.meals
             .filter((m) => m.kelly && m.kelly !== "\u2014" && m.kelly !== "—")
             .map((m, i) => (
               <div key={i} className="mb-1.5">
-                <div className="text-[10px] text-stone-400 uppercase tracking-wide">{m.slot}</div>
-                <div className="text-xs text-stone-800 font-medium leading-snug">{m.kelly}</div>
+                <div className="text-[10px] uppercase tracking-wide" style={{ color: COLORS.textMuted }}>{m.slot}</div>
+                <div className="text-xs font-medium leading-snug" style={{ color: COLORS.text }}>{m.kelly}</div>
               </div>
             ))}
         </div>
 
         {/* Jonny */}
-        <div className="bg-sky-50 rounded-xl p-3">
-          <div className="font-semibold text-sky-700 mb-2 text-sm">{"Jonny's Bag"}</div>
+        <div className="p-3" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: "4px" }}>
+          <div className="font-semibold mb-2 text-sm" style={{ color: COLORS.accent }}>{"Jonny's Bag"}</div>
           {dayObj.meals.map((m, i) => {
             const jonnyMeal = m.jonny === "(same)" ? m.kelly : m.jonny;
             if (!jonnyMeal || jonnyMeal === "\u2014" || jonnyMeal === "—") return null;
             return (
               <div key={i} className="mb-1.5">
-                <div className="text-[10px] text-stone-400 uppercase tracking-wide">{m.slot}</div>
-                <div className="text-xs text-stone-800 font-medium leading-snug">{jonnyMeal}</div>
+                <div className="text-[10px] uppercase tracking-wide" style={{ color: COLORS.textMuted }}>{m.slot}</div>
+                <div className="text-xs font-medium leading-snug" style={{ color: COLORS.text }}>{jonnyMeal}</div>
               </div>
             );
           })}
@@ -416,8 +430,8 @@ function DayView({ dayObj }) {
 
       {/* Reheat guide */}
       <div>
-        <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2 px-1">
-          Reheat guide — tap to expand
+        <div className="text-xs font-semibold uppercase tracking-wide mb-2 px-1" style={{ color: COLORS.accent, fontFamily: pixelFont, fontSize: "9px" }}>
+          Scroll of Reheating
         </div>
         <div className="space-y-2">
           {allMeals.map((meal) => (
@@ -434,7 +448,7 @@ function AllRecipesView() {
     <div className="space-y-6">
       {RECIPE_GROUPS.map((group) => (
         <div key={group.label}>
-          <div className="font-semibold text-stone-700 mb-2 flex items-center gap-1.5">
+          <div className="font-semibold mb-2 flex items-center gap-1.5" style={{ color: COLORS.accent, fontFamily: pixelFont, fontSize: "10px" }}>
             <span>{group.emoji}</span>
             <span>{group.label}</span>
           </div>
@@ -454,15 +468,15 @@ function StaplesView() {
     <div className="space-y-5">
       {Object.values(STAPLES).map((section) => (
         <div key={section.label}>
-          <div className="font-semibold text-stone-700 mb-2">
+          <div className="font-semibold mb-2" style={{ color: COLORS.accent, fontFamily: pixelFont, fontSize: "10px" }}>
             {section.emoji} {section.label}
           </div>
           <div className="space-y-1.5">
             {section.items.map((item, i) => (
-              <div key={i} className="bg-white rounded-lg border border-stone-200 px-3 py-2 text-sm">
-                <span className="font-medium text-stone-800">{item.name}</span>
+              <div key={i} className="px-3 py-2 text-sm" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.border}`, borderRadius: "4px" }}>
+                <span className="font-medium" style={{ color: COLORS.text }}>{item.name}</span>
                 {item.note && (
-                  <span className="text-stone-500"> — {item.note}</span>
+                  <span style={{ color: COLORS.textMuted }}> — {item.note}</span>
                 )}
               </div>
             ))}
@@ -520,21 +534,22 @@ export default function JonnyPrep() {
 
   // ── Loading ──────────────────────────────────────────────────────────────
   if (!hasLoaded) {
-    return <div className="min-h-screen bg-stone-50" />;
+    return <div className="min-h-screen" style={{ backgroundColor: COLORS.bg }} />;
   }
 
   // ── Pre-birth landing ────────────────────────────────────────────────────
   if (!day1Timestamp && !previewMode) {
     return (
-      <div className="min-h-screen bg-stone-50 flex flex-col items-center justify-center p-8 text-center">
-        <div className="text-5xl mb-4">🍽️</div>
-        <h1 className="text-xl font-bold text-stone-800 mb-1">{"Meal Plan"}</h1>
-        <p className="text-stone-500 mb-6 max-w-xs text-sm leading-relaxed">
+      <div className="min-h-screen flex flex-col items-center justify-center p-8 text-center" style={{ backgroundColor: COLORS.bg }}>
+        <div className="text-5xl mb-4">🗺️</div>
+        <h1 className="text-xl font-bold mb-1" style={{ fontFamily: pixelFont, color: COLORS.accent, fontSize: "12px" }}>{"PROVISIONS"}</h1>
+        <p className="mb-6 max-w-xs text-sm leading-relaxed" style={{ color: COLORS.textMuted }}>
           {"Start Day 1 from the home screen to unlock the daily meal plan."}
         </p>
         <button
           onClick={() => setPreviewMode(true)}
-          className="text-sm bg-stone-200 text-stone-700 px-6 py-3 rounded-xl font-medium"
+          className="text-sm px-6 py-3 font-medium"
+          style={{ backgroundColor: COLORS.accent, color: COLORS.bg, borderRadius: "4px" }}
         >
           Preview all meals
         </button>
@@ -546,19 +561,19 @@ export default function JonnyPrep() {
   const progressPct = currentDay ? Math.min(100, (currentDay / 30) * 100) : 0;
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, maxWidth: "480px", margin: "0 auto" }}>
       {/* ── Sticky header ── */}
-      <div className="bg-white border-b border-stone-200 sticky top-0 z-10">
+      <div className="sticky top-0 z-10" style={{ backgroundColor: COLORS.card, borderBottom: `1px solid ${COLORS.border}` }}>
         <div className="px-4 pt-3 pb-0">
           {/* Title row */}
           <div className="flex items-center justify-between mb-2">
             <div>
-              <h1 className="font-bold text-stone-800 text-base leading-tight">{"Jonny's Prep Guide"}</h1>
+              <h1 className="font-bold text-base leading-tight" style={{ color: COLORS.accent, fontFamily: pixelFont, fontSize: "11px" }}>{"CHAPTER LOG"}</h1>
               {previewMode && (
-                <span className="text-xs text-amber-600 font-medium">Preview mode</span>
+                <span className="text-xs font-medium" style={{ color: COLORS.accent }}>Preview mode</span>
               )}
               {currentDay && !previewMode && (
-                <div className="text-xs text-stone-500">
+                <div className="text-xs" style={{ color: COLORS.textMuted }}>
                   {isComplete ? "30 days complete ✓" : `Day ${currentDay} of 30`}
                 </div>
               )}
@@ -567,7 +582,8 @@ export default function JonnyPrep() {
             {previewMode && (
               <button
                 onClick={startDay1}
-                className="text-xs bg-rose-500 text-white px-3 py-1.5 rounded-lg font-medium"
+                className="text-xs px-3 py-1.5 font-medium"
+                style={{ backgroundColor: COLORS.accent, color: COLORS.bg, borderRadius: "4px" }}
               >
                 Start Day 1 🎉
               </button>
@@ -576,10 +592,10 @@ export default function JonnyPrep() {
 
           {/* Progress bar */}
           {currentDay && !previewMode && (
-            <div className="h-1.5 bg-stone-100 rounded-full mb-2">
+            <div className="h-1.5 mb-2" style={{ backgroundColor: COLORS.border, borderRadius: "4px" }}>
               <div
-                className="h-full bg-rose-400 rounded-full transition-all duration-500"
-                style={{ width: `${progressPct}%` }}
+                className="h-full transition-all duration-500"
+                style={{ width: `${progressPct}%`, backgroundColor: COLORS.accent, borderRadius: "4px" }}
               />
             </div>
           )}
@@ -596,9 +612,13 @@ export default function JonnyPrep() {
                 onClick={() => setTab(t.key)}
                 className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
                   tab === t.key
-                    ? "border-rose-400 text-rose-600"
-                    : "border-transparent text-stone-500 hover:text-stone-700"
+                    ? "border-b-2"
+                    : "border-transparent"
                 }`}
+                style={{
+                  borderBottomColor: tab === t.key ? COLORS.accent : "transparent",
+                  color: tab === t.key ? COLORS.accent : COLORS.textMuted,
+                }}
               >
                 {t.label}
               </button>
@@ -608,7 +628,7 @@ export default function JonnyPrep() {
 
         {/* Day selector (Today tab only) */}
         {tab === "today" && (
-          <div className="overflow-x-auto py-2 border-t border-stone-100">
+          <div className="overflow-x-auto py-2" style={{ borderTop: `1px solid ${COLORS.border}` }}>
             <div className="flex gap-1.5 px-4 min-w-max">
               {allDays.map((d) => {
                 const isPast = currentDay && d.day < currentDay;
@@ -618,18 +638,17 @@ export default function JonnyPrep() {
                   <button
                     key={d.day}
                     onClick={() => setSelectedDay(d.day)}
-                    className={`relative flex flex-col items-center justify-center min-w-[40px] h-10 rounded-lg text-xs font-semibold transition-all ${
-                      isSel
-                        ? "bg-rose-500 text-white shadow-sm"
-                        : isPast
-                        ? "bg-stone-100 text-stone-400"
-                        : isToday
-                        ? "bg-rose-100 text-rose-700 ring-1 ring-rose-400"
-                        : "bg-stone-50 text-stone-600 border border-stone-200"
-                    }`}
+                    className={`relative flex flex-col items-center justify-center min-w-[40px] h-10 text-xs font-semibold transition-all`}
+                    style={{
+                      backgroundColor: isSel ? COLORS.accent : isPast ? COLORS.border : isToday ? COLORS.accent + "40" : COLORS.card,
+                      color: isSel ? COLORS.bg : isPast ? COLORS.textMuted : isToday ? COLORS.accent : COLORS.text,
+                      borderRadius: "4px",
+                      border: !isSel && isToday ? `1px solid ${COLORS.accent}` : `1px solid ${COLORS.border}`,
+                      boxShadow: isSel ? `0 0 0 2px ${COLORS.accent}80` : "none",
+                    }}
                   >
                     {isToday && !isSel && (
-                      <span className="text-[7px] font-bold text-rose-600 uppercase leading-none mb-0.5">
+                      <span className="text-[7px] font-bold uppercase leading-none mb-0.5" style={{ color: COLORS.accent }}>
                         TODAY
                       </span>
                     )}
@@ -643,13 +662,13 @@ export default function JonnyPrep() {
       </div>
 
       {/* ── Main content ── */}
-      <div className="p-4 max-w-lg mx-auto pb-20">
+      <div className="p-4 mx-auto pb-20" style={{ maxWidth: "480px" }}>
         {/* Completion banner */}
         {isComplete && (
-          <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 text-center mb-4">
+          <div className="px-4 py-3 text-center mb-4" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.green}`, borderRadius: "4px" }}>
             <div className="text-2xl mb-1">🎉</div>
-            <div className="font-semibold text-emerald-700">30 days complete!</div>
-            <div className="text-sm text-emerald-600">You did it, Jonny. Kelly is through the hardest chapter.</div>
+            <div className="font-semibold" style={{ color: COLORS.green }}>30 days complete!</div>
+            <div className="text-sm" style={{ color: COLORS.green }}>You did it, Jonny. Kelly is through the hardest chapter.</div>
           </div>
         )}
 
@@ -660,14 +679,15 @@ export default function JonnyPrep() {
         {/* Footer links */}
         <div className="mt-10 text-center space-y-2">
           {day1Timestamp && (
-            <button onClick={resetDay1} className="text-xs text-stone-300 underline underline-offset-2">
+            <button onClick={resetDay1} className="text-xs underline underline-offset-2" style={{ color: COLORS.textMuted }}>
               Change Day 1 date
             </button>
           )}
           {previewMode && (
             <button
               onClick={() => setPreviewMode(false)}
-              className="block mx-auto text-xs text-stone-300 underline underline-offset-2"
+              className="block mx-auto text-xs underline underline-offset-2"
+              style={{ color: COLORS.textMuted }}
             >
               ← Back
             </button>

@@ -3,11 +3,11 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const NAV_ITEMS = [
-  { href: "/today", label: "Today", icon: "📋" },
-  { href: "/meals", label: "Meals", icon: "🍽️" },
-  { href: "/guide", label: "Guide", icon: "📖" },
-  { href: "/plants", label: "Plants", icon: "🌱" },
-  { href: "/calendar", label: "Calendar", icon: "📅" },
+  { href: "/today", label: "Quests", icon: "⚔️" },
+  { href: "/meals", label: "Provisions", icon: "🍖" },
+  { href: "/guide", label: "Codex", icon: "📜" },
+  { href: "/plants", label: "Grove", icon: "🌿" },
+  { href: "/calendar", label: "Map", icon: "🗺️" },
 ];
 
 export default function BottomNav() {
@@ -20,11 +20,11 @@ export default function BottomNav() {
         bottom: 0,
         left: 0,
         right: 0,
-        background: "#FFFFFF",
-        borderTop: "1px solid #E5E7EB",
+        background: "#12121f",
+        borderTop: "2px solid #2a2a4a",
         display: "flex",
         justifyContent: "space-around",
-        padding: "6px 0 env(safe-area-inset-bottom, 8px)",
+        padding: "8px 0 env(safe-area-inset-bottom, 10px)",
         zIndex: 50,
       }}
     >
@@ -38,14 +38,16 @@ export default function BottomNav() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: 2,
+              gap: 4,
               padding: "4px 8px",
               textDecoration: "none",
-              fontSize: 9,
-              fontWeight: 600,
-              color: active ? "#E11D48" : "#9CA3AF",
-              letterSpacing: "0.03em",
+              fontFamily: "'Press Start 2P', monospace",
+              fontSize: 7,
+              fontWeight: 400,
+              color: active ? "#ffd700" : "#5b5b7b",
+              letterSpacing: "0.02em",
               transition: "color 0.15s",
+              filter: active ? "drop-shadow(0 0 6px rgba(255, 215, 0, 0.4))" : "none",
             }}
           >
             <span style={{ fontSize: 20 }}>{item.icon}</span>
