@@ -15,7 +15,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "The Fourth Trimester",
-  description: "A 30-day postpartum quest — meals, daily tasks, and everything you need.",
+  description: "A 40-day postpartum quest — meals, daily tasks, and everything you need.",
 };
 
 export default function RootLayout({

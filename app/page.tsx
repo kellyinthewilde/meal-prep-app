@@ -144,7 +144,7 @@ export default function Home() {
           letterSpacing: "0.1em",
         }}
       >
-        A 30-Day Quest
+        A 40-Day Quest
       </p>
 
       <div

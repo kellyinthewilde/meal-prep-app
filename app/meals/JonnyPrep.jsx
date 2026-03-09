@@ -574,7 +574,7 @@ export default function JonnyPrep() {
               )}
               {currentDay && !previewMode && (
                 <div className="text-xs" style={{ color: COLORS.textMuted }}>
-                  {isComplete ? "30 days complete ✓" : `Day ${currentDay} of 30`}
+                  {isComplete ? "Provisions complete ✓" : `Day ${currentDay} of 30`}
                 </div>
               )}
             </div>
@@ -667,8 +667,8 @@ export default function JonnyPrep() {
         {isComplete && (
           <div className="px-4 py-3 text-center mb-4" style={{ backgroundColor: COLORS.card, border: `1px solid ${COLORS.green}`, borderRadius: "4px" }}>
             <div className="text-2xl mb-1">🎉</div>
-            <div className="font-semibold" style={{ color: COLORS.green }}>30 days complete!</div>
-            <div className="text-sm" style={{ color: COLORS.green }}>You did it, Jonny. Kelly is through the hardest chapter.</div>
+            <div className="font-semibold" style={{ color: COLORS.green }}>All provisions deployed!</div>
+            <div className="text-sm" style={{ color: COLORS.green }}>Well done, Guardian. The hardest chapter is behind you.</div>
           </div>
         )}
 

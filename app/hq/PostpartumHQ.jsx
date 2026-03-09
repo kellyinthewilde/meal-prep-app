@@ -1331,10 +1331,10 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
       {/* Header */}
       <div style={{ marginBottom: 24 }}>
         <div style={{ fontFamily: font, fontSize: 13, color: colors.textLight, marginBottom: 4 }}>
-          {greeting}, Hero
+          {greeting}, Guardian
         </div>
         <h2 style={{ fontFamily: pixelFont, fontSize: 14, color: colors.accent, margin: 0, lineHeight: 1.6, textShadow: "0 0 12px rgba(255,215,0,0.2)" }}>
-          Quest Log
+          Guardian's Log
         </h2>
       </div>
 
@@ -1374,7 +1374,7 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
           />
         </div>
         <div style={{ fontFamily: pixelFont, fontSize: 7, color: allComplete ? colors.green : colors.textLight, marginTop: 6, textAlign: "right" }}>
-          {allComplete ? "ALL QUESTS COMPLETE ✨" : `${Math.round(xpPercent)}% XP`}
+          {allComplete ? "ALL DUTIES COMPLETE ✨" : `${Math.round(xpPercent)}% XP`}
         </div>
       </Card>
 
@@ -1398,7 +1398,7 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
       {/* Quest List */}
       <div style={{ marginBottom: 8 }}>
         <div style={{ fontFamily: pixelFont, fontSize: 8, color: colors.textLight, marginBottom: 12, letterSpacing: "0.05em" }}>
-          DAILY QUESTS
+          GUARDIAN DUTIES
         </div>
       </div>
 
@@ -1422,10 +1422,10 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
           </div>
         </div>
         <div style={{ fontFamily: font, fontSize: 14, fontWeight: 600, color: "#5b5b7b", marginBottom: 6 }}>
-          Daily Postpartum Companion
+          The Guardian's Companion
         </div>
         <div style={{ fontFamily: font, fontSize: 12, color: "#4a4a6a", lineHeight: 1.7 }}>
-          This quest chain unlocks when the adventure begins. Daily snapshots of Kelly's recovery, Eliana's milestones, and your specific quests for each day.
+          This quest chain unlocks when Eliana arrives. Daily briefings on Kelly's recovery, the baby's milestones, and your guardian duties for each stage of the fourth trimester.
         </div>
       </Card>
     </div>
@@ -1458,11 +1458,11 @@ function PlantDaddyTab() {
   const ROOM_NAMES = {
     "Kelly's Room": "Kelly's Chamber",
     "Living Room": "The Great Hall",
-    "Jonny's Room": "Hero's Quarters",
+    "Jonny's Room": "Guardian's Quarters",
     "Jonny's Office": "The Study",
     "Kitchen": "The Kitchen Keep",
     "Kelly's Bathroom": "Kelly's Spring",
-    "Jonny's Bathroom": "Hero's Spring",
+    "Jonny's Bathroom": "Guardian's Spring",
   };
 
   const rooms = [...new Set(plants.map((p) => p.room))];

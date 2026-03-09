@@ -19,7 +19,7 @@ const SECTIONS = [
   { id: "redflags", label: "Red Flags", icon: "🚨" },
   { id: "timeline", label: "Timeline", icon: "📅" },
   { id: "contacts", label: "The Council", icon: "📞" },
-  { id: "jonny", label: "Hero's Wellbeing", icon: "🧘" },
+  { id: "jonny", label: "Guardian's Wellbeing", icon: "🧘" },
 ];
 
 // ─── Styles ───
