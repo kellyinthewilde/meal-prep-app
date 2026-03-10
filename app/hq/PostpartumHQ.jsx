@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable react/no-unescaped-entities, @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from "react";
+import { FairyIcon, LockIcon, UnlockIcon, ShieldIcon, HeartIcon, LeafIcon, PotionIcon, StarIcon } from "../components/PixelIcons";
 
 // ─── Color System (Adventure Theme) ───
 const colors = {
@@ -1374,7 +1375,7 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
           />
         </div>
         <div style={{ fontFamily: pixelFont, fontSize: 7, color: allComplete ? colors.green : colors.textLight, marginTop: 6, textAlign: "right" }}>
-          {allComplete ? "ALL DUTIES COMPLETE ✨" : `${Math.round(xpPercent)}% XP`}
+          {allComplete ? "ALL DUTIES COMPLETE" : `${Math.round(xpPercent)}% XP`}
         </div>
       </Card>
 
@@ -1382,7 +1383,7 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
       {dayName === "Saturday" && (
         <Card style={{ background: "#60a5fa15", border: "1px solid #60a5fa30", marginBottom: 20 }}>
           <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-            <span style={{ fontSize: 20, filter: "drop-shadow(0 0 4px rgba(96,165,250,0.5))" }}>🧚</span>
+            <span style={{ filter: "drop-shadow(0 0 4px rgba(96,165,250,0.5))" }}><FairyIcon size={22} color="#60a5fa" /></span>
             <div>
               <div style={{ fontFamily: pixelFont, fontSize: 7, color: colors.navi, marginBottom: 6 }}>
                 HEY, LISTEN!
@@ -1413,21 +1414,63 @@ function TodayTab({ checkedTasks, setCheckedTasks }) {
         ))}
       </div>
 
-      {/* Locked Quest */}
-      <Card style={{ background: "#1a1a2e", border: "1px dashed #3a3a5a", opacity: 0.7 }}>
-        <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
-          <span style={{ fontSize: 20 }}>🔒</span>
-          <div style={{ fontFamily: pixelFont, fontSize: 8, color: "#5b5b7b", letterSpacing: "0.03em" }}>
-            LOCKED QUEST
+      {/* Quest — unlocks when all daily duties complete */}
+      {allComplete ? (
+        <Card style={{ background: "linear-gradient(135deg, #1a2e1a 0%, #1a1a2e 100%)", border: `1px solid ${colors.green}40` }}>
+          <style>{`
+            @keyframes quest-unlock {
+              0% { opacity: 0; transform: scale(0.95); }
+              50% { transform: scale(1.02); }
+              100% { opacity: 1; transform: scale(1); }
+            }
+            @keyframes shimmer {
+              0% { background-position: -200% 0; }
+              100% { background-position: 200% 0; }
+            }
+          `}</style>
+          <div style={{ animation: "quest-unlock 0.5s ease-out forwards" }}>
+            <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
+              <span style={{ filter: "drop-shadow(0 0 6px rgba(74,222,128,0.5))" }}><UnlockIcon size={22} color="#4ade80" /></span>
+              <div style={{ fontFamily: pixelFont, fontSize: 8, color: colors.green, letterSpacing: "0.03em" }}>
+                QUEST UNLOCKED
+              </div>
+            </div>
+            <div style={{ fontFamily: font, fontSize: 14, fontWeight: 600, color: colors.text, marginBottom: 6 }}>
+              The Guardian's Companion
+            </div>
+            <div style={{ fontFamily: font, fontSize: 12, color: colors.textLight, lineHeight: 1.7, marginBottom: 12 }}>
+              All duties complete. You've earned a moment of rest, Guardian. Kelly and Eliana are lucky to have you.
+            </div>
+            <div style={{
+              fontFamily: pixelFont,
+              fontSize: 7,
+              color: colors.green,
+              background: `${colors.green}15`,
+              padding: "8px 12px",
+              borderRadius: 2,
+              textAlign: "center",
+              letterSpacing: "0.05em",
+            }}>
+              +100 XP — GUARDIAN'S REST EARNED
+            </div>
           </div>
-        </div>
-        <div style={{ fontFamily: font, fontSize: 14, fontWeight: 600, color: "#5b5b7b", marginBottom: 6 }}>
-          The Guardian's Companion
-        </div>
-        <div style={{ fontFamily: font, fontSize: 12, color: "#4a4a6a", lineHeight: 1.7 }}>
-          This quest chain unlocks when Eliana arrives. Daily briefings on Kelly's recovery, the baby's milestones, and your guardian duties for each stage of the fourth trimester.
-        </div>
-      </Card>
+        </Card>
+      ) : (
+        <Card style={{ background: "#1a1a2e", border: "1px dashed #3a3a5a", opacity: 0.7 }}>
+          <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
+            <LockIcon size={22} color="#5b5b7b" />
+            <div style={{ fontFamily: pixelFont, fontSize: 8, color: "#5b5b7b", letterSpacing: "0.03em" }}>
+              LOCKED QUEST — COMPLETE ALL DUTIES
+            </div>
+          </div>
+          <div style={{ fontFamily: font, fontSize: 14, fontWeight: 600, color: "#5b5b7b", marginBottom: 6 }}>
+            The Guardian's Companion
+          </div>
+          <div style={{ fontFamily: font, fontSize: 12, color: "#4a4a6a", lineHeight: 1.7 }}>
+            Complete all guardian duties above to unlock this quest.
+          </div>
+        </Card>
+      )}
     </div>
   );
 }
@@ -1527,7 +1570,7 @@ function PlantDaddyTab() {
                       borderRadius: 4,
                     }}
                   >
-                    {plant.emoji}
+                    <LeafIcon size={20} color={colors.green} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontFamily: font, fontSize: 15, fontWeight: 600, color: colors.text, marginBottom: 4 }}>
@@ -1646,6 +1689,27 @@ function CalendarTab() {
 
 export default function PostpartumHQ({ defaultTab = "today" }) {
   const [checkedTasks, setCheckedTasks] = useState({});
+  const [hasLoadedTasks, setHasLoadedTasks] = useState(false);
+
+  // Load checked tasks from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("quest_checked_tasks");
+      if (saved) {
+        setCheckedTasks(JSON.parse(saved));
+      }
+    } catch (e) {
+      // ignore parse errors
+    }
+    setHasLoadedTasks(true);
+  }, []);
+
+  // Persist checked tasks to localStorage on change
+  useEffect(() => {
+    if (hasLoadedTasks) {
+      localStorage.setItem("quest_checked_tasks", JSON.stringify(checkedTasks));
+    }
+  }, [checkedTasks, hasLoadedTasks]);
 
   return (
     <div

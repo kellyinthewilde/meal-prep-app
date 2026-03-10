@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { HeartIcon } from "./components/PixelIcons";
 
 const pixelFont = "'Press Start 2P', monospace";
 const bodyFont = "'Consolas', 'Monaco', 'Courier New', monospace";
@@ -106,13 +107,12 @@ export default function Home() {
           <span
             key={i}
             style={{
-              fontSize: 36,
               animation: heartsVisible > i ? "heart-pop 0.4s ease-out forwards" : "none",
               opacity: heartsVisible > i ? 1 : 0,
               filter: "drop-shadow(0 0 8px rgba(239, 68, 68, 0.5))",
             }}
           >
-            ❤️
+            <HeartIcon size={32} color="#ef4444" />
           </span>
         ))}
       </div>
@@ -193,7 +193,7 @@ export default function Home() {
           (e.target as HTMLElement).style.transform = "scale(1)";
         }}
       >
-        BEGIN ADVENTURE ⚔️
+        BEGIN ADVENTURE
       </button>
 
       <a

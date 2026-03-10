@@ -1,13 +1,14 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { SwordIcon, MeatIcon, ScrollIcon, LeafIcon, MapIcon } from "./PixelIcons";
 
 const NAV_ITEMS = [
-  { href: "/today", label: "Quests", icon: "⚔️" },
-  { href: "/meals", label: "Provisions", icon: "🍖" },
-  { href: "/guide", label: "Codex", icon: "📜" },
-  { href: "/plants", label: "Grove", icon: "🌿" },
-  { href: "/calendar", label: "Map", icon: "🗺️" },
+  { href: "/today", label: "Quests", Icon: SwordIcon },
+  { href: "/meals", label: "Provisions", Icon: MeatIcon },
+  { href: "/guide", label: "Codex", Icon: ScrollIcon },
+  { href: "/plants", label: "Grove", Icon: LeafIcon },
+  { href: "/calendar", label: "Map", Icon: MapIcon },
 ];
 
 export default function BottomNav() {
@@ -30,6 +31,7 @@ export default function BottomNav() {
     >
       {NAV_ITEMS.map((item) => {
         const active = pathname === item.href || pathname.startsWith(item.href + "/");
+        const color = active ? "#ffd700" : "#5b5b7b";
         return (
           <Link
             key={item.href}
@@ -44,13 +46,13 @@ export default function BottomNav() {
               fontFamily: "'Press Start 2P', monospace",
               fontSize: 7,
               fontWeight: 400,
-              color: active ? "#ffd700" : "#5b5b7b",
+              color: color,
               letterSpacing: "0.02em",
               transition: "color 0.15s",
               filter: active ? "drop-shadow(0 0 6px rgba(255, 215, 0, 0.4))" : "none",
             }}
           >
-            <span style={{ fontSize: 20 }}>{item.icon}</span>
+            <item.Icon size={20} color={color} />
             <span>{item.label}</span>
           </Link>
         );

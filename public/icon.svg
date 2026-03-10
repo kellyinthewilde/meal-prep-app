@@ -1,0 +1,42 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark navy background -->
+  <rect width="512" height="512" fill="#1a1a2e"/>
+
+  <!-- Pixel-art shield outline (gold) -->
+  <!-- Shield base: rectangle with pointed bottom -->
+  <!-- Top portion -->
+  <rect x="96" y="80" width="320" height="200" fill="none" stroke="#ffd700" stroke-width="16"/>
+
+  <!-- Shield point bottom (pixel art style) -->
+  <!-- Left diagonal -->
+  <line x1="96" y1="280" x2="64" y2="360" stroke="#ffd700" stroke-width="16" stroke-linecap="square"/>
+  <!-- Right diagonal -->
+  <line x1="416" y1="280" x2="448" y2="360" stroke="#ffd700" stroke-width="16" stroke-linecap="square"/>
+  <!-- Bottom point -->
+  <line x1="64" y1="360" x2="256" y2="420" stroke="#ffd700" stroke-width="16" stroke-linecap="square"/>
+  <line x1="256" y1="420" x2="448" y2="360" stroke="#ffd700" stroke-width="16" stroke-linecap="square"/>
+
+  <!-- Red heart in center -->
+  <!-- Heart is made of pixel art rectangles for geometric style -->
+  <!-- Left lobe of heart -->
+  <rect x="140" y="160" width="32" height="32" fill="#ef4444"/>
+  <rect x="140" y="192" width="32" height="32" fill="#ef4444"/>
+  <rect x="140" y="224" width="32" height="32" fill="#ef4444"/>
+  <rect x="172" y="160" width="32" height="32" fill="#ef4444"/>
+  <rect x="172" y="192" width="32" height="32" fill="#ef4444"/>
+
+  <!-- Right lobe of heart -->
+  <rect x="308" y="160" width="32" height="32" fill="#ef4444"/>
+  <rect x="308" y="192" width="32" height="32" fill="#ef4444"/>
+  <rect x="308" y="224" width="32" height="32" fill="#ef4444"/>
+  <rect x="276" y="160" width="32" height="32" fill="#ef4444"/>
+  <rect x="276" y="192" width="32" height="32" fill="#ef4444"/>
+
+  <!-- Heart point bottom -->
+  <rect x="204" y="224" width="32" height="32" fill="#ef4444"/>
+  <rect x="276" y="224" width="32" height="32" fill="#ef4444"/>
+  <rect x="204" y="256" width="32" height="32" fill="#ef4444"/>
+  <rect x="276" y="256" width="32" height="32" fill="#ef4444"/>
+  <rect x="240" y="256" width="32" height="32" fill="#ef4444"/>
+  <rect x="240" y="288" width="32" height="32" fill="#ef4444"/>
+</svg>
